@@ -615,31 +615,17 @@
           </input>
           <output list="true">
             <param name="sales order id"/>
-            <param name="revision number"/>
-            <param name="order date"/>
-            <param name="due date"/>
-            <param name="ship date"/>
+            <param name="order date" type="date"/>
+            <param name="due date" type="date"/>
+            <param name="ship date" type="date"/>
             <param name="status"/>
             <param name="online order flag" type="yesno" required="true"/>
             <param name="sales order number"/>
-            <param name="purchase order number"/>
-            <param name="account number"/>
-            <param name="customer id"/>
+            <param name="customer store" type="string"/>
+            <param name="customer name" type="string"/>
             <param name="sales person id"/>
             <param name="territory id"/>
-            <param name="bill to address id"/>
-            <param name="ship to address id"/>
-            <param name="ship method id"/>
-            <param name="credit card id"/>
-            <param name="credit card approval code"/>
-            <param name="currency rate id"/>
-            <param name="sub total"/>
-            <param name="tax amt"/>
-            <param name="freight"/>
             <param name="total due"/>
-            <param name="comment"/>
-            <param name="rowguid"/>
-            <param name="modified date"/>
             <config>
               <xfk:add-to-object class="SalesOrderList"/>
             </config>
