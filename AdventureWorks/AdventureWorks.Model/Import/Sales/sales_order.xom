@@ -1009,13 +1009,14 @@
       <ui:display>
         <ui:fields>
           <ui:field param="sales order id" hidden="true"/>
+          <ui:field param="online order flag" label="Online"/>
         </ui:fields>
       </ui:display>
       <ui:link name="details" view="SalesOrderView" child="true">
         <ui:params>
           <ui:param name="sales order id" field="sales order id"/>
         </ui:params>
-        <ui:display on-field="revision number"/>
+        <ui:display on-field="sales order number"/>
       </ui:link>
       <ui:link name="new" view="SalesOrderView" child="true">
         <ui:params>
