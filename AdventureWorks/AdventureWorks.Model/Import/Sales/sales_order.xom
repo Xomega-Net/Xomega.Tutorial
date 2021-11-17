@@ -17,7 +17,20 @@
         <ui:display-config typical-length="10"/>
       </config>
     </type>
+    <type name="sales order status" base="tiny int enumeration">
+      <enum ref="sales order status"/>
+    </type>
   </types>
+  <enums>
+    <enum name="sales order status">
+      <item name="In process" value="1"/>
+      <item name="Approved" value="2"/>
+      <item name="Backordered" value="3"/>
+      <item name="Rejected" value="4"/>
+      <item name="Shipped" value="5"/>
+      <item name="Cancelled" value="6"/>
+    </enum>
+  </enums>
   <objects>
     <object name="sales order">
       <fields>
@@ -58,7 +71,7 @@
             <summary>Date the order was shipped to the customer.</summary>
           </doc>
         </field>
-        <field name="status" type="tiny int" required="true">
+        <field name="status" type="sales order status" required="true">
           <config>
             <sql:column name="Status" default="((1))"/>
           </config>
