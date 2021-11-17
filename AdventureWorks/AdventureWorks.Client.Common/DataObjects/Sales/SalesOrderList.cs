@@ -47,7 +47,7 @@ namespace AdventureWorks.Client.Common.DataObjects
         public TextProperty SalesOrderNumberProperty { get; private set; }
         public IntegerKeyProperty SalesPersonIdProperty { get; private set; }
         public DateProperty ShipDateProperty { get; private set; }
-        public TinyIntegerProperty StatusProperty { get; private set; }
+        public EnumByteProperty StatusProperty { get; private set; }
         public IntegerKeyProperty TerritoryIdProperty { get; private set; }
         public MoneyProperty TotalDueProperty { get; private set; }
 
@@ -98,9 +98,10 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Editable = false,
             };
-            StatusProperty = new TinyIntegerProperty(this, Status)
+            StatusProperty = new EnumByteProperty(this, Status)
             {
                 Required = true,
+                EnumType = "sales order status",
                 Editable = false,
             };
             OnlineOrderFlagProperty = new EnumBoolProperty(this, OnlineOrderFlag)

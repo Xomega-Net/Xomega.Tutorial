@@ -300,6 +300,9 @@
   <data name="SalesOrderCriteria.CustomerName">
     <value xml:space="preserve">Customer Name</value>
   </data>
+  <data name="SalesOrderCriteria.GlobalRegion">
+    <value xml:space="preserve">Global Region</value>
+  </data>
   <data name="SalesOrderCriteria.TerritoryIdOperator">
     <value xml:space="preserve">Territory Id</value>
   </data>

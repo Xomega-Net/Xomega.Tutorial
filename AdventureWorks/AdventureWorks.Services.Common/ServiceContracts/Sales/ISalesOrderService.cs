@@ -269,6 +269,7 @@ namespace AdventureWorks.Services.Common
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
         [XRequired]
+        [XLookupValue(SalesOrderStatus.EnumName)]
         public byte Status { get; set; }
         
         ///<summary>
@@ -437,6 +438,7 @@ namespace AdventureWorks.Services.Common
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
         [XRequired]
+        [XLookupValue(SalesOrderStatus.EnumName)]
         public byte Status { get; set; }
         
         ///<summary>
@@ -589,6 +591,7 @@ namespace AdventureWorks.Services.Common
         ///<summary>
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
+        [XLookupValue(SalesOrderStatus.EnumName)]
         public byte? Status { get; set; }
         
         ///<summary>
@@ -659,6 +662,10 @@ namespace AdventureWorks.Services.Common
         public string CustomerNameOperator { get; set; }
         
         public string CustomerName { get; set; }
+        
+        [XMaxLength(50)]
+        [XLookupValue(SalesTerritoryGroup.EnumName)]
+        public string GlobalRegion { get; set; }
         
         ///<summary>
         /// Comparison operator for the corresponding Territory Id criteria.

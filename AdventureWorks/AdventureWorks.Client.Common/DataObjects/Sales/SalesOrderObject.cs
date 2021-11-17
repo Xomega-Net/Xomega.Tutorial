@@ -73,7 +73,7 @@ namespace AdventureWorks.Client.Common.DataObjects
         public DateTimeProperty ShipDateProperty { get; private set; }
         public IntegerKeyProperty ShipMethodIdProperty { get; private set; }
         public IntegerKeyProperty ShipToAddressIdProperty { get; private set; }
-        public TinyIntegerProperty StatusProperty { get; private set; }
+        public EnumByteProperty StatusProperty { get; private set; }
         public MoneyProperty SubTotalProperty { get; private set; }
         public MoneyProperty TaxAmtProperty { get; private set; }
         public IntegerKeyProperty TerritoryIdProperty { get; private set; }
@@ -121,9 +121,10 @@ namespace AdventureWorks.Client.Common.DataObjects
             ShipDateProperty = new DateTimeProperty(this, ShipDate)
             {
             };
-            StatusProperty = new TinyIntegerProperty(this, Status)
+            StatusProperty = new EnumByteProperty(this, Status)
             {
                 Required = true,
+                EnumType = "sales order status",
             };
             OnlineOrderFlagProperty = new BooleanProperty(this, OnlineOrderFlag)
             {

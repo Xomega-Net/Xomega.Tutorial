@@ -42,7 +42,7 @@
                 <XSelect Class="mt-3 col" Property="@VM?.CritObj?.StatusOperatorProperty"></XSelect>
               </div>
               <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.StatusProperty"></XNumericBox>
+                <XSelect Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.StatusProperty"></XSelect>
               </div>
               <div class="row">
                 <XSelect Class="mt-3 col" Property="@VM?.CritObj?.OrderDateOperatorProperty"></XSelect>
@@ -80,6 +80,9 @@
                             Property="@VM?.CritObj?.CustomerNameProperty"></XInputText>
               </div>
               <div class="row">
+                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.GlobalRegionProperty"></XSelect>
+              </div>
+              <div class="row">
                 <XSelect Class="mt-3 col" Property="@VM?.CritObj?.TerritoryIdOperatorProperty"></XSelect>
               </div>
               <div class="row gx-2">
@@ -112,10 +115,10 @@
                     </a>
                   </Template>
                 </XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.OrderDateProperty" Width="9%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.DueDateProperty" Width="9%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.ShipDateProperty" Width="9%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.StatusProperty" Width="5%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.OrderDateProperty" Width="8%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.DueDateProperty" Width="8%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.ShipDateProperty" Width="8%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.StatusProperty" Width="8%"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.OnlineOrderFlagProperty" Width="5%"
                              TextAlign="Alignment.Center"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.CustomerStoreProperty" Width="17%"></XGridColumn>

@@ -15,6 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xomega.Framework.Services;
 // CUSTOM_CODE_START: add namespaces for custom code below
+using AdventureWorks.Services.Common.Enumerations;
 // CUSTOM_CODE_END
 
 namespace AdventureWorks.Services.Entities
@@ -149,6 +150,15 @@ namespace AdventureWorks.Services.Entities
                 // CUSTOM_CODE_START: add custom security checks for ReadList operation below
                 // CUSTOM_CODE_END
                 var src = from obj in ctx.SalesOrder select obj;
+
+                // Source filter
+                if (_criteria != null)
+                {
+                    // CUSTOM_CODE_START: add code for GlobalRegion criteria of ReadList operation below
+                    src = AddClause(src, "GlobalRegion", o => o.TerritoryObject.Group,
+                                    Operators.IsEqualTo, _criteria.GlobalRegion);
+                    // CUSTOM_CODE_END
+                }
 
                 // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
                 // src = src.Where(o => o.FieldName == VALUE);

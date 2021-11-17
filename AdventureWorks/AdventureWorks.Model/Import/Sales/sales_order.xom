@@ -448,6 +448,7 @@
                 </doc>
               </param>
               <param name="customer name" type="string" required="false"/>
+              <param name="global region" type="sales territory group" required="false"/>
               <param name="territory id operator" type="operator">
                 <doc>
                   <summary>Comparison operator for the corresponding Territory Id criteria.</summary>

@@ -21,6 +21,7 @@ namespace AdventureWorks.Client.Common.DataObjects
         public const string DueDate = "DueDate";
         public const string DueDate2 = "DueDate2";
         public const string DueDateOperator = "DueDateOperator";
+        public const string GlobalRegion = "GlobalRegion";
         public const string OrderDate = "OrderDate";
         public const string OrderDate2 = "OrderDate2";
         public const string OrderDateOperator = "OrderDateOperator";
@@ -47,6 +48,7 @@ namespace AdventureWorks.Client.Common.DataObjects
         public DateProperty DueDateProperty { get; private set; }
         public DateProperty DueDate2Property { get; private set; }
         public OperatorProperty DueDateOperatorProperty { get; private set; }
+        public EnumProperty GlobalRegionProperty { get; private set; }
         public DateProperty OrderDateProperty { get; private set; }
         public DateProperty OrderDate2Property { get; private set; }
         public OperatorProperty OrderDateOperatorProperty { get; private set; }
@@ -54,7 +56,7 @@ namespace AdventureWorks.Client.Common.DataObjects
         public OperatorProperty SalesOrderNumberOperatorProperty { get; private set; }
         public IntegerKeyProperty SalesPersonIdProperty { get; private set; }
         public OperatorProperty SalesPersonIdOperatorProperty { get; private set; }
-        public TinyIntegerProperty StatusProperty { get; private set; }
+        public EnumByteProperty StatusProperty { get; private set; }
         public OperatorProperty StatusOperatorProperty { get; private set; }
         public IntegerKeyProperty TerritoryIdProperty { get; private set; }
         public OperatorProperty TerritoryIdOperatorProperty { get; private set; }
@@ -90,8 +92,9 @@ namespace AdventureWorks.Client.Common.DataObjects
                 Size = 25,
                 EnumType = "operators",
             };
-            StatusProperty = new TinyIntegerProperty(this, Status)
+            StatusProperty = new EnumByteProperty(this, Status)
             {
+                EnumType = "sales order status",
             };
             OrderDateOperatorProperty = new OperatorProperty(this, OrderDateOperator)
             {
@@ -143,6 +146,11 @@ namespace AdventureWorks.Client.Common.DataObjects
             };
             CustomerNameProperty = new TextProperty(this, CustomerName)
             {
+            };
+            GlobalRegionProperty = new EnumProperty(this, GlobalRegion)
+            {
+                Size = 50,
+                EnumType = "sales territory group",
             };
             TerritoryIdOperatorProperty = new OperatorProperty(this, TerritoryIdOperator)
             {
