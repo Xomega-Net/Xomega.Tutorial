@@ -249,14 +249,17 @@
   <data name="SalesOrderObject.ModifiedDate">
     <value xml:space="preserve">Modified Date</value>
   </data>
-  <data name="SalesOrderCriteria.RevisionNumberOperator">
-    <value xml:space="preserve">Revision Number</value>
+  <data name="SalesOrderCriteria.SalesOrderNumberOperator">
+    <value xml:space="preserve">Sales Order Number</value>
   </data>
-  <data name="SalesOrderCriteria.RevisionNumber">
-    <value xml:space="preserve">Revision Number</value>
+  <data name="SalesOrderCriteria.SalesOrderNumber">
+    <value xml:space="preserve">Sales Order Number</value>
   </data>
-  <data name="SalesOrderCriteria.RevisionNumber2">
-    <value xml:space="preserve">Revision Number2</value>
+  <data name="SalesOrderCriteria.StatusOperator">
+    <value xml:space="preserve">Status</value>
+  </data>
+  <data name="SalesOrderCriteria.Status">
+    <value xml:space="preserve">Status</value>
   </data>
   <data name="SalesOrderCriteria.OrderDateOperator">
     <value xml:space="preserve">Order Date</value>
@@ -276,150 +279,6 @@
   <data name="SalesOrderCriteria.DueDate2">
     <value xml:space="preserve">Due Date2</value>
   </data>
-  <data name="SalesOrderCriteria.ShipDateOperator">
-    <value xml:space="preserve">Ship Date</value>
-  </data>
-  <data name="SalesOrderCriteria.ShipDate">
-    <value xml:space="preserve">Ship Date</value>
-  </data>
-  <data name="SalesOrderCriteria.ShipDate2">
-    <value xml:space="preserve">Ship Date2</value>
-  </data>
-  <data name="SalesOrderCriteria.StatusOperator">
-    <value xml:space="preserve">Status</value>
-  </data>
-  <data name="SalesOrderCriteria.Status">
-    <value xml:space="preserve">Status</value>
-  </data>
-  <data name="SalesOrderCriteria.Status2">
-    <value xml:space="preserve">Status2</value>
-  </data>
-  <data name="SalesOrderCriteria.OnlineOrderFlag">
-    <value xml:space="preserve">Online Order Flag</value>
-  </data>
-  <data name="SalesOrderCriteria.SalesOrderNumberOperator">
-    <value xml:space="preserve">Sales Order Number</value>
-  </data>
-  <data name="SalesOrderCriteria.SalesOrderNumber">
-    <value xml:space="preserve">Sales Order Number</value>
-  </data>
-  <data name="SalesOrderCriteria.PurchaseOrderNumberOperator">
-    <value xml:space="preserve">Purchase Order Number</value>
-  </data>
-  <data name="SalesOrderCriteria.PurchaseOrderNumber">
-    <value xml:space="preserve">Purchase Order Number</value>
-  </data>
-  <data name="SalesOrderCriteria.AccountNumberOperator">
-    <value xml:space="preserve">Account Number</value>
-  </data>
-  <data name="SalesOrderCriteria.AccountNumber">
-    <value xml:space="preserve">Account Number</value>
-  </data>
-  <data name="SalesOrderCriteria.CustomerIdOperator">
-    <value xml:space="preserve">Customer Id</value>
-  </data>
-  <data name="SalesOrderCriteria.CustomerId">
-    <value xml:space="preserve">Customer Id</value>
-  </data>
-  <data name="SalesOrderCriteria.CustomerId2">
-    <value xml:space="preserve">Customer Id2</value>
-  </data>
-  <data name="SalesOrderCriteria.SalesPersonIdOperator">
-    <value xml:space="preserve">Sales Person Id</value>
-  </data>
-  <data name="SalesOrderCriteria.SalesPersonId">
-    <value xml:space="preserve">Sales Person Id</value>
-  </data>
-  <data name="SalesOrderCriteria.SalesPersonId2">
-    <value xml:space="preserve">Sales Person Id2</value>
-  </data>
-  <data name="SalesOrderCriteria.TerritoryIdOperator">
-    <value xml:space="preserve">Territory Id</value>
-  </data>
-  <data name="SalesOrderCriteria.TerritoryId">
-    <value xml:space="preserve">Territory Id</value>
-  </data>
-  <data name="SalesOrderCriteria.TerritoryId2">
-    <value xml:space="preserve">Territory Id2</value>
-  </data>
-  <data name="SalesOrderCriteria.BillToAddressIdOperator">
-    <value xml:space="preserve">Bill To Address Id</value>
-  </data>
-  <data name="SalesOrderCriteria.BillToAddressId">
-    <value xml:space="preserve">Bill To Address Id</value>
-  </data>
-  <data name="SalesOrderCriteria.BillToAddressId2">
-    <value xml:space="preserve">Bill To Address Id2</value>
-  </data>
-  <data name="SalesOrderCriteria.ShipToAddressIdOperator">
-    <value xml:space="preserve">Ship To Address Id</value>
-  </data>
-  <data name="SalesOrderCriteria.ShipToAddressId">
-    <value xml:space="preserve">Ship To Address Id</value>
-  </data>
-  <data name="SalesOrderCriteria.ShipToAddressId2">
-    <value xml:space="preserve">Ship To Address Id2</value>
-  </data>
-  <data name="SalesOrderCriteria.ShipMethodIdOperator">
-    <value xml:space="preserve">Ship Method Id</value>
-  </data>
-  <data name="SalesOrderCriteria.ShipMethodId">
-    <value xml:space="preserve">Ship Method Id</value>
-  </data>
-  <data name="SalesOrderCriteria.ShipMethodId2">
-    <value xml:space="preserve">Ship Method Id2</value>
-  </data>
-  <data name="SalesOrderCriteria.CreditCardIdOperator">
-    <value xml:space="preserve">Credit Card Id</value>
-  </data>
-  <data name="SalesOrderCriteria.CreditCardId">
-    <value xml:space="preserve">Credit Card Id</value>
-  </data>
-  <data name="SalesOrderCriteria.CreditCardId2">
-    <value xml:space="preserve">Credit Card Id2</value>
-  </data>
-  <data name="SalesOrderCriteria.CreditCardApprovalCodeOperator">
-    <value xml:space="preserve">Credit Card Approval Code</value>
-  </data>
-  <data name="SalesOrderCriteria.CreditCardApprovalCode">
-    <value xml:space="preserve">Credit Card Approval Code</value>
-  </data>
-  <data name="SalesOrderCriteria.CurrencyRateIdOperator">
-    <value xml:space="preserve">Currency Rate Id</value>
-  </data>
-  <data name="SalesOrderCriteria.CurrencyRateId">
-    <value xml:space="preserve">Currency Rate Id</value>
-  </data>
-  <data name="SalesOrderCriteria.CurrencyRateId2">
-    <value xml:space="preserve">Currency Rate Id2</value>
-  </data>
-  <data name="SalesOrderCriteria.SubTotalOperator">
-    <value xml:space="preserve">Sub Total</value>
-  </data>
-  <data name="SalesOrderCriteria.SubTotal">
-    <value xml:space="preserve">Sub Total</value>
-  </data>
-  <data name="SalesOrderCriteria.SubTotal2">
-    <value xml:space="preserve">Sub Total2</value>
-  </data>
-  <data name="SalesOrderCriteria.TaxAmtOperator">
-    <value xml:space="preserve">Tax Amt</value>
-  </data>
-  <data name="SalesOrderCriteria.TaxAmt">
-    <value xml:space="preserve">Tax Amt</value>
-  </data>
-  <data name="SalesOrderCriteria.TaxAmt2">
-    <value xml:space="preserve">Tax Amt2</value>
-  </data>
-  <data name="SalesOrderCriteria.FreightOperator">
-    <value xml:space="preserve">Freight</value>
-  </data>
-  <data name="SalesOrderCriteria.Freight">
-    <value xml:space="preserve">Freight</value>
-  </data>
-  <data name="SalesOrderCriteria.Freight2">
-    <value xml:space="preserve">Freight2</value>
-  </data>
   <data name="SalesOrderCriteria.TotalDueOperator">
     <value xml:space="preserve">Total Due</value>
   </data>
@@ -429,26 +288,29 @@
   <data name="SalesOrderCriteria.TotalDue2">
     <value xml:space="preserve">Total Due2</value>
   </data>
-  <data name="SalesOrderCriteria.CommentOperator">
-    <value xml:space="preserve">Comment</value>
+  <data name="SalesOrderCriteria.CustomerStoreOperator">
+    <value xml:space="preserve">Customer Store</value>
   </data>
-  <data name="SalesOrderCriteria.Comment">
-    <value xml:space="preserve">Comment</value>
+  <data name="SalesOrderCriteria.CustomerStore">
+    <value xml:space="preserve">Customer Store</value>
   </data>
-  <data name="SalesOrderCriteria.RowguidOperator">
-    <value xml:space="preserve">Rowguid</value>
+  <data name="SalesOrderCriteria.CustomerNameOperator">
+    <value xml:space="preserve">Customer Name</value>
   </data>
-  <data name="SalesOrderCriteria.Rowguid">
-    <value xml:space="preserve">Rowguid</value>
+  <data name="SalesOrderCriteria.CustomerName">
+    <value xml:space="preserve">Customer Name</value>
   </data>
-  <data name="SalesOrderCriteria.ModifiedDateOperator">
-    <value xml:space="preserve">Modified Date</value>
+  <data name="SalesOrderCriteria.TerritoryIdOperator">
+    <value xml:space="preserve">Territory Id</value>
   </data>
-  <data name="SalesOrderCriteria.ModifiedDate">
-    <value xml:space="preserve">Modified Date</value>
+  <data name="SalesOrderCriteria.TerritoryId">
+    <value xml:space="preserve">Territory Id</value>
   </data>
-  <data name="SalesOrderCriteria.ModifiedDate2">
-    <value xml:space="preserve">Modified Date2</value>
+  <data name="SalesOrderCriteria.SalesPersonIdOperator">
+    <value xml:space="preserve">Sales Person Id</value>
+  </data>
+  <data name="SalesOrderCriteria.SalesPersonId">
+    <value xml:space="preserve">Sales Person Id</value>
   </data>
   <data name="SalesOrderList_Action_Details">
     <value xml:space="preserve">Details</value>

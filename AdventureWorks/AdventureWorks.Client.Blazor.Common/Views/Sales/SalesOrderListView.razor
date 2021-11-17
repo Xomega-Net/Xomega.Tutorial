@@ -32,13 +32,17 @@
                                Class="float-end"></XActionButton>
               </div>
               <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.RevisionNumberOperatorProperty"></XSelect>
+                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.SalesOrderNumberOperatorProperty"></XSelect>
               </div>
               <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.RevisionNumberProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.RevisionNumber2Property"></XNumericBox>
+                <XInputText Class="mt-2 col" ShowLabel="false"
+                            Property="@VM?.CritObj?.SalesOrderNumberProperty"></XInputText>
+              </div>
+              <div class="row">
+                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.StatusOperatorProperty"></XSelect>
+              </div>
+              <div class="row gx-2">
+                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.StatusProperty"></XNumericBox>
               </div>
               <div class="row">
                 <XSelect Class="mt-3 col" Property="@VM?.CritObj?.OrderDateOperatorProperty"></XSelect>
@@ -55,142 +59,6 @@
                 <XDatePicker Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.DueDate2Property"></XDatePicker>
               </div>
               <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.ShipDateOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XDatePicker Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.ShipDateProperty"></XDatePicker>
-                <XDatePicker Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.ShipDate2Property"></XDatePicker>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.StatusOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.StatusProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.Status2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.OnlineOrderFlagProperty"></XSelect>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.SalesOrderNumberOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XInputText Class="mt-2 col" ShowLabel="false"
-                            Property="@VM?.CritObj?.SalesOrderNumberProperty"></XInputText>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.PurchaseOrderNumberOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XInputText Class="mt-2 col" ShowLabel="false"
-                            Property="@VM?.CritObj?.PurchaseOrderNumberProperty"></XInputText>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.AccountNumberOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XInputText Class="mt-2 col" ShowLabel="false"
-                            Property="@VM?.CritObj?.AccountNumberProperty"></XInputText>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.CustomerIdOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.CustomerIdProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.CustomerId2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.SalesPersonIdOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.SalesPersonIdProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.SalesPersonId2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.TerritoryIdOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.TerritoryIdProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.TerritoryId2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.BillToAddressIdOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.BillToAddressIdProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.BillToAddressId2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.ShipToAddressIdOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.ShipToAddressIdProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.ShipToAddressId2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.ShipMethodIdOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.ShipMethodIdProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.ShipMethodId2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.CreditCardIdOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.CreditCardIdProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.CreditCardId2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col"
-                         Property="@VM?.CritObj?.CreditCardApprovalCodeOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XInputText Class="mt-2 col" ShowLabel="false"
-                            Property="@VM?.CritObj?.CreditCardApprovalCodeProperty"></XInputText>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.CurrencyRateIdOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.CurrencyRateIdProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.CurrencyRateId2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.SubTotalOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.SubTotalProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.SubTotal2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.TaxAmtOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.TaxAmtProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.TaxAmt2Property"></XNumericBox>
-              </div>
-              <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.FreightOperatorProperty"></XSelect>
-              </div>
-              <div class="row gx-2">
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.FreightProperty"></XNumericBox>
-                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.Freight2Property"></XNumericBox>
-              </div>
-              <div class="row">
                 <XSelect Class="mt-3 col" Property="@VM?.CritObj?.TotalDueOperatorProperty"></XSelect>
               </div>
               <div class="row gx-2">
@@ -198,25 +66,31 @@
                 <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.TotalDue2Property"></XNumericBox>
               </div>
               <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.CommentOperatorProperty"></XSelect>
+                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.CustomerStoreOperatorProperty"></XSelect>
               </div>
               <div class="row gx-2">
-                <XInputText Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.CommentProperty"></XInputText>
+                <XInputText Class="mt-2 col" ShowLabel="false"
+                            Property="@VM?.CritObj?.CustomerStoreProperty"></XInputText>
               </div>
               <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.RowguidOperatorProperty"></XSelect>
+                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.CustomerNameOperatorProperty"></XSelect>
               </div>
               <div class="row gx-2">
-                <XInputText Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.RowguidProperty"></XInputText>
+                <XInputText Class="mt-2 col" ShowLabel="false"
+                            Property="@VM?.CritObj?.CustomerNameProperty"></XInputText>
               </div>
               <div class="row">
-                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.ModifiedDateOperatorProperty"></XSelect>
+                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.TerritoryIdOperatorProperty"></XSelect>
               </div>
               <div class="row gx-2">
-                <XDatePicker Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.ModifiedDateProperty"></XDatePicker>
-                <XDatePicker Class="mt-2 col" ShowLabel="false"
-                             Property="@VM?.CritObj?.ModifiedDate2Property"></XDatePicker>
+                <XNumericBox Class="mt-2 col" ShowLabel="false" Property="@VM?.CritObj?.TerritoryIdProperty"></XNumericBox>
+              </div>
+              <div class="row">
+                <XSelect Class="mt-3 col" Property="@VM?.CritObj?.SalesPersonIdOperatorProperty"></XSelect>
+              </div>
+              <div class="row gx-2">
+                <XNumericBox Class="mt-2 col" ShowLabel="false"
+                             Property="@VM?.CritObj?.SalesPersonIdProperty"></XNumericBox>
               </div>
             </Panel>
           </div>

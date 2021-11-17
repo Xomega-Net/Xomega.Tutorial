@@ -150,27 +150,6 @@ namespace AdventureWorks.Services.Entities
                 // CUSTOM_CODE_END
                 var src = from obj in ctx.SalesOrder select obj;
 
-                // Source filter
-                if (_criteria != null)
-                {
-                    src = AddClause(src, "RevisionNumber", o => o.RevisionNumber, _criteria.RevisionNumberOperator, _criteria.RevisionNumber, _criteria.RevisionNumber2);
-                    src = AddClause(src, "PurchaseOrderNumber", o => o.PurchaseOrderNumber, _criteria.PurchaseOrderNumberOperator, _criteria.PurchaseOrderNumber);
-                    src = AddClause(src, "AccountNumber", o => o.AccountNumber, _criteria.AccountNumberOperator, _criteria.AccountNumber);
-                    src = AddClause(src, "CustomerId", o => o.CustomerId, _criteria.CustomerIdOperator, _criteria.CustomerId, _criteria.CustomerId2);
-                    src = AddClause(src, "BillToAddressId", o => o.BillToAddressId, _criteria.BillToAddressIdOperator, _criteria.BillToAddressId, _criteria.BillToAddressId2);
-                    src = AddClause(src, "ShipToAddressId", o => o.ShipToAddressId, _criteria.ShipToAddressIdOperator, _criteria.ShipToAddressId, _criteria.ShipToAddressId2);
-                    src = AddClause(src, "ShipMethodId", o => o.ShipMethodId, _criteria.ShipMethodIdOperator, _criteria.ShipMethodId, _criteria.ShipMethodId2);
-                    src = AddClause(src, "CreditCardId", o => o.CreditCardId, _criteria.CreditCardIdOperator, _criteria.CreditCardId, _criteria.CreditCardId2);
-                    src = AddClause(src, "CreditCardApprovalCode", o => o.CreditCardApprovalCode, _criteria.CreditCardApprovalCodeOperator, _criteria.CreditCardApprovalCode);
-                    src = AddClause(src, "CurrencyRateId", o => o.CurrencyRateId, _criteria.CurrencyRateIdOperator, _criteria.CurrencyRateId, _criteria.CurrencyRateId2);
-                    src = AddClause(src, "SubTotal", o => o.SubTotal, _criteria.SubTotalOperator, _criteria.SubTotal, _criteria.SubTotal2);
-                    src = AddClause(src, "TaxAmt", o => o.TaxAmt, _criteria.TaxAmtOperator, _criteria.TaxAmt, _criteria.TaxAmt2);
-                    src = AddClause(src, "Freight", o => o.Freight, _criteria.FreightOperator, _criteria.Freight, _criteria.Freight2);
-                    src = AddClause(src, "Comment", o => o.Comment, _criteria.CommentOperator, _criteria.Comment);
-                    src = AddClause(src, "Rowguid", o => o.Rowguid, _criteria.RowguidOperator, _criteria.Rowguid);
-                    src = AddClause(src, "ModifiedDate", o => o.ModifiedDate, _criteria.ModifiedDateOperator, _criteria.ModifiedDate, _criteria.ModifiedDate2);
-                }
-
                 // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
                 // src = src.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
@@ -197,15 +176,15 @@ namespace AdventureWorks.Services.Entities
                 // Result filter
                 if (_criteria != null)
                 {
+                    qry = AddClause(qry, "SalesOrderNumber", o => o.SalesOrderNumber, _criteria.SalesOrderNumberOperator, _criteria.SalesOrderNumber);
+                    qry = AddClause(qry, "Status", o => o.Status, _criteria.StatusOperator, _criteria.Status);
                     qry = AddClause(qry, "OrderDate", o => o.OrderDate, _criteria.OrderDateOperator, _criteria.OrderDate, _criteria.OrderDate2);
                     qry = AddClause(qry, "DueDate", o => o.DueDate, _criteria.DueDateOperator, _criteria.DueDate, _criteria.DueDate2);
-                    qry = AddClause(qry, "ShipDate", o => o.ShipDate, _criteria.ShipDateOperator, _criteria.ShipDate, _criteria.ShipDate2);
-                    qry = AddClause(qry, "Status", o => o.Status, _criteria.StatusOperator, _criteria.Status, _criteria.Status2);
-                    qry = AddClause(qry, "OnlineOrderFlag", o => o.OnlineOrderFlag, _criteria.OnlineOrderFlag);
-                    qry = AddClause(qry, "SalesOrderNumber", o => o.SalesOrderNumber, _criteria.SalesOrderNumberOperator, _criteria.SalesOrderNumber);
-                    qry = AddClause(qry, "SalesPersonId", o => o.SalesPersonId, _criteria.SalesPersonIdOperator, _criteria.SalesPersonId, _criteria.SalesPersonId2);
-                    qry = AddClause(qry, "TerritoryId", o => o.TerritoryId, _criteria.TerritoryIdOperator, _criteria.TerritoryId, _criteria.TerritoryId2);
                     qry = AddClause(qry, "TotalDue", o => o.TotalDue, _criteria.TotalDueOperator, _criteria.TotalDue, _criteria.TotalDue2);
+                    qry = AddClause(qry, "CustomerStore", o => o.CustomerStore, _criteria.CustomerStoreOperator, _criteria.CustomerStore);
+                    qry = AddClause(qry, "CustomerName", o => o.CustomerName, _criteria.CustomerNameOperator, _criteria.CustomerName);
+                    qry = AddClause(qry, "TerritoryId", o => o.TerritoryId, _criteria.TerritoryIdOperator, _criteria.TerritoryId);
+                    qry = AddClause(qry, "SalesPersonId", o => o.SalesPersonId, _criteria.SalesPersonIdOperator, _criteria.SalesPersonId);
                 }
 
                 // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadList operation below
