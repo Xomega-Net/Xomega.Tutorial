@@ -229,40 +229,26 @@
             <XGrid List="@VM?.ListObj" ResourceKey="@Model?.GetResourceKey()"
                    @bind-CurrentPage="CurrentPage">
               <GridColumns>
-                <XGridColumn Property="@VM?.ListObj?.RevisionNumberProperty" Width="2%">
+                <XGridColumn Property="@VM?.ListObj?.SalesOrderNumberProperty" Width="10%">
                   <Template>
                     <a role="button"
                        @onclick="async () => await LinkDetails_ClickAsync(context as DataRow)"
                        class="btn-link @(DisabledIfNot(VM?.LinkDetails_Enabled(context as DataRow)))">
-                      <XDataText Property="@VM?.ListObj?.RevisionNumberProperty"></XDataText>
+                      <XDataText Property="@VM?.ListObj?.SalesOrderNumberProperty"></XDataText>
                     </a>
                   </Template>
                 </XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.OrderDateProperty" Width="6%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.DueDateProperty" Width="6%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.ShipDateProperty" Width="6%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.StatusProperty" Width="2%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.OnlineOrderFlagProperty" Width="2%"
+                <XGridColumn Property="@VM?.ListObj?.OrderDateProperty" Width="9%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.DueDateProperty" Width="9%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.ShipDateProperty" Width="9%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.StatusProperty" Width="5%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.OnlineOrderFlagProperty" Width="5%"
                              TextAlign="Alignment.Center"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.SalesOrderNumberProperty" Width="7%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.PurchaseOrderNumberProperty" Width="7%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.AccountNumberProperty" Width="7%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.CustomerIdProperty" Width="2%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.SalesPersonIdProperty" Width="2%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.TerritoryIdProperty" Width="2%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.BillToAddressIdProperty" Width="2%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.ShipToAddressIdProperty" Width="2%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.ShipMethodIdProperty" Width="2%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.CreditCardIdProperty" Width="2%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.CreditCardApprovalCodeProperty" Width="7%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.CurrencyRateIdProperty" Width="2%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.SubTotalProperty" Width="4%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.TaxAmtProperty" Width="4%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.FreightProperty" Width="4%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.TotalDueProperty" Width="4%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.CommentProperty" Width="7%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.RowguidProperty" Width="3%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.ModifiedDateProperty" Width="6%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.CustomerStoreProperty" Width="17%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.CustomerNameProperty" Width="17%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.SalesPersonIdProperty" Width="5%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.TerritoryIdProperty" Width="5%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.TotalDueProperty" Width="10%"></XGridColumn>
               </GridColumns>
             </XGrid>
             <div class="btn-group mt-3">

@@ -21,30 +21,16 @@ namespace AdventureWorks.Client.Common.DataObjects
     {
         #region Constants
 
-        public const string AccountNumber = "AccountNumber";
-        public const string BillToAddressId = "BillToAddressId";
-        public const string Comment = "Comment";
-        public const string CreditCardApprovalCode = "CreditCardApprovalCode";
-        public const string CreditCardId = "CreditCardId";
-        public const string CurrencyRateId = "CurrencyRateId";
-        public const string CustomerId = "CustomerId";
+        public const string CustomerName = "CustomerName";
+        public const string CustomerStore = "CustomerStore";
         public const string DueDate = "DueDate";
-        public const string Freight = "Freight";
-        public const string ModifiedDate = "ModifiedDate";
         public const string OnlineOrderFlag = "OnlineOrderFlag";
         public const string OrderDate = "OrderDate";
-        public const string PurchaseOrderNumber = "PurchaseOrderNumber";
-        public const string RevisionNumber = "RevisionNumber";
-        public const string Rowguid = "Rowguid";
         public const string SalesOrderId = "SalesOrderId";
         public const string SalesOrderNumber = "SalesOrderNumber";
         public const string SalesPersonId = "SalesPersonId";
         public const string ShipDate = "ShipDate";
-        public const string ShipMethodId = "ShipMethodId";
-        public const string ShipToAddressId = "ShipToAddressId";
         public const string Status = "Status";
-        public const string SubTotal = "SubTotal";
-        public const string TaxAmt = "TaxAmt";
         public const string TerritoryId = "TerritoryId";
         public const string TotalDue = "TotalDue";
 
@@ -52,30 +38,16 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         #region Properties
 
-        public TextProperty AccountNumberProperty { get; private set; }
-        public IntegerKeyProperty BillToAddressIdProperty { get; private set; }
-        public TextProperty CommentProperty { get; private set; }
-        public TextProperty CreditCardApprovalCodeProperty { get; private set; }
-        public IntegerKeyProperty CreditCardIdProperty { get; private set; }
-        public IntegerKeyProperty CurrencyRateIdProperty { get; private set; }
-        public IntegerKeyProperty CustomerIdProperty { get; private set; }
-        public DateTimeProperty DueDateProperty { get; private set; }
-        public MoneyProperty FreightProperty { get; private set; }
-        public DateTimeProperty ModifiedDateProperty { get; private set; }
+        public TextProperty CustomerNameProperty { get; private set; }
+        public TextProperty CustomerStoreProperty { get; private set; }
+        public DateProperty DueDateProperty { get; private set; }
         public EnumBoolProperty OnlineOrderFlagProperty { get; private set; }
-        public DateTimeProperty OrderDateProperty { get; private set; }
-        public TextProperty PurchaseOrderNumberProperty { get; private set; }
-        public TinyIntegerProperty RevisionNumberProperty { get; private set; }
-        public GuidProperty RowguidProperty { get; private set; }
+        public DateProperty OrderDateProperty { get; private set; }
         public IntegerKeyProperty SalesOrderIdProperty { get; private set; }
         public TextProperty SalesOrderNumberProperty { get; private set; }
         public IntegerKeyProperty SalesPersonIdProperty { get; private set; }
-        public DateTimeProperty ShipDateProperty { get; private set; }
-        public IntegerKeyProperty ShipMethodIdProperty { get; private set; }
-        public IntegerKeyProperty ShipToAddressIdProperty { get; private set; }
+        public DateProperty ShipDateProperty { get; private set; }
         public TinyIntegerProperty StatusProperty { get; private set; }
-        public MoneyProperty SubTotalProperty { get; private set; }
-        public MoneyProperty TaxAmtProperty { get; private set; }
         public IntegerKeyProperty TerritoryIdProperty { get; private set; }
         public MoneyProperty TotalDueProperty { get; private set; }
 
@@ -106,22 +78,23 @@ namespace AdventureWorks.Client.Common.DataObjects
                 Editable = false,
                 IsKey = true,
             };
-            RevisionNumberProperty = new TinyIntegerProperty(this, RevisionNumber)
+            SalesOrderNumberProperty = new TextProperty(this, SalesOrderNumber)
+            {
+                Required = true,
+                Size = 25,
+                Editable = false,
+            };
+            OrderDateProperty = new DateProperty(this, OrderDate)
             {
                 Required = true,
                 Editable = false,
             };
-            OrderDateProperty = new DateTimeProperty(this, OrderDate)
+            DueDateProperty = new DateProperty(this, DueDate)
             {
                 Required = true,
                 Editable = false,
             };
-            DueDateProperty = new DateTimeProperty(this, DueDate)
-            {
-                Required = true,
-                Editable = false,
-            };
-            ShipDateProperty = new DateTimeProperty(this, ShipDate)
+            ShipDateProperty = new DateProperty(this, ShipDate)
             {
                 Editable = false,
             };
@@ -137,25 +110,12 @@ namespace AdventureWorks.Client.Common.DataObjects
                 LookupValidation = LookupValidationType.None,
                 Editable = false,
             };
-            SalesOrderNumberProperty = new TextProperty(this, SalesOrderNumber)
+            CustomerStoreProperty = new TextProperty(this, CustomerStore)
             {
-                Required = true,
-                Size = 25,
                 Editable = false,
             };
-            PurchaseOrderNumberProperty = new TextProperty(this, PurchaseOrderNumber)
+            CustomerNameProperty = new TextProperty(this, CustomerName)
             {
-                Size = 25,
-                Editable = false,
-            };
-            AccountNumberProperty = new TextProperty(this, AccountNumber)
-            {
-                Size = 15,
-                Editable = false,
-            };
-            CustomerIdProperty = new IntegerKeyProperty(this, CustomerId)
-            {
-                Required = true,
                 Editable = false,
             };
             SalesPersonIdProperty = new IntegerKeyProperty(this, SalesPersonId)
@@ -166,65 +126,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Editable = false,
             };
-            BillToAddressIdProperty = new IntegerKeyProperty(this, BillToAddressId)
-            {
-                Required = true,
-                Editable = false,
-            };
-            ShipToAddressIdProperty = new IntegerKeyProperty(this, ShipToAddressId)
-            {
-                Required = true,
-                Editable = false,
-            };
-            ShipMethodIdProperty = new IntegerKeyProperty(this, ShipMethodId)
-            {
-                Required = true,
-                Editable = false,
-            };
-            CreditCardIdProperty = new IntegerKeyProperty(this, CreditCardId)
-            {
-                Editable = false,
-            };
-            CreditCardApprovalCodeProperty = new TextProperty(this, CreditCardApprovalCode)
-            {
-                Size = 15,
-                Editable = false,
-            };
-            CurrencyRateIdProperty = new IntegerKeyProperty(this, CurrencyRateId)
-            {
-                Editable = false,
-            };
-            SubTotalProperty = new MoneyProperty(this, SubTotal)
-            {
-                Required = true,
-                Editable = false,
-            };
-            TaxAmtProperty = new MoneyProperty(this, TaxAmt)
-            {
-                Required = true,
-                Editable = false,
-            };
-            FreightProperty = new MoneyProperty(this, Freight)
-            {
-                Required = true,
-                Editable = false,
-            };
             TotalDueProperty = new MoneyProperty(this, TotalDue)
-            {
-                Required = true,
-                Editable = false,
-            };
-            CommentProperty = new TextProperty(this, Comment)
-            {
-                Size = 128,
-                Editable = false,
-            };
-            RowguidProperty = new GuidProperty(this, Rowguid)
-            {
-                Required = true,
-                Editable = false,
-            };
-            ModifiedDateProperty = new DateTimeProperty(this, ModifiedDate)
             {
                 Required = true,
                 Editable = false,

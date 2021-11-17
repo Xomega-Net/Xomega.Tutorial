@@ -3,9 +3,6 @@
 //
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated
 // unless they are placed between corresponding CUSTOM_CODE_START/CUSTOM_CODE_END lines.
-//
-// This file can be DELETED DURING REGENERATION IF NO LONGER NEEDED, e.g. if it gets renamed.
-// To prevent this and preserve manual custom changes please remove the line above.
 //---------------------------------------------------------------------------------------------
 
 using AdventureWorks.Services.Common;
@@ -153,6 +150,27 @@ namespace AdventureWorks.Services.Entities
                 // CUSTOM_CODE_END
                 var src = from obj in ctx.SalesOrder select obj;
 
+                // Source filter
+                if (_criteria != null)
+                {
+                    src = AddClause(src, "RevisionNumber", o => o.RevisionNumber, _criteria.RevisionNumberOperator, _criteria.RevisionNumber, _criteria.RevisionNumber2);
+                    src = AddClause(src, "PurchaseOrderNumber", o => o.PurchaseOrderNumber, _criteria.PurchaseOrderNumberOperator, _criteria.PurchaseOrderNumber);
+                    src = AddClause(src, "AccountNumber", o => o.AccountNumber, _criteria.AccountNumberOperator, _criteria.AccountNumber);
+                    src = AddClause(src, "CustomerId", o => o.CustomerId, _criteria.CustomerIdOperator, _criteria.CustomerId, _criteria.CustomerId2);
+                    src = AddClause(src, "BillToAddressId", o => o.BillToAddressId, _criteria.BillToAddressIdOperator, _criteria.BillToAddressId, _criteria.BillToAddressId2);
+                    src = AddClause(src, "ShipToAddressId", o => o.ShipToAddressId, _criteria.ShipToAddressIdOperator, _criteria.ShipToAddressId, _criteria.ShipToAddressId2);
+                    src = AddClause(src, "ShipMethodId", o => o.ShipMethodId, _criteria.ShipMethodIdOperator, _criteria.ShipMethodId, _criteria.ShipMethodId2);
+                    src = AddClause(src, "CreditCardId", o => o.CreditCardId, _criteria.CreditCardIdOperator, _criteria.CreditCardId, _criteria.CreditCardId2);
+                    src = AddClause(src, "CreditCardApprovalCode", o => o.CreditCardApprovalCode, _criteria.CreditCardApprovalCodeOperator, _criteria.CreditCardApprovalCode);
+                    src = AddClause(src, "CurrencyRateId", o => o.CurrencyRateId, _criteria.CurrencyRateIdOperator, _criteria.CurrencyRateId, _criteria.CurrencyRateId2);
+                    src = AddClause(src, "SubTotal", o => o.SubTotal, _criteria.SubTotalOperator, _criteria.SubTotal, _criteria.SubTotal2);
+                    src = AddClause(src, "TaxAmt", o => o.TaxAmt, _criteria.TaxAmtOperator, _criteria.TaxAmt, _criteria.TaxAmt2);
+                    src = AddClause(src, "Freight", o => o.Freight, _criteria.FreightOperator, _criteria.Freight, _criteria.Freight2);
+                    src = AddClause(src, "Comment", o => o.Comment, _criteria.CommentOperator, _criteria.Comment);
+                    src = AddClause(src, "Rowguid", o => o.Rowguid, _criteria.RowguidOperator, _criteria.Rowguid);
+                    src = AddClause(src, "ModifiedDate", o => o.ModifiedDate, _criteria.ModifiedDateOperator, _criteria.ModifiedDate, _criteria.ModifiedDate2);
+                }
+
                 // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
                 // src = src.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
@@ -160,61 +178,34 @@ namespace AdventureWorks.Services.Entities
                 var qry = from obj in src
                           select new SalesOrder_ReadListOutput() {
                               SalesOrderId = obj.SalesOrderId,
-                              RevisionNumber = obj.RevisionNumber,
+                              SalesOrderNumber = obj.SalesOrderNumber,
                               OrderDate = obj.OrderDate,
                               DueDate = obj.DueDate,
                               ShipDate = obj.ShipDate,
                               Status = obj.Status,
                               OnlineOrderFlag = obj.OnlineOrderFlag,
-                              SalesOrderNumber = obj.SalesOrderNumber,
-                              PurchaseOrderNumber = obj.PurchaseOrderNumber,
-                              AccountNumber = obj.AccountNumber,
-                              CustomerId = obj.CustomerId,
+                              // CUSTOM_CODE_START: set the CustomerStore output parameter of ReadList operation below
+                              CustomerStore = obj.CustomerObject.StoreObject.Name, // CUSTOM_CODE_END
+                              // CUSTOM_CODE_START: set the CustomerName output parameter of ReadList operation below
+                              CustomerName = obj.CustomerObject.PersonObject.LastName + ", " + 
+                                             obj.CustomerObject.PersonObject.FirstName, // CUSTOM_CODE_END
                               SalesPersonId = obj.SalesPersonId,
                               TerritoryId = obj.TerritoryId,
-                              BillToAddressId = obj.BillToAddressId,
-                              ShipToAddressId = obj.ShipToAddressId,
-                              ShipMethodId = obj.ShipMethodId,
-                              CreditCardId = obj.CreditCardId,
-                              CreditCardApprovalCode = obj.CreditCardApprovalCode,
-                              CurrencyRateId = obj.CurrencyRateId,
-                              SubTotal = obj.SubTotal,
-                              TaxAmt = obj.TaxAmt,
-                              Freight = obj.Freight,
                               TotalDue = obj.TotalDue,
-                              Comment = obj.Comment,
-                              Rowguid = obj.Rowguid,
-                              ModifiedDate = obj.ModifiedDate,
                           };
 
                 // Result filter
                 if (_criteria != null)
                 {
-                    qry = AddClause(qry, "RevisionNumber", o => o.RevisionNumber, _criteria.RevisionNumberOperator, _criteria.RevisionNumber, _criteria.RevisionNumber2);
                     qry = AddClause(qry, "OrderDate", o => o.OrderDate, _criteria.OrderDateOperator, _criteria.OrderDate, _criteria.OrderDate2);
                     qry = AddClause(qry, "DueDate", o => o.DueDate, _criteria.DueDateOperator, _criteria.DueDate, _criteria.DueDate2);
                     qry = AddClause(qry, "ShipDate", o => o.ShipDate, _criteria.ShipDateOperator, _criteria.ShipDate, _criteria.ShipDate2);
                     qry = AddClause(qry, "Status", o => o.Status, _criteria.StatusOperator, _criteria.Status, _criteria.Status2);
                     qry = AddClause(qry, "OnlineOrderFlag", o => o.OnlineOrderFlag, _criteria.OnlineOrderFlag);
                     qry = AddClause(qry, "SalesOrderNumber", o => o.SalesOrderNumber, _criteria.SalesOrderNumberOperator, _criteria.SalesOrderNumber);
-                    qry = AddClause(qry, "PurchaseOrderNumber", o => o.PurchaseOrderNumber, _criteria.PurchaseOrderNumberOperator, _criteria.PurchaseOrderNumber);
-                    qry = AddClause(qry, "AccountNumber", o => o.AccountNumber, _criteria.AccountNumberOperator, _criteria.AccountNumber);
-                    qry = AddClause(qry, "CustomerId", o => o.CustomerId, _criteria.CustomerIdOperator, _criteria.CustomerId, _criteria.CustomerId2);
                     qry = AddClause(qry, "SalesPersonId", o => o.SalesPersonId, _criteria.SalesPersonIdOperator, _criteria.SalesPersonId, _criteria.SalesPersonId2);
                     qry = AddClause(qry, "TerritoryId", o => o.TerritoryId, _criteria.TerritoryIdOperator, _criteria.TerritoryId, _criteria.TerritoryId2);
-                    qry = AddClause(qry, "BillToAddressId", o => o.BillToAddressId, _criteria.BillToAddressIdOperator, _criteria.BillToAddressId, _criteria.BillToAddressId2);
-                    qry = AddClause(qry, "ShipToAddressId", o => o.ShipToAddressId, _criteria.ShipToAddressIdOperator, _criteria.ShipToAddressId, _criteria.ShipToAddressId2);
-                    qry = AddClause(qry, "ShipMethodId", o => o.ShipMethodId, _criteria.ShipMethodIdOperator, _criteria.ShipMethodId, _criteria.ShipMethodId2);
-                    qry = AddClause(qry, "CreditCardId", o => o.CreditCardId, _criteria.CreditCardIdOperator, _criteria.CreditCardId, _criteria.CreditCardId2);
-                    qry = AddClause(qry, "CreditCardApprovalCode", o => o.CreditCardApprovalCode, _criteria.CreditCardApprovalCodeOperator, _criteria.CreditCardApprovalCode);
-                    qry = AddClause(qry, "CurrencyRateId", o => o.CurrencyRateId, _criteria.CurrencyRateIdOperator, _criteria.CurrencyRateId, _criteria.CurrencyRateId2);
-                    qry = AddClause(qry, "SubTotal", o => o.SubTotal, _criteria.SubTotalOperator, _criteria.SubTotal, _criteria.SubTotal2);
-                    qry = AddClause(qry, "TaxAmt", o => o.TaxAmt, _criteria.TaxAmtOperator, _criteria.TaxAmt, _criteria.TaxAmt2);
-                    qry = AddClause(qry, "Freight", o => o.Freight, _criteria.FreightOperator, _criteria.Freight, _criteria.Freight2);
                     qry = AddClause(qry, "TotalDue", o => o.TotalDue, _criteria.TotalDueOperator, _criteria.TotalDue, _criteria.TotalDue2);
-                    qry = AddClause(qry, "Comment", o => o.Comment, _criteria.CommentOperator, _criteria.Comment);
-                    qry = AddClause(qry, "Rowguid", o => o.Rowguid, _criteria.RowguidOperator, _criteria.Rowguid);
-                    qry = AddClause(qry, "ModifiedDate", o => o.ModifiedDate, _criteria.ModifiedDateOperator, _criteria.ModifiedDate, _criteria.ModifiedDate2);
                 }
 
                 // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadList operation below

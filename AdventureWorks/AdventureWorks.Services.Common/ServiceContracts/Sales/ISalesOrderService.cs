@@ -967,9 +967,9 @@ namespace AdventureWorks.Services.Common
         public int SalesOrderId { get; set; }
         
         ///<summary>
-        /// Incremental number to track changes to the sales order over time.
+        /// Unique sales order identification number.
         ///</summary>
-        public byte RevisionNumber { get; set; }
+        public string SalesOrderNumber { get; set; }
         
         ///<summary>
         /// Dates the sales order was created.
@@ -996,25 +996,9 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         public bool OnlineOrderFlag { get; set; }
         
-        ///<summary>
-        /// Unique sales order identification number.
-        ///</summary>
-        public string SalesOrderNumber { get; set; }
+        public string CustomerStore { get; set; }
         
-        ///<summary>
-        /// Customer purchase order number reference. 
-        ///</summary>
-        public string PurchaseOrderNumber { get; set; }
-        
-        ///<summary>
-        /// Financial accounting number reference.
-        ///</summary>
-        public string AccountNumber { get; set; }
-        
-        ///<summary>
-        /// Customer identification number. Foreign key to Customer.BusinessEntityID.
-        ///</summary>
-        public int CustomerId { get; set; }
+        public string CustomerName { get; set; }
         
         ///<summary>
         /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
@@ -1027,69 +1011,9 @@ namespace AdventureWorks.Services.Common
         public int? TerritoryId { get; set; }
         
         ///<summary>
-        /// Customer billing address. Foreign key to Address.AddressID.
-        ///</summary>
-        public int BillToAddressId { get; set; }
-        
-        ///<summary>
-        /// Customer shipping address. Foreign key to Address.AddressID.
-        ///</summary>
-        public int ShipToAddressId { get; set; }
-        
-        ///<summary>
-        /// Shipping method. Foreign key to ShipMethod.ShipMethodID.
-        ///</summary>
-        public int ShipMethodId { get; set; }
-        
-        ///<summary>
-        /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
-        ///</summary>
-        public int? CreditCardId { get; set; }
-        
-        ///<summary>
-        /// Approval code provided by the credit card company.
-        ///</summary>
-        public string CreditCardApprovalCode { get; set; }
-        
-        ///<summary>
-        /// Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
-        ///</summary>
-        public int? CurrencyRateId { get; set; }
-        
-        ///<summary>
-        /// Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
-        ///</summary>
-        public decimal SubTotal { get; set; }
-        
-        ///<summary>
-        /// Tax amount.
-        ///</summary>
-        public decimal TaxAmt { get; set; }
-        
-        ///<summary>
-        /// Shipping cost.
-        ///</summary>
-        public decimal Freight { get; set; }
-        
-        ///<summary>
         /// Total due from customer. Computed as Subtotal + TaxAmt + Freight.
         ///</summary>
         public decimal TotalDue { get; set; }
-        
-        ///<summary>
-        /// Sales representative comments.
-        ///</summary>
-        public string Comment { get; set; }
-        
-        ///<summary>
-        /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-        ///</summary>
-        public Guid Rowguid { get; set; }
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        public DateTime ModifiedDate { get; set; }
     }
     #endregion
 

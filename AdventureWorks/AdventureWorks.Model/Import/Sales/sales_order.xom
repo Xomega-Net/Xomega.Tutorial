@@ -12,6 +12,11 @@
     <type name="sales order detail" base="integer key"/>
     <type name="sales order header" base="integer key"/>
     <type name="sales order reason" base="sales reason"/>
+    <type name="sales order number" base="string" size="25">
+      <config>
+        <ui:display-config typical-length="10"/>
+      </config>
+    </type>
   </types>
   <objects>
     <object name="sales order">
@@ -69,7 +74,7 @@
             <summary>0 = Order placed by sales person. 1 = Order placed online by customer.</summary>
           </doc>
         </field>
-        <field name="sales order number" type="string25" required="true">
+        <field name="sales order number" type="sales order number" required="true">
           <config>
             <sql:column name="SalesOrderNumber"
                         computed="(isnull(N'SO'+CONVERT([nvarchar](23),[SalesOrderID]),N'*** ERROR ***'))"/>
@@ -615,12 +620,12 @@
           </input>
           <output list="true">
             <param name="sales order id"/>
+            <param name="sales order number"/>
             <param name="order date" type="date"/>
             <param name="due date" type="date"/>
             <param name="ship date" type="date"/>
             <param name="status"/>
             <param name="online order flag" type="yesno" required="true"/>
-            <param name="sales order number"/>
             <param name="customer store" type="string"/>
             <param name="customer name" type="string"/>
             <param name="sales person id"/>
@@ -643,6 +648,7 @@
       </operations>
       <config>
         <sql:table name="Sales.SalesOrderHeader"/>
+        <svc:customize preserve-on-clean="true"/>
       </config>
       <doc>
         <summary>General sales order information.</summary>
@@ -1010,6 +1016,7 @@
         <ui:fields>
           <ui:field param="sales order id" hidden="true"/>
           <ui:field param="online order flag" label="Online"/>
+          <ui:field param="sales order number" label="SO#" width="10%"/>
         </ui:fields>
       </ui:display>
       <ui:link name="details" view="SalesOrderView" child="true">
