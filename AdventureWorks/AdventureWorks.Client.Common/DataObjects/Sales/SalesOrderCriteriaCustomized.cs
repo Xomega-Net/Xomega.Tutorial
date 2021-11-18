@@ -1,6 +1,6 @@
 using System;
 using Xomega.Framework;
-using Xomega.Framework.Properties;
+using AdventureWorks.Services.Common.Enumerations;
 
 namespace AdventureWorks.Client.Common.DataObjects
 {
@@ -26,6 +26,10 @@ namespace AdventureWorks.Client.Common.DataObjects
         {
             base.OnInitialized();
             StatusProperty.DisplayFormat = $"{Header.FieldId} - {Header.FieldText}";
+            TerritoryIdProperty.SetCascadingProperty(SalesTerritory.Attributes.Group, GlobalRegionProperty);
+            SalesPersonIdProperty.SetCascadingProperty(SalesPerson.Attributes.TerritoryId, TerritoryIdProperty);
+            SalesPersonIdProperty.NullsMatchAnyCascading = true;
+            SalesPersonIdProperty.DisplayListSeparator = "; ";
         }
 
         // add custom code here
