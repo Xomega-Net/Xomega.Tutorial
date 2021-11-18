@@ -94,6 +94,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             };
             StatusProperty = new EnumByteProperty(this, Status)
             {
+                IsMultiValued = true,
                 EnumType = "sales order status",
             };
             OrderDateOperatorProperty = new OperatorProperty(this, OrderDateOperator)

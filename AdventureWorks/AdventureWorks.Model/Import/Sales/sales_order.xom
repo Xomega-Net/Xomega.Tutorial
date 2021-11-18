@@ -18,6 +18,11 @@
       </config>
     </type>
     <type name="sales order status" base="tiny int enumeration">
+      <config>
+        <ui:blazor-control multi-value="true">
+          <XAutoComplete />
+        </ui:blazor-control>
+      </config>
       <enum ref="sales order status"/>
     </type>
   </types>
@@ -402,7 +407,7 @@
                   <summary>Comparison operator for the corresponding Status criteria.</summary>
                 </doc>
               </param>
-              <param name="status" required="false"/>
+              <param name="status" required="false" list="true"/>
               <param name="order date operator" type="operator">
                 <doc>
                   <summary>Comparison operator for the corresponding Order Date criteria.</summary>
@@ -858,7 +863,7 @@
         <ui:tabs/>
       </ui:display>
     </xfk:data-object>
-    <xfk:data-object class="SalesOrderCriteria">
+    <xfk:data-object class="SalesOrderCriteria" customize="true">
       <ui:display>
         <ui:fields>
           <ui:field param="sales person id" label="Sales Person"/>

@@ -596,7 +596,7 @@ namespace AdventureWorks.Services.Common
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
         [XLookupValue(SalesOrderStatus.EnumName)]
-        public byte? Status { get; set; }
+        public ICollection<byte> Status { get; set; }
         
         ///<summary>
         /// Comparison operator for the corresponding Order Date criteria.
