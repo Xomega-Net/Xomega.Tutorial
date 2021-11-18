@@ -460,7 +460,7 @@
                   <summary>Comparison operator for the corresponding Sales Person Id criteria.</summary>
                 </doc>
               </param>
-              <param name="sales person id" required="false"/>
+              <param name="sales person id" required="false" list="true"/>
               <config>
                 <xfk:add-to-object class="SalesOrderCriteria"/>
               </config>
@@ -858,13 +858,22 @@
         <ui:tabs/>
       </ui:display>
     </xfk:data-object>
-    <xfk:data-object class="SalesOrderCriteria"/>
+    <xfk:data-object class="SalesOrderCriteria">
+      <ui:display>
+        <ui:fields>
+          <ui:field param="sales person id" label="Sales Person"/>
+          <ui:field param="territory id" label="Sales Territory"/>
+        </ui:fields>
+      </ui:display>
+    </xfk:data-object>
     <xfk:data-object class="SalesOrderList" list="true">
       <ui:display>
         <ui:fields>
           <ui:field param="sales order id" hidden="true"/>
           <ui:field param="online order flag" label="Online"/>
-          <ui:field param="sales order number" label="SO#" width="10%"/>
+          <ui:field param="sales order number" label="SO#"/>
+          <ui:field param="sales person id" label="Sales Person"/>
+          <ui:field param="territory id" label="Sales Territory"/>
         </ui:fields>
       </ui:display>
       <ui:link name="details" view="SalesOrderView" child="true">

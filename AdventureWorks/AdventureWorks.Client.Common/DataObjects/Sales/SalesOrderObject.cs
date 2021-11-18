@@ -69,14 +69,14 @@ namespace AdventureWorks.Client.Common.DataObjects
         public GuidProperty RowguidProperty { get; private set; }
         public IntegerKeyProperty SalesOrderIdProperty { get; private set; }
         public TextProperty SalesOrderNumberProperty { get; private set; }
-        public IntegerKeyProperty SalesPersonIdProperty { get; private set; }
+        public EnumIntProperty SalesPersonIdProperty { get; private set; }
         public DateTimeProperty ShipDateProperty { get; private set; }
         public IntegerKeyProperty ShipMethodIdProperty { get; private set; }
         public IntegerKeyProperty ShipToAddressIdProperty { get; private set; }
         public EnumByteProperty StatusProperty { get; private set; }
         public MoneyProperty SubTotalProperty { get; private set; }
         public MoneyProperty TaxAmtProperty { get; private set; }
-        public IntegerKeyProperty TerritoryIdProperty { get; private set; }
+        public EnumIntProperty TerritoryIdProperty { get; private set; }
         public MoneyProperty TotalDueProperty { get; private set; }
 
         #endregion
@@ -147,11 +147,13 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Required = true,
             };
-            SalesPersonIdProperty = new IntegerKeyProperty(this, SalesPersonId)
+            SalesPersonIdProperty = new EnumIntProperty(this, SalesPersonId)
             {
+                EnumType = "sales person",
             };
-            TerritoryIdProperty = new IntegerKeyProperty(this, TerritoryId)
+            TerritoryIdProperty = new EnumIntProperty(this, TerritoryId)
             {
+                EnumType = "sales territory",
             };
             BillToAddressIdProperty = new IntegerKeyProperty(this, BillToAddressId)
             {

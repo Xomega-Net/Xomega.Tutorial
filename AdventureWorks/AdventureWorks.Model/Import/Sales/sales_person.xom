@@ -9,7 +9,19 @@
         xmlns:edm="http://www.xomega.net/edm"
         name="sales">
   <types>
-    <type name="sales person" base="employee"/>
+    <type name="sales person" base="employee">
+      <config>
+        <xfk:property class="EnumIntProperty" namespace="Xomega.Framework.Properties" tsModule="xomega"/>
+        <ui:display-config typical-length="20"/>
+        <ui:blazor-control>
+          <XSelect />
+        </ui:blazor-control>
+        <ui:blazor-control multi-value="true">
+          <XSelect />
+        </ui:blazor-control>
+      </config>
+      <enum ref="sales person"/>
+    </type>
   </types>
   <objects>
     <object name="sales person">
@@ -84,6 +96,27 @@
           </doc>
         </field>
       </fields>
+      <operations>
+        <operation name="read list" type="readlist">
+          <output list="true">
+            <param name="business entity id"/>
+            <param name="territory id"/>
+            <param name="name" type="string"/>
+            <param name="is-current" type="boolean" required="true"/>
+          </output>
+          <config>
+            <rest:method verb="GET" uri-template="sales-person"/>
+            <xfk:enum-cache enum-name="sales person" id-param="business entity id"
+                            desc-param="name" is-active-param="is-current"/>
+          </config>
+          <doc>
+            <summary>Reads a list of Sales Person objects based on the specified criteria.</summary>
+          </doc>
+        </operation>
+        <doc>
+          <summary>A service for quering and managing Sales Person objects.</summary>
+        </doc>
+      </operations>
       <config>
         <sql:table name="Sales.SalesPerson"/>
       </config>

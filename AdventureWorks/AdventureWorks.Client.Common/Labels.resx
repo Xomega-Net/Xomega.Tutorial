@@ -304,16 +304,16 @@
     <value xml:space="preserve">Global Region</value>
   </data>
   <data name="SalesOrderCriteria.TerritoryIdOperator">
-    <value xml:space="preserve">Territory Id</value>
+    <value xml:space="preserve">Sales Territory</value>
   </data>
   <data name="SalesOrderCriteria.TerritoryId">
-    <value xml:space="preserve">Territory Id</value>
+    <value xml:space="preserve">Sales Territory</value>
   </data>
   <data name="SalesOrderCriteria.SalesPersonIdOperator">
-    <value xml:space="preserve">Sales Person Id</value>
+    <value xml:space="preserve">Sales Person</value>
   </data>
   <data name="SalesOrderCriteria.SalesPersonId">
-    <value xml:space="preserve">Sales Person Id</value>
+    <value xml:space="preserve">Sales Person</value>
   </data>
   <data name="SalesOrderList_Action_Details">
     <value xml:space="preserve">Details</value>
@@ -346,10 +346,10 @@
     <value xml:space="preserve">Customer Name</value>
   </data>
   <data name="SalesOrderList.SalesPersonId">
-    <value xml:space="preserve">Sales Person Id</value>
+    <value xml:space="preserve">Sales Person</value>
   </data>
   <data name="SalesOrderList.TerritoryId">
-    <value xml:space="preserve">Territory Id</value>
+    <value xml:space="preserve">Sales Territory</value>
   </data>
   <data name="SalesOrderList.TotalDue">
     <value xml:space="preserve">Total Due</value>

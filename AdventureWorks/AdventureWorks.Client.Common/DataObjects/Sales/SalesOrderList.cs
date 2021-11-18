@@ -45,10 +45,10 @@ namespace AdventureWorks.Client.Common.DataObjects
         public DateProperty OrderDateProperty { get; private set; }
         public IntegerKeyProperty SalesOrderIdProperty { get; private set; }
         public TextProperty SalesOrderNumberProperty { get; private set; }
-        public IntegerKeyProperty SalesPersonIdProperty { get; private set; }
+        public EnumIntProperty SalesPersonIdProperty { get; private set; }
         public DateProperty ShipDateProperty { get; private set; }
         public EnumByteProperty StatusProperty { get; private set; }
-        public IntegerKeyProperty TerritoryIdProperty { get; private set; }
+        public EnumIntProperty TerritoryIdProperty { get; private set; }
         public MoneyProperty TotalDueProperty { get; private set; }
 
         #endregion
@@ -119,12 +119,14 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Editable = false,
             };
-            SalesPersonIdProperty = new IntegerKeyProperty(this, SalesPersonId)
+            SalesPersonIdProperty = new EnumIntProperty(this, SalesPersonId)
             {
+                EnumType = "sales person",
                 Editable = false,
             };
-            TerritoryIdProperty = new IntegerKeyProperty(this, TerritoryId)
+            TerritoryIdProperty = new EnumIntProperty(this, TerritoryId)
             {
+                EnumType = "sales territory",
                 Editable = false,
             };
             TotalDueProperty = new MoneyProperty(this, TotalDue)

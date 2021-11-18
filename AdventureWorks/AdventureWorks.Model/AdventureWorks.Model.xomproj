@@ -376,7 +376,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <AddReadListEnumeration-type>System.Boolean</AddReadListEnumeration-type>
       <AddReadListEnumeration-desc>Whether to add enumeration definition to the Read List operation.</AddReadListEnumeration-desc>
       <AddReadListEnumeration-category>Enumeration</AddReadListEnumeration-category>
-      <MakeKeyTypeEnumerated-param>True</MakeKeyTypeEnumerated-param>
+      <MakeKeyTypeEnumerated-param>False</MakeKeyTypeEnumerated-param>
       <MakeKeyTypeEnumerated-type>System.Boolean</MakeKeyTypeEnumerated-type>
       <MakeKeyTypeEnumerated-desc>Whether to update the key type to reference generated enumeration.</MakeKeyTypeEnumerated-desc>
       <MakeKeyTypeEnumerated-category>Enumeration</MakeKeyTypeEnumerated-category>

@@ -306,11 +306,13 @@ namespace AdventureWorks.Services.Common
         ///<summary>
         /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
         ///</summary>
+        [XLookupValue(SalesPerson.EnumName)]
         public int? SalesPersonId { get; set; }
         
         ///<summary>
         /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
+        [XLookupValue(SalesTerritory.EnumName)]
         public int? TerritoryId { get; set; }
         
         ///<summary>
@@ -475,11 +477,13 @@ namespace AdventureWorks.Services.Common
         ///<summary>
         /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
         ///</summary>
+        [XLookupValue(SalesPerson.EnumName)]
         public int? SalesPersonId { get; set; }
         
         ///<summary>
         /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
+        [XLookupValue(SalesTerritory.EnumName)]
         public int? TerritoryId { get; set; }
         
         ///<summary>
@@ -677,6 +681,7 @@ namespace AdventureWorks.Services.Common
         ///<summary>
         /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
+        [XLookupValue(SalesTerritory.EnumName)]
         public int? TerritoryId { get; set; }
         
         ///<summary>
@@ -689,7 +694,8 @@ namespace AdventureWorks.Services.Common
         ///<summary>
         /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
         ///</summary>
-        public int? SalesPersonId { get; set; }
+        [XLookupValue(SalesPerson.EnumName)]
+        public ICollection<int> SalesPersonId { get; set; }
     }
     #endregion
 

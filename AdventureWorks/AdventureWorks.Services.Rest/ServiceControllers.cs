@@ -13,6 +13,8 @@ namespace AdventureWorks.Services.Rest
         public static IServiceCollection AddServiceControllers(this IServiceCollection services)
         {
             services.AddScoped<SalesOrderController, SalesOrderController>();
+            services.AddScoped<SalesPersonController, SalesPersonController>();
+            services.AddScoped<SalesTerritoryController, SalesTerritoryController>();
             return services;
         }
     }

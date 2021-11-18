@@ -54,11 +54,11 @@ namespace AdventureWorks.Client.Common.DataObjects
         public OperatorProperty OrderDateOperatorProperty { get; private set; }
         public TextProperty SalesOrderNumberProperty { get; private set; }
         public OperatorProperty SalesOrderNumberOperatorProperty { get; private set; }
-        public IntegerKeyProperty SalesPersonIdProperty { get; private set; }
+        public EnumIntProperty SalesPersonIdProperty { get; private set; }
         public OperatorProperty SalesPersonIdOperatorProperty { get; private set; }
         public EnumByteProperty StatusProperty { get; private set; }
         public OperatorProperty StatusOperatorProperty { get; private set; }
-        public IntegerKeyProperty TerritoryIdProperty { get; private set; }
+        public EnumIntProperty TerritoryIdProperty { get; private set; }
         public OperatorProperty TerritoryIdOperatorProperty { get; private set; }
         public MoneyProperty TotalDueProperty { get; private set; }
         public MoneyProperty TotalDue2Property { get; private set; }
@@ -158,8 +158,9 @@ namespace AdventureWorks.Client.Common.DataObjects
                 EnumType = "operators",
                 HasNullCheck = true,
             };
-            TerritoryIdProperty = new IntegerKeyProperty(this, TerritoryId)
+            TerritoryIdProperty = new EnumIntProperty(this, TerritoryId)
             {
+                EnumType = "sales territory",
             };
             SalesPersonIdOperatorProperty = new OperatorProperty(this, SalesPersonIdOperator)
             {
@@ -167,8 +168,10 @@ namespace AdventureWorks.Client.Common.DataObjects
                 EnumType = "operators",
                 HasNullCheck = true,
             };
-            SalesPersonIdProperty = new IntegerKeyProperty(this, SalesPersonId)
+            SalesPersonIdProperty = new EnumIntProperty(this, SalesPersonId)
             {
+                IsMultiValued = true,
+                EnumType = "sales person",
             };
         }
 
