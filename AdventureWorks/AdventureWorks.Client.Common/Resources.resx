@@ -120,4 +120,7 @@
   <data name="HomeView_NavMenu" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="OrderFromToDate" xml:space="preserve">
+    <value>From Order Date should be earlier than To Order Date.</value>
+  </data>
 </root>

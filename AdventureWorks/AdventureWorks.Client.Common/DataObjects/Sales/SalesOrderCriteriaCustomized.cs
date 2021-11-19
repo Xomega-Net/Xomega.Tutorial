@@ -32,6 +32,13 @@ namespace AdventureWorks.Client.Common.DataObjects
             SalesPersonIdProperty.DisplayListSeparator = "; ";
         }
 
-        // add custom code here
+        public override void Validate(bool force)
+        {
+            base.Validate(force);
+            DateTime? orderDateFrom = OrderDateProperty.Value;
+            DateTime? orderDateTo = OrderDate2Property.Value;
+            if (orderDateFrom != null && orderDateTo != null && orderDateFrom > orderDateTo)
+                validationErrorList.AddValidationError(Messages.OrderFromToDate);
+        }
     }
 }

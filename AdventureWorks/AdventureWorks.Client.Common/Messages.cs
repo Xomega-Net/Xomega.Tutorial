@@ -23,5 +23,10 @@ namespace AdventureWorks.Client.Common
         /// Home
         /// </summary>
         public const string HomeView_NavMenu = "HomeView_NavMenu";
+
+        /// <summary>
+        /// From Order Date should be earlier than To Order Date.
+        /// </summary>
+        public const string OrderFromToDate = "OrderFromToDate";
     }
 }
