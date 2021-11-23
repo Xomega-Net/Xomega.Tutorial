@@ -73,6 +73,9 @@ namespace AdventureWorks.Services.Entities
                 await ctx.ValidateKeyAsync<CreditCard>(currentErrors, token, "CreditCardId", _data.CreditCardId);
                 await ctx.ValidateKeyAsync<CurrencyRate>(currentErrors, token, "CurrencyRateId", _data.CurrencyRateId);
                 // CUSTOM_CODE_START: add custom code for Create operation below
+                obj.OrderDate = DateTime.Now;
+                obj.ModifiedDate = DateTime.Now;
+                obj.Rowguid = Guid.NewGuid();
                 // CUSTOM_CODE_END
                 currentErrors.AbortIfHasErrors();
                 await ctx.SaveChangesAsync(token);
@@ -85,8 +88,9 @@ namespace AdventureWorks.Services.Entities
             return await Task.FromResult(new Output<SalesOrder_CreateOutput>(currentErrors, res));
         }
 
-        public virtual async Task<Output> UpdateAsync(int _salesOrderId, SalesOrder_UpdateInput_Data _data, CancellationToken token = default)
+        public virtual async Task<Output<SalesOrder_UpdateOutput>> UpdateAsync(int _salesOrderId, SalesOrder_UpdateInput_Data _data, CancellationToken token = default)
         {
+            SalesOrder_UpdateOutput res = new SalesOrder_UpdateOutput();
             try
             {
                 currentErrors.AbortIfHasErrors();
@@ -105,15 +109,17 @@ namespace AdventureWorks.Services.Entities
                 await ctx.ValidateKeyAsync<CreditCard>(currentErrors, token, "CreditCardId", _data.CreditCardId);
                 await ctx.ValidateKeyAsync<CurrencyRate>(currentErrors, token, "CurrencyRateId", _data.CurrencyRateId);
                 // CUSTOM_CODE_START: add custom code for Update operation below
+                obj.ModifiedDate = DateTime.Now;
                 // CUSTOM_CODE_END
                 currentErrors.AbortIfHasErrors();
                 await ctx.SaveChangesAsync(token);
+                ServiceUtil.CopyProperties(obj, res);
             }
             catch (Exception ex)
             {
                 currentErrors.MergeWith(errorParser.FromException(ex));
             }
-            return await Task.FromResult(new Output(currentErrors));
+            return await Task.FromResult(new Output<SalesOrder_UpdateOutput>(currentErrors, res));
         }
 
         public virtual async Task<Output> DeleteAsync(int _salesOrderId, CancellationToken token = default)

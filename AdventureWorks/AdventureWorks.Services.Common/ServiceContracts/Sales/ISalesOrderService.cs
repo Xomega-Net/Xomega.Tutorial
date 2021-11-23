@@ -34,7 +34,7 @@ namespace AdventureWorks.Services.Common
         ///<summary>
         /// Updates existing Sales Order object using the specified data.
         ///</summary>
-        Task<Output> UpdateAsync(int _salesOrderId, SalesOrder_UpdateInput_Data _data, CancellationToken token = default);
+        Task<Output<SalesOrder_UpdateOutput>> UpdateAsync(int _salesOrderId, SalesOrder_UpdateInput_Data _data, CancellationToken token = default);
 
         ///<summary>
         /// Deletes the specified Sales Order object.
@@ -108,9 +108,9 @@ namespace AdventureWorks.Services.Common
     {
         
         ///<summary>
-        /// Incremental number to track changes to the sales order over time.
+        /// Unique sales order identification number.
         ///</summary>
-        public byte RevisionNumber { get; set; }
+        public string SalesOrderNumber { get; set; }
         
         ///<summary>
         /// Dates the sales order was created.
@@ -136,11 +136,6 @@ namespace AdventureWorks.Services.Common
         /// 0 = Order placed by sales person. 1 = Order placed online by customer.
         ///</summary>
         public bool OnlineOrderFlag { get; set; }
-        
-        ///<summary>
-        /// Unique sales order identification number.
-        ///</summary>
-        public string SalesOrderNumber { get; set; }
         
         ///<summary>
         /// Customer purchase order number reference. 
@@ -223,9 +218,9 @@ namespace AdventureWorks.Services.Common
         public string Comment { get; set; }
         
         ///<summary>
-        /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+        /// Incremental number to track changes to the sales order over time.
         ///</summary>
-        public Guid Rowguid { get; set; }
+        public byte RevisionNumber { get; set; }
         
         ///<summary>
         /// Date and time the record was last updated.
@@ -243,18 +238,6 @@ namespace AdventureWorks.Services.Common
     {
         
         ///<summary>
-        /// Incremental number to track changes to the sales order over time.
-        ///</summary>
-        [XRequired]
-        public byte RevisionNumber { get; set; }
-        
-        ///<summary>
-        /// Dates the sales order was created.
-        ///</summary>
-        [XRequired]
-        public DateTime OrderDate { get; set; }
-        
-        ///<summary>
         /// Date the order is due to the customer.
         ///</summary>
         [XRequired]
@@ -277,13 +260,6 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         [XRequired]
         public bool OnlineOrderFlag { get; set; }
-        
-        ///<summary>
-        /// Unique sales order identification number.
-        ///</summary>
-        [XRequired]
-        [XMaxLength(25)]
-        public string SalesOrderNumber { get; set; }
         
         ///<summary>
         /// Customer purchase order number reference. 
@@ -378,18 +354,6 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         [XMaxLength(128)]
         public string Comment { get; set; }
-        
-        ///<summary>
-        /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-        ///</summary>
-        [XRequired]
-        public Guid Rowguid { get; set; }
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        [XRequired]
-        public DateTime ModifiedDate { get; set; }
     }
     #endregion
 
@@ -402,6 +366,26 @@ namespace AdventureWorks.Services.Common
     {
         
         public int SalesOrderId { get; set; }
+        
+        ///<summary>
+        /// Unique sales order identification number.
+        ///</summary>
+        public string SalesOrderNumber { get; set; }
+        
+        ///<summary>
+        /// Dates the sales order was created.
+        ///</summary>
+        public DateTime OrderDate { get; set; }
+        
+        ///<summary>
+        /// Incremental number to track changes to the sales order over time.
+        ///</summary>
+        public byte RevisionNumber { get; set; }
+        
+        ///<summary>
+        /// Date and time the record was last updated.
+        ///</summary>
+        public DateTime ModifiedDate { get; set; }
     }
     #endregion
 
@@ -412,18 +396,6 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrder_UpdateInput_Data
     {
-        
-        ///<summary>
-        /// Incremental number to track changes to the sales order over time.
-        ///</summary>
-        [XRequired]
-        public byte RevisionNumber { get; set; }
-        
-        ///<summary>
-        /// Dates the sales order was created.
-        ///</summary>
-        [XRequired]
-        public DateTime OrderDate { get; set; }
         
         ///<summary>
         /// Date the order is due to the customer.
@@ -448,13 +420,6 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         [XRequired]
         public bool OnlineOrderFlag { get; set; }
-        
-        ///<summary>
-        /// Unique sales order identification number.
-        ///</summary>
-        [XRequired]
-        [XMaxLength(25)]
-        public string SalesOrderNumber { get; set; }
         
         ///<summary>
         /// Customer purchase order number reference. 
@@ -549,17 +514,25 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         [XMaxLength(128)]
         public string Comment { get; set; }
+    }
+    #endregion
+
+    #region SalesOrder_UpdateOutput structure
+
+    ///<summary>
+    /// The output structure of operation ISalesOrderService.UpdateAsync.
+    ///</summary>
+    public class SalesOrder_UpdateOutput
+    {
         
         ///<summary>
-        /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+        /// Incremental number to track changes to the sales order over time.
         ///</summary>
-        [XRequired]
-        public Guid Rowguid { get; set; }
+        public byte RevisionNumber { get; set; }
         
         ///<summary>
         /// Date and time the record was last updated.
         ///</summary>
-        [XRequired]
         public DateTime ModifiedDate { get; set; }
     }
     #endregion

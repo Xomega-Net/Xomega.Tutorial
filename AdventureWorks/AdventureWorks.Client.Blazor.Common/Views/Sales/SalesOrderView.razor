@@ -27,13 +27,12 @@
             <Errors Class="mb-3" ErrorList="@Model?.Errors" ViewKey="@Model?.GetResourceKey()"></Errors>
             <fieldset class="@GetPanelCol(1, 4)">
               <div class="row @GetRowCol(4)">
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.RevisionNumberProperty"></XNumericBox>
-                <XDatePicker Class="mb-3" Property="@VM?.MainObj?.OrderDateProperty"></XDatePicker>
+                <XDataLabel Class="mb-3" Property="@VM?.MainObj?.SalesOrderNumberProperty"></XDataLabel>
+                <XDataLabel Class="mb-3" Property="@VM?.MainObj?.OrderDateProperty"></XDataLabel>
                 <XDatePicker Class="mb-3" Property="@VM?.MainObj?.DueDateProperty"></XDatePicker>
                 <XDatePicker Class="mb-3" Property="@VM?.MainObj?.ShipDateProperty"></XDatePicker>
                 <XSelect Class="mb-3" Property="@VM?.MainObj?.StatusProperty"></XSelect>
                 <XCheckBox Class="mb-3" Property="@VM?.MainObj?.OnlineOrderFlagProperty"></XCheckBox>
-                <XInputText Class="mb-3" Property="@VM?.MainObj?.SalesOrderNumberProperty"></XInputText>
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.PurchaseOrderNumberProperty"></XInputText>
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.AccountNumberProperty"></XInputText>
                 <XNumericBox Class="mb-3" Property="@VM?.MainObj?.CustomerIdProperty"></XNumericBox>
@@ -50,8 +49,8 @@
                 <XNumericBox Class="mb-3" Property="@VM?.MainObj?.FreightProperty"></XNumericBox>
                 <XNumericBox Class="mb-3" Property="@VM?.MainObj?.TotalDueProperty"></XNumericBox>
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.CommentProperty"></XInputText>
-                <XInputText Class="mb-3" Property="@VM?.MainObj?.RowguidProperty"></XInputText>
-                <XDatePicker Class="mb-3" Property="@VM?.MainObj?.ModifiedDateProperty"></XDatePicker>
+                <XDataLabel Class="mb-3" Property="@VM?.MainObj?.RevisionNumberProperty"></XDataLabel>
+                <XDataLabel Class="mb-3" Property="@VM?.MainObj?.ModifiedDateProperty"></XDataLabel>
               </div>
             </fieldset>
             <div class="@GetPanelCol(1, 4)">

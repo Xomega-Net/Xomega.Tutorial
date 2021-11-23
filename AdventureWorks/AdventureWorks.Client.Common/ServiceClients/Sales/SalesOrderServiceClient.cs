@@ -54,7 +54,7 @@ namespace AdventureWorks.Services.Common
         }
 
         /// <inheritdoc/>
-        public virtual async Task<Output> UpdateAsync(int _salesOrderId, SalesOrder_UpdateInput_Data _data, CancellationToken token = default)
+        public virtual async Task<Output<SalesOrder_UpdateOutput>> UpdateAsync(int _salesOrderId, SalesOrder_UpdateInput_Data _data, CancellationToken token = default)
         {
             HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Put, $"sales-order/{ _salesOrderId }")
             {
@@ -63,7 +63,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await resp.Content.ReadAsStreamAsync();
-                return await JsonSerializer.DeserializeAsync<Output>(content, SerializerOptions);
+                return await JsonSerializer.DeserializeAsync<Output<SalesOrder_UpdateOutput>>(content, SerializerOptions);
             }
         }
 

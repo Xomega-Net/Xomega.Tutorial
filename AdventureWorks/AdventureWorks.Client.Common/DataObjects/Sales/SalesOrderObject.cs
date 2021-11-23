@@ -35,7 +35,6 @@ namespace AdventureWorks.Client.Common.DataObjects
         public const string PurchaseOrderNumber = "PurchaseOrderNumber";
         public const string Reason = "Reason";
         public const string RevisionNumber = "RevisionNumber";
-        public const string Rowguid = "Rowguid";
         public const string SalesOrderId = "SalesOrderId";
         public const string SalesOrderNumber = "SalesOrderNumber";
         public const string SalesPersonId = "SalesPersonId";
@@ -63,10 +62,9 @@ namespace AdventureWorks.Client.Common.DataObjects
         public MoneyProperty FreightProperty { get; private set; }
         public DateTimeProperty ModifiedDateProperty { get; private set; }
         public BooleanProperty OnlineOrderFlagProperty { get; private set; }
-        public DateTimeProperty OrderDateProperty { get; private set; }
+        public DateProperty OrderDateProperty { get; private set; }
         public TextProperty PurchaseOrderNumberProperty { get; private set; }
         public TinyIntegerProperty RevisionNumberProperty { get; private set; }
-        public GuidProperty RowguidProperty { get; private set; }
         public IntegerKeyProperty SalesOrderIdProperty { get; private set; }
         public TextProperty SalesOrderNumberProperty { get; private set; }
         public EnumIntProperty SalesPersonIdProperty { get; private set; }
@@ -106,13 +104,16 @@ namespace AdventureWorks.Client.Common.DataObjects
                 Editable = false,
                 IsKey = true,
             };
-            RevisionNumberProperty = new TinyIntegerProperty(this, RevisionNumber)
+            SalesOrderNumberProperty = new TextProperty(this, SalesOrderNumber)
             {
                 Required = true,
+                Size = 25,
+                Editable = false,
             };
-            OrderDateProperty = new DateTimeProperty(this, OrderDate)
+            OrderDateProperty = new DateProperty(this, OrderDate)
             {
                 Required = true,
+                Editable = false,
             };
             DueDateProperty = new DateTimeProperty(this, DueDate)
             {
@@ -129,11 +130,6 @@ namespace AdventureWorks.Client.Common.DataObjects
             OnlineOrderFlagProperty = new BooleanProperty(this, OnlineOrderFlag)
             {
                 Required = true,
-            };
-            SalesOrderNumberProperty = new TextProperty(this, SalesOrderNumber)
-            {
-                Required = true,
-                Size = 25,
             };
             PurchaseOrderNumberProperty = new TextProperty(this, PurchaseOrderNumber)
             {
@@ -197,13 +193,15 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Size = 128,
             };
-            RowguidProperty = new GuidProperty(this, Rowguid)
+            RevisionNumberProperty = new TinyIntegerProperty(this, RevisionNumber)
             {
                 Required = true,
+                Editable = false,
             };
             ModifiedDateProperty = new DateTimeProperty(this, ModifiedDate)
             {
                 Required = true,
+                Editable = false,
             };
             DataObject objDetail = ServiceProvider.GetService<SalesOrderDetailList>();
             AddChildObject(Detail, objDetail);
@@ -269,7 +267,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             }
         }
 
-        protected virtual async Task<Output> SalesOrder_UpdateAsync(object options, CancellationToken token = default)
+        protected virtual async Task<Output<SalesOrder_UpdateOutput>> SalesOrder_UpdateAsync(object options, CancellationToken token = default)
         {
             int _salesOrderId = (int)SalesOrderIdProperty.TransportValue;
             SalesOrder_UpdateInput_Data _data = ToDataContract<SalesOrder_UpdateInput_Data>(options);
@@ -277,6 +275,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 var output = await s.ServiceProvider.GetService<ISalesOrderService>().UpdateAsync(_salesOrderId, _data, token);
 
+                await FromDataContractAsync(output?.Result, options, token);
                 return output;
             }
         }

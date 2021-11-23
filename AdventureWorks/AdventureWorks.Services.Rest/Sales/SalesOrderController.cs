@@ -98,7 +98,7 @@ namespace AdventureWorks.Services.Rest
             {
                 if (ModelState.IsValid)
                 {
-                    Output output = await svc.UpdateAsync(_salesOrderId, _data, token);
+                    Output<SalesOrder_UpdateOutput> output = await svc.UpdateAsync(_salesOrderId, _data, token);
                     response = StatusCode((int)output.HttpStatus, output);
                     return response;
                 }
