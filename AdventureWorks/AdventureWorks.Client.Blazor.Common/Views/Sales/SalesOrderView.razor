@@ -62,23 +62,21 @@
                       <div class="mb-3">
                         <XGrid List="@VM?.MainObj?.DetailList" ResourceKey="@Model?.GetResourceKey()">
                           <GridColumns>
-                            <XGridColumn Property="@VM?.MainObj?.DetailList?.CarrierTrackingNumberProperty" Width="20%">
+                            <XGridColumn Property="@VM?.MainObj?.DetailList?.ProductIdProperty" Width="20%">
                               <Template>
                                 <a role="button"
                                    @onclick="async () => await LinkDetailDetails_ClickAsync(context as DataRow)"
                                    class="btn-link @(DisabledIfNot(VM?.LinkDetailDetails_Enabled(context as DataRow)))">
-                                  <XDataText Property="@VM?.MainObj?.DetailList?.CarrierTrackingNumberProperty"></XDataText>
+                                  <XDataText Property="@VM?.MainObj?.DetailList?.ProductIdProperty"></XDataText>
                                 </a>
                               </Template>
                             </XGridColumn>
                             <XGridColumn Property="@VM?.MainObj?.DetailList?.OrderQtyProperty" Width="6%"></XGridColumn>
-                            <XGridColumn Property="@VM?.MainObj?.DetailList?.SpecialOfferIdProperty" Width="6%"></XGridColumn>
-                            <XGridColumn Property="@VM?.MainObj?.DetailList?.ProductIdProperty" Width="6%"></XGridColumn>
                             <XGridColumn Property="@VM?.MainObj?.DetailList?.UnitPriceProperty" Width="12%"></XGridColumn>
-                            <XGridColumn Property="@VM?.MainObj?.DetailList?.UnitPriceDiscountProperty" Width="12%"></XGridColumn>
-                            <XGridColumn Property="@VM?.MainObj?.DetailList?.LineTotalProperty" Width="10%"></XGridColumn>
-                            <XGridColumn Property="@VM?.MainObj?.DetailList?.RowguidProperty" Width="10%"></XGridColumn>
-                            <XGridColumn Property="@VM?.MainObj?.DetailList?.ModifiedDateProperty" Width="16%"></XGridColumn>
+                            <XGridColumn Property="@VM?.MainObj?.DetailList?.UnitPriceDiscountProperty" Width="10%"></XGridColumn>
+                            <XGridColumn Property="@VM?.MainObj?.DetailList?.SpecialOfferIdProperty" Width="20%"></XGridColumn>
+                            <XGridColumn Property="@VM?.MainObj?.DetailList?.LineTotalProperty" Width="12%"></XGridColumn>
+                            <XGridColumn Property="@VM?.MainObj?.DetailList?.CarrierTrackingNumberProperty" Width="20%"></XGridColumn>
                           </GridColumns>
                         </XGrid>
                       </div>

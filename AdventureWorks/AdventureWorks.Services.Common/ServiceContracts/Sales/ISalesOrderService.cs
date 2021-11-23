@@ -832,9 +832,11 @@ namespace AdventureWorks.Services.Common
         public short OrderQty { get; set; }
         
         [XRequired]
+        [XLookupValue(SpecialOffer.EnumName)]
         public int SpecialOfferId { get; set; }
         
         [XRequired]
+        [XLookupValue(Product.EnumName)]
         public int ProductId { get; set; }
         
         ///<summary>
@@ -902,9 +904,11 @@ namespace AdventureWorks.Services.Common
         public short OrderQty { get; set; }
         
         [XRequired]
+        [XLookupValue(SpecialOffer.EnumName)]
         public int SpecialOfferId { get; set; }
         
         [XRequired]
+        [XLookupValue(Product.EnumName)]
         public int ProductId { get; set; }
         
         ///<summary>
@@ -949,19 +953,12 @@ namespace AdventureWorks.Services.Common
         
         public int SalesOrderDetailId { get; set; }
         
-        ///<summary>
-        /// Shipment tracking number supplied by the shipper.
-        ///</summary>
-        public string CarrierTrackingNumber { get; set; }
+        public int ProductId { get; set; }
         
         ///<summary>
         /// Quantity ordered per product.
         ///</summary>
         public short OrderQty { get; set; }
-        
-        public int SpecialOfferId { get; set; }
-        
-        public int ProductId { get; set; }
         
         ///<summary>
         /// Selling price of a single product.
@@ -973,20 +970,17 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         public decimal UnitPriceDiscount { get; set; }
         
+        public int SpecialOfferId { get; set; }
+        
         ///<summary>
         /// Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.
         ///</summary>
         public decimal LineTotal { get; set; }
         
         ///<summary>
-        /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+        /// Shipment tracking number supplied by the shipper.
         ///</summary>
-        public Guid Rowguid { get; set; }
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        public DateTime ModifiedDate { get; set; }
+        public string CarrierTrackingNumber { get; set; }
     }
     #endregion
 

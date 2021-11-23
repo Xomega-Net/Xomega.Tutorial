@@ -9,7 +9,12 @@
         xmlns:edm="http://www.xomega.net/edm"
         name="production">
   <types>
-    <type name="product" base="integer key"/>
+    <type name="product" base="integer enumeration">
+      <config>
+        <ui:display-config typical-length="20"/>
+      </config>
+      <enum ref="product"/>
+    </type>
   </types>
   <objects>
     <object name="product">
@@ -212,6 +217,28 @@
           </doc>
         </field>
       </fields>
+      <operations>
+        <operation name="read list" type="readlist">
+          <output list="true">
+            <param name="product id"/>
+            <param name="name"/>
+            <param name="is active" type="boolean" required="true"/>
+            <param name="product subcategory id"/>
+            <param name="product model id"/>
+          </output>
+          <config>
+            <rest:method verb="GET" uri-template="product"/>
+            <xfk:enum-cache enum-name="product" id-param="product id" desc-param="name"
+                            is-active-param="is active"/>
+          </config>
+          <doc>
+            <summary>Reads a list of Product objects based on the specified criteria.</summary>
+          </doc>
+        </operation>
+        <doc>
+          <summary>A service for quering and managing Product objects.</summary>
+        </doc>
+      </operations>
       <config>
         <sql:table name="Production.Product"/>
       </config>

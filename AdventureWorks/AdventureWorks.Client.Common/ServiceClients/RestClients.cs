@@ -12,9 +12,11 @@ namespace AdventureWorks.Services.Common
     {
         public static IServiceCollection AddRestClients(this IServiceCollection services)
         {
+            services.AddScoped<IProductService, ProductServiceClient>();
             services.AddScoped<ISalesOrderService, SalesOrderServiceClient>();
             services.AddScoped<ISalesPersonService, SalesPersonServiceClient>();
             services.AddScoped<ISalesTerritoryService, SalesTerritoryServiceClient>();
+            services.AddScoped<ISpecialOfferService, SpecialOfferServiceClient>();
             return services;
         }
     }

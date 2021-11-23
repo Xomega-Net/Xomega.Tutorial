@@ -447,32 +447,26 @@
   <data name="SalesOrderDetailList_Action_New">
     <value xml:space="preserve">New</value>
   </data>
-  <data name="SalesOrderDetailList.CarrierTrackingNumber">
-    <value xml:space="preserve">Carrier Tracking Number</value>
+  <data name="SalesOrderDetailList.ProductId">
+    <value xml:space="preserve">Product</value>
   </data>
   <data name="SalesOrderDetailList.OrderQty">
-    <value xml:space="preserve">Order Qty</value>
-  </data>
-  <data name="SalesOrderDetailList.SpecialOfferId">
-    <value xml:space="preserve">Special Offer Id</value>
-  </data>
-  <data name="SalesOrderDetailList.ProductId">
-    <value xml:space="preserve">Product Id</value>
+    <value xml:space="preserve">Qty</value>
   </data>
   <data name="SalesOrderDetailList.UnitPrice">
-    <value xml:space="preserve">Unit Price</value>
+    <value xml:space="preserve">Price</value>
   </data>
   <data name="SalesOrderDetailList.UnitPriceDiscount">
-    <value xml:space="preserve">Unit Price Discount</value>
+    <value xml:space="preserve">Discount</value>
+  </data>
+  <data name="SalesOrderDetailList.SpecialOfferId">
+    <value xml:space="preserve">Special Offer</value>
   </data>
   <data name="SalesOrderDetailList.LineTotal">
-    <value xml:space="preserve">Line Total</value>
+    <value xml:space="preserve">Total</value>
   </data>
-  <data name="SalesOrderDetailList.Rowguid">
-    <value xml:space="preserve">Rowguid</value>
-  </data>
-  <data name="SalesOrderDetailList.ModifiedDate">
-    <value xml:space="preserve">Modified Date</value>
+  <data name="SalesOrderDetailList.CarrierTrackingNumber">
+    <value xml:space="preserve">Tracking #</value>
   </data>
   <data name="SalesOrderReasonObject.SalesReasonId">
     <value xml:space="preserve">Sales Reason Id</value>

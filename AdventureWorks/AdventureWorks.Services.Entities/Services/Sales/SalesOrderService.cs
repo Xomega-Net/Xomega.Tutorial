@@ -331,15 +331,13 @@ namespace AdventureWorks.Services.Entities
                 var qry = from obj in src
                           select new SalesOrderDetail_ReadListOutput() {
                               SalesOrderDetailId = obj.SalesOrderDetailId,
-                              CarrierTrackingNumber = obj.CarrierTrackingNumber,
-                              OrderQty = obj.OrderQty,
-                              SpecialOfferId = obj.SpecialOfferId,
                               ProductId = obj.ProductId,
+                              OrderQty = obj.OrderQty,
                               UnitPrice = obj.UnitPrice,
                               UnitPriceDiscount = obj.UnitPriceDiscount,
+                              SpecialOfferId = obj.SpecialOfferId,
                               LineTotal = obj.LineTotal,
-                              Rowguid = obj.Rowguid,
-                              ModifiedDate = obj.ModifiedDate,
+                              CarrierTrackingNumber = obj.CarrierTrackingNumber,
                           };
 
                 // CUSTOM_CODE_START: add custom filter criteria to the result query for Detail_ReadList operation below

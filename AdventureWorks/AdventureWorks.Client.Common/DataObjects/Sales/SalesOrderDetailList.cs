@@ -22,10 +22,8 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         public const string CarrierTrackingNumber = "CarrierTrackingNumber";
         public const string LineTotal = "LineTotal";
-        public const string ModifiedDate = "ModifiedDate";
         public const string OrderQty = "OrderQty";
         public const string ProductId = "ProductId";
-        public const string Rowguid = "Rowguid";
         public const string SalesOrderDetailId = "SalesOrderDetailId";
         public const string SpecialOfferId = "SpecialOfferId";
         public const string UnitPrice = "UnitPrice";
@@ -36,15 +34,13 @@ namespace AdventureWorks.Client.Common.DataObjects
         #region Properties
 
         public TextProperty CarrierTrackingNumberProperty { get; private set; }
-        public DecimalProperty LineTotalProperty { get; private set; }
-        public DateTimeProperty ModifiedDateProperty { get; private set; }
+        public MoneyProperty LineTotalProperty { get; private set; }
         public SmallIntegerProperty OrderQtyProperty { get; private set; }
-        public IntegerKeyProperty ProductIdProperty { get; private set; }
-        public GuidProperty RowguidProperty { get; private set; }
+        public EnumIntProperty ProductIdProperty { get; private set; }
         public IntegerKeyProperty SalesOrderDetailIdProperty { get; private set; }
-        public IntegerKeyProperty SpecialOfferIdProperty { get; private set; }
+        public EnumIntProperty SpecialOfferIdProperty { get; private set; }
         public MoneyProperty UnitPriceProperty { get; private set; }
-        public MoneyProperty UnitPriceDiscountProperty { get; private set; }
+        public PercentFractionProperty UnitPriceDiscountProperty { get; private set; }
 
         #endregion
 
@@ -73,22 +69,13 @@ namespace AdventureWorks.Client.Common.DataObjects
                 Editable = false,
                 IsKey = true,
             };
-            CarrierTrackingNumberProperty = new TextProperty(this, CarrierTrackingNumber)
+            ProductIdProperty = new EnumIntProperty(this, ProductId)
             {
-                Size = 25,
+                Required = true,
+                EnumType = "product",
                 Editable = false,
             };
             OrderQtyProperty = new SmallIntegerProperty(this, OrderQty)
-            {
-                Required = true,
-                Editable = false,
-            };
-            SpecialOfferIdProperty = new IntegerKeyProperty(this, SpecialOfferId)
-            {
-                Required = true,
-                Editable = false,
-            };
-            ProductIdProperty = new IntegerKeyProperty(this, ProductId)
             {
                 Required = true,
                 Editable = false,
@@ -98,24 +85,25 @@ namespace AdventureWorks.Client.Common.DataObjects
                 Required = true,
                 Editable = false,
             };
-            UnitPriceDiscountProperty = new MoneyProperty(this, UnitPriceDiscount)
+            UnitPriceDiscountProperty = new PercentFractionProperty(this, UnitPriceDiscount)
             {
                 Required = true,
                 Editable = false,
             };
-            LineTotalProperty = new DecimalProperty(this, LineTotal)
+            SpecialOfferIdProperty = new EnumIntProperty(this, SpecialOfferId)
+            {
+                Required = true,
+                EnumType = "special offer",
+                Editable = false,
+            };
+            LineTotalProperty = new MoneyProperty(this, LineTotal)
             {
                 Required = true,
                 Editable = false,
             };
-            RowguidProperty = new GuidProperty(this, Rowguid)
+            CarrierTrackingNumberProperty = new TextProperty(this, CarrierTrackingNumber)
             {
-                Required = true,
-                Editable = false,
-            };
-            ModifiedDateProperty = new DateTimeProperty(this, ModifiedDate)
-            {
-                Required = true,
+                Size = 25,
                 Editable = false,
             };
           DetailsAction = new ActionProperty(this, "Details");

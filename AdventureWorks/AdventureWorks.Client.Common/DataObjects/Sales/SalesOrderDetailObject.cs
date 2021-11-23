@@ -36,16 +36,16 @@ namespace AdventureWorks.Client.Common.DataObjects
         #region Properties
 
         public TextProperty CarrierTrackingNumberProperty { get; private set; }
-        public DecimalProperty LineTotalProperty { get; private set; }
+        public MoneyProperty LineTotalProperty { get; private set; }
         public DateTimeProperty ModifiedDateProperty { get; private set; }
         public SmallIntegerProperty OrderQtyProperty { get; private set; }
-        public IntegerKeyProperty ProductIdProperty { get; private set; }
+        public EnumIntProperty ProductIdProperty { get; private set; }
         public GuidProperty RowguidProperty { get; private set; }
         public IntegerKeyProperty SalesOrderDetailIdProperty { get; private set; }
         public IntegerKeyProperty SalesOrderIdProperty { get; private set; }
-        public IntegerKeyProperty SpecialOfferIdProperty { get; private set; }
+        public EnumIntProperty SpecialOfferIdProperty { get; private set; }
         public MoneyProperty UnitPriceProperty { get; private set; }
-        public MoneyProperty UnitPriceDiscountProperty { get; private set; }
+        public PercentFractionProperty UnitPriceDiscountProperty { get; private set; }
 
         #endregion
 
@@ -80,23 +80,25 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Required = true,
             };
-            SpecialOfferIdProperty = new IntegerKeyProperty(this, SpecialOfferId)
+            SpecialOfferIdProperty = new EnumIntProperty(this, SpecialOfferId)
             {
                 Required = true,
+                EnumType = "special offer",
             };
-            ProductIdProperty = new IntegerKeyProperty(this, ProductId)
+            ProductIdProperty = new EnumIntProperty(this, ProductId)
             {
                 Required = true,
+                EnumType = "product",
             };
             UnitPriceProperty = new MoneyProperty(this, UnitPrice)
             {
                 Required = true,
             };
-            UnitPriceDiscountProperty = new MoneyProperty(this, UnitPriceDiscount)
+            UnitPriceDiscountProperty = new PercentFractionProperty(this, UnitPriceDiscount)
             {
                 Required = true,
             };
-            LineTotalProperty = new DecimalProperty(this, LineTotal)
+            LineTotalProperty = new MoneyProperty(this, LineTotal)
             {
                 Required = true,
             };
