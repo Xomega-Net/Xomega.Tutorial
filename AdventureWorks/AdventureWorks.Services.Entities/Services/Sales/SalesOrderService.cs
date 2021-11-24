@@ -40,6 +40,8 @@ namespace AdventureWorks.Services.Entities
                 // CUSTOM_CODE_END
                 SalesOrder obj = await ctx.FindEntityAsync<SalesOrder>(currentErrors, token, _salesOrderId);
                 ServiceUtil.CopyProperties(obj, res);
+                // CUSTOM_CODE_START: populate the Payment output structure of Read operation below
+                res.Payment = GetPaymentInfo(obj); // CUSTOM_CODE_END
                 // CUSTOM_CODE_START: add custom code for Read operation below
                 // CUSTOM_CODE_END
             }
@@ -64,14 +66,13 @@ namespace AdventureWorks.Services.Entities
                 var entry = ctx.Entry(obj);
                 entry.State = state;
                 entry.CurrentValues.SetValues(_data);
+                // CUSTOM_CODE_START: use the Payment input parameter of Create operation below
+                await UpdatePayment(obj, _data.Payment, token); // CUSTOM_CODE_END
                 await ctx.ValidateKeyAsync<Customer>(currentErrors, token, "CustomerId", _data.CustomerId);
                 await ctx.ValidateKeyAsync<SalesPerson>(currentErrors, token, "SalesPersonId", _data.SalesPersonId);
                 await ctx.ValidateKeyAsync<SalesTerritory>(currentErrors, token, "TerritoryId", _data.TerritoryId);
                 await ctx.ValidateKeyAsync<Address>(currentErrors, token, "BillToAddressId", _data.BillToAddressId);
                 await ctx.ValidateKeyAsync<Address>(currentErrors, token, "ShipToAddressId", _data.ShipToAddressId);
-                await ctx.ValidateKeyAsync<ShipMethod>(currentErrors, token, "ShipMethodId", _data.ShipMethodId);
-                await ctx.ValidateKeyAsync<CreditCard>(currentErrors, token, "CreditCardId", _data.CreditCardId);
-                await ctx.ValidateKeyAsync<CurrencyRate>(currentErrors, token, "CurrencyRateId", _data.CurrencyRateId);
                 // CUSTOM_CODE_START: add custom code for Create operation below
                 obj.OrderDate = DateTime.Now;
                 obj.ModifiedDate = DateTime.Now;
@@ -100,14 +101,13 @@ namespace AdventureWorks.Services.Entities
                 SalesOrder obj = await ctx.FindEntityAsync<SalesOrder>(currentErrors, token, _salesOrderId);
                 var entry = ctx.Entry(obj);
                 entry.CurrentValues.SetValues(_data);
+                // CUSTOM_CODE_START: use the Payment input parameter of Update operation below
+                await UpdatePayment(obj, _data.Payment, token); // CUSTOM_CODE_END
                 await ctx.ValidateKeyAsync<Customer>(currentErrors, token, "CustomerId", _data.CustomerId);
                 await ctx.ValidateKeyAsync<SalesPerson>(currentErrors, token, "SalesPersonId", _data.SalesPersonId);
                 await ctx.ValidateKeyAsync<SalesTerritory>(currentErrors, token, "TerritoryId", _data.TerritoryId);
                 await ctx.ValidateKeyAsync<Address>(currentErrors, token, "BillToAddressId", _data.BillToAddressId);
                 await ctx.ValidateKeyAsync<Address>(currentErrors, token, "ShipToAddressId", _data.ShipToAddressId);
-                await ctx.ValidateKeyAsync<ShipMethod>(currentErrors, token, "ShipMethodId", _data.ShipMethodId);
-                await ctx.ValidateKeyAsync<CreditCard>(currentErrors, token, "CreditCardId", _data.CreditCardId);
-                await ctx.ValidateKeyAsync<CurrencyRate>(currentErrors, token, "CurrencyRateId", _data.CurrencyRateId);
                 // CUSTOM_CODE_START: add custom code for Update operation below
                 obj.ModifiedDate = DateTime.Now;
                 // CUSTOM_CODE_END

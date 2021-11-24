@@ -249,6 +249,21 @@ namespace AdventureWorks.Services.Common.Enumerations
     }
     #endregion
 
+    #region ShipMethod
+    ///<summary>
+    /// Cached enumeration returned by the IShipMethodService.ReadListAsync operation.
+    ///  
+    ///</summary>
+    public class ShipMethod
+    {
+        ///<summary>
+        /// Enumeration name used for storing it in a lookup cache.
+        ///</summary>
+        public const string EnumName = "ship method";
+
+    }
+    #endregion
+
     #region SpecialOffer
     ///<summary>
     /// Cached enumeration returned by the ISpecialOfferService.ReadListAsync operation.

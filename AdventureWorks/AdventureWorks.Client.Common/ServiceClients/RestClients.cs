@@ -16,6 +16,7 @@ namespace AdventureWorks.Services.Common
             services.AddScoped<ISalesOrderService, SalesOrderServiceClient>();
             services.AddScoped<ISalesPersonService, SalesPersonServiceClient>();
             services.AddScoped<ISalesTerritoryService, SalesTerritoryServiceClient>();
+            services.AddScoped<IShipMethodService, ShipMethodServiceClient>();
             services.AddScoped<ISpecialOfferService, SpecialOfferServiceClient>();
             return services;
         }

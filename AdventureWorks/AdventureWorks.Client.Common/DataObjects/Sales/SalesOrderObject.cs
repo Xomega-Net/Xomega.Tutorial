@@ -22,16 +22,12 @@ namespace AdventureWorks.Client.Common.DataObjects
         public const string AccountNumber = "AccountNumber";
         public const string BillToAddressId = "BillToAddressId";
         public const string Comment = "Comment";
-        public const string CreditCardApprovalCode = "CreditCardApprovalCode";
-        public const string CreditCardId = "CreditCardId";
-        public const string CurrencyRateId = "CurrencyRateId";
         public const string CustomerId = "CustomerId";
         public const string Detail = "Detail";
-        public const string DueDate = "DueDate";
-        public const string Freight = "Freight";
         public const string ModifiedDate = "ModifiedDate";
         public const string OnlineOrderFlag = "OnlineOrderFlag";
         public const string OrderDate = "OrderDate";
+        public const string Payment = "Payment";
         public const string PurchaseOrderNumber = "PurchaseOrderNumber";
         public const string Reason = "Reason";
         public const string RevisionNumber = "RevisionNumber";
@@ -39,13 +35,9 @@ namespace AdventureWorks.Client.Common.DataObjects
         public const string SalesOrderNumber = "SalesOrderNumber";
         public const string SalesPersonId = "SalesPersonId";
         public const string ShipDate = "ShipDate";
-        public const string ShipMethodId = "ShipMethodId";
         public const string ShipToAddressId = "ShipToAddressId";
         public const string Status = "Status";
-        public const string SubTotal = "SubTotal";
-        public const string TaxAmt = "TaxAmt";
         public const string TerritoryId = "TerritoryId";
-        public const string TotalDue = "TotalDue";
 
         #endregion
 
@@ -54,12 +46,7 @@ namespace AdventureWorks.Client.Common.DataObjects
         public TextProperty AccountNumberProperty { get; private set; }
         public IntegerKeyProperty BillToAddressIdProperty { get; private set; }
         public TextProperty CommentProperty { get; private set; }
-        public TextProperty CreditCardApprovalCodeProperty { get; private set; }
-        public IntegerKeyProperty CreditCardIdProperty { get; private set; }
-        public IntegerKeyProperty CurrencyRateIdProperty { get; private set; }
         public IntegerKeyProperty CustomerIdProperty { get; private set; }
-        public DateTimeProperty DueDateProperty { get; private set; }
-        public MoneyProperty FreightProperty { get; private set; }
         public DateTimeProperty ModifiedDateProperty { get; private set; }
         public BooleanProperty OnlineOrderFlagProperty { get; private set; }
         public DateProperty OrderDateProperty { get; private set; }
@@ -69,19 +56,16 @@ namespace AdventureWorks.Client.Common.DataObjects
         public TextProperty SalesOrderNumberProperty { get; private set; }
         public EnumIntProperty SalesPersonIdProperty { get; private set; }
         public DateTimeProperty ShipDateProperty { get; private set; }
-        public IntegerKeyProperty ShipMethodIdProperty { get; private set; }
         public IntegerKeyProperty ShipToAddressIdProperty { get; private set; }
         public EnumByteProperty StatusProperty { get; private set; }
-        public MoneyProperty SubTotalProperty { get; private set; }
-        public MoneyProperty TaxAmtProperty { get; private set; }
         public EnumIntProperty TerritoryIdProperty { get; private set; }
-        public MoneyProperty TotalDueProperty { get; private set; }
 
         #endregion
 
         #region Child Objects
 
         public SalesOrderDetailList DetailList { get { return (SalesOrderDetailList)GetChildObject(Detail); } }
+        public SalesOrderPaymentObject PaymentObject { get { return (SalesOrderPaymentObject)GetChildObject(Payment); } }
         public SalesOrderReasonList ReasonList { get { return (SalesOrderReasonList)GetChildObject(Reason); } }
 
         #endregion
@@ -114,13 +98,6 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Required = true,
                 Editable = false,
-            };
-            DueDateProperty = new DateTimeProperty(this, DueDate)
-            {
-                Required = true,
-            };
-            ShipDateProperty = new DateTimeProperty(this, ShipDate)
-            {
             };
             StatusProperty = new EnumByteProperty(this, Status)
             {
@@ -159,35 +136,8 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Required = true,
             };
-            ShipMethodIdProperty = new IntegerKeyProperty(this, ShipMethodId)
+            ShipDateProperty = new DateTimeProperty(this, ShipDate)
             {
-                Required = true,
-            };
-            CreditCardIdProperty = new IntegerKeyProperty(this, CreditCardId)
-            {
-            };
-            CreditCardApprovalCodeProperty = new TextProperty(this, CreditCardApprovalCode)
-            {
-                Size = 15,
-            };
-            CurrencyRateIdProperty = new IntegerKeyProperty(this, CurrencyRateId)
-            {
-            };
-            SubTotalProperty = new MoneyProperty(this, SubTotal)
-            {
-                Required = true,
-            };
-            TaxAmtProperty = new MoneyProperty(this, TaxAmt)
-            {
-                Required = true,
-            };
-            FreightProperty = new MoneyProperty(this, Freight)
-            {
-                Required = true,
-            };
-            TotalDueProperty = new MoneyProperty(this, TotalDue)
-            {
-                Required = true,
             };
             CommentProperty = new TextProperty(this, Comment)
             {
@@ -205,6 +155,8 @@ namespace AdventureWorks.Client.Common.DataObjects
             };
             DataObject objDetail = ServiceProvider.GetService<SalesOrderDetailList>();
             AddChildObject(Detail, objDetail);
+            DataObject objPayment = ServiceProvider.GetService<SalesOrderPaymentObject>();
+            AddChildObject(Payment, objPayment);
             DataObject objReason = ServiceProvider.GetService<SalesOrderReasonList>();
             AddChildObject(Reason, objReason);
         }

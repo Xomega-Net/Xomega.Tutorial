@@ -17,6 +17,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             services.AddTransient<SalesOrderDetailObject, SalesOrderDetailObject>();
             services.AddTransient<SalesOrderList, SalesOrderList>();
             services.AddTransient<SalesOrderObject, SalesOrderObject>();
+            services.AddTransient<SalesOrderPaymentObject, SalesOrderPaymentObject>();
             services.AddTransient<SalesOrderReasonList, SalesOrderReasonList>();
             services.AddTransient<SalesOrderReasonObject, SalesOrderReasonObject>();
             return services;

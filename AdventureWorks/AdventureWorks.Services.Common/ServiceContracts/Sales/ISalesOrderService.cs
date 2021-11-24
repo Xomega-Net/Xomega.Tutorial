@@ -118,16 +118,6 @@ namespace AdventureWorks.Services.Common
         public DateTime OrderDate { get; set; }
         
         ///<summary>
-        /// Date the order is due to the customer.
-        ///</summary>
-        public DateTime DueDate { get; set; }
-        
-        ///<summary>
-        /// Date the order was shipped to the customer.
-        ///</summary>
-        public DateTime? ShipDate { get; set; }
-        
-        ///<summary>
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
         public byte Status { get; set; }
@@ -173,44 +163,11 @@ namespace AdventureWorks.Services.Common
         public int ShipToAddressId { get; set; }
         
         ///<summary>
-        /// Shipping method. Foreign key to ShipMethod.ShipMethodID.
+        /// Date the order was shipped to the customer.
         ///</summary>
-        public int ShipMethodId { get; set; }
+        public DateTime? ShipDate { get; set; }
         
-        ///<summary>
-        /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
-        ///</summary>
-        public int? CreditCardId { get; set; }
-        
-        ///<summary>
-        /// Approval code provided by the credit card company.
-        ///</summary>
-        public string CreditCardApprovalCode { get; set; }
-        
-        ///<summary>
-        /// Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
-        ///</summary>
-        public int? CurrencyRateId { get; set; }
-        
-        ///<summary>
-        /// Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
-        ///</summary>
-        public decimal SubTotal { get; set; }
-        
-        ///<summary>
-        /// Tax amount.
-        ///</summary>
-        public decimal TaxAmt { get; set; }
-        
-        ///<summary>
-        /// Shipping cost.
-        ///</summary>
-        public decimal Freight { get; set; }
-        
-        ///<summary>
-        /// Total due from customer. Computed as Subtotal + TaxAmt + Freight.
-        ///</summary>
-        public decimal TotalDue { get; set; }
+        public PaymentInfo Payment { get; set; }
         
         ///<summary>
         /// Sales representative comments.
@@ -236,17 +193,6 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrder_CreateInput
     {
-        
-        ///<summary>
-        /// Date the order is due to the customer.
-        ///</summary>
-        [XRequired]
-        public DateTime DueDate { get; set; }
-        
-        ///<summary>
-        /// Date the order was shipped to the customer.
-        ///</summary>
-        public DateTime? ShipDate { get; set; }
         
         ///<summary>
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
@@ -304,50 +250,11 @@ namespace AdventureWorks.Services.Common
         public int ShipToAddressId { get; set; }
         
         ///<summary>
-        /// Shipping method. Foreign key to ShipMethod.ShipMethodID.
+        /// Date the order was shipped to the customer.
         ///</summary>
-        [XRequired]
-        public int ShipMethodId { get; set; }
+        public DateTime? ShipDate { get; set; }
         
-        ///<summary>
-        /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
-        ///</summary>
-        public int? CreditCardId { get; set; }
-        
-        ///<summary>
-        /// Approval code provided by the credit card company.
-        ///</summary>
-        [XMaxLength(15)]
-        public string CreditCardApprovalCode { get; set; }
-        
-        ///<summary>
-        /// Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
-        ///</summary>
-        public int? CurrencyRateId { get; set; }
-        
-        ///<summary>
-        /// Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
-        ///</summary>
-        [XRequired]
-        public decimal SubTotal { get; set; }
-        
-        ///<summary>
-        /// Tax amount.
-        ///</summary>
-        [XRequired]
-        public decimal TaxAmt { get; set; }
-        
-        ///<summary>
-        /// Shipping cost.
-        ///</summary>
-        [XRequired]
-        public decimal Freight { get; set; }
-        
-        ///<summary>
-        /// Total due from customer. Computed as Subtotal + TaxAmt + Freight.
-        ///</summary>
-        [XRequired]
-        public decimal TotalDue { get; set; }
+        public PaymentUpdate Payment { get; set; }
         
         ///<summary>
         /// Sales representative comments.
@@ -398,17 +305,6 @@ namespace AdventureWorks.Services.Common
     {
         
         ///<summary>
-        /// Date the order is due to the customer.
-        ///</summary>
-        [XRequired]
-        public DateTime DueDate { get; set; }
-        
-        ///<summary>
-        /// Date the order was shipped to the customer.
-        ///</summary>
-        public DateTime? ShipDate { get; set; }
-        
-        ///<summary>
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
         [XRequired]
@@ -464,50 +360,11 @@ namespace AdventureWorks.Services.Common
         public int ShipToAddressId { get; set; }
         
         ///<summary>
-        /// Shipping method. Foreign key to ShipMethod.ShipMethodID.
+        /// Date the order was shipped to the customer.
         ///</summary>
-        [XRequired]
-        public int ShipMethodId { get; set; }
+        public DateTime? ShipDate { get; set; }
         
-        ///<summary>
-        /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
-        ///</summary>
-        public int? CreditCardId { get; set; }
-        
-        ///<summary>
-        /// Approval code provided by the credit card company.
-        ///</summary>
-        [XMaxLength(15)]
-        public string CreditCardApprovalCode { get; set; }
-        
-        ///<summary>
-        /// Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
-        ///</summary>
-        public int? CurrencyRateId { get; set; }
-        
-        ///<summary>
-        /// Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
-        ///</summary>
-        [XRequired]
-        public decimal SubTotal { get; set; }
-        
-        ///<summary>
-        /// Tax amount.
-        ///</summary>
-        [XRequired]
-        public decimal TaxAmt { get; set; }
-        
-        ///<summary>
-        /// Shipping cost.
-        ///</summary>
-        [XRequired]
-        public decimal Freight { get; set; }
-        
-        ///<summary>
-        /// Total due from customer. Computed as Subtotal + TaxAmt + Freight.
-        ///</summary>
-        [XRequired]
-        public decimal TotalDue { get; set; }
+        public PaymentUpdate Payment { get; set; }
         
         ///<summary>
         /// Sales representative comments.

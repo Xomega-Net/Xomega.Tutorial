@@ -21,6 +21,9 @@
   <data name="SalesOrderObject-Detail_Title">
     <value xml:space="preserve">Detail</value>
   </data>
+  <data name="SalesOrderObject-Payment_Title">
+    <value xml:space="preserve">Payment</value>
+  </data>
   <data name="SalesOrderObject-Reason_Title">
     <value xml:space="preserve">Reason</value>
   </data>
@@ -30,12 +33,6 @@
   <data name="SalesOrderObject.OrderDate">
     <value xml:space="preserve">Order Date</value>
   </data>
-  <data name="SalesOrderObject.DueDate">
-    <value xml:space="preserve">Due Date</value>
-  </data>
-  <data name="SalesOrderObject.ShipDate">
-    <value xml:space="preserve">Ship Date</value>
-  </data>
   <data name="SalesOrderObject.Status">
     <value xml:space="preserve">Status</value>
   </data>
@@ -63,29 +60,8 @@
   <data name="SalesOrderObject.ShipToAddressId">
     <value xml:space="preserve">Ship To Address Id</value>
   </data>
-  <data name="SalesOrderObject.ShipMethodId">
-    <value xml:space="preserve">Ship Method Id</value>
-  </data>
-  <data name="SalesOrderObject.CreditCardId">
-    <value xml:space="preserve">Credit Card Id</value>
-  </data>
-  <data name="SalesOrderObject.CreditCardApprovalCode">
-    <value xml:space="preserve">Credit Card Approval Code</value>
-  </data>
-  <data name="SalesOrderObject.CurrencyRateId">
-    <value xml:space="preserve">Currency Rate Id</value>
-  </data>
-  <data name="SalesOrderObject.SubTotal">
-    <value xml:space="preserve">Sub Total</value>
-  </data>
-  <data name="SalesOrderObject.TaxAmt">
-    <value xml:space="preserve">Tax Amt</value>
-  </data>
-  <data name="SalesOrderObject.Freight">
-    <value xml:space="preserve">Freight</value>
-  </data>
-  <data name="SalesOrderObject.TotalDue">
-    <value xml:space="preserve">Total Due</value>
+  <data name="SalesOrderObject.ShipDate">
+    <value xml:space="preserve">Ship Date</value>
   </data>
   <data name="SalesOrderObject.Comment">
     <value xml:space="preserve">Comment</value>
@@ -96,12 +72,6 @@
   <data name="SalesOrderObject.ModifiedDate">
     <value xml:space="preserve">Modified Date</value>
   </data>
-  <data name="SalesOrderObject.DueDate">
-    <value xml:space="preserve">Due Date</value>
-  </data>
-  <data name="SalesOrderObject.ShipDate">
-    <value xml:space="preserve">Ship Date</value>
-  </data>
   <data name="SalesOrderObject.Status">
     <value xml:space="preserve">Status</value>
   </data>
@@ -129,29 +99,8 @@
   <data name="SalesOrderObject.ShipToAddressId">
     <value xml:space="preserve">Ship To Address Id</value>
   </data>
-  <data name="SalesOrderObject.ShipMethodId">
-    <value xml:space="preserve">Ship Method Id</value>
-  </data>
-  <data name="SalesOrderObject.CreditCardId">
-    <value xml:space="preserve">Credit Card Id</value>
-  </data>
-  <data name="SalesOrderObject.CreditCardApprovalCode">
-    <value xml:space="preserve">Credit Card Approval Code</value>
-  </data>
-  <data name="SalesOrderObject.CurrencyRateId">
-    <value xml:space="preserve">Currency Rate Id</value>
-  </data>
-  <data name="SalesOrderObject.SubTotal">
-    <value xml:space="preserve">Sub Total</value>
-  </data>
-  <data name="SalesOrderObject.TaxAmt">
-    <value xml:space="preserve">Tax Amt</value>
-  </data>
-  <data name="SalesOrderObject.Freight">
-    <value xml:space="preserve">Freight</value>
-  </data>
-  <data name="SalesOrderObject.TotalDue">
-    <value xml:space="preserve">Total Due</value>
+  <data name="SalesOrderObject.ShipDate">
+    <value xml:space="preserve">Ship Date</value>
   </data>
   <data name="SalesOrderObject.Comment">
     <value xml:space="preserve">Comment</value>
@@ -168,12 +117,6 @@
   <data name="SalesOrderObject.ModifiedDate">
     <value xml:space="preserve">Modified Date</value>
   </data>
-  <data name="SalesOrderObject.DueDate">
-    <value xml:space="preserve">Due Date</value>
-  </data>
-  <data name="SalesOrderObject.ShipDate">
-    <value xml:space="preserve">Ship Date</value>
-  </data>
   <data name="SalesOrderObject.Status">
     <value xml:space="preserve">Status</value>
   </data>
@@ -201,29 +144,8 @@
   <data name="SalesOrderObject.ShipToAddressId">
     <value xml:space="preserve">Ship To Address Id</value>
   </data>
-  <data name="SalesOrderObject.ShipMethodId">
-    <value xml:space="preserve">Ship Method Id</value>
-  </data>
-  <data name="SalesOrderObject.CreditCardId">
-    <value xml:space="preserve">Credit Card Id</value>
-  </data>
-  <data name="SalesOrderObject.CreditCardApprovalCode">
-    <value xml:space="preserve">Credit Card Approval Code</value>
-  </data>
-  <data name="SalesOrderObject.CurrencyRateId">
-    <value xml:space="preserve">Currency Rate Id</value>
-  </data>
-  <data name="SalesOrderObject.SubTotal">
-    <value xml:space="preserve">Sub Total</value>
-  </data>
-  <data name="SalesOrderObject.TaxAmt">
-    <value xml:space="preserve">Tax Amt</value>
-  </data>
-  <data name="SalesOrderObject.Freight">
-    <value xml:space="preserve">Freight</value>
-  </data>
-  <data name="SalesOrderObject.TotalDue">
-    <value xml:space="preserve">Total Due</value>
+  <data name="SalesOrderObject.ShipDate">
+    <value xml:space="preserve">Ship Date</value>
   </data>
   <data name="SalesOrderObject.Comment">
     <value xml:space="preserve">Comment</value>
@@ -452,6 +374,45 @@
   </data>
   <data name="SalesOrderDetailList.CarrierTrackingNumber">
     <value xml:space="preserve">Tracking #</value>
+  </data>
+  <data name="SalesOrderPaymentObject.SubTotal">
+    <value xml:space="preserve">Sub Total</value>
+  </data>
+  <data name="SalesOrderPaymentObject.ShipMethodId">
+    <value xml:space="preserve">Shipment Method</value>
+  </data>
+  <data name="SalesOrderPaymentObject.TaxAmt">
+    <value xml:space="preserve">Tax Amt</value>
+  </data>
+  <data name="SalesOrderPaymentObject.Freight">
+    <value xml:space="preserve">Freight</value>
+  </data>
+  <data name="SalesOrderPaymentObject.TotalDue">
+    <value xml:space="preserve">Total Due</value>
+  </data>
+  <data name="SalesOrderPaymentObject.DueDate">
+    <value xml:space="preserve">Due Date</value>
+  </data>
+  <data name="SalesOrderPaymentObject.CurrencyRate">
+    <value xml:space="preserve">Currency Rate</value>
+  </data>
+  <data name="SalesOrderPaymentObject.CreditCardId">
+    <value xml:space="preserve">Credit Card Id</value>
+  </data>
+  <data name="SalesOrderPaymentObject.CreditCardApprovalCode">
+    <value xml:space="preserve">Credit Card Approval Code</value>
+  </data>
+  <data name="SalesOrderPaymentObject.ShipMethodId">
+    <value xml:space="preserve">Shipment Method</value>
+  </data>
+  <data name="SalesOrderPaymentObject.DueDate">
+    <value xml:space="preserve">Due Date</value>
+  </data>
+  <data name="SalesOrderPaymentObject.CreditCardId">
+    <value xml:space="preserve">Credit Card Id</value>
+  </data>
+  <data name="SalesOrderPaymentObject.CreditCardApprovalCode">
+    <value xml:space="preserve">Credit Card Approval Code</value>
   </data>
   <data name="SalesOrderReasonObject.SalesReasonId">
     <value xml:space="preserve">Sales Reason Id</value>

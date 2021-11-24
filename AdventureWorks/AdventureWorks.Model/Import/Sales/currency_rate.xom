@@ -70,6 +70,7 @@
       </fields>
       <config>
         <sql:table name="Sales.CurrencyRate"/>
+        <edm:customize extend="true"/>
       </config>
       <doc>
         <summary>Currency exchange rates.</summary>

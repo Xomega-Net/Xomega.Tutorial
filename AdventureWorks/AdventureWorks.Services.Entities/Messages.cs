@@ -54,5 +54,11 @@ namespace AdventureWorks.Services.Entities
         /// Where {0}=Values, {1}=Parameter Names, {2}=Reference Entity Type
         /// </summary>
         public const string InvalidForeignKeys = "InvalidForeignKeys";
+
+        /// <summary>
+        /// Payment information is required for order {0}.
+        /// Where {0}=Order ID
+        /// </summary>
+        public const string PaymentRequired = "PaymentRequired";
     }
 }

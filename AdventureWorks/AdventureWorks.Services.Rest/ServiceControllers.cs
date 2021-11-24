@@ -16,6 +16,7 @@ namespace AdventureWorks.Services.Rest
             services.AddScoped<SalesOrderController, SalesOrderController>();
             services.AddScoped<SalesPersonController, SalesPersonController>();
             services.AddScoped<SalesTerritoryController, SalesTerritoryController>();
+            services.AddScoped<ShipMethodController, ShipMethodController>();
             services.AddScoped<SpecialOfferController, SpecialOfferController>();
             return services;
         }

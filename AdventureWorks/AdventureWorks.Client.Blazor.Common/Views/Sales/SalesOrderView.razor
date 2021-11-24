@@ -29,8 +29,6 @@
               <div class="row @GetRowCol(4)">
                 <XDataLabel Class="mb-3" Property="@VM?.MainObj?.SalesOrderNumberProperty"></XDataLabel>
                 <XDataLabel Class="mb-3" Property="@VM?.MainObj?.OrderDateProperty"></XDataLabel>
-                <XDatePicker Class="mb-3" Property="@VM?.MainObj?.DueDateProperty"></XDatePicker>
-                <XDatePicker Class="mb-3" Property="@VM?.MainObj?.ShipDateProperty"></XDatePicker>
                 <XSelect Class="mb-3" Property="@VM?.MainObj?.StatusProperty"></XSelect>
                 <XCheckBox Class="mb-3" Property="@VM?.MainObj?.OnlineOrderFlagProperty"></XCheckBox>
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.PurchaseOrderNumberProperty"></XInputText>
@@ -40,14 +38,7 @@
                 <XSelect Class="mb-3" Property="@VM?.MainObj?.TerritoryIdProperty"></XSelect>
                 <XNumericBox Class="mb-3" Property="@VM?.MainObj?.BillToAddressIdProperty"></XNumericBox>
                 <XNumericBox Class="mb-3" Property="@VM?.MainObj?.ShipToAddressIdProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.ShipMethodIdProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.CreditCardIdProperty"></XNumericBox>
-                <XInputText Class="mb-3" Property="@VM?.MainObj?.CreditCardApprovalCodeProperty"></XInputText>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.CurrencyRateIdProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.SubTotalProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.TaxAmtProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.FreightProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.TotalDueProperty"></XNumericBox>
+                <XDatePicker Class="mb-3" Property="@VM?.MainObj?.ShipDateProperty"></XDatePicker>
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.CommentProperty"></XInputText>
                 <XDataLabel Class="mb-3" Property="@VM?.MainObj?.RevisionNumberProperty"></XDataLabel>
                 <XDataLabel Class="mb-3" Property="@VM?.MainObj?.ModifiedDateProperty"></XDataLabel>
@@ -83,6 +74,24 @@
                         <XActionButton Action="@VM?.MainObj?.DetailList?.NewAction"
                                        OnClick="async () => await LinkDetailNew_ClickAsync()"
                                        Outline="true"></XActionButton>
+                      </div>
+                    </fieldset>
+                  </div>
+                </TabPage>
+                <TabPage Title="@VM?.MainObj?.GetChildTitle(SalesOrderObject.Payment)">
+                  <div class="pt-3">
+                    <fieldset>
+                      <div class="row @GetRowCol(4)">
+                        <XDataLabel Class="mb-3" Property="@VM?.MainObj?.PaymentObject?.SubTotalProperty"></XDataLabel>
+                        <XSelect Class="mb-3" Property="@VM?.MainObj?.PaymentObject?.ShipMethodIdProperty"></XSelect>
+                        <XDataLabel Class="mb-3" Property="@VM?.MainObj?.PaymentObject?.TaxAmtProperty"></XDataLabel>
+                        <XDataLabel Class="mb-3" Property="@VM?.MainObj?.PaymentObject?.FreightProperty"></XDataLabel>
+                        <XDataLabel Class="mb-3" Property="@VM?.MainObj?.PaymentObject?.TotalDueProperty"></XDataLabel>
+                        <XDatePicker Class="mb-3" Property="@VM?.MainObj?.PaymentObject?.DueDateProperty"></XDatePicker>
+                        <XDataLabel Class="mb-3" Property="@VM?.MainObj?.PaymentObject?.CurrencyRateProperty"></XDataLabel>
+                        <XNumericBox Class="mb-3" Property="@VM?.MainObj?.PaymentObject?.CreditCardIdProperty"></XNumericBox>
+                        <XInputText Class="mb-3"
+                                    Property="@VM?.MainObj?.PaymentObject?.CreditCardApprovalCodeProperty"></XInputText>
                       </div>
                     </fieldset>
                   </div>

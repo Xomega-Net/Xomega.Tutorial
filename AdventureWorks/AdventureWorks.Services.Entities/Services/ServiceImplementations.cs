@@ -17,6 +17,7 @@ namespace AdventureWorks.Services.Entities
             services.AddScoped<ISalesOrderService, SalesOrderService>();
             services.AddScoped<ISalesPersonService, SalesPersonService>();
             services.AddScoped<ISalesTerritoryService, SalesTerritoryService>();
+            services.AddScoped<IShipMethodService, ShipMethodService>();
             services.AddScoped<ISpecialOfferService, SpecialOfferService>();
             return services;
         }

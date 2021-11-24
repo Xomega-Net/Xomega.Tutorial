@@ -141,4 +141,8 @@
     <value>Invalid values ({0}) for parameters ({1}). Cannot find the corresponding {2} object.</value>
     <comment>{0}=Values, {1}=Parameter Names, {2}=Reference Entity Type</comment>
   </data>
+  <data name="PaymentRequired" xml:space="preserve">
+    <value>Payment information is required for order {0}.</value>
+    <comment>{0}=Order ID</comment>
+  </data>
 </root>
