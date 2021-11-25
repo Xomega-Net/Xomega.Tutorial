@@ -145,4 +145,8 @@
     <value>Payment information is required for order {0}.</value>
     <comment>{0}=Order ID</comment>
   </data>
+  <data name="SalesRequired" xml:space="preserve">
+    <value>Sales information is required for order {0}.</value>
+    <comment>{0}=Order ID</comment>
+  </data>
 </root>

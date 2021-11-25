@@ -34,8 +34,6 @@
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.PurchaseOrderNumberProperty"></XInputText>
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.AccountNumberProperty"></XInputText>
                 <XNumericBox Class="mb-3" Property="@VM?.MainObj?.CustomerIdProperty"></XNumericBox>
-                <XSelect Class="mb-3" Property="@VM?.MainObj?.SalesPersonIdProperty"></XSelect>
-                <XSelect Class="mb-3" Property="@VM?.MainObj?.TerritoryIdProperty"></XSelect>
                 <XNumericBox Class="mb-3" Property="@VM?.MainObj?.BillToAddressIdProperty"></XNumericBox>
                 <XNumericBox Class="mb-3" Property="@VM?.MainObj?.ShipToAddressIdProperty"></XNumericBox>
                 <XDatePicker Class="mb-3" Property="@VM?.MainObj?.ShipDateProperty"></XDatePicker>
@@ -96,29 +94,13 @@
                     </fieldset>
                   </div>
                 </TabPage>
-                <TabPage Title="@VM?.MainObj?.GetChildTitle(SalesOrderObject.Reason)">
+                <TabPage Title="@VM?.MainObj?.GetChildTitle(SalesOrderObject.Sales)">
                   <div class="pt-3">
                     <fieldset>
-                      <div class="mb-3">
-                        <XGrid List="@VM?.MainObj?.ReasonList" ResourceKey="@Model?.GetResourceKey()">
-                          <GridColumns>
-                            <XGridColumn Property="@VM?.MainObj?.ReasonList?.SalesReasonIdProperty" Width="27%">
-                              <Template>
-                                <a role="button"
-                                   @onclick="async () => await LinkReasonDetails_ClickAsync(context as DataRow)"
-                                   class="btn-link @(DisabledIfNot(VM?.LinkReasonDetails_Enabled(context as DataRow)))">
-                                  <XDataText Property="@VM?.MainObj?.ReasonList?.SalesReasonIdProperty"></XDataText>
-                                </a>
-                              </Template>
-                            </XGridColumn>
-                            <XGridColumn Property="@VM?.MainObj?.ReasonList?.ModifiedDateProperty" Width="73%"></XGridColumn>
-                          </GridColumns>
-                        </XGrid>
-                      </div>
-                      <div class="btn-group mb-3">
-                        <XActionButton Action="@VM?.MainObj?.ReasonList?.NewAction"
-                                       OnClick="async () => await LinkReasonNew_ClickAsync()"
-                                       Outline="true"></XActionButton>
+                      <div class="row @GetRowCol(1)">
+                        <XSelect Class="mb-3" Property="@VM?.MainObj?.SalesObject?.TerritoryIdProperty"></XSelect>
+                        <XSelect Class="mb-3" Property="@VM?.MainObj?.SalesObject?.SalesPersonIdProperty"></XSelect>
+                        <XPickList Class="mb-3" Property="@VM?.MainObj?.SalesObject?.SalesReasonProperty"></XPickList>
                       </div>
                     </fieldset>
                   </div>
@@ -137,8 +119,6 @@
       </div>
       <SalesOrderDetailView @ref="cvSalesOrderDetailView"
                             Class="@GetViewCol(cvSalesOrderDetailView)"></SalesOrderDetailView>
-      <SalesOrderReasonView @ref="cvSalesOrderReasonView"
-                            Class="@GetViewCol(cvSalesOrderReasonView)"></SalesOrderReasonView>
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace AdventureWorks.Services.Common
 {
@@ -81,6 +82,25 @@ namespace AdventureWorks.Services.Common
         /// Approval code provided by the credit card company.
         ///</summary>
         public string CreditCardApprovalCode { get; set; }
+    }
+    #endregion
+
+    #region SalesInfo structure
+
+    public class SalesInfo
+    {
+        
+        ///<summary>
+        /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
+        ///</summary>
+        public int? TerritoryId { get; set; }
+        
+        ///<summary>
+        /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
+        ///</summary>
+        public int? SalesPersonId { get; set; }
+        
+        public ICollection<int> SalesReason { get; set; }
     }
     #endregion
 

@@ -60,5 +60,11 @@ namespace AdventureWorks.Services.Entities
         /// Where {0}=Order ID
         /// </summary>
         public const string PaymentRequired = "PaymentRequired";
+
+        /// <summary>
+        /// Sales information is required for order {0}.
+        /// Where {0}=Order ID
+        /// </summary>
+        public const string SalesRequired = "SalesRequired";
     }
 }

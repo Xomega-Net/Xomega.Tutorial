@@ -24,8 +24,8 @@
   <data name="SalesOrderObject-Payment_Title">
     <value xml:space="preserve">Payment</value>
   </data>
-  <data name="SalesOrderObject-Reason_Title">
-    <value xml:space="preserve">Reason</value>
+  <data name="SalesOrderObject-Sales_Title">
+    <value xml:space="preserve">Sales</value>
   </data>
   <data name="SalesOrderObject.SalesOrderNumber">
     <value xml:space="preserve">Sales Order Number</value>
@@ -47,12 +47,6 @@
   </data>
   <data name="SalesOrderObject.CustomerId">
     <value xml:space="preserve">Customer Id</value>
-  </data>
-  <data name="SalesOrderObject.SalesPersonId">
-    <value xml:space="preserve">Sales Person Id</value>
-  </data>
-  <data name="SalesOrderObject.TerritoryId">
-    <value xml:space="preserve">Territory Id</value>
   </data>
   <data name="SalesOrderObject.BillToAddressId">
     <value xml:space="preserve">Bill To Address Id</value>
@@ -86,12 +80,6 @@
   </data>
   <data name="SalesOrderObject.CustomerId">
     <value xml:space="preserve">Customer Id</value>
-  </data>
-  <data name="SalesOrderObject.SalesPersonId">
-    <value xml:space="preserve">Sales Person Id</value>
-  </data>
-  <data name="SalesOrderObject.TerritoryId">
-    <value xml:space="preserve">Territory Id</value>
   </data>
   <data name="SalesOrderObject.BillToAddressId">
     <value xml:space="preserve">Bill To Address Id</value>
@@ -131,12 +119,6 @@
   </data>
   <data name="SalesOrderObject.CustomerId">
     <value xml:space="preserve">Customer Id</value>
-  </data>
-  <data name="SalesOrderObject.SalesPersonId">
-    <value xml:space="preserve">Sales Person Id</value>
-  </data>
-  <data name="SalesOrderObject.TerritoryId">
-    <value xml:space="preserve">Territory Id</value>
   </data>
   <data name="SalesOrderObject.BillToAddressId">
     <value xml:space="preserve">Bill To Address Id</value>
@@ -414,38 +396,14 @@
   <data name="SalesOrderPaymentObject.CreditCardApprovalCode">
     <value xml:space="preserve">Credit Card Approval Code</value>
   </data>
-  <data name="SalesOrderReasonObject.SalesReasonId">
-    <value xml:space="preserve">Sales Reason Id</value>
+  <data name="SalesOrderSalesObject.TerritoryId">
+    <value xml:space="preserve">Territory</value>
   </data>
-  <data name="SalesOrderReasonObject.ModifiedDate">
-    <value xml:space="preserve">Modified Date</value>
+  <data name="SalesOrderSalesObject.SalesPersonId">
+    <value xml:space="preserve">Sales Person</value>
   </data>
-  <data name="SalesOrderReasonObject.SalesReasonId">
-    <value xml:space="preserve">Sales Reason Id</value>
-  </data>
-  <data name="SalesOrderReasonObject.ModifiedDate">
-    <value xml:space="preserve">Modified Date</value>
-  </data>
-  <data name="SalesOrderReasonObject.SalesReasonId">
-    <value xml:space="preserve">Sales Reason Id</value>
-  </data>
-  <data name="SalesOrderReasonObject.ModifiedDate">
-    <value xml:space="preserve">Modified Date</value>
-  </data>
-  <data name="SalesOrderReasonObject.SalesReasonId">
-    <value xml:space="preserve">Sales Reason Id</value>
-  </data>
-  <data name="SalesOrderReasonList_Action_Details">
-    <value xml:space="preserve">Details</value>
-  </data>
-  <data name="SalesOrderReasonList_Action_New">
-    <value xml:space="preserve">New</value>
-  </data>
-  <data name="SalesOrderReasonList.SalesReasonId">
-    <value xml:space="preserve">Sales Reason Id</value>
-  </data>
-  <data name="SalesOrderReasonList.ModifiedDate">
-    <value xml:space="preserve">Modified Date</value>
+  <data name="SalesOrderSalesObject.SalesReason">
+    <value xml:space="preserve">Sales Reasons</value>
   </data>
   <data name="SalesOrderView_Title">
     <value xml:space="preserve">Sales Order</value>
@@ -461,9 +419,6 @@
   </data>
   <data name="SalesOrderDetailView_Title">
     <value xml:space="preserve">Detail</value>
-  </data>
-  <data name="SalesOrderReasonView_Title">
-    <value xml:space="preserve">Reason</value>
   </data>
   <data name="Module_Sales_NavMenu">
     <value xml:space="preserve">Sales</value>

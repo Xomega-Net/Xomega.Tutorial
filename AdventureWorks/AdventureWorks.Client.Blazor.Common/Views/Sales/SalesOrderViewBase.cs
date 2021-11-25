@@ -31,12 +31,10 @@ namespace AdventureWorks.Client.Blazor.Common.Views
         }
 
         protected SalesOrderDetailView cvSalesOrderDetailView;
-        protected SalesOrderReasonView cvSalesOrderReasonView;
 
         protected override BlazorView[] ChildViews => new BlazorView[]
         {
             cvSalesOrderDetailView,
-            cvSalesOrderReasonView,
         };
     
         protected virtual async Task LinkDetailDetails_ClickAsync(DataRow row, CancellationToken token = default)
@@ -49,18 +47,6 @@ namespace AdventureWorks.Client.Blazor.Common.Views
         {
             if (VM != null && VM.LinkDetailNew_Enabled())
                 await VM.LinkDetailNew_CommandAsync(cvSalesOrderDetailView, cvSalesOrderDetailView.Visible ? cvSalesOrderDetailView : null, token);
-        }
-    
-        protected virtual async Task LinkReasonDetails_ClickAsync(DataRow row, CancellationToken token = default)
-        {
-            if (VM != null && VM.LinkReasonDetails_Enabled(row))
-                await VM.LinkReasonDetails_CommandAsync(cvSalesOrderReasonView, cvSalesOrderReasonView.Visible ? cvSalesOrderReasonView : null, row, token);
-        }
-    
-        protected virtual async Task LinkReasonNew_ClickAsync(CancellationToken token = default)
-        {
-            if (VM != null && VM.LinkReasonNew_Enabled())
-                await VM.LinkReasonNew_CommandAsync(cvSalesOrderReasonView, cvSalesOrderReasonView.Visible ? cvSalesOrderReasonView : null, token);
         }
     }
 }

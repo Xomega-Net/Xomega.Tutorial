@@ -42,6 +42,8 @@ namespace AdventureWorks.Services.Entities
                 ServiceUtil.CopyProperties(obj, res);
                 // CUSTOM_CODE_START: populate the Payment output structure of Read operation below
                 res.Payment = GetPaymentInfo(obj); // CUSTOM_CODE_END
+                // CUSTOM_CODE_START: populate the Sales output structure of Read operation below
+                res.Sales = GetSalesInfo(obj); // CUSTOM_CODE_END
                 // CUSTOM_CODE_START: add custom code for Read operation below
                 // CUSTOM_CODE_END
             }
@@ -68,9 +70,9 @@ namespace AdventureWorks.Services.Entities
                 entry.CurrentValues.SetValues(_data);
                 // CUSTOM_CODE_START: use the Payment input parameter of Create operation below
                 await UpdatePayment(obj, _data.Payment, token); // CUSTOM_CODE_END
+                // CUSTOM_CODE_START: use the Sales input parameter of Create operation below
+                await UpdateSalesInfo(obj, _data.Sales); // CUSTOM_CODE_END
                 await ctx.ValidateKeyAsync<Customer>(currentErrors, token, "CustomerId", _data.CustomerId);
-                await ctx.ValidateKeyAsync<SalesPerson>(currentErrors, token, "SalesPersonId", _data.SalesPersonId);
-                await ctx.ValidateKeyAsync<SalesTerritory>(currentErrors, token, "TerritoryId", _data.TerritoryId);
                 await ctx.ValidateKeyAsync<Address>(currentErrors, token, "BillToAddressId", _data.BillToAddressId);
                 await ctx.ValidateKeyAsync<Address>(currentErrors, token, "ShipToAddressId", _data.ShipToAddressId);
                 // CUSTOM_CODE_START: add custom code for Create operation below
@@ -103,9 +105,9 @@ namespace AdventureWorks.Services.Entities
                 entry.CurrentValues.SetValues(_data);
                 // CUSTOM_CODE_START: use the Payment input parameter of Update operation below
                 await UpdatePayment(obj, _data.Payment, token); // CUSTOM_CODE_END
+                // CUSTOM_CODE_START: use the Sales input parameter of Update operation below
+                await UpdateSalesInfo(obj, _data.Sales); // CUSTOM_CODE_END
                 await ctx.ValidateKeyAsync<Customer>(currentErrors, token, "CustomerId", _data.CustomerId);
-                await ctx.ValidateKeyAsync<SalesPerson>(currentErrors, token, "SalesPersonId", _data.SalesPersonId);
-                await ctx.ValidateKeyAsync<SalesTerritory>(currentErrors, token, "TerritoryId", _data.TerritoryId);
                 await ctx.ValidateKeyAsync<Address>(currentErrors, token, "BillToAddressId", _data.BillToAddressId);
                 await ctx.ValidateKeyAsync<Address>(currentErrors, token, "ShipToAddressId", _data.ShipToAddressId);
                 // CUSTOM_CODE_START: add custom code for Update operation below
@@ -358,142 +360,6 @@ namespace AdventureWorks.Services.Entities
                 currentErrors.MergeWith(errorParser.FromException(ex));
             }
             return await Task.FromResult(new Output<ICollection<SalesOrderDetail_ReadListOutput>>(currentErrors, res));
-        }
-
-        public virtual async Task<Output<SalesOrderReason_ReadOutput>> Reason_ReadAsync(int _salesOrderId, int _salesReasonId, CancellationToken token = default)
-        {
-            SalesOrderReason_ReadOutput res = new SalesOrderReason_ReadOutput();
-            try
-            {
-                currentErrors.AbortIfHasErrors();
-
-                // CUSTOM_CODE_START: add custom security checks for Reason_Read operation below
-                // CUSTOM_CODE_END
-                SalesOrderReason obj = await ctx.FindEntityAsync<SalesOrderReason>(currentErrors, token, _salesOrderId, _salesReasonId);
-                ServiceUtil.CopyProperties(obj, res);
-                // CUSTOM_CODE_START: add custom code for Reason_Read operation below
-                // CUSTOM_CODE_END
-            }
-            catch (Exception ex)
-            {
-                currentErrors.MergeWith(errorParser.FromException(ex));
-            }
-            return await Task.FromResult(new Output<SalesOrderReason_ReadOutput>(currentErrors, res));
-        }
-
-        public virtual async Task<Output> Reason_CreateAsync(int _salesOrderId, int _salesReasonId, SalesOrderReason_CreateInput_Data _data, CancellationToken token = default)
-        {
-            try
-            {
-                currentErrors.AbortIfHasErrors();
-
-                // CUSTOM_CODE_START: add custom security checks for Reason_Create operation below
-                // CUSTOM_CODE_END
-                EntityState state = EntityState.Added;
-                SalesOrderReason obj = new SalesOrderReason();
-                obj.SalesOrderId = _salesOrderId;
-                obj.SalesReasonId = _salesReasonId;
-                await ctx.ValidateUniqueKeyAsync<SalesOrderReason>(currentErrors, token, _salesOrderId, _salesReasonId);
-                var entry = ctx.Entry(obj);
-                entry.State = state;
-                entry.CurrentValues.SetValues(_data);
-                await ctx.ValidateKeyAsync<SalesOrder>(currentErrors, token, "SalesOrderId", _salesOrderId);
-                await ctx.ValidateKeyAsync<SalesReason>(currentErrors, token, "SalesReasonId", _salesReasonId);
-                // CUSTOM_CODE_START: add custom code for Reason_Create operation below
-                // CUSTOM_CODE_END
-                currentErrors.AbortIfHasErrors();
-                await ctx.SaveChangesAsync(token);
-            }
-            catch (Exception ex)
-            {
-                currentErrors.MergeWith(errorParser.FromException(ex));
-            }
-            return await Task.FromResult(new Output(currentErrors));
-        }
-
-        public virtual async Task<Output> Reason_UpdateAsync(int _salesOrderId, int _salesReasonId, SalesOrderReason_UpdateInput_Data _data, CancellationToken token = default)
-        {
-            try
-            {
-                currentErrors.AbortIfHasErrors();
-
-                // CUSTOM_CODE_START: add custom security checks for Reason_Update operation below
-                // CUSTOM_CODE_END
-                SalesOrderReason obj = await ctx.FindEntityAsync<SalesOrderReason>(currentErrors, token, _salesOrderId, _salesReasonId);
-                var entry = ctx.Entry(obj);
-                entry.CurrentValues.SetValues(_data);
-                // CUSTOM_CODE_START: add custom code for Reason_Update operation below
-                // CUSTOM_CODE_END
-                currentErrors.AbortIfHasErrors();
-                await ctx.SaveChangesAsync(token);
-            }
-            catch (Exception ex)
-            {
-                currentErrors.MergeWith(errorParser.FromException(ex));
-            }
-            return await Task.FromResult(new Output(currentErrors));
-        }
-
-        public virtual async Task<Output> Reason_DeleteAsync(int _salesOrderId, int _salesReasonId, CancellationToken token = default)
-        {
-            try
-            {
-                currentErrors.AbortIfHasErrors();
-
-                // CUSTOM_CODE_START: add custom security checks for Reason_Delete operation below
-                // CUSTOM_CODE_END
-                EntityState state = EntityState.Deleted;
-                SalesOrderReason obj = await ctx.FindEntityAsync<SalesOrderReason>(currentErrors, token, _salesOrderId, _salesReasonId);
-                var entry = ctx.Entry(obj);
-                entry.State = state;
-                // CUSTOM_CODE_START: add custom code for Reason_Delete operation below
-                // CUSTOM_CODE_END
-                currentErrors.AbortIfHasErrors();
-                await ctx.SaveChangesAsync(token);
-            }
-            catch (Exception ex)
-            {
-                currentErrors.MergeWith(errorParser.FromException(ex));
-            }
-            return await Task.FromResult(new Output(currentErrors));
-        }
-
-        public virtual async Task<Output<ICollection<SalesOrderReason_ReadListOutput>>> Reason_ReadListAsync(int _salesOrderId, CancellationToken token = default)
-        {
-            ICollection<SalesOrderReason_ReadListOutput> res = null;
-            try
-            {
-                currentErrors.AbortIfHasErrors();
-
-                // CUSTOM_CODE_START: add custom security checks for Reason_ReadList operation below
-                // CUSTOM_CODE_END
-                var src = from obj in ctx.SalesOrderReason select obj;
-
-                // Source filter
-                src = AddClause(src, "SalesOrderId", o => o.SalesOrderId, _salesOrderId);
-
-                // CUSTOM_CODE_START: add custom filter criteria to the source query for Reason_ReadList operation below
-                // src = src.Where(o => o.FieldName == VALUE);
-                // CUSTOM_CODE_END
-
-                var qry = from obj in src
-                          select new SalesOrderReason_ReadListOutput() {
-                              SalesReasonId = obj.SalesReasonId,
-                              ModifiedDate = obj.ModifiedDate,
-                          };
-
-                // CUSTOM_CODE_START: add custom filter criteria to the result query for Reason_ReadList operation below
-                // qry = qry.Where(o => o.FieldName == VALUE);
-                // CUSTOM_CODE_END
-
-                currentErrors.AbortIfHasErrors();
-                res = await qry.ToListAsync(token);
-            }
-            catch (Exception ex)
-            {
-                currentErrors.MergeWith(errorParser.FromException(ex));
-            }
-            return await Task.FromResult(new Output<ICollection<SalesOrderReason_ReadListOutput>>(currentErrors, res));
         }
     }
 }

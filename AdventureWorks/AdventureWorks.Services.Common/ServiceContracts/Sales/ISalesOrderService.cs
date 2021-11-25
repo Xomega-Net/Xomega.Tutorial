@@ -71,31 +71,6 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         Task<Output<ICollection<SalesOrderDetail_ReadListOutput>>> Detail_ReadListAsync(int _salesOrderId, CancellationToken token = default);
 
-        ///<summary>
-        /// Reads the values of a Sales Order Reason object by its key.
-        ///</summary>
-        Task<Output<SalesOrderReason_ReadOutput>> Reason_ReadAsync(int _salesOrderId, int _salesReasonId, CancellationToken token = default);
-
-        ///<summary>
-        /// Creates a new Sales Order Reason object using the specified data.
-        ///</summary>
-        Task<Output> Reason_CreateAsync(int _salesOrderId, int _salesReasonId, SalesOrderReason_CreateInput_Data _data, CancellationToken token = default);
-
-        ///<summary>
-        /// Updates existing or creates a new Sales Order Reason object using the specified data.
-        ///</summary>
-        Task<Output> Reason_UpdateAsync(int _salesOrderId, int _salesReasonId, SalesOrderReason_UpdateInput_Data _data, CancellationToken token = default);
-
-        ///<summary>
-        /// Deletes the specified Sales Order Reason object.
-        ///</summary>
-        Task<Output> Reason_DeleteAsync(int _salesOrderId, int _salesReasonId, CancellationToken token = default);
-
-        ///<summary>
-        /// Reads a list of Sales Order Reason objects based on the specified criteria.
-        ///</summary>
-        Task<Output<ICollection<SalesOrderReason_ReadListOutput>>> Reason_ReadListAsync(int _salesOrderId, CancellationToken token = default);
-
     }
     #endregion
 
@@ -143,16 +118,6 @@ namespace AdventureWorks.Services.Common
         public int CustomerId { get; set; }
         
         ///<summary>
-        /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
-        ///</summary>
-        public int? SalesPersonId { get; set; }
-        
-        ///<summary>
-        /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
-        ///</summary>
-        public int? TerritoryId { get; set; }
-        
-        ///<summary>
         /// Customer billing address. Foreign key to Address.AddressID.
         ///</summary>
         public int BillToAddressId { get; set; }
@@ -168,6 +133,8 @@ namespace AdventureWorks.Services.Common
         public DateTime? ShipDate { get; set; }
         
         public PaymentInfo Payment { get; set; }
+        
+        public SalesInfo Sales { get; set; }
         
         ///<summary>
         /// Sales representative comments.
@@ -226,18 +193,6 @@ namespace AdventureWorks.Services.Common
         public int CustomerId { get; set; }
         
         ///<summary>
-        /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
-        ///</summary>
-        [XLookupValue(SalesPerson.EnumName)]
-        public int? SalesPersonId { get; set; }
-        
-        ///<summary>
-        /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
-        ///</summary>
-        [XLookupValue(SalesTerritory.EnumName)]
-        public int? TerritoryId { get; set; }
-        
-        ///<summary>
         /// Customer billing address. Foreign key to Address.AddressID.
         ///</summary>
         [XRequired]
@@ -255,6 +210,8 @@ namespace AdventureWorks.Services.Common
         public DateTime? ShipDate { get; set; }
         
         public PaymentUpdate Payment { get; set; }
+        
+        public SalesInfo Sales { get; set; }
         
         ///<summary>
         /// Sales representative comments.
@@ -336,18 +293,6 @@ namespace AdventureWorks.Services.Common
         public int CustomerId { get; set; }
         
         ///<summary>
-        /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
-        ///</summary>
-        [XLookupValue(SalesPerson.EnumName)]
-        public int? SalesPersonId { get; set; }
-        
-        ///<summary>
-        /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
-        ///</summary>
-        [XLookupValue(SalesTerritory.EnumName)]
-        public int? TerritoryId { get; set; }
-        
-        ///<summary>
         /// Customer billing address. Foreign key to Address.AddressID.
         ///</summary>
         [XRequired]
@@ -365,6 +310,8 @@ namespace AdventureWorks.Services.Common
         public DateTime? ShipDate { get; set; }
         
         public PaymentUpdate Payment { get; set; }
+        
+        public SalesInfo Sales { get; set; }
         
         ///<summary>
         /// Sales representative comments.
@@ -811,70 +758,6 @@ namespace AdventureWorks.Services.Common
         /// Shipment tracking number supplied by the shipper.
         ///</summary>
         public string CarrierTrackingNumber { get; set; }
-    }
-    #endregion
-
-    #region SalesOrderReason_ReadOutput structure
-
-    ///<summary>
-    /// The output structure of operation IReasonService.Reason_ReadAsync.
-    ///</summary>
-    public class SalesOrderReason_ReadOutput
-    {
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        public DateTime ModifiedDate { get; set; }
-    }
-    #endregion
-
-    #region SalesOrderReason_CreateInput_Data structure
-
-    ///<summary>
-    /// Structure of parameter Data of the input structure of operation IReasonService.Reason_CreateAsync.
-    ///</summary>
-    public class SalesOrderReason_CreateInput_Data
-    {
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        [XRequired]
-        public DateTime ModifiedDate { get; set; }
-    }
-    #endregion
-
-    #region SalesOrderReason_UpdateInput_Data structure
-
-    ///<summary>
-    /// Structure of parameter Data of the input structure of operation IReasonService.Reason_UpdateAsync.
-    ///</summary>
-    public class SalesOrderReason_UpdateInput_Data
-    {
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        [XRequired]
-        public DateTime ModifiedDate { get; set; }
-    }
-    #endregion
-
-    #region SalesOrderReason_ReadListOutput structure
-
-    ///<summary>
-    /// The output structure of operation IReasonService.Reason_ReadListAsync.
-    ///</summary>
-    public class SalesOrderReason_ReadListOutput
-    {
-        
-        public int SalesReasonId { get; set; }
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        public DateTime ModifiedDate { get; set; }
     }
     #endregion
 

@@ -211,6 +211,21 @@ namespace AdventureWorks.Services.Common.Enumerations
     }
     #endregion
 
+    #region SalesReason
+    ///<summary>
+    /// Cached enumeration returned by the ISalesReasonService.ReadListAsync operation.
+    ///  
+    ///</summary>
+    public class SalesReason
+    {
+        ///<summary>
+        /// Enumeration name used for storing it in a lookup cache.
+        ///</summary>
+        public const string EnumName = "sales reason";
+
+    }
+    #endregion
+
     #region SalesTerritory
     ///<summary>
     /// Cached enumeration returned by the ISalesTerritoryService.ReadListAsync operation.
