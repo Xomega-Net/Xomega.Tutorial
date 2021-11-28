@@ -856,7 +856,7 @@
   </xfk:data-objects>
   <ui:views>
     <ui:view name="SalesOrderView" title="Sales Order">
-      <ui:view-model data-object="SalesOrderObject"/>
+      <ui:view-model data-object="SalesOrderObject" customize="true"/>
     </ui:view>
     <ui:view name="SalesOrderListView" title="Sales Order List">
       <ui:view-model data-object="SalesOrderList"/>
