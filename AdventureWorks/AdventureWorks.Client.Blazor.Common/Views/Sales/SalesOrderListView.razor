@@ -104,17 +104,11 @@
                          Title="@CriteriaText"
                          OnRefresh="@OnRefreshAsync"></CriteriaBar>
             <XGrid List="@VM?.ListObj" ResourceKey="@Model?.GetResourceKey()"
-                   @bind-CurrentPage="CurrentPage">
+                   @bind-CurrentPage="CurrentPage"
+                   AllowSelection="true"
+                   RowSelected="async (arg) => await LinkDetails_ClickAsync(arg)">
               <GridColumns>
-                <XGridColumn Property="@VM?.ListObj?.SalesOrderNumberProperty" Width="7%">
-                  <Template>
-                    <a role="button"
-                       @onclick="async () => await LinkDetails_ClickAsync(context as DataRow)"
-                       class="btn-link @(DisabledIfNot(VM?.LinkDetails_Enabled(context as DataRow)))">
-                      <XDataText Property="@VM?.ListObj?.SalesOrderNumberProperty"></XDataText>
-                    </a>
-                  </Template>
-                </XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.SalesOrderNumberProperty" Width="7%"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.OrderDateProperty" Width="7%"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.DueDateProperty" Width="7%"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.ShipDateProperty" Width="7%"></XGridColumn>

@@ -38,7 +38,7 @@ namespace AdventureWorks.Client.Common.ViewModels
             NameValueCollection query = new NameValueCollection()
             {
                 { "SalesOrderId", ListObj.SalesOrderIdProperty.GetStringValue(ValueFormat.EditString, row) },
-                { ViewParams.Mode.Param, ViewParams.Mode.Popup },
+                { ViewParams.Mode.Param, ViewParams.Mode.Inline },
                 { ViewParams.QuerySource, "LinkDetails" },
             };
             return query;
@@ -71,7 +71,7 @@ namespace AdventureWorks.Client.Common.ViewModels
             NameValueCollection query = new NameValueCollection()
             {
                 { ViewParams.Action.Param, ViewParams.Action.Create },
-                { ViewParams.Mode.Param, ViewParams.Mode.Popup },
+                { ViewParams.Mode.Param, ViewParams.Mode.Inline },
                 { ViewParams.QuerySource, "LinkNew" },
             };
             return query;

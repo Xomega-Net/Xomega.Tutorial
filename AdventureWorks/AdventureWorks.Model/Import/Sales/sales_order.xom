@@ -791,13 +791,13 @@
           <ui:field param="territory id" label="Sales Territory"/>
         </ui:fields>
       </ui:display>
-      <ui:link name="details" view="SalesOrderView" child="true">
+      <ui:link name="details" view="SalesOrderView" child="true" mode="inline">
         <ui:params>
           <ui:param name="sales order id" field="sales order id"/>
         </ui:params>
-        <ui:display on-field="sales order number"/>
+        <ui:display on-selection="true"/>
       </ui:link>
-      <ui:link name="new" view="SalesOrderView" child="true">
+      <ui:link name="new" view="SalesOrderView" child="true" mode="inline">
         <ui:params>
           <ui:param name="_action" value="create"/>
         </ui:params>
