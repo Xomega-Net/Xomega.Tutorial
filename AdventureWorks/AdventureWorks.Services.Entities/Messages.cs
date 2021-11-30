@@ -20,6 +20,12 @@ namespace AdventureWorks.Services.Entities
         }
 
         /// <summary>
+        /// Customer information is required for order {0}.
+        /// Where {0}=Order ID
+        /// </summary>
+        public const string CustomerRequired = "CustomerRequired";
+
+        /// <summary>
         /// {0} with id {1} already exists.
         /// Where {0}=Entity Type, {1}=Entity ID
         /// </summary>

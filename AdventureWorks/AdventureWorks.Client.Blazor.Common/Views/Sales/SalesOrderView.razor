@@ -33,9 +33,6 @@
                 <XCheckBox Class="mb-3" Property="@VM?.MainObj?.OnlineOrderFlagProperty"></XCheckBox>
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.PurchaseOrderNumberProperty"></XInputText>
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.AccountNumberProperty"></XInputText>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.CustomerIdProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.BillToAddressIdProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.ShipToAddressIdProperty"></XNumericBox>
                 <XDatePicker Class="mb-3" Property="@VM?.MainObj?.ShipDateProperty"></XDatePicker>
                 <XInputText Class="mb-3" Property="@VM?.MainObj?.CommentProperty"></XInputText>
                 <XDataLabel Class="mb-3" Property="@VM?.MainObj?.RevisionNumberProperty"></XDataLabel>
@@ -44,6 +41,20 @@
             </fieldset>
             <div class="@GetPanelCol(1, 4)">
               <TabSet>
+                <TabPage Title="@VM?.MainObj?.GetChildTitle(SalesOrderObject.Customer)">
+                  <div class="pt-3">
+                    <fieldset>
+                      <div class="row @GetRowCol(4)">
+                        <XDataLabel Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.StoreNameProperty"></XDataLabel>
+                        <XDataLabel Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.PersonNameProperty"></XDataLabel>
+                        <XDataLabel Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.AccountNumberProperty"></XDataLabel>
+                        <XDataLabel Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.TerritoryIdProperty"></XDataLabel>
+                        <XNumericBox Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.BillToAddressIdProperty"></XNumericBox>
+                        <XNumericBox Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.ShipToAddressIdProperty"></XNumericBox>
+                      </div>
+                    </fieldset>
+                  </div>
+                </TabPage>
                 <TabPage Title="@VM?.MainObj?.GetChildTitle(SalesOrderObject.Detail)">
                   <div class="pt-3">
                     <fieldset>

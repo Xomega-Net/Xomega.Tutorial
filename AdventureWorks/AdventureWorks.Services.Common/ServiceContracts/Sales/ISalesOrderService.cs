@@ -112,20 +112,7 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         public string AccountNumber { get; set; }
         
-        ///<summary>
-        /// Customer identification number. Foreign key to Customer.BusinessEntityID.
-        ///</summary>
-        public int CustomerId { get; set; }
-        
-        ///<summary>
-        /// Customer billing address. Foreign key to Address.AddressID.
-        ///</summary>
-        public int BillToAddressId { get; set; }
-        
-        ///<summary>
-        /// Customer shipping address. Foreign key to Address.AddressID.
-        ///</summary>
-        public int ShipToAddressId { get; set; }
+        public CustomerInfo Customer { get; set; }
         
         ///<summary>
         /// Date the order was shipped to the customer.
@@ -186,23 +173,7 @@ namespace AdventureWorks.Services.Common
         [XMaxLength(15)]
         public string AccountNumber { get; set; }
         
-        ///<summary>
-        /// Customer identification number. Foreign key to Customer.BusinessEntityID.
-        ///</summary>
-        [XRequired]
-        public int CustomerId { get; set; }
-        
-        ///<summary>
-        /// Customer billing address. Foreign key to Address.AddressID.
-        ///</summary>
-        [XRequired]
-        public int BillToAddressId { get; set; }
-        
-        ///<summary>
-        /// Customer shipping address. Foreign key to Address.AddressID.
-        ///</summary>
-        [XRequired]
-        public int ShipToAddressId { get; set; }
+        public CustomerUpdate Customer { get; set; }
         
         ///<summary>
         /// Date the order was shipped to the customer.
@@ -286,23 +257,7 @@ namespace AdventureWorks.Services.Common
         [XMaxLength(15)]
         public string AccountNumber { get; set; }
         
-        ///<summary>
-        /// Customer identification number. Foreign key to Customer.BusinessEntityID.
-        ///</summary>
-        [XRequired]
-        public int CustomerId { get; set; }
-        
-        ///<summary>
-        /// Customer billing address. Foreign key to Address.AddressID.
-        ///</summary>
-        [XRequired]
-        public int BillToAddressId { get; set; }
-        
-        ///<summary>
-        /// Customer shipping address. Foreign key to Address.AddressID.
-        ///</summary>
-        [XRequired]
-        public int ShipToAddressId { get; set; }
+        public CustomerUpdate Customer { get; set; }
         
         ///<summary>
         /// Date the order was shipped to the customer.

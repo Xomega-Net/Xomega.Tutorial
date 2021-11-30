@@ -18,6 +18,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SalesOrderObject-Customer_Title">
+    <value xml:space="preserve">Customer</value>
+  </data>
   <data name="SalesOrderObject-Detail_Title">
     <value xml:space="preserve">Detail</value>
   </data>
@@ -45,15 +48,6 @@
   <data name="SalesOrderObject.AccountNumber">
     <value xml:space="preserve">Account Number</value>
   </data>
-  <data name="SalesOrderObject.CustomerId">
-    <value xml:space="preserve">Customer Id</value>
-  </data>
-  <data name="SalesOrderObject.BillToAddressId">
-    <value xml:space="preserve">Bill To Address Id</value>
-  </data>
-  <data name="SalesOrderObject.ShipToAddressId">
-    <value xml:space="preserve">Ship To Address Id</value>
-  </data>
   <data name="SalesOrderObject.ShipDate">
     <value xml:space="preserve">Ship Date</value>
   </data>
@@ -77,15 +71,6 @@
   </data>
   <data name="SalesOrderObject.AccountNumber">
     <value xml:space="preserve">Account Number</value>
-  </data>
-  <data name="SalesOrderObject.CustomerId">
-    <value xml:space="preserve">Customer Id</value>
-  </data>
-  <data name="SalesOrderObject.BillToAddressId">
-    <value xml:space="preserve">Bill To Address Id</value>
-  </data>
-  <data name="SalesOrderObject.ShipToAddressId">
-    <value xml:space="preserve">Ship To Address Id</value>
   </data>
   <data name="SalesOrderObject.ShipDate">
     <value xml:space="preserve">Ship Date</value>
@@ -116,15 +101,6 @@
   </data>
   <data name="SalesOrderObject.AccountNumber">
     <value xml:space="preserve">Account Number</value>
-  </data>
-  <data name="SalesOrderObject.CustomerId">
-    <value xml:space="preserve">Customer Id</value>
-  </data>
-  <data name="SalesOrderObject.BillToAddressId">
-    <value xml:space="preserve">Bill To Address Id</value>
-  </data>
-  <data name="SalesOrderObject.ShipToAddressId">
-    <value xml:space="preserve">Ship To Address Id</value>
   </data>
   <data name="SalesOrderObject.ShipDate">
     <value xml:space="preserve">Ship Date</value>
@@ -242,6 +218,30 @@
   </data>
   <data name="SalesOrderList.TotalDue">
     <value xml:space="preserve">Total Due</value>
+  </data>
+  <data name="SalesOrderCustomerObject.StoreName">
+    <value xml:space="preserve">Store Name</value>
+  </data>
+  <data name="SalesOrderCustomerObject.PersonName">
+    <value xml:space="preserve">Person Name</value>
+  </data>
+  <data name="SalesOrderCustomerObject.AccountNumber">
+    <value xml:space="preserve">Account Number</value>
+  </data>
+  <data name="SalesOrderCustomerObject.TerritoryId">
+    <value xml:space="preserve">Territory</value>
+  </data>
+  <data name="SalesOrderCustomerObject.BillToAddressId">
+    <value xml:space="preserve">Bill To Address Id</value>
+  </data>
+  <data name="SalesOrderCustomerObject.ShipToAddressId">
+    <value xml:space="preserve">Ship To Address Id</value>
+  </data>
+  <data name="SalesOrderCustomerObject.BillToAddressId">
+    <value xml:space="preserve">Bill To Address Id</value>
+  </data>
+  <data name="SalesOrderCustomerObject.ShipToAddressId">
+    <value xml:space="preserve">Ship To Address Id</value>
   </data>
   <data name="SalesOrderDetailObject.SalesOrderId">
     <value xml:space="preserve">Sales Order Id</value>

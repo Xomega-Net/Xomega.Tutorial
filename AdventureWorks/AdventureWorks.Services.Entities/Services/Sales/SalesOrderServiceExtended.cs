@@ -76,5 +76,30 @@ namespace AdventureWorks.Services.Entities
                     }));
             }
         }
+
+        protected CustomerInfo GetCustomerInfo(SalesOrder obj) => new CustomerInfo()
+        {
+            CustomerId = obj.CustomerId,
+            AccountNumber = obj.CustomerObject?.AccountNumber,
+            PersonId = obj.CustomerObject?.PersonObject?.BusinessEntityId,
+            PersonName = obj.CustomerObject?.PersonObject?.FullName,
+            StoreId = obj.CustomerObject?.StoreObject?.BusinessEntityId,
+            StoreName = obj.CustomerObject?.StoreObject?.Name,
+            TerritoryId = obj.CustomerObject?.TerritoryObject?.TerritoryId,
+            BillToAddressId = obj.BillToAddressId,
+            ShipToAddressId = obj.ShipToAddressId,
+        };
+
+        protected async Task UpdateCustomer(SalesOrder obj, CustomerUpdate _data)
+        {
+            if (_data == null)
+            {
+                currentErrors.AddValidationError(Messages.CustomerRequired, obj.SalesOrderId);
+                return;
+            }
+            obj.CustomerObject = await ctx.FindEntityAsync<Customer>(currentErrors, _data.CustomerId);
+            obj.BillToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.BillToAddressId);
+            obj.ShipToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.ShipToAddressId);
+        }
     }
 }

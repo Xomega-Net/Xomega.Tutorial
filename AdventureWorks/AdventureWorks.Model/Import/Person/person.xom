@@ -118,6 +118,7 @@
       </fields>
       <config>
         <sql:table name="Person.Person"/>
+        <edm:customize extend="true"/>
       </config>
       <doc>
         <summary>Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.</summary>

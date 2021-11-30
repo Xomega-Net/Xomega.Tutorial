@@ -9,6 +9,56 @@ using System.Collections.Generic;
 
 namespace AdventureWorks.Services.Common
 {
+    #region CustomerInfo structure
+
+    public class CustomerInfo
+    {
+        
+        public int CustomerId { get; set; }
+        
+        ///<summary>
+        /// Foreign key to Store.BusinessEntityID
+        ///</summary>
+        public int? StoreId { get; set; }
+        
+        public string StoreName { get; set; }
+        
+        ///<summary>
+        /// Foreign key to Person.BusinessEntityID
+        ///</summary>
+        public int? PersonId { get; set; }
+        
+        public string PersonName { get; set; }
+        
+        ///<summary>
+        /// Unique number identifying the customer assigned by the accounting system.
+        ///</summary>
+        public string AccountNumber { get; set; }
+        
+        ///<summary>
+        /// ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.
+        ///</summary>
+        public int? TerritoryId { get; set; }
+        
+        public int? BillToAddressId { get; set; }
+        
+        public int? ShipToAddressId { get; set; }
+    }
+    #endregion
+
+    #region CustomerUpdate structure
+
+    public class CustomerUpdate
+    {
+        
+        public int CustomerId { get; set; }
+        
+        public int? BillToAddressId { get; set; }
+        
+        public int? ShipToAddressId { get; set; }
+    }
+    #endregion
+
     #region PaymentInfo structure
 
     public class PaymentInfo

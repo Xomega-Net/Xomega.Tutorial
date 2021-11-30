@@ -20,9 +20,8 @@ namespace AdventureWorks.Client.Common.DataObjects
         #region Constants
 
         public const string AccountNumber = "AccountNumber";
-        public const string BillToAddressId = "BillToAddressId";
         public const string Comment = "Comment";
-        public const string CustomerId = "CustomerId";
+        public const string Customer = "Customer";
         public const string Detail = "Detail";
         public const string ModifiedDate = "ModifiedDate";
         public const string OnlineOrderFlag = "OnlineOrderFlag";
@@ -34,7 +33,6 @@ namespace AdventureWorks.Client.Common.DataObjects
         public const string SalesOrderId = "SalesOrderId";
         public const string SalesOrderNumber = "SalesOrderNumber";
         public const string ShipDate = "ShipDate";
-        public const string ShipToAddressId = "ShipToAddressId";
         public const string Status = "Status";
 
         #endregion
@@ -42,9 +40,7 @@ namespace AdventureWorks.Client.Common.DataObjects
         #region Properties
 
         public TextProperty AccountNumberProperty { get; private set; }
-        public IntegerKeyProperty BillToAddressIdProperty { get; private set; }
         public TextProperty CommentProperty { get; private set; }
-        public IntegerKeyProperty CustomerIdProperty { get; private set; }
         public DateTimeProperty ModifiedDateProperty { get; private set; }
         public BooleanProperty OnlineOrderFlagProperty { get; private set; }
         public DateProperty OrderDateProperty { get; private set; }
@@ -52,14 +48,14 @@ namespace AdventureWorks.Client.Common.DataObjects
         public TinyIntegerProperty RevisionNumberProperty { get; private set; }
         public IntegerKeyProperty SalesOrderIdProperty { get; private set; }
         public TextProperty SalesOrderNumberProperty { get; private set; }
-        public DateTimeProperty ShipDateProperty { get; private set; }
-        public IntegerKeyProperty ShipToAddressIdProperty { get; private set; }
+        public DateProperty ShipDateProperty { get; private set; }
         public EnumByteProperty StatusProperty { get; private set; }
 
         #endregion
 
         #region Child Objects
 
+        public SalesOrderCustomerObject CustomerObject { get { return (SalesOrderCustomerObject)GetChildObject(Customer); } }
         public SalesOrderDetailList DetailList { get { return (SalesOrderDetailList)GetChildObject(Detail); } }
         public SalesOrderPaymentObject PaymentObject { get { return (SalesOrderPaymentObject)GetChildObject(Payment); } }
         public SalesOrderSalesObject SalesObject { get { return (SalesOrderSalesObject)GetChildObject(Sales); } }
@@ -112,19 +108,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Size = 15,
             };
-            CustomerIdProperty = new IntegerKeyProperty(this, CustomerId)
-            {
-                Required = true,
-            };
-            BillToAddressIdProperty = new IntegerKeyProperty(this, BillToAddressId)
-            {
-                Required = true,
-            };
-            ShipToAddressIdProperty = new IntegerKeyProperty(this, ShipToAddressId)
-            {
-                Required = true,
-            };
-            ShipDateProperty = new DateTimeProperty(this, ShipDate)
+            ShipDateProperty = new DateProperty(this, ShipDate)
             {
             };
             CommentProperty = new TextProperty(this, Comment)
@@ -141,6 +125,8 @@ namespace AdventureWorks.Client.Common.DataObjects
                 Required = true,
                 Editable = false,
             };
+            DataObject objCustomer = ServiceProvider.GetService<SalesOrderCustomerObject>();
+            AddChildObject(Customer, objCustomer);
             DataObject objDetail = ServiceProvider.GetService<SalesOrderDetailList>();
             AddChildObject(Detail, objDetail);
             DataObject objPayment = ServiceProvider.GetService<SalesOrderPaymentObject>();
