@@ -7,6 +7,7 @@
 using AdventureWorks.Client.Common.DataObjects;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,6 +29,57 @@ namespace AdventureWorks.Client.Common.ViewModels
             base.Initialize();
             DetailsObject = ServiceProvider.GetService<SalesOrderObject>();
         }
+
+        #region Link LinkCustomerLookupLookUp
+
+        public virtual NameValueCollection LinkCustomerLookupLookUp_Params()
+        {
+            NameValueCollection query = new NameValueCollection()
+            {
+                { ViewParams.Action.Param, ViewParams.Action.Select },
+                { ViewParams.SelectionMode.Param, ViewParams.SelectionMode.Single },
+                { "StoreNameOperator", "CN" },
+                { "StoreName", MainObj.CustomerObject.LookupObject.StoreNameProperty.GetStringValue(ValueFormat.EditString) },
+                { "PersonNameOperator", "CN" },
+                { "PersonName", MainObj.CustomerObject.LookupObject.PersonNameProperty.GetStringValue(ValueFormat.EditString) },
+                { ViewParams.Mode.Param, ViewParams.Mode.Popup },
+                { ViewParams.QuerySource, "LinkCustomerLookupLookUp" },
+            };
+            return query;
+        }
+
+        public virtual void LinkCustomerLookupLookUp_Command(IView tgtView, IView curView)
+        {
+            NameValueCollection query = LinkCustomerLookupLookUp_Params();
+            ViewModel tgtModel = ServiceProvider.GetService<CustomerListViewModel>();
+            NavigateTo(tgtModel, tgtView, query, this, curView);
+        }
+
+        public virtual async Task LinkCustomerLookupLookUp_CommandAsync(IAsyncView tgtView, IAsyncView curView, CancellationToken token = default)
+        {
+            NameValueCollection query = LinkCustomerLookupLookUp_Params();
+            ViewModel tgtModel = ServiceProvider.GetService<CustomerListViewModel>();
+            await NavigateToAsync(tgtModel, tgtView, query, this, curView, token);
+        }
+
+        public virtual bool LinkCustomerLookupLookUp_Enabled()
+        {
+            return true;
+        }
+
+        protected virtual void LinkCustomerLookupLookUp_HandleResult(object sender, List<DataRow> selectedRows)
+        {
+            if (selectedRows == null || selectedRows.Count != 1) return;
+            DataRow row = selectedRows[0];
+            MainObj.CustomerObject.CustomerIdProperty.SetValue(DataRow.GetValue(row, CustomerList.CustomerId));
+            MainObj.CustomerObject.StoreIdProperty.SetValue(DataRow.GetValue(row, CustomerList.StoreId));
+            MainObj.CustomerObject.StoreNameProperty.SetValue(DataRow.GetValue(row, CustomerList.StoreName));
+            MainObj.CustomerObject.PersonIdProperty.SetValue(DataRow.GetValue(row, CustomerList.PersonId));
+            MainObj.CustomerObject.PersonNameProperty.SetValue(DataRow.GetValue(row, CustomerList.PersonName));
+            MainObj.CustomerObject.AccountNumberProperty.SetValue(DataRow.GetValue(row, CustomerList.AccountNumber));
+            MainObj.CustomerObject.TerritoryIdProperty.SetValue(DataRow.GetValue(row, CustomerList.TerritoryId));
+        }
+        #endregion
 
         #region Link LinkDetailDetails
 
@@ -101,6 +153,8 @@ namespace AdventureWorks.Client.Common.ViewModels
         protected virtual void HandleSelection(object sender, ViewEvent e)
         {
             ViewModel child = sender as ViewModel;
+            if (e is ViewSelectionEvent && child?.Params?[ViewParams.QuerySource] == "LinkCustomerLookupLookUp")
+                LinkCustomerLookupLookUp_HandleResult(sender, ((ViewSelectionEvent)e).SelectedRows);
         }
 
         protected override void OnChildEvent(object sender, ViewEvent e)

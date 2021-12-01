@@ -4,24 +4,26 @@
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated.
 //---------------------------------------------------------------------------------------------
 
+using AdventureWorks.Services.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Xomega.Framework;
 using Xomega.Framework.Properties;
+using Xomega.Framework.Services;
 
 namespace AdventureWorks.Client.Common.DataObjects
 {
-    public partial class SalesOrderCustomerObject : DataObject
+    public partial class CustomerList : DataListObject
     {
         #region Constants
 
         public const string AccountNumber = "AccountNumber";
-        public const string BillToAddressId = "BillToAddressId";
         public const string CustomerId = "CustomerId";
-        public const string Lookup = "Lookup";
         public const string PersonId = "PersonId";
         public const string PersonName = "PersonName";
-        public const string ShipToAddressId = "ShipToAddressId";
         public const string StoreId = "StoreId";
         public const string StoreName = "StoreName";
         public const string TerritoryId = "TerritoryId";
@@ -31,30 +33,22 @@ namespace AdventureWorks.Client.Common.DataObjects
         #region Properties
 
         public TextProperty AccountNumberProperty { get; private set; }
-        public IntegerKeyProperty BillToAddressIdProperty { get; private set; }
         public IntegerKeyProperty CustomerIdProperty { get; private set; }
         public IntegerKeyProperty PersonIdProperty { get; private set; }
         public TextProperty PersonNameProperty { get; private set; }
-        public IntegerKeyProperty ShipToAddressIdProperty { get; private set; }
         public IntegerKeyProperty StoreIdProperty { get; private set; }
         public TextProperty StoreNameProperty { get; private set; }
         public EnumIntProperty TerritoryIdProperty { get; private set; }
 
         #endregion
 
-        #region Child Objects
-
-        public SalesCustomerLookupObject LookupObject { get { return (SalesCustomerLookupObject)GetChildObject(Lookup); } }
-
-        #endregion
-
         #region Construction
 
-        public SalesOrderCustomerObject()
+        public CustomerList()
         {
         }
 
-        public SalesOrderCustomerObject(IServiceProvider serviceProvider) : base(serviceProvider)
+        public CustomerList(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
 
@@ -63,15 +57,8 @@ namespace AdventureWorks.Client.Common.DataObjects
             CustomerIdProperty = new IntegerKeyProperty(this, CustomerId)
             {
                 Required = true,
+                Editable = false,
                 IsKey = true,
-            };
-            StoreIdProperty = new IntegerKeyProperty(this, StoreId)
-            {
-                Editable = false,
-            };
-            StoreNameProperty = new TextProperty(this, StoreName)
-            {
-                Editable = false,
             };
             PersonIdProperty = new IntegerKeyProperty(this, PersonId)
             {
@@ -81,10 +68,12 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Editable = false,
             };
-            AccountNumberProperty = new TextProperty(this, AccountNumber)
+            StoreIdProperty = new IntegerKeyProperty(this, StoreId)
             {
-                Required = true,
-                Size = 10,
+                Editable = false,
+            };
+            StoreNameProperty = new TextProperty(this, StoreName)
+            {
                 Editable = false,
             };
             TerritoryIdProperty = new EnumIntProperty(this, TerritoryId)
@@ -92,14 +81,38 @@ namespace AdventureWorks.Client.Common.DataObjects
                 EnumType = "sales territory",
                 Editable = false,
             };
-            BillToAddressIdProperty = new IntegerKeyProperty(this, BillToAddressId)
+            AccountNumberProperty = new TextProperty(this, AccountNumber)
             {
+                Required = true,
+                Size = 10,
+                Editable = false,
             };
-            ShipToAddressIdProperty = new IntegerKeyProperty(this, ShipToAddressId)
+        }
+
+        #endregion
+
+        #region CRUD Operations
+
+        protected override async Task<ErrorList> DoReadAsync(object options, CancellationToken token = default)
+        {
+            var output = await Customer_ReadListAsync(options, 
+                CriteriaObject?.ToDataContract<Customer_ReadListInput_Criteria>(options), token);
+            return output.Messages;
+        }
+
+        #endregion
+
+        #region Service Operations
+
+        protected virtual async Task<Output<ICollection<Customer_ReadListOutput>>> Customer_ReadListAsync(object options, Customer_ReadListInput_Criteria _criteria, CancellationToken token = default)
+        {
+            using (var s = ServiceProvider.CreateScope())
             {
-            };
-            DataObject objLookup = ServiceProvider.GetService<SalesCustomerLookupObject>();
-            AddChildObject(Lookup, objLookup);
+                var output = await s.ServiceProvider.GetService<ICustomerService>().ReadListAsync(_criteria, token);
+
+                await FromDataContractAsync(output?.Result, options, token);
+                return output;
+            }
         }
 
         #endregion

@@ -9,6 +9,17 @@ using System.Collections.Generic;
 
 namespace AdventureWorks.Services.Common
 {
+    #region CustomerLookup structure
+
+    public class CustomerLookup
+    {
+        
+        public string StoreName { get; set; }
+        
+        public string PersonName { get; set; }
+    }
+    #endregion
+
     #region CustomerInfo structure
 
     public class CustomerInfo

@@ -12,6 +12,9 @@ namespace AdventureWorks.Client.Common.DataObjects
     {
         public static IServiceCollection AddDataObjects(this IServiceCollection services)
         {
+            services.AddTransient<CustomerCriteria, CustomerCriteria>();
+            services.AddTransient<CustomerList, CustomerList>();
+            services.AddTransient<SalesCustomerLookupObject, SalesCustomerLookupObjectCustomized>();
             services.AddTransient<SalesOrderCriteria, SalesOrderCriteriaCustomized>();
             services.AddTransient<SalesOrderCustomerObject, SalesOrderCustomerObject>();
             services.AddTransient<SalesOrderDetailList, SalesOrderDetailList>();

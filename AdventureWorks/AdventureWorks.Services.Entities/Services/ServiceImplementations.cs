@@ -13,6 +13,7 @@ namespace AdventureWorks.Services.Entities
     {
         public static IServiceCollection AddServiceImplementations(this IServiceCollection services)
         {
+            services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ISalesOrderService, SalesOrderService>();
             services.AddScoped<ISalesPersonService, SalesPersonService>();

@@ -21,6 +21,12 @@ namespace AdventureWorks.Client.Blazor.Common.Views
                 {
                     new MenuItem()
                     {
+                        ResourceKey = "CustomerListView_NavMenu",
+                        IconClass = "bi bi-card-list",
+                        Href = "CustomerListView"
+                    },
+                    new MenuItem()
+                    {
                         ResourceKey = "SalesOrderView_NavMenu",
                         IconClass = "bi bi-pencil-square",
                         Href = "SalesOrderView?_action=create"

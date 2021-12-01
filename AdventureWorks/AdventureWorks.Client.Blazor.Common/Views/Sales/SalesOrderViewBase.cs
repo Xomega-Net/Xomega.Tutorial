@@ -30,12 +30,20 @@ namespace AdventureWorks.Client.Blazor.Common.Views
             base.BindTo(viewModel);
         }
 
+        protected CustomerListView cvCustomerListView;
         protected SalesOrderDetailView cvSalesOrderDetailView;
 
         protected override BlazorView[] ChildViews => new BlazorView[]
         {
+            cvCustomerListView,
             cvSalesOrderDetailView,
         };
+    
+        protected virtual async Task LinkCustomerLookupLookUp_ClickAsync(CancellationToken token = default)
+        {
+            if (VM != null && VM.LinkCustomerLookupLookUp_Enabled())
+                await VM.LinkCustomerLookupLookUp_CommandAsync(cvCustomerListView, cvCustomerListView.Visible ? cvCustomerListView : null, token);
+        }
     
         protected virtual async Task LinkDetailDetails_ClickAsync(DataRow row, CancellationToken token = default)
         {

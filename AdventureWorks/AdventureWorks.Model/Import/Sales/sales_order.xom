@@ -48,6 +48,14 @@
     </enum>
   </enums>
   <structs>
+    <struct name="customer lookup">
+      <param name="store name" type="string"/>
+      <param name="person name" type="string"/>
+      <config>
+        <xfk:add-to-object class="SalesCustomerLookupObject"/>
+      </config>
+      <usage generic="true"/>
+    </struct>
     <struct name="customer info" object="customer">
       <param name="customer id"/>
       <param name="store id"/>
@@ -821,6 +829,7 @@
       </ui:link>
     </xfk:data-object>
     <xfk:data-object class="SalesOrderCustomerObject">
+      <xfk:add-child name="lookup" class="SalesCustomerLookupObject"/>
       <ui:display>
         <ui:fields>
           <ui:field param="customer id" hidden="true"/>
@@ -829,6 +838,27 @@
           <ui:field param="territory id" label="Territory"/>
         </ui:fields>
       </ui:display>
+    </xfk:data-object>
+    <xfk:data-object class="SalesCustomerLookupObject" customize="true">
+      <ui:link name="look up" view="CustomerListView" child="true">
+        <ui:params>
+          <ui:param name="_action" value="select"/>
+          <ui:param name="_selection" value="single"/>
+          <ui:param name="store name operator" value="CN"/>
+          <ui:param name="store name" field="store name"/>
+          <ui:param name="person name operator" value="CN"/>
+          <ui:param name="person name" field="person name"/>
+        </ui:params>
+        <ui:result data-object="..">
+          <ui:param name="customer id" field="customer id"/>
+          <ui:param name="store id" field="store id"/>
+          <ui:param name="store name" field="store name"/>
+          <ui:param name="person id" field="person id"/>
+          <ui:param name="person name" field="person name"/>
+          <ui:param name="account number" field="account number"/>
+          <ui:param name="territory id" field="territory id"/>
+        </ui:result>
+      </ui:link>
     </xfk:data-object>
     <xfk:data-object class="SalesOrderDetailObject">
       <ui:display>
