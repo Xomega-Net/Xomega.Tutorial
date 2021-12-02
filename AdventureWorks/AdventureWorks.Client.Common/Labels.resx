@@ -18,6 +18,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddressObject.AddressId">
+    <value xml:space="preserve">Address Type</value>
+  </data>
+  <data name="AddressObject.AddressLine1">
+    <value xml:space="preserve">Address Line1</value>
+  </data>
+  <data name="AddressObject.AddressLine2">
+    <value xml:space="preserve">Address Line2</value>
+  </data>
+  <data name="AddressObject.CityState">
+    <value xml:space="preserve">City/State</value>
+  </data>
+  <data name="AddressObject.PostalCode">
+    <value xml:space="preserve">Postal Code</value>
+  </data>
+  <data name="AddressObject.Country">
+    <value xml:space="preserve">Country</value>
+  </data>
   <data name="CustomerCriteria.TerritoryId">
     <value xml:space="preserve">Territory</value>
   </data>
@@ -252,8 +270,17 @@
   <data name="SalesOrderList.TotalDue">
     <value xml:space="preserve">Total Due</value>
   </data>
+  <data name="SalesOrderCustomerObject_Title">
+    <value xml:space="preserve">Customer Info</value>
+  </data>
   <data name="SalesOrderCustomerObject-Lookup_Title">
-    <value xml:space="preserve">Lookup</value>
+    <value xml:space="preserve">Lookup Customer</value>
+  </data>
+  <data name="SalesOrderCustomerObject-BillingAddress_Title">
+    <value xml:space="preserve">Billing Address</value>
+  </data>
+  <data name="SalesOrderCustomerObject-ShippingAddress_Title">
+    <value xml:space="preserve">Shipping Address</value>
   </data>
   <data name="SalesOrderCustomerObject.StoreName">
     <value xml:space="preserve">Store Name</value>
@@ -266,18 +293,6 @@
   </data>
   <data name="SalesOrderCustomerObject.TerritoryId">
     <value xml:space="preserve">Territory</value>
-  </data>
-  <data name="SalesOrderCustomerObject.BillToAddressId">
-    <value xml:space="preserve">Bill To Address Id</value>
-  </data>
-  <data name="SalesOrderCustomerObject.ShipToAddressId">
-    <value xml:space="preserve">Ship To Address Id</value>
-  </data>
-  <data name="SalesOrderCustomerObject.BillToAddressId">
-    <value xml:space="preserve">Bill To Address Id</value>
-  </data>
-  <data name="SalesOrderCustomerObject.ShipToAddressId">
-    <value xml:space="preserve">Ship To Address Id</value>
   </data>
   <data name="SalesCustomerLookupObject_Action_LookUp">
     <value xml:space="preserve">Look Up</value>

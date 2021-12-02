@@ -51,9 +51,9 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         public int? TerritoryId { get; set; }
         
-        public int? BillToAddressId { get; set; }
+        public AddressKey BillingAddress { get; set; }
         
-        public int? ShipToAddressId { get; set; }
+        public AddressKey ShippingAddress { get; set; }
     }
     #endregion
 
@@ -64,9 +64,9 @@ namespace AdventureWorks.Services.Common
         
         public int CustomerId { get; set; }
         
-        public int? BillToAddressId { get; set; }
+        public AddressKey BillingAddress { get; set; }
         
-        public int? ShipToAddressId { get; set; }
+        public AddressKey ShippingAddress { get; set; }
     }
     #endregion
 

@@ -86,8 +86,8 @@ namespace AdventureWorks.Services.Entities
             StoreId = obj.CustomerObject?.StoreObject?.BusinessEntityId,
             StoreName = obj.CustomerObject?.StoreObject?.Name,
             TerritoryId = obj.CustomerObject?.TerritoryObject?.TerritoryId,
-            BillToAddressId = obj.BillToAddressId,
-            ShipToAddressId = obj.ShipToAddressId,
+            BillingAddress = new AddressKey { AddressId = obj.BillToAddressId },
+            ShippingAddress = new AddressKey { AddressId = obj.ShipToAddressId },
         };
 
         protected async Task UpdateCustomer(SalesOrder obj, CustomerUpdate _data)
@@ -98,8 +98,8 @@ namespace AdventureWorks.Services.Entities
                 return;
             }
             obj.CustomerObject = await ctx.FindEntityAsync<Customer>(currentErrors, _data.CustomerId);
-            obj.BillToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.BillToAddressId);
-            obj.ShipToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.ShipToAddressId);
+            obj.BillToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.BillingAddress.AddressId);
+            obj.ShipToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.ShippingAddress.AddressId);
         }
     }
 }

@@ -21,11 +21,11 @@ namespace AdventureWorks.Client.Common.DataObjects
             TrackModifications = false;
         }
 
-        // perform post intialization
+        // perform post initialization
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            // add custom intialization code here
+            // add custom initialization code here
         }
 
         // add custom code here

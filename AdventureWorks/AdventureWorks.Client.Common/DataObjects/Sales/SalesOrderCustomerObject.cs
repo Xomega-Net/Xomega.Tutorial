@@ -16,12 +16,12 @@ namespace AdventureWorks.Client.Common.DataObjects
         #region Constants
 
         public const string AccountNumber = "AccountNumber";
-        public const string BillToAddressId = "BillToAddressId";
+        public const string BillingAddress = "BillingAddress";
         public const string CustomerId = "CustomerId";
         public const string Lookup = "Lookup";
         public const string PersonId = "PersonId";
         public const string PersonName = "PersonName";
-        public const string ShipToAddressId = "ShipToAddressId";
+        public const string ShippingAddress = "ShippingAddress";
         public const string StoreId = "StoreId";
         public const string StoreName = "StoreName";
         public const string TerritoryId = "TerritoryId";
@@ -31,11 +31,9 @@ namespace AdventureWorks.Client.Common.DataObjects
         #region Properties
 
         public TextProperty AccountNumberProperty { get; private set; }
-        public IntegerKeyProperty BillToAddressIdProperty { get; private set; }
         public IntegerKeyProperty CustomerIdProperty { get; private set; }
         public IntegerKeyProperty PersonIdProperty { get; private set; }
         public TextProperty PersonNameProperty { get; private set; }
-        public IntegerKeyProperty ShipToAddressIdProperty { get; private set; }
         public IntegerKeyProperty StoreIdProperty { get; private set; }
         public TextProperty StoreNameProperty { get; private set; }
         public EnumIntProperty TerritoryIdProperty { get; private set; }
@@ -44,7 +42,9 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         #region Child Objects
 
+        public AddressObject BillingAddressObject { get { return (AddressObject)GetChildObject(BillingAddress); } }
         public SalesCustomerLookupObject LookupObject { get { return (SalesCustomerLookupObject)GetChildObject(Lookup); } }
+        public AddressObject ShippingAddressObject { get { return (AddressObject)GetChildObject(ShippingAddress); } }
 
         #endregion
 
@@ -92,14 +92,12 @@ namespace AdventureWorks.Client.Common.DataObjects
                 EnumType = "sales territory",
                 Editable = false,
             };
-            BillToAddressIdProperty = new IntegerKeyProperty(this, BillToAddressId)
-            {
-            };
-            ShipToAddressIdProperty = new IntegerKeyProperty(this, ShipToAddressId)
-            {
-            };
             DataObject objLookup = ServiceProvider.GetService<SalesCustomerLookupObject>();
             AddChildObject(Lookup, objLookup);
+            DataObject objBillingAddress = ServiceProvider.GetService<AddressObject>();
+            AddChildObject(BillingAddress, objBillingAddress);
+            DataObject objShippingAddress = ServiceProvider.GetService<AddressObject>();
+            AddChildObject(ShippingAddress, objShippingAddress);
         }
 
         #endregion

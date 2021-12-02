@@ -43,17 +43,16 @@
               <TabSet>
                 <TabPage Title="@VM?.MainObj?.GetChildTitle(SalesOrderObject.Customer)">
                   <div class="row pt-3">
-                    <fieldset class="@GetPanelCol(1, 4)">
-                      <div class="row @GetRowCol(4)">
+                    <fieldset class="@GetPanelCol(2, 2)">
+                      <legend>@VM?.MainObj?.CustomerObject?.GetTitle()</legend>
+                      <div class="row @GetRowCol(2)">
                         <XDataLabel Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.StoreNameProperty"></XDataLabel>
                         <XDataLabel Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.PersonNameProperty"></XDataLabel>
                         <XDataLabel Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.AccountNumberProperty"></XDataLabel>
                         <XDataLabel Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.TerritoryIdProperty"></XDataLabel>
-                        <XNumericBox Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.BillToAddressIdProperty"></XNumericBox>
-                        <XNumericBox Class="mb-3" Property="@VM?.MainObj?.CustomerObject?.ShipToAddressIdProperty"></XNumericBox>
                       </div>
                     </fieldset>
-                    <fieldset class="@GetPanelCol(1, 2)">
+                    <fieldset class="@GetPanelCol(2, 2)">
                       <legend>@VM?.MainObj?.CustomerObject?.GetChildTitle(SalesOrderCustomerObject.Lookup)</legend>
                       <fieldset>
                         <div class="row @GetRowCol(2)">
@@ -66,6 +65,44 @@
                           <XActionButton Action="@VM?.MainObj?.CustomerObject?.LookupObject?.LookUpAction"
                                          OnClick="async () => await LinkCustomerLookupLookUp_ClickAsync()"
                                          Outline="true"></XActionButton>
+                        </div>
+                      </fieldset>
+                    </fieldset>
+                    <fieldset class="@GetPanelCol(2, 3, 100)">
+                      <legend>@VM?.MainObj?.CustomerObject?.GetChildTitle(SalesOrderCustomerObject.BillingAddress)</legend>
+                      <fieldset>
+                        <div class="row @GetRowCol(3, 100)">
+                          <XSelect Class="mb-3"
+                                   Property="@VM?.MainObj?.CustomerObject?.BillingAddressObject?.AddressIdProperty"></XSelect>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.BillingAddressObject?.AddressLine1Property"></XDataLabel>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.BillingAddressObject?.AddressLine2Property"></XDataLabel>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.BillingAddressObject?.CityStateProperty"></XDataLabel>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.BillingAddressObject?.PostalCodeProperty"></XDataLabel>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.BillingAddressObject?.CountryProperty"></XDataLabel>
+                        </div>
+                      </fieldset>
+                    </fieldset>
+                    <fieldset class="@GetPanelCol(2, 3, 100)">
+                      <legend>@VM?.MainObj?.CustomerObject?.GetChildTitle(SalesOrderCustomerObject.ShippingAddress)</legend>
+                      <fieldset>
+                        <div class="row @GetRowCol(3, 100)">
+                          <XSelect Class="mb-3"
+                                   Property="@VM?.MainObj?.CustomerObject?.ShippingAddressObject?.AddressIdProperty"></XSelect>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.ShippingAddressObject?.AddressLine1Property"></XDataLabel>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.ShippingAddressObject?.AddressLine2Property"></XDataLabel>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.ShippingAddressObject?.CityStateProperty"></XDataLabel>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.ShippingAddressObject?.PostalCodeProperty"></XDataLabel>
+                          <XDataLabel Class="mb-3"
+                                      Property="@VM?.MainObj?.CustomerObject?.ShippingAddressObject?.CountryProperty"></XDataLabel>
                         </div>
                       </fieldset>
                     </fieldset>

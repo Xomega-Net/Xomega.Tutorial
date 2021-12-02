@@ -64,16 +64,16 @@
       <param name="person name" type="string" required="false"/>
       <param name="account number"/>
       <param name="territory id"/>
-      <param name="bill to address id" type="address"/>
-      <param name="ship to address id" type="address"/>
+      <struct name="billing address" ref="address key"/>
+      <struct name="shipping address" ref="address key"/>
       <config>
         <xfk:add-to-object class="SalesOrderCustomerObject"/>
       </config>
     </struct>
     <struct name="customer update" object="customer">
       <param name="customer id"/>
-      <param name="bill to address id" type="address"/>
-      <param name="ship to address id" type="address"/>
+      <struct name="billing address" ref="address key"/>
+      <struct name="shipping address" ref="address key"/>
       <config>
         <xfk:add-to-object class="SalesOrderCustomerObject"/>
       </config>
@@ -828,15 +828,22 @@
         </ui:params>
       </ui:link>
     </xfk:data-object>
-    <xfk:data-object class="SalesOrderCustomerObject">
+    <xfk:data-object class="SalesOrderCustomerObject" customize="true">
       <xfk:add-child name="lookup" class="SalesCustomerLookupObject"/>
+      <xfk:add-child name="billing address" class="AddressObject"/>
+      <xfk:add-child name="shipping address" class="AddressObject"/>
       <ui:display>
-        <ui:fields>
+        <ui:fields field-cols="2" panel-cols="2" title="Customer Info">
           <ui:field param="customer id" hidden="true"/>
           <ui:field param="person id" hidden="true"/>
           <ui:field param="store id" hidden="true"/>
           <ui:field param="territory id" label="Territory"/>
         </ui:fields>
+        <ui:child-panels>
+          <ui:panel child="lookup" panel-cols="2" field-cols="2" title="Lookup Customer"/>
+          <ui:panel child="billing address" panel-cols="2"/>
+          <ui:panel child="shipping address" panel-cols="2"/>
+        </ui:child-panels>
       </ui:display>
     </xfk:data-object>
     <xfk:data-object class="SalesCustomerLookupObject" customize="true">

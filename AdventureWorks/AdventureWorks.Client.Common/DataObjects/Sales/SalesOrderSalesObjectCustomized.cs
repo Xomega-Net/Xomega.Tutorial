@@ -20,7 +20,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             // add custom construction code here
         }
 
-        // perform post intialization
+        // perform post initialization
         protected override void OnInitialized()
         {
             base.OnInitialized();
