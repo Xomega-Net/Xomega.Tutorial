@@ -4,6 +4,7 @@
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated.
 //---------------------------------------------------------------------------------------------
 
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using Xomega.Framework;
 using Xomega.Framework.Properties;
@@ -14,8 +15,7 @@ namespace AdventureWorks.Client.Common.DataObjects
     {
         #region Constants
 
-        public const string CreditCardApprovalCode = "CreditCardApprovalCode";
-        public const string CreditCardId = "CreditCardId";
+        public const string CreditCard = "CreditCard";
         public const string CurrencyRate = "CurrencyRate";
         public const string DueDate = "DueDate";
         public const string Freight = "Freight";
@@ -28,8 +28,6 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         #region Properties
 
-        public TextProperty CreditCardApprovalCodeProperty { get; private set; }
-        public IntegerKeyProperty CreditCardIdProperty { get; private set; }
         public TextProperty CurrencyRateProperty { get; private set; }
         public DateProperty DueDateProperty { get; private set; }
         public MoneyProperty FreightProperty { get; private set; }
@@ -37,6 +35,12 @@ namespace AdventureWorks.Client.Common.DataObjects
         public MoneyProperty SubTotalProperty { get; private set; }
         public MoneyProperty TaxAmtProperty { get; private set; }
         public MoneyProperty TotalDueProperty { get; private set; }
+
+        #endregion
+
+        #region Child Objects
+
+        public CreditCardPaymentObject CreditCardObject { get { return (CreditCardPaymentObject)GetChildObject(CreditCard); } }
 
         #endregion
 
@@ -85,13 +89,8 @@ namespace AdventureWorks.Client.Common.DataObjects
             {
                 Editable = false,
             };
-            CreditCardIdProperty = new IntegerKeyProperty(this, CreditCardId)
-            {
-            };
-            CreditCardApprovalCodeProperty = new TextProperty(this, CreditCardApprovalCode)
-            {
-                Size = 15,
-            };
+            DataObject objCreditCard = ServiceProvider.GetService<CreditCardPaymentObject>();
+            AddChildObject(CreditCard, objCreditCard);
         }
 
         #endregion

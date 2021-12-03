@@ -9,22 +9,20 @@ namespace AdventureWorks.Services.Entities
 {
     public partial class SalesOrderService
     {
-        protected PaymentInfo GetPaymentInfo(SalesOrder obj)
+        protected PaymentInfo GetPaymentInfo(SalesOrder obj) => new PaymentInfo()
         {
-            PaymentInfo res = new PaymentInfo()
-            {
-                DueDate = obj.DueDate,
-                SubTotal = obj.SubTotal,
-                Freight = obj.Freight,
-                TaxAmt = obj.TaxAmt,
-                TotalDue = obj.TotalDue,
-                ShipMethodId = obj.ShipMethodObject?.ShipMethodId ?? 0,
+            DueDate = obj.DueDate,
+            SubTotal = obj.SubTotal,
+            Freight = obj.Freight,
+            TaxAmt = obj.TaxAmt,
+            TotalDue = obj.TotalDue,
+            ShipMethodId = obj.ShipMethodObject?.ShipMethodId ?? 0,
+            CreditCard = new SalesOrderCreditCard {
                 CreditCardId = obj.CreditCardObject?.CreditCardId ?? 0,
                 CreditCardApprovalCode = obj.CreditCardApprovalCode,
-                CurrencyRate = obj.CurrencyRateObject?.RateString
-            };
-            return res;
-        }
+            },
+            CurrencyRate = obj.CurrencyRateObject?.RateString
+        };
 
         protected async Task UpdatePayment(SalesOrder obj, PaymentUpdate pmt, CancellationToken token)
         {
@@ -35,8 +33,8 @@ namespace AdventureWorks.Services.Entities
             }
             obj.DueDate = pmt.DueDate;
             obj.ShipMethodObject = await ctx.FindEntityAsync<ShipMethod>(currentErrors, token, pmt.ShipMethodId);
-            obj.CreditCardApprovalCode = pmt.CreditCardApprovalCode;
-            obj.CreditCardObject = await ctx.FindEntityAsync<CreditCard>(currentErrors, token, pmt.CreditCardId);
+            obj.CreditCardApprovalCode = pmt.CreditCard.CreditCardApprovalCode;
+            obj.CreditCardObject = await ctx.FindEntityAsync<CreditCard>(currentErrors, token, pmt.CreditCard.CreditCardId);
         }
 
         protected SalesInfo GetSalesInfo(SalesOrder obj) => new SalesInfo()

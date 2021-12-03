@@ -9,6 +9,22 @@ using System.Collections.Generic;
 
 namespace AdventureWorks.Services.Common
 {
+    #region CreditCardInfo structure
+
+    public class CreditCardInfo
+    {
+        
+        public int CreditCardId { get; set; }
+        
+        ///<summary>
+        /// Credit card number.
+        ///</summary>
+        public string CardNumber { get; set; }
+        
+        public string Expiration { get; set; }
+    }
+    #endregion
+
     #region CustomerLookup structure
 
     public class CustomerLookup
@@ -107,15 +123,7 @@ namespace AdventureWorks.Services.Common
         
         public string CurrencyRate { get; set; }
         
-        ///<summary>
-        /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
-        ///</summary>
-        public int? CreditCardId { get; set; }
-        
-        ///<summary>
-        /// Approval code provided by the credit card company.
-        ///</summary>
-        public string CreditCardApprovalCode { get; set; }
+        public SalesOrderCreditCard CreditCard { get; set; }
     }
     #endregion
 
@@ -134,15 +142,7 @@ namespace AdventureWorks.Services.Common
         ///</summary>
         public DateTime DueDate { get; set; }
         
-        ///<summary>
-        /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
-        ///</summary>
-        public int? CreditCardId { get; set; }
-        
-        ///<summary>
-        /// Approval code provided by the credit card company.
-        ///</summary>
-        public string CreditCardApprovalCode { get; set; }
+        public SalesOrderCreditCard CreditCard { get; set; }
     }
     #endregion
 
@@ -162,6 +162,23 @@ namespace AdventureWorks.Services.Common
         public int? SalesPersonId { get; set; }
         
         public ICollection<int> SalesReason { get; set; }
+    }
+    #endregion
+
+    #region SalesOrderCreditCard structure
+
+    public class SalesOrderCreditCard
+    {
+        
+        ///<summary>
+        /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
+        ///</summary>
+        public int CreditCardId { get; set; }
+        
+        ///<summary>
+        /// Approval code provided by the credit card company.
+        ///</summary>
+        public string CreditCardApprovalCode { get; set; }
     }
     #endregion
 
