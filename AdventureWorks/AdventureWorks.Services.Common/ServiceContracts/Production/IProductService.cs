@@ -53,6 +53,11 @@ namespace AdventureWorks.Services.Common
         /// Product is a member of this product model. Foreign key to ProductModel.ProductModelID.
         ///</summary>
         public int? ProductModelId { get; set; }
+        
+        ///<summary>
+        /// Selling price.
+        ///</summary>
+        public decimal ListPrice { get; set; }
     }
     #endregion
 

@@ -122,6 +122,7 @@ namespace AdventureWorks.Client.Common.ViewModels
             {
                 { ViewParams.Action.Param, ViewParams.Action.Create },
                 { "SalesOrderId", MainObj.SalesOrderIdProperty.GetStringValue(ValueFormat.EditString) },
+                { "SalesOrderNumber", MainObj.SalesOrderNumberProperty.GetStringValue(ValueFormat.EditString) },
                 { ViewParams.Mode.Param, ViewParams.Mode.Popup },
                 { ViewParams.QuerySource, "LinkDetailNew" },
             };

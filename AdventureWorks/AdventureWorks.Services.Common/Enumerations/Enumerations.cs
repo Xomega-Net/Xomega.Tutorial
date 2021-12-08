@@ -237,6 +237,30 @@ namespace AdventureWorks.Services.Common.Enumerations
         {
             public const string ProductSubcategoryId = "product subcategory id";
             public const string ProductModelId = "product model id";
+            public const string ListPrice = "list price";
+        }
+
+    }
+    #endregion
+
+    #region ProductSubcategory
+    ///<summary>
+    /// Cached enumeration returned by the IProductSubcategoryService.ReadListAsync operation.
+    ///  
+    ///</summary>
+    public class ProductSubcategory
+    {
+        ///<summary>
+        /// Enumeration name used for storing it in a lookup cache.
+        ///</summary>
+        public const string EnumName = "product subcategory";
+
+        ///<summary>
+        /// Additional attributes for enumeration 'product subcategory'.
+        ///</summary>
+        public class Attributes
+        {
+            public const string ProductCategoryId = "product category id";
         }
 
     }
@@ -368,6 +392,39 @@ namespace AdventureWorks.Services.Common.Enumerations
         public class Attributes
         {
             public const string Category = "category";
+        }
+
+    }
+    #endregion
+
+    #region SpecialOfferProduct
+    ///<summary>
+    /// Cached enumeration returned by the ISpecialOfferProductService.ReadListAsync operation.
+    ///  
+    ///</summary>
+    public class SpecialOfferProduct
+    {
+        ///<summary>
+        /// Enumeration name used for storing it in a lookup cache.
+        ///</summary>
+        public const string EnumName = "special offer product";
+
+        ///<summary>
+        /// Input parameters for dynamic enumeration 'special offer product'.
+        ///</summary>
+        public class Parameters
+        {
+            public const string ProductId = "product id";
+        }
+
+        ///<summary>
+        /// Additional attributes for enumeration 'special offer product'.
+        ///</summary>
+        public class Attributes
+        {
+            public const string Discount = "discount";
+            public const string MinQty = "min qty";
+            public const string MaxQty = "max qty";
         }
 
     }

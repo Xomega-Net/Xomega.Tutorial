@@ -15,19 +15,24 @@ using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
 {
-    public partial class ProductReadListCacheLoader : LookupCacheLoader 
+    public partial class SpecialOfferProductReadListCacheLoader : LocalLookupCacheLoader 
     {
-        public ProductReadListCacheLoader(IServiceProvider serviceProvider)
-            : base(serviceProvider, LookupCache.Global, true, "product")
+        public SpecialOfferProductReadListCacheLoader(IServiceProvider serviceProvider)
+            : base(serviceProvider, true, "special offer product")
         {
         }
 
-        protected virtual async Task<Output<ICollection<Product_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        protected virtual async Task<Output<ICollection<SpecialOfferProduct_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
         {
             using (var s = serviceProvider.CreateScope())
             {
-                var svc = s.ServiceProvider.GetService<IProductService>();
-                return await svc.ReadListAsync();
+                object val;
+                int _productId;
+                if (Parameters.TryGetValue("product id", out val) && val != null)
+                    _productId = (int)val;
+                else return null;
+                var svc = s.ServiceProvider.GetService<ISpecialOfferProductService>();
+                return await svc.ReadListAsync(_productId);
             }
         }
 
@@ -41,21 +46,21 @@ namespace AdventureWorks.Services.Common
 
             foreach (var row in output.Result)
             {
-                string type = "product";
+                string type = "special offer product";
 
                 if (!data.TryGetValue(type, out Dictionary<string, Header> tbl))
                 {
                     data[type] = tbl = new Dictionary<string, Header>();
                 }
-                string id = "" + row.ProductId;
+                string id = "" + row.SpecialOfferId;
                 if (!tbl.TryGetValue(id, out Header h))
                 {
-                    tbl[id] = h = new Header(type, id, row.Name);
-                    h.IsActive = IsActive(row.IsActive);
+                    tbl[id] = h = new Header(type, id, row.Description);
+                    h.IsActive = IsActive(row.Active);
                 }
-                h.AddToAttribute("product subcategory id", row.ProductSubcategoryId);
-                h.AddToAttribute("product model id", row.ProductModelId);
-                h.AddToAttribute("list price", row.ListPrice);
+                h.AddToAttribute("discount", row.Discount);
+                h.AddToAttribute("min qty", row.MinQty);
+                h.AddToAttribute("max qty", row.MaxQty);
             }
             // if no data is returned we still need to update cache to mark it as loaded
             if (data.Count == 0) updateCache(new LookupTable(tableType, new List<Header>(), true));

@@ -16,12 +16,14 @@ namespace AdventureWorks.Services.Rest
             services.AddScoped<CustomerController, CustomerController>();
             services.AddScoped<PersonCreditCardController, PersonCreditCardController>();
             services.AddScoped<ProductController, ProductController>();
+            services.AddScoped<ProductSubcategoryController, ProductSubcategoryController>();
             services.AddScoped<SalesOrderController, SalesOrderController>();
             services.AddScoped<SalesPersonController, SalesPersonController>();
             services.AddScoped<SalesReasonController, SalesReasonController>();
             services.AddScoped<SalesTerritoryController, SalesTerritoryController>();
             services.AddScoped<ShipMethodController, ShipMethodController>();
             services.AddScoped<SpecialOfferController, SpecialOfferController>();
+            services.AddScoped<SpecialOfferProductController, SpecialOfferProductController>();
             return services;
         }
     }

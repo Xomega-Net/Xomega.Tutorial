@@ -225,6 +225,7 @@
             <param name="is active" type="boolean" required="true"/>
             <param name="product subcategory id"/>
             <param name="product model id"/>
+            <param name="list price"/>
           </output>
           <config>
             <rest:method verb="GET" uri-template="product"/>

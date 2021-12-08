@@ -16,12 +16,14 @@ namespace AdventureWorks.Services.Common
             services.AddScoped<ICustomerService, CustomerServiceClient>();
             services.AddScoped<IPersonCreditCardService, PersonCreditCardServiceClient>();
             services.AddScoped<IProductService, ProductServiceClient>();
+            services.AddScoped<IProductSubcategoryService, ProductSubcategoryServiceClient>();
             services.AddScoped<ISalesOrderService, SalesOrderServiceClient>();
             services.AddScoped<ISalesPersonService, SalesPersonServiceClient>();
             services.AddScoped<ISalesReasonService, SalesReasonServiceClient>();
             services.AddScoped<ISalesTerritoryService, SalesTerritoryServiceClient>();
             services.AddScoped<IShipMethodService, ShipMethodServiceClient>();
             services.AddScoped<ISpecialOfferService, SpecialOfferServiceClient>();
+            services.AddScoped<ISpecialOfferProductService, SpecialOfferProductServiceClient>();
             return services;
         }
     }

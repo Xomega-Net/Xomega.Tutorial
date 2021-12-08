@@ -49,6 +49,32 @@
           </doc>
         </field>
       </fields>
+      <operations>
+        <operation name="read list" type="readlist">
+          <input>
+            <param name="product id" type="product" required="true"/>
+          </input>
+          <output list="true">
+            <param name="special offer id" type="special offer" required="true"/>
+            <param name="description" type="string"/>
+            <param name="discount" type="percent"/>
+            <param name="min qty" type="integer"/>
+            <param name="max qty" type="integer"/>
+            <param name="active" type="boolean"/>
+          </output>
+          <config>
+            <rest:method verb="GET" uri-template="product/{product id}/special-offer"/>
+            <xfk:enum-cache enum-name="special offer product" id-param="special offer id"
+                            desc-param="description" is-active-param="active"/>
+          </config>
+          <doc>
+            <summary>Reads a list of Special Offer Product objects based on the specified criteria.</summary>
+          </doc>
+        </operation>
+        <doc>
+          <summary>A service for quering and managing Special Offer Product objects.</summary>
+        </doc>
+      </operations>
       <config>
         <sql:table name="Sales.SpecialOfferProduct"/>
       </config>

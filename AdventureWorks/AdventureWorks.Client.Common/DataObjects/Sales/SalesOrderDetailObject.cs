@@ -21,13 +21,13 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         public const string CarrierTrackingNumber = "CarrierTrackingNumber";
         public const string LineTotal = "LineTotal";
-        public const string ModifiedDate = "ModifiedDate";
         public const string OrderQty = "OrderQty";
         public const string ProductId = "ProductId";
-        public const string Rowguid = "Rowguid";
         public const string SalesOrderDetailId = "SalesOrderDetailId";
         public const string SalesOrderId = "SalesOrderId";
+        public const string SalesOrderNumber = "SalesOrderNumber";
         public const string SpecialOfferId = "SpecialOfferId";
+        public const string Subcategory = "Subcategory";
         public const string UnitPrice = "UnitPrice";
         public const string UnitPriceDiscount = "UnitPriceDiscount";
 
@@ -37,13 +37,13 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         public TextProperty CarrierTrackingNumberProperty { get; private set; }
         public MoneyProperty LineTotalProperty { get; private set; }
-        public DateTimeProperty ModifiedDateProperty { get; private set; }
         public SmallIntegerProperty OrderQtyProperty { get; private set; }
         public EnumIntProperty ProductIdProperty { get; private set; }
-        public GuidProperty RowguidProperty { get; private set; }
         public IntegerKeyProperty SalesOrderDetailIdProperty { get; private set; }
         public IntegerKeyProperty SalesOrderIdProperty { get; private set; }
+        public TextProperty SalesOrderNumberProperty { get; private set; }
         public EnumIntProperty SpecialOfferIdProperty { get; private set; }
+        public EnumIntProperty SubcategoryProperty { get; private set; }
         public MoneyProperty UnitPriceProperty { get; private set; }
         public PercentFractionProperty UnitPriceDiscountProperty { get; private set; }
 
@@ -72,43 +72,47 @@ namespace AdventureWorks.Client.Common.DataObjects
                 Required = true,
                 Editable = false,
             };
-            CarrierTrackingNumberProperty = new TextProperty(this, CarrierTrackingNumber)
+            SalesOrderNumberProperty = new TextProperty(this, SalesOrderNumber)
             {
                 Size = 25,
+                Editable = false,
             };
-            OrderQtyProperty = new SmallIntegerProperty(this, OrderQty)
+            SubcategoryProperty = new EnumIntProperty(this, Subcategory)
             {
-                Required = true,
-            };
-            SpecialOfferIdProperty = new EnumIntProperty(this, SpecialOfferId)
-            {
-                Required = true,
-                EnumType = "special offer",
+                EnumType = "product subcategory",
             };
             ProductIdProperty = new EnumIntProperty(this, ProductId)
             {
                 Required = true,
                 EnumType = "product",
             };
+            OrderQtyProperty = new SmallIntegerProperty(this, OrderQty)
+            {
+                Required = true,
+            };
             UnitPriceProperty = new MoneyProperty(this, UnitPrice)
             {
                 Required = true,
+                Editable = false,
+            };
+            SpecialOfferIdProperty = new EnumIntProperty(this, SpecialOfferId)
+            {
+                Required = true,
+                EnumType = "special offer",
             };
             UnitPriceDiscountProperty = new PercentFractionProperty(this, UnitPriceDiscount)
             {
                 Required = true,
+                Editable = false,
+            };
+            CarrierTrackingNumberProperty = new TextProperty(this, CarrierTrackingNumber)
+            {
+                Size = 25,
             };
             LineTotalProperty = new MoneyProperty(this, LineTotal)
             {
                 Required = true,
-            };
-            RowguidProperty = new GuidProperty(this, Rowguid)
-            {
-                Required = true,
-            };
-            ModifiedDateProperty = new DateTimeProperty(this, ModifiedDate)
-            {
-                Required = true,
+                Editable = false,
             };
         }
 

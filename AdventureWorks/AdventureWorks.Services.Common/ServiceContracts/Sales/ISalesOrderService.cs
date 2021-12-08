@@ -502,24 +502,23 @@ namespace AdventureWorks.Services.Common
         
         public int SalesOrderId { get; set; }
         
-        ///<summary>
-        /// Shipment tracking number supplied by the shipper.
-        ///</summary>
-        public string CarrierTrackingNumber { get; set; }
+        public string SalesOrderNumber { get; set; }
+        
+        public int? Subcategory { get; set; }
+        
+        public int ProductId { get; set; }
         
         ///<summary>
         /// Quantity ordered per product.
         ///</summary>
         public short OrderQty { get; set; }
         
-        public int SpecialOfferId { get; set; }
-        
-        public int ProductId { get; set; }
-        
         ///<summary>
         /// Selling price of a single product.
         ///</summary>
         public decimal UnitPrice { get; set; }
+        
+        public int SpecialOfferId { get; set; }
         
         ///<summary>
         /// Discount amount.
@@ -527,19 +526,14 @@ namespace AdventureWorks.Services.Common
         public decimal UnitPriceDiscount { get; set; }
         
         ///<summary>
+        /// Shipment tracking number supplied by the shipper.
+        ///</summary>
+        public string CarrierTrackingNumber { get; set; }
+        
+        ///<summary>
         /// Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.
         ///</summary>
         public decimal LineTotal { get; set; }
-        
-        ///<summary>
-        /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-        ///</summary>
-        public Guid Rowguid { get; set; }
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        public DateTime ModifiedDate { get; set; }
     }
     #endregion
 
@@ -551,11 +545,9 @@ namespace AdventureWorks.Services.Common
     public class SalesOrderDetail_CreateInput_Data
     {
         
-        ///<summary>
-        /// Shipment tracking number supplied by the shipper.
-        ///</summary>
-        [XMaxLength(25)]
-        public string CarrierTrackingNumber { get; set; }
+        [XRequired]
+        [XLookupValue(Product.EnumName)]
+        public int ProductId { get; set; }
         
         ///<summary>
         /// Quantity ordered per product.
@@ -567,39 +559,11 @@ namespace AdventureWorks.Services.Common
         [XLookupValue(SpecialOffer.EnumName)]
         public int SpecialOfferId { get; set; }
         
-        [XRequired]
-        [XLookupValue(Product.EnumName)]
-        public int ProductId { get; set; }
-        
         ///<summary>
-        /// Selling price of a single product.
+        /// Shipment tracking number supplied by the shipper.
         ///</summary>
-        [XRequired]
-        public decimal UnitPrice { get; set; }
-        
-        ///<summary>
-        /// Discount amount.
-        ///</summary>
-        [XRequired]
-        public decimal UnitPriceDiscount { get; set; }
-        
-        ///<summary>
-        /// Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.
-        ///</summary>
-        [XRequired]
-        public decimal LineTotal { get; set; }
-        
-        ///<summary>
-        /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-        ///</summary>
-        [XRequired]
-        public Guid Rowguid { get; set; }
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        [XRequired]
-        public DateTime ModifiedDate { get; set; }
+        [XMaxLength(25)]
+        public string CarrierTrackingNumber { get; set; }
     }
     #endregion
 
@@ -623,11 +587,9 @@ namespace AdventureWorks.Services.Common
     public class SalesOrderDetail_UpdateInput_Data
     {
         
-        ///<summary>
-        /// Shipment tracking number supplied by the shipper.
-        ///</summary>
-        [XMaxLength(25)]
-        public string CarrierTrackingNumber { get; set; }
+        [XRequired]
+        [XLookupValue(Product.EnumName)]
+        public int ProductId { get; set; }
         
         ///<summary>
         /// Quantity ordered per product.
@@ -639,39 +601,11 @@ namespace AdventureWorks.Services.Common
         [XLookupValue(SpecialOffer.EnumName)]
         public int SpecialOfferId { get; set; }
         
-        [XRequired]
-        [XLookupValue(Product.EnumName)]
-        public int ProductId { get; set; }
-        
         ///<summary>
-        /// Selling price of a single product.
+        /// Shipment tracking number supplied by the shipper.
         ///</summary>
-        [XRequired]
-        public decimal UnitPrice { get; set; }
-        
-        ///<summary>
-        /// Discount amount.
-        ///</summary>
-        [XRequired]
-        public decimal UnitPriceDiscount { get; set; }
-        
-        ///<summary>
-        /// Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.
-        ///</summary>
-        [XRequired]
-        public decimal LineTotal { get; set; }
-        
-        ///<summary>
-        /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
-        ///</summary>
-        [XRequired]
-        public Guid Rowguid { get; set; }
-        
-        ///<summary>
-        /// Date and time the record was last updated.
-        ///</summary>
-        [XRequired]
-        public DateTime ModifiedDate { get; set; }
+        [XMaxLength(25)]
+        public string CarrierTrackingNumber { get; set; }
     }
     #endregion
 

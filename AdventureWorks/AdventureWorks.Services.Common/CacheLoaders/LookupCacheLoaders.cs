@@ -14,6 +14,7 @@ namespace AdventureWorks.Services.Common
         public static void AddLookupCacheLoaders(this IServiceCollection container)
         {
             container.AddSingleton<ILookupCacheLoader, ProductReadListCacheLoader>();
+            container.AddSingleton<ILookupCacheLoader, ProductSubcategoryReadListCacheLoader>();
             container.AddSingleton<ILookupCacheLoader, ShipMethodReadListCacheLoader>();
             container.AddSingleton<ILookupCacheLoader, SalesPersonReadListCacheLoader>();
             container.AddSingleton<ILookupCacheLoader, SalesReasonReadListCacheLoader>();

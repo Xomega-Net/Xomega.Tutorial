@@ -99,5 +99,18 @@ namespace AdventureWorks.Services.Entities
             obj.BillToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.BillingAddress.AddressId);
             obj.ShipToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.ShippingAddress.AddressId);
         }
+
+        protected void UpdateOrderDetail(SalesOrderDetail obj)
+        {
+            currentErrors.AbortIfHasErrors(); // prevent invalid data
+ 
+            obj.UnitPrice = obj.SpecialOfferProductObject.ProductObject.ListPrice;
+            obj.UnitPriceDiscount = obj.SpecialOfferProductObject.SpecialOfferObject.DiscountPct;
+            obj.LineTotal = obj.OrderQty * obj.UnitPrice * (1 - obj.UnitPriceDiscount);
+            
+            obj.ModifiedDate = DateTime.Now;
+            if (obj.Rowguid == default)
+                obj.Rowguid = Guid.NewGuid();
+        }
     }
 }

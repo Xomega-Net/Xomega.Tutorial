@@ -22,40 +22,35 @@ using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Entities
 {
-    public partial class ProductService : BaseService, IProductService
+    public partial class ProductSubcategoryService : BaseService, IProductSubcategoryService
     {
         protected AdventureWorksEntities ctx;
 
-        public ProductService(IServiceProvider serviceProvider) : base(serviceProvider)
+        public ProductSubcategoryService(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             ctx = serviceProvider.GetService<AdventureWorksEntities>();
         }
 
-        public virtual async Task<Output<ICollection<Product_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        public virtual async Task<Output<ICollection<ProductSubcategory_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
         {
-            ICollection<Product_ReadListOutput> res = null;
+            ICollection<ProductSubcategory_ReadListOutput> res = null;
             try
             {
                 currentErrors.AbortIfHasErrors();
 
                 // CUSTOM_CODE_START: add custom security checks for ReadList operation below
                 // CUSTOM_CODE_END
-                var src = from obj in ctx.Product select obj;
+                var src = from obj in ctx.ProductSubcategory select obj;
 
                 // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
                 // src = src.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
                 var qry = from obj in src
-                          select new Product_ReadListOutput() {
-                              ProductId = obj.ProductId,
-                              Name = obj.Name,
-                              // CUSTOM_CODE_START: set the IsActive output parameter of ReadList operation below
-                              IsActive = (obj.SellEndDate == null || obj.SellEndDate > DateTime.Today)
-                                         && obj.DiscontinuedDate == null, // CUSTOM_CODE_END
+                          select new ProductSubcategory_ReadListOutput() {
                               ProductSubcategoryId = obj.ProductSubcategoryId,
-                              ProductModelId = obj.ProductModelId,
-                              ListPrice = obj.ListPrice,
+                              ProductCategoryId = obj.ProductCategoryId,
+                              Name = obj.Name,
                           };
 
                 // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadList operation below
@@ -69,7 +64,7 @@ namespace AdventureWorks.Services.Entities
             {
                 currentErrors.MergeWith(errorParser.FromException(ex));
             }
-            return await Task.FromResult(new Output<ICollection<Product_ReadListOutput>>(currentErrors, res));
+            return await Task.FromResult(new Output<ICollection<ProductSubcategory_ReadListOutput>>(currentErrors, res));
         }
     }
 }

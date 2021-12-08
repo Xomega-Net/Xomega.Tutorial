@@ -230,6 +230,10 @@ namespace AdventureWorks.Services.Entities
                 // CUSTOM_CODE_END
                 SalesOrderDetail obj = await ctx.FindEntityAsync<SalesOrderDetail>(currentErrors, token, _salesOrderDetailId);
                 ServiceUtil.CopyProperties(obj, res);
+                // CUSTOM_CODE_START: set the SalesOrderNumber output field of Detail_Read operation below
+                res.SalesOrderNumber = obj.SalesOrderObject.SalesOrderNumber; // CUSTOM_CODE_END
+                // CUSTOM_CODE_START: set the Subcategory output field of Detail_Read operation below
+                res.Subcategory = obj.SpecialOfferProductObject.ProductObject.ProductSubcategoryId; // CUSTOM_CODE_END
                 // CUSTOM_CODE_START: add custom code for Detail_Read operation below
                 // CUSTOM_CODE_END
             }
@@ -258,6 +262,7 @@ namespace AdventureWorks.Services.Entities
                 await ctx.ValidateKeyAsync<SalesOrder>(currentErrors, token, "SalesOrderId", _salesOrderId);
                 await ctx.ValidateKeyAsync<SpecialOfferProduct>(currentErrors, token, "SpecialOfferId, ProductId", _data.SpecialOfferId, _data.ProductId);
                 // CUSTOM_CODE_START: add custom code for Detail_Create operation below
+                UpdateOrderDetail(obj);
                 // CUSTOM_CODE_END
                 currentErrors.AbortIfHasErrors();
                 await ctx.SaveChangesAsync(token);
@@ -283,6 +288,7 @@ namespace AdventureWorks.Services.Entities
                 entry.CurrentValues.SetValues(_data);
                 await ctx.ValidateKeyAsync<SpecialOfferProduct>(currentErrors, token, "SpecialOfferId, ProductId", _data.SpecialOfferId, _data.ProductId);
                 // CUSTOM_CODE_START: add custom code for Detail_Update operation below
+                UpdateOrderDetail(obj);
                 // CUSTOM_CODE_END
                 currentErrors.AbortIfHasErrors();
                 await ctx.SaveChangesAsync(token);

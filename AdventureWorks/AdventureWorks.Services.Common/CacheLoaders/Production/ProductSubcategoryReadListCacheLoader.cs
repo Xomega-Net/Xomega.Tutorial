@@ -15,18 +15,18 @@ using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
 {
-    public partial class ProductReadListCacheLoader : LookupCacheLoader 
+    public partial class ProductSubcategoryReadListCacheLoader : LookupCacheLoader 
     {
-        public ProductReadListCacheLoader(IServiceProvider serviceProvider)
-            : base(serviceProvider, LookupCache.Global, true, "product")
+        public ProductSubcategoryReadListCacheLoader(IServiceProvider serviceProvider)
+            : base(serviceProvider, LookupCache.Global, true, "product subcategory")
         {
         }
 
-        protected virtual async Task<Output<ICollection<Product_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        protected virtual async Task<Output<ICollection<ProductSubcategory_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
         {
             using (var s = serviceProvider.CreateScope())
             {
-                var svc = s.ServiceProvider.GetService<IProductService>();
+                var svc = s.ServiceProvider.GetService<IProductSubcategoryService>();
                 return await svc.ReadListAsync();
             }
         }
@@ -41,21 +41,18 @@ namespace AdventureWorks.Services.Common
 
             foreach (var row in output.Result)
             {
-                string type = "product";
+                string type = "product subcategory";
 
                 if (!data.TryGetValue(type, out Dictionary<string, Header> tbl))
                 {
                     data[type] = tbl = new Dictionary<string, Header>();
                 }
-                string id = "" + row.ProductId;
+                string id = "" + row.ProductSubcategoryId;
                 if (!tbl.TryGetValue(id, out Header h))
                 {
                     tbl[id] = h = new Header(type, id, row.Name);
-                    h.IsActive = IsActive(row.IsActive);
                 }
-                h.AddToAttribute("product subcategory id", row.ProductSubcategoryId);
-                h.AddToAttribute("product model id", row.ProductModelId);
-                h.AddToAttribute("list price", row.ListPrice);
+                h.AddToAttribute("product category id", row.ProductCategoryId);
             }
             // if no data is returned we still need to update cache to mark it as loaded
             if (data.Count == 0) updateCache(new LookupTable(tableType, new List<Header>(), true));

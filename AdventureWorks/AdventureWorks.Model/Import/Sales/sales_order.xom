@@ -639,15 +639,15 @@
               </input>
               <output>
                 <param name="sales order id" type="sales order header" required="true"/>
-                <param name="carrier tracking number"/>
-                <param name="order qty"/>
-                <param name="special offer id" type="special offer" required="true"/>
+                <param name="sales order number" type="sales order number"/>
+                <param name="subcategory" type="product subcategory"/>
                 <param name="product id" type="product" required="true"/>
+                <param name="order qty"/>
                 <param name="unit price"/>
+                <param name="special offer id" type="special offer" required="true"/>
                 <param name="unit price discount"/>
+                <param name="carrier tracking number"/>
                 <param name="line total"/>
-                <param name="rowguid"/>
-                <param name="modified date"/>
                 <config>
                   <xfk:add-to-object class="SalesOrderDetailObject"/>
                 </config>
@@ -663,15 +663,10 @@
               <input>
                 <param name="sales order id" type="sales order header" required="true"/>
                 <struct name="data">
-                  <param name="carrier tracking number"/>
+                  <param name="product id" type="product" required="true"/>
                   <param name="order qty"/>
                   <param name="special offer id" type="special offer" required="true"/>
-                  <param name="product id" type="product" required="true"/>
-                  <param name="unit price"/>
-                  <param name="unit price discount"/>
-                  <param name="line total"/>
-                  <param name="rowguid"/>
-                  <param name="modified date"/>
+                  <param name="carrier tracking number"/>
                   <config>
                     <xfk:add-to-object class="SalesOrderDetailObject"/>
                   </config>
@@ -697,15 +692,10 @@
               <input>
                 <param name="sales order detail id"/>
                 <struct name="data">
-                  <param name="carrier tracking number"/>
+                  <param name="product id" type="product" required="true"/>
                   <param name="order qty"/>
                   <param name="special offer id" type="special offer" required="true"/>
-                  <param name="product id" type="product" required="true"/>
-                  <param name="unit price"/>
-                  <param name="unit price discount"/>
-                  <param name="line total"/>
-                  <param name="rowguid"/>
-                  <param name="modified date"/>
+                  <param name="carrier tracking number"/>
                   <config>
                     <xfk:add-to-object class="SalesOrderDetailObject"/>
                   </config>
@@ -890,12 +880,16 @@
         </ui:result>
       </ui:link>
     </xfk:data-object>
-    <xfk:data-object class="SalesOrderDetailObject">
+    <xfk:data-object class="SalesOrderDetailObject" customize="true">
       <ui:display>
-        <ui:fields>
+        <ui:fields field-cols="2">
           <ui:field param="sales order detail id" hidden="true"/>
+          <ui:field param="sales order id" hidden="true"/>
+          <ui:field param="sales order number" hidden="true"/>
+          <ui:field param="subcategory" editable="true"/>
+          <ui:field param="product id" label="Product"/>
+          <ui:field param="special offer id" label="Special Offer"/>
         </ui:fields>
-        <ui:tabs/>
       </ui:display>
     </xfk:data-object>
     <xfk:data-object class="SalesOrderDetailList" list="true">
@@ -921,6 +915,7 @@
         <ui:params>
           <ui:param name="_action" value="create"/>
           <ui:param name="sales order id" field="sales order id" data-object=".."/>
+          <ui:param name="sales order number" field="sales order number" data-object=".."/>
         </ui:params>
       </ui:link>
     </xfk:data-object>
@@ -949,8 +944,8 @@
     <ui:view name="SalesOrderListView" title="Sales Order List">
       <ui:view-model data-object="SalesOrderList"/>
     </ui:view>
-    <ui:view name="SalesOrderDetailView" title="Detail" child="true">
-      <ui:view-model data-object="SalesOrderDetailObject"/>
+    <ui:view name="SalesOrderDetailView" title="Line Item for Sales Order {0}" child="true">
+      <ui:view-model data-object="SalesOrderDetailObject" customize="true"/>
     </ui:view>
   </ui:views>
 </module>

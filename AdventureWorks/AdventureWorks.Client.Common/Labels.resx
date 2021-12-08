@@ -318,92 +318,53 @@
   <data name="SalesCustomerLookupObject.PersonName">
     <value xml:space="preserve">Person Name</value>
   </data>
-  <data name="SalesOrderDetailObject.SalesOrderId">
-    <value xml:space="preserve">Sales Order Id</value>
+  <data name="SalesOrderDetailObject.Subcategory">
+    <value xml:space="preserve">Subcategory</value>
+  </data>
+  <data name="SalesOrderDetailObject.ProductId">
+    <value xml:space="preserve">Product</value>
+  </data>
+  <data name="SalesOrderDetailObject.OrderQty">
+    <value xml:space="preserve">Order Qty</value>
+  </data>
+  <data name="SalesOrderDetailObject.UnitPrice">
+    <value xml:space="preserve">Unit Price</value>
+  </data>
+  <data name="SalesOrderDetailObject.SpecialOfferId">
+    <value xml:space="preserve">Special Offer</value>
+  </data>
+  <data name="SalesOrderDetailObject.UnitPriceDiscount">
+    <value xml:space="preserve">Unit Price Discount</value>
   </data>
   <data name="SalesOrderDetailObject.CarrierTrackingNumber">
     <value xml:space="preserve">Carrier Tracking Number</value>
+  </data>
+  <data name="SalesOrderDetailObject.LineTotal">
+    <value xml:space="preserve">Line Total</value>
+  </data>
+  <data name="SalesOrderDetailObject.ProductId">
+    <value xml:space="preserve">Product</value>
   </data>
   <data name="SalesOrderDetailObject.OrderQty">
     <value xml:space="preserve">Order Qty</value>
   </data>
   <data name="SalesOrderDetailObject.SpecialOfferId">
-    <value xml:space="preserve">Special Offer Id</value>
-  </data>
-  <data name="SalesOrderDetailObject.ProductId">
-    <value xml:space="preserve">Product Id</value>
-  </data>
-  <data name="SalesOrderDetailObject.UnitPrice">
-    <value xml:space="preserve">Unit Price</value>
-  </data>
-  <data name="SalesOrderDetailObject.UnitPriceDiscount">
-    <value xml:space="preserve">Unit Price Discount</value>
-  </data>
-  <data name="SalesOrderDetailObject.LineTotal">
-    <value xml:space="preserve">Line Total</value>
-  </data>
-  <data name="SalesOrderDetailObject.Rowguid">
-    <value xml:space="preserve">Rowguid</value>
-  </data>
-  <data name="SalesOrderDetailObject.ModifiedDate">
-    <value xml:space="preserve">Modified Date</value>
-  </data>
-  <data name="SalesOrderDetailObject.SalesOrderId">
-    <value xml:space="preserve">Sales Order Id</value>
+    <value xml:space="preserve">Special Offer</value>
   </data>
   <data name="SalesOrderDetailObject.CarrierTrackingNumber">
     <value xml:space="preserve">Carrier Tracking Number</value>
+  </data>
+  <data name="SalesOrderDetailObject.ProductId">
+    <value xml:space="preserve">Product</value>
   </data>
   <data name="SalesOrderDetailObject.OrderQty">
     <value xml:space="preserve">Order Qty</value>
   </data>
   <data name="SalesOrderDetailObject.SpecialOfferId">
-    <value xml:space="preserve">Special Offer Id</value>
-  </data>
-  <data name="SalesOrderDetailObject.ProductId">
-    <value xml:space="preserve">Product Id</value>
-  </data>
-  <data name="SalesOrderDetailObject.UnitPrice">
-    <value xml:space="preserve">Unit Price</value>
-  </data>
-  <data name="SalesOrderDetailObject.UnitPriceDiscount">
-    <value xml:space="preserve">Unit Price Discount</value>
-  </data>
-  <data name="SalesOrderDetailObject.LineTotal">
-    <value xml:space="preserve">Line Total</value>
-  </data>
-  <data name="SalesOrderDetailObject.Rowguid">
-    <value xml:space="preserve">Rowguid</value>
-  </data>
-  <data name="SalesOrderDetailObject.ModifiedDate">
-    <value xml:space="preserve">Modified Date</value>
+    <value xml:space="preserve">Special Offer</value>
   </data>
   <data name="SalesOrderDetailObject.CarrierTrackingNumber">
     <value xml:space="preserve">Carrier Tracking Number</value>
-  </data>
-  <data name="SalesOrderDetailObject.OrderQty">
-    <value xml:space="preserve">Order Qty</value>
-  </data>
-  <data name="SalesOrderDetailObject.SpecialOfferId">
-    <value xml:space="preserve">Special Offer Id</value>
-  </data>
-  <data name="SalesOrderDetailObject.ProductId">
-    <value xml:space="preserve">Product Id</value>
-  </data>
-  <data name="SalesOrderDetailObject.UnitPrice">
-    <value xml:space="preserve">Unit Price</value>
-  </data>
-  <data name="SalesOrderDetailObject.UnitPriceDiscount">
-    <value xml:space="preserve">Unit Price Discount</value>
-  </data>
-  <data name="SalesOrderDetailObject.LineTotal">
-    <value xml:space="preserve">Line Total</value>
-  </data>
-  <data name="SalesOrderDetailObject.Rowguid">
-    <value xml:space="preserve">Rowguid</value>
-  </data>
-  <data name="SalesOrderDetailObject.ModifiedDate">
-    <value xml:space="preserve">Modified Date</value>
   </data>
   <data name="SalesOrderDetailList_Action_Details">
     <value xml:space="preserve">Details</value>
@@ -490,7 +451,7 @@
     <value xml:space="preserve">Sales Order List</value>
   </data>
   <data name="SalesOrderDetailView_Title">
-    <value xml:space="preserve">Detail</value>
+    <value xml:space="preserve">Line Item for Sales Order {0}</value>
   </data>
   <data name="Module_Sales_NavMenu">
     <value xml:space="preserve">Sales</value>

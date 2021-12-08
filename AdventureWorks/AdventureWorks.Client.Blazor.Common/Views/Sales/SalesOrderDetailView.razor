@@ -26,22 +26,17 @@
           <div class="row g-0">
             <Errors Class="mb-3" ErrorList="@Model?.Errors" ViewKey="@Model?.GetResourceKey()"></Errors>
             <fieldset>
-              <div class="row @GetRowCol(4)">
-                <XDataLabel Class="mb-3" Property="@VM?.MainObj?.SalesOrderIdProperty"></XDataLabel>
-                <XInputText Class="mb-3" Property="@VM?.MainObj?.CarrierTrackingNumberProperty"></XInputText>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.OrderQtyProperty"></XNumericBox>
-                <XSelect Class="mb-3" Property="@VM?.MainObj?.SpecialOfferIdProperty"></XSelect>
+              <div class="row @GetRowCol(2)">
+                <XSelect Class="mb-3" Property="@VM?.MainObj?.SubcategoryProperty"></XSelect>
                 <XSelect Class="mb-3" Property="@VM?.MainObj?.ProductIdProperty"></XSelect>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.UnitPriceProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.UnitPriceDiscountProperty"></XNumericBox>
-                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.LineTotalProperty"></XNumericBox>
-                <XInputText Class="mb-3" Property="@VM?.MainObj?.RowguidProperty"></XInputText>
-                <XDatePicker Class="mb-3" Property="@VM?.MainObj?.ModifiedDateProperty"></XDatePicker>
+                <XNumericBox Class="mb-3" Property="@VM?.MainObj?.OrderQtyProperty"></XNumericBox>
+                <XDataLabel Class="mb-3" Property="@VM?.MainObj?.UnitPriceProperty"></XDataLabel>
+                <XSelect Class="mb-3" Property="@VM?.MainObj?.SpecialOfferIdProperty"></XSelect>
+                <XDataLabel Class="mb-3" Property="@VM?.MainObj?.UnitPriceDiscountProperty"></XDataLabel>
+                <XInputText Class="mb-3" Property="@VM?.MainObj?.CarrierTrackingNumberProperty"></XInputText>
+                <XDataLabel Class="mb-3" Property="@VM?.MainObj?.LineTotalProperty"></XDataLabel>
               </div>
             </fieldset>
-            <div class="@GetPanelCol(1, 4)">
-              <TabSet></TabSet>
-            </div>
           </div>
         </div>
         <div class="@FooterClass">
