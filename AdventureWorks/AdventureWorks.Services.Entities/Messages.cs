@@ -50,6 +50,11 @@ namespace AdventureWorks.Services.Entities
         public const string EntityNotFoundByKeys = "EntityNotFoundByKeys";
 
         /// <summary>
+        /// Invalid credentials.
+        /// </summary>
+        public const string InvalidCredentials = "InvalidCredentials";
+
+        /// <summary>
         /// Invalid value {0} for parameter {1}. Cannot find the corresponding {2} object.
         /// Where {0}=Value, {1}=Parameter Name, {2}=Reference Entity Type
         /// </summary>

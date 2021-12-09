@@ -36,6 +36,18 @@
   <data name="AddressObject.Country">
     <value xml:space="preserve">Country</value>
   </data>
+  <data name="AuthenticationObject.Email">
+    <value xml:space="preserve">Email</value>
+  </data>
+  <data name="AuthenticationObject.Password">
+    <value xml:space="preserve">Password</value>
+  </data>
+  <data name="AuthenticationObject.Email_AccessKey">
+    <value xml:space="preserve">m</value>
+  </data>
+  <data name="AuthenticationObject.Password_AccessKey">
+    <value xml:space="preserve">P</value>
+  </data>
   <data name="CustomerCriteria.TerritoryId">
     <value xml:space="preserve">Territory</value>
   </data>
@@ -431,6 +443,9 @@
   </data>
   <data name="SalesOrderSalesObject.SalesReason">
     <value xml:space="preserve">Sales Reasons</value>
+  </data>
+  <data name="LoginView_Title">
+    <value xml:space="preserve">Login</value>
   </data>
   <data name="CustomerListView_Title">
     <value xml:space="preserve">Customer List</value>

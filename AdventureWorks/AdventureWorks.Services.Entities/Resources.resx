@@ -137,6 +137,9 @@
     <value>{0} with id ({1}) not found.</value>
     <comment>{0}=Entity Type, {1}=Entity Keys</comment>
   </data>
+  <data name="InvalidCredentials" xml:space="preserve">
+    <value>Invalid credentials.</value>
+  </data>
   <data name="InvalidForeignKey" xml:space="preserve">
     <value>Invalid value {0} for parameter {1}. Cannot find the corresponding {2} object.</value>
     <comment>{0}=Value, {1}=Parameter Name, {2}=Reference Entity Type</comment>

@@ -28,6 +28,13 @@ namespace AdventureWorks.Services.Common
         }
 
         /// <inheritdoc/>
+        public virtual async Task<Output> AuthenticateAsync(Credentials _credentials, CancellationToken token = default)
+        {
+            await Task.CompletedTask;
+            throw new NotSupportedException("Operation IPersonService.AuthenticateAsync is not exposed via REST.");
+        }
+
+        /// <inheritdoc/>
         public virtual async Task<Output<PersonInfo>> ReadAsync(string _email, CancellationToken token = default)
         {
             await Task.CompletedTask;

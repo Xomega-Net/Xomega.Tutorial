@@ -29,6 +29,22 @@ namespace AdventureWorks.Services.Entities
             ctx = serviceProvider.GetService<AdventureWorksEntities>();
         }
 
+        public virtual async Task<Output> AuthenticateAsync(Credentials _credentials, CancellationToken token = default)
+        {
+            try
+            {
+                currentErrors.AbortIfHasErrors();
+
+                // CUSTOM_CODE_START: add custom security checks for Authenticate operation below
+                // CUSTOM_CODE_END
+            }
+            catch (Exception ex)
+            {
+                currentErrors.MergeWith(errorParser.FromException(ex));
+            }
+            return await Task.FromResult(new Output(currentErrors));
+        }
+
         public virtual async Task<Output<PersonInfo>> ReadAsync(string _email, CancellationToken token = default)
         {
             PersonInfo res = new PersonInfo();

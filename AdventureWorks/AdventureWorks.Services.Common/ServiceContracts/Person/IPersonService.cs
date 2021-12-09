@@ -19,6 +19,11 @@ namespace AdventureWorks.Services.Common
     {
 
         ///<summary>
+        /// Authenticates a Person using email and password.
+        ///</summary>
+        Task<Output> AuthenticateAsync(Credentials _credentials, CancellationToken token = default);
+
+        ///<summary>
         /// Reads person info by email as the key.
         ///</summary>
         Task<Output<PersonInfo>> ReadAsync(string _email, CancellationToken token = default);

@@ -25,6 +25,13 @@
     </enum>
   </enums>
   <structs>
+    <struct name="credentials">
+      <param name="email" type="email" required="true"/>
+      <param name="password" type="plain password" required="true"/>
+      <config>
+        <xfk:add-to-object class="AuthenticationObject"/>
+      </config>
+    </struct>
     <struct name="person info" object="person">
       <param name="business entity id"/>
       <param name="person type"/>
@@ -141,6 +148,15 @@
         </field>
       </fields>
       <operations>
+        <operation name="authenticate" type="update">
+          <input arg="credentials" struct="credentials"/>
+          <config>
+            <rest:method not-supported="true"/>
+          </config>
+          <doc>
+            <summary>Authenticates a Person using email and password.</summary>
+          </doc>
+        </operation>
         <operation name="read" type="read">
           <input>
             <param name="email" type="email" required="true"/>
@@ -164,4 +180,19 @@
       </doc>
     </object>
   </objects>
+  <xfk:data-objects>
+    <xfk:data-object class="AuthenticationObject" customize="true">
+      <ui:display>
+        <ui:fields field-cols="1">
+          <ui:field param="email" access-key="m"/>
+          <ui:field param="password" access-key="P"/>
+        </ui:fields>
+      </ui:display>
+    </xfk:data-object>
+  </xfk:data-objects>
+  <ui:views>
+    <ui:view name="LoginView" title="Login" customize="true" child="true">
+      <ui:view-model data-object="AuthenticationObject"/>
+    </ui:view>
+  </ui:views>
 </module>

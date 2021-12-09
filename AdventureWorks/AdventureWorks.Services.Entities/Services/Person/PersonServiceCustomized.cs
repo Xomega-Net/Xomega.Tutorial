@@ -15,6 +15,27 @@ namespace AdventureWorks.Services.Entities
         {
         }
 
+        public override async Task<Output> AuthenticateAsync(Credentials _credentials, CancellationToken token = default)
+        {
+            // lookup password
+            var pwdQry = from em in ctx.EmailAddress
+                         join pw in ctx.Password on em.BusinessEntityId equals pw.BusinessEntityId
+                         where em.EmailAddress1 == _credentials.Email
+                         select pw;
+            var pwd = await pwdQry.FirstOrDefaultAsync(token);
+
+            // validate credentials
+            bool valid = false;
+            if (pwd != null && _credentials.Password != null)
+            {
+                valid = _credentials.Password.Equals("password"); // for testing only
+                // TODO: hash _credentials.Password using pwd.PasswordSalt,
+                //       and compare it with pwd.PasswordHash instead
+            }
+            if (!valid) currentErrors.CriticalError(ErrorType.Security, Messages.InvalidCredentials);
+            return new Output(currentErrors);
+        }
+
         public override async Task<Output<PersonInfo>> ReadAsync(string _email, CancellationToken token = default)
         {
             // lookup and return person info
