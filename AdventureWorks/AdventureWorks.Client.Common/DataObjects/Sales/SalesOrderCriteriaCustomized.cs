@@ -1,6 +1,7 @@
 using System;
 using Xomega.Framework;
 using AdventureWorks.Services.Common.Enumerations;
+using AdventureWorks.Services.Common;
 
 namespace AdventureWorks.Client.Common.DataObjects
 {
@@ -30,6 +31,12 @@ namespace AdventureWorks.Client.Common.DataObjects
             SalesPersonIdProperty.SetCascadingProperty(SalesPerson.Attributes.TerritoryId, TerritoryIdProperty);
             SalesPersonIdProperty.NullsMatchAnyCascading = true;
             SalesPersonIdProperty.DisplayListSeparator = "; ";
+
+            if (CurrentPrincipal.IsStoreContact() || CurrentPrincipal.IsIndividualCustomer())
+            {
+                CustomerStoreOperatorProperty.AccessLevel = AccessLevel.None;
+                CustomerNameOperatorProperty.AccessLevel = AccessLevel.None;
+            }
         }
 
         public override void Validate(bool force)
