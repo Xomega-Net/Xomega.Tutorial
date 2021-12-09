@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using Xomega.Framework.Services;
 // CUSTOM_CODE_START: add namespaces for custom code below
 using AdventureWorks.Services.Common.Enumerations;
+using Xomega.Framework;
 // CUSTOM_CODE_END
 
 namespace AdventureWorks.Services.Entities
@@ -156,6 +157,11 @@ namespace AdventureWorks.Services.Entities
                 currentErrors.AbortIfHasErrors();
 
                 // CUSTOM_CODE_START: add custom security checks for ReadList operation below
+                if (!CurrentPrincipal.IsEmployee() && !CurrentPrincipal.IsIndividualCustomer() &&
+                    !CurrentPrincipal.IsStoreContact())
+                {
+                    currentErrors.CriticalError(ErrorType.Security, Messages.OperationNotAllowed);
+                }
                 // CUSTOM_CODE_END
                 var src = from obj in ctx.SalesOrder select obj;
 
@@ -169,7 +175,16 @@ namespace AdventureWorks.Services.Entities
                 }
 
                 // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
-                // src = src.Where(o => o.FieldName == VALUE);
+                if (CurrentPrincipal.IsStoreContact())
+                {
+                    int? storeId = CurrentPrincipal.GetStoreId();
+                    src = src.Where(o => o.CustomerObject.StoreObject.BusinessEntityId == storeId);
+                }
+                if (CurrentPrincipal.IsIndividualCustomer())
+                {
+                    int? personId = CurrentPrincipal.GetPersonId();
+                    src = src.Where(o => o.CustomerObject.PersonObject.BusinessEntityId == personId);
+                }
                 // CUSTOM_CODE_END
 
                 var qry = from obj in src

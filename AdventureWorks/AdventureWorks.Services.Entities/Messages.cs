@@ -67,6 +67,11 @@ namespace AdventureWorks.Services.Entities
         public const string InvalidForeignKeys = "InvalidForeignKeys";
 
         /// <summary>
+        /// Operation not allowed.
+        /// </summary>
+        public const string OperationNotAllowed = "OperationNotAllowed";
+
+        /// <summary>
         /// Payment information is required for order {0}.
         /// Where {0}=Order ID
         /// </summary>
