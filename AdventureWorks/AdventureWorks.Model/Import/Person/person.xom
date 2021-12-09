@@ -10,7 +10,31 @@
         name="person">
   <types>
     <type name="person" base="business entity"/>
+    <type name="person type" base="enumeration" size="2">
+      <enum ref="person type"/>
+    </type>
   </types>
+  <enums>
+    <enum name="person type">
+      <item name="Store contact" value="SC"/>
+      <item name="Individual customer" value="IN"/>
+      <item name="Sales person" value="SP"/>
+      <item name="Employee" value="EM"/>
+      <item name="Vendor contact" value="VC"/>
+      <item name="General contact" value="GC"/>
+    </enum>
+  </enums>
+  <structs>
+    <struct name="person info" object="person">
+      <param name="business entity id"/>
+      <param name="person type"/>
+      <param name="first name"/>
+      <param name="last name"/>
+      <param name="email" type="email" required="true"/>
+      <param name="store" type="store"/>
+      <param name="vendor" type="vendor"/>
+    </struct>
+  </structs>
   <objects>
     <object name="person">
       <fields>
@@ -19,7 +43,7 @@
             <sql:column name="BusinessEntityID"/>
           </config>
         </field>
-        <field name="person type" type="code2" required="true">
+        <field name="person type" type="person type" required="true">
           <config>
             <sql:column name="PersonType"/>
           </config>
@@ -116,9 +140,24 @@
           </doc>
         </field>
       </fields>
+      <operations>
+        <operation name="read" type="read">
+          <input>
+            <param name="email" type="email" required="true"/>
+          </input>
+          <output struct="person info"/>
+          <config>
+            <rest:method not-supported="true"/>
+          </config>
+          <doc>
+            <summary>Reads person info by email as the key.</summary>
+          </doc>
+        </operation>
+      </operations>
       <config>
         <sql:table name="Person.Person"/>
         <edm:customize extend="true"/>
+        <svc:customize subclass="true"/>
       </config>
       <doc>
         <summary>Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.</summary>

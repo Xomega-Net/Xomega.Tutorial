@@ -68,6 +68,11 @@ namespace AdventureWorks.Services.Entities
         public const string PaymentRequired = "PaymentRequired";
 
         /// <summary>
+        /// Person info not found.
+        /// </summary>
+        public const string PersonNotFound = "PersonNotFound";
+
+        /// <summary>
         /// Sales information is required for order {0}.
         /// Where {0}=Order ID
         /// </summary>
