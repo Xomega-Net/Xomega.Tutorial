@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using AdventureWorks.Services.Common;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -24,10 +25,14 @@ namespace AdventureWorks.Services.Rest
             public string Password { get; set; }
         }
 
+        private readonly IPersonService personService;
+
         public AuthenticationController(ErrorList errorList, ErrorParser errorParser,
-            IOptionsMonitor<AuthConfig> configOptions)
+            IOptionsMonitor<AuthConfig> configOptions,
+            IPersonService personService)
             : base(errorList, errorParser, configOptions)
         {
+            this.personService = personService;
         }
 
         [AllowAnonymous]
@@ -38,19 +43,18 @@ namespace AdventureWorks.Services.Rest
             try
             {
                 // TODO: uncomment lines below to validate that user and password are populated
-                //if (!ModelState.IsValid)
-                //    currentErrors.AddModelErrors(ModelState);
+                if (!ModelState.IsValid)
+                    currentErrors.AddModelErrors(ModelState);
                 currentErrors.AbortIfHasErrors();
 
-                // TODO: validate credentials.UserName and credentials.Password here.
-                // Inject services in the controller for that as needed.
-                await Task.CompletedTask;
-
-                string user = string.IsNullOrEmpty(credentials?.Username) ? "Guest" : credentials.Username;
-
                 ClaimsIdentity identity = new ClaimsIdentity();
-                // TODO: add claims for the validated user
-                identity.AddClaim(new Claim(ClaimTypes.Name, user));
+                await personService.AuthenticateAsync(new Common.Credentials()
+                {
+                    Email = credentials.Username,
+                    Password = credentials.Password
+                });
+                var info = await personService.ReadAsync(credentials.Username);
+                identity = SecurityManager.CreateIdentity(JwtBearerDefaults.AuthenticationScheme, info.Result);
 
                 // generate jwt token
                 var jwtTokenHandler = new JwtSecurityTokenHandler();

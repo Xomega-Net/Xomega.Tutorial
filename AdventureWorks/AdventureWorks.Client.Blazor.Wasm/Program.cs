@@ -47,7 +47,12 @@ namespace AdventureWorks.Client.Blazor.Wasm
             services.AddLookupCacheLoaders();
 
             // add authorization
-            services.AddAuthorizationCore(); // TODO: add security policies
+            services.AddAuthorizationCore(o => {
+                o.AddPolicy("Sales", policy => policy.RequireAssertion(ctx =>
+                    ctx.User.IsEmployee() ||
+                    ctx.User.IsIndividualCustomer() ||
+                    ctx.User.IsStoreContact()));
+            });
 
             MainMenu.Items.Insert(0, new MenuItem()
             {
@@ -62,15 +67,16 @@ namespace AdventureWorks.Client.Blazor.Wasm
             var host = builder.Build();
 
             // TODO: add any custom initialization here
-            await RestServices.Authenticate(host.Services, "anonymous", null);
 
             await host.RunAsync();
         }
 
         private static void SecureMenu(MenuItem mi)
         {
-            // TODO: set security policy for navigation menu items here
-            mi.Policy = null;
+            if (mi?.Href == null) return;
+            if (mi.Href.StartsWith("Sales") || mi.Href.StartsWith("Customer"))
+                mi.Policy = "Sales";
+            else mi.Policy = ""; // visible for all authorized users
         }
     }
 }
