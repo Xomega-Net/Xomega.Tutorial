@@ -1,8 +1,8 @@
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly" AdditionalAssemblies="@AdditionalAssemblies">
         <Found Context="routeData">
-            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
-            @*<AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+            @*<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>*@
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
                     @if (!context.User.Identity.IsAuthenticated)
                     {
@@ -10,12 +10,14 @@
                     }
                     else
                     {
-                        <LayoutView Layout="@typeof(MainLayout)">
-                            <p>You are not authorized to access this page.</p>
+                        <LayoutView>
+                            <div class="d-flex flex-column align-items-center justify-content-evenly w-100">
+                                <div class="alert alert-danger">You are not authorized to access this page.</div>
+                            </div>
                         </LayoutView>
                     }
                 </NotAuthorized>
-            </AuthorizeRouteView>*@
+            </AuthorizeRouteView>
         </Found>
         <NotFound>
             <LayoutView Layout="@typeof(MainLayout)">

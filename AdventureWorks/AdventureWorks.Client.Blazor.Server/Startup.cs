@@ -76,6 +76,12 @@ namespace AdventureWorks.Client.Blazor.Server
             });
 
             // TODO: add authorization with any security policies
+            services.AddAuthorization(o => {
+                o.AddPolicy("Sales", policy => policy.RequireAssertion(ctx =>
+                    ctx.User.IsEmployee() ||
+                    ctx.User.IsIndividualCustomer() ||
+                    ctx.User.IsStoreContact()));
+            });
 
             foreach (var mi in MainMenu.Items)
                 mi.ForEachItem(SecureMenu);
@@ -83,8 +89,10 @@ namespace AdventureWorks.Client.Blazor.Server
 
         private void SecureMenu(MenuItem mi)
         {
-            // TODO: set security policy for navigation menu items here
-            mi.Policy = null;
+            if (mi?.Href == null) return;
+            if (mi.Href.StartsWith("Sales") || mi.Href.StartsWith("Customer"))
+                mi.Policy = "Sales";
+            else mi.Policy = ""; // visible for all authorized users
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

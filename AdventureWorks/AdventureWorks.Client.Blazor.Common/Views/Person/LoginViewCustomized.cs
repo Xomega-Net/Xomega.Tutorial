@@ -6,10 +6,8 @@ namespace AdventureWorks.Client.Blazor.Common.Views
         protected override void OnInitialized()
         {
             base.OnInitialized();
-
-            // add custom initialization here
+            Visible = true;
+            ActivateFromQuery = true;
         }
-
-        // add custom code here
     }
 }
