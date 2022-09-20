@@ -15,54 +15,52 @@ using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
 {
-    public partial class BusinessEntityAddressReadListCacheLoader : LocalLookupCacheLoader 
+    public partial class SpecialOfferProductReadEnumCacheLoader : LocalLookupCacheLoader 
     {
-        public BusinessEntityAddressReadListCacheLoader(IServiceProvider serviceProvider)
-            : base(serviceProvider, true, "business entity address")
+        public SpecialOfferProductReadEnumCacheLoader(IServiceProvider serviceProvider)
+            : base(serviceProvider, true, "special offer product")
         {
         }
 
-        protected virtual async Task<Output<ICollection<BusinessEntityAddress_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        protected virtual async Task<Output<ICollection<SpecialOfferProduct_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
         {
             using (var s = serviceProvider.CreateScope())
             {
                 object val;
-                int _businessEntityId;
-                if (Parameters.TryGetValue("business entity id", out val) && val != null)
-                    _businessEntityId = (int)val;
+                int _productId;
+                if (Parameters.TryGetValue("product id", out val) && val != null)
+                    _productId = (int)val;
                 else return null;
-                var svc = s.ServiceProvider.GetService<IBusinessEntityAddressService>();
-                return await svc.ReadListAsync(_businessEntityId);
+                var svc = s.ServiceProvider.GetService<ISpecialOfferProductService>();
+                return await svc.ReadEnumAsync(_productId);
             }
         }
 
         protected override async Task LoadCacheAsync(string tableType, CacheUpdater updateCache, CancellationToken token = default)
         {
             Dictionary<string, Dictionary<string, Header>> data = new Dictionary<string, Dictionary<string, Header>>();
-            var output = await ReadListAsync(token);
+            var output = await ReadEnumAsync(token);
             if (output?.Messages != null)
                 output.Messages.AbortIfHasErrors();
             else if (output?.Result == null) return;
 
             foreach (var row in output.Result)
             {
-                string type = "business entity address";
+                string type = "special offer product";
 
                 if (!data.TryGetValue(type, out Dictionary<string, Header> tbl))
                 {
                     data[type] = tbl = new Dictionary<string, Header>();
                 }
-                string id = "" + row.AddressId;
+                string id = "" + row.SpecialOfferId;
                 if (!tbl.TryGetValue(id, out Header h))
                 {
-                    tbl[id] = h = new Header(type, id, row.AddressType);
+                    tbl[id] = h = new Header(type, id, row.Description);
+                    h.IsActive = IsActive(row.Active);
                 }
-                h.AddToAttribute("address line1", row.AddressLine1);
-                h.AddToAttribute("address line2", row.AddressLine2);
-                h.AddToAttribute("city", row.City);
-                h.AddToAttribute("state", row.State);
-                h.AddToAttribute("postal code", row.PostalCode);
-                h.AddToAttribute("country", row.Country);
+                h.AddToAttribute("discount", row.Discount);
+                h.AddToAttribute("min qty", row.MinQty);
+                h.AddToAttribute("max qty", row.MaxQty);
             }
             // if no data is returned we still need to update cache to mark it as loaded
             if (data.Count == 0) updateCache(new LookupTable(tableType, new List<Header>(), true));

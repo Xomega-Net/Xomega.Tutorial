@@ -19,16 +19,16 @@ namespace AdventureWorks.Services.Entities
             // configure relationships
 
             c.HasOne(e => e.BusinessEntityObject)
-             .WithMany()
-             .HasForeignKey(e => e.BusinessEntityId);
+             .WithOne()
+             .HasForeignKey<EmployeeDepartmentHistory>(e => e.BusinessEntityId);
 
             c.HasOne(e => e.DepartmentObject)
-             .WithMany()
-             .HasForeignKey(e => e.DepartmentId);
+             .WithOne()
+             .HasForeignKey<EmployeeDepartmentHistory>(e => e.DepartmentId);
 
             c.HasOne(e => e.ShiftObject)
-             .WithMany()
-             .HasForeignKey(e => e.ShiftId);
+             .WithOne()
+             .HasForeignKey<EmployeeDepartmentHistory>(e => e.ShiftId);
 
             // configure properties
           

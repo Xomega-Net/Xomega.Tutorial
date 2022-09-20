@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Components.Authorization;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace AdventureWorks.Client.Blazor.Wasm
 {

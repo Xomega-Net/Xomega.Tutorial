@@ -3,9 +3,6 @@
 //
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated
 // unless they are placed between corresponding CUSTOM_CODE_START/CUSTOM_CODE_END lines.
-//
-// This file can be DELETED DURING REGENERATION IF NO LONGER NEEDED, e.g. if it gets renamed.
-// To prevent this and preserve manual custom changes please remove the line above.
 //---------------------------------------------------------------------------------------------
 
 using AdventureWorks.Services.Common;
@@ -31,33 +28,33 @@ namespace AdventureWorks.Services.Entities
             ctx = serviceProvider.GetService<AdventureWorksEntities>();
         }
 
-        public virtual async Task<Output<ICollection<SalesPerson_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        public virtual async Task<Output<ICollection<SalesPerson_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
         {
-            ICollection<SalesPerson_ReadListOutput> res = null;
+            ICollection<SalesPerson_ReadEnumOutput> res = null;
             try
             {
                 currentErrors.AbortIfHasErrors();
 
-                // CUSTOM_CODE_START: add custom security checks for ReadList operation below
+                // CUSTOM_CODE_START: add custom security checks for ReadEnum operation below
                 // CUSTOM_CODE_END
                 var src = from obj in ctx.SalesPerson select obj;
 
-                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadEnum operation below
                 // src = src.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
                 var qry = from obj in src
-                          select new SalesPerson_ReadListOutput() {
+                          select new SalesPerson_ReadEnumOutput() {
                               BusinessEntityId = obj.BusinessEntityId,
-                              TerritoryId = obj.TerritoryId,
-                              // CUSTOM_CODE_START: set the Name output parameter of ReadList operation below
-                              Name = obj.BusinessEntityObject.BusinessEntityObject.LastName + ", " +
-                                     obj.BusinessEntityObject.BusinessEntityObject.FirstName, // CUSTOM_CODE_END
-                              // CUSTOM_CODE_START: set the IsCurrent output parameter of ReadList operation below
+                              // CUSTOM_CODE_START: set the Description output parameter of ReadEnum operation below
+                              Description = obj.BusinessEntityObject.BusinessEntityObject.LastName + ", " +
+                                            obj.BusinessEntityObject.BusinessEntityObject.FirstName, // CUSTOM_CODE_END
+                              // CUSTOM_CODE_START: set the IsCurrent output parameter of ReadEnum operation below
                               IsCurrent = obj.BusinessEntityObject.CurrentFlag, // CUSTOM_CODE_END
+                              TerritoryId = obj.TerritoryId,
                           };
 
-                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadEnum operation below
                 // qry = qry.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
@@ -68,7 +65,7 @@ namespace AdventureWorks.Services.Entities
             {
                 currentErrors.MergeWith(errorParser.FromException(ex));
             }
-            return await Task.FromResult(new Output<ICollection<SalesPerson_ReadListOutput>>(currentErrors, res));
+            return await Task.FromResult(new Output<ICollection<SalesPerson_ReadEnumOutput>>(currentErrors, res));
         }
     }
 }

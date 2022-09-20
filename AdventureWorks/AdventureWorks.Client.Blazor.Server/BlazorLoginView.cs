@@ -18,7 +18,8 @@ namespace AdventureWorks.Client.Blazor.Server
         [Inject] SignInManager signInManager { get; set; }
         [Inject] IPersonService personService { get; set; }
 
-        protected override async Task OnViewEventsAsync(object sender, ViewEvent e, CancellationToken token = default)
+        protected override async Task OnViewEventsAsync(
+            object sender, ViewEvent e, CancellationToken token = default)
         {
             await base.OnViewEventsAsync(sender, e, token);
             if (e.IsSaved())
@@ -26,7 +27,8 @@ namespace AdventureWorks.Client.Blazor.Server
                 ClaimsIdentity ci = null;
                 if (VM?.MainObj?.EmailProperty?.Value != null)
                 {
-                    Output<PersonInfo> output = await personService.ReadAsync(VM.MainObj.EmailProperty.Value);
+                    Output<PersonInfo> output = await personService.ReadAsync(VM.MainObj.EmailProperty.Value,
+                                                                              token);
                     ci = SecurityManager.CreateIdentity(CookieAuthenticationDefaults.AuthenticationScheme,
                                                         output.Result);
                 }

@@ -15,44 +15,54 @@ using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
 {
-    public partial class ProductSubcategoryReadListCacheLoader : LookupCacheLoader 
+    public partial class BusinessEntityAddressReadEnumCacheLoader : LocalLookupCacheLoader 
     {
-        public ProductSubcategoryReadListCacheLoader(IServiceProvider serviceProvider)
-            : base(serviceProvider, LookupCache.Global, true, "product subcategory")
+        public BusinessEntityAddressReadEnumCacheLoader(IServiceProvider serviceProvider)
+            : base(serviceProvider, true, "business entity address")
         {
         }
 
-        protected virtual async Task<Output<ICollection<ProductSubcategory_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        protected virtual async Task<Output<ICollection<BusinessEntityAddress_ReadEnumOutput>>> Address_ReadEnumAsync(CancellationToken token = default)
         {
             using (var s = serviceProvider.CreateScope())
             {
-                var svc = s.ServiceProvider.GetService<IProductSubcategoryService>();
-                return await svc.ReadListAsync();
+                object val;
+                int _businessEntityId;
+                if (Parameters.TryGetValue("business entity id", out val) && val != null)
+                    _businessEntityId = (int)val;
+                else return null;
+                var svc = s.ServiceProvider.GetService<IBusinessEntityService>();
+                return await svc.Address_ReadEnumAsync(_businessEntityId);
             }
         }
 
         protected override async Task LoadCacheAsync(string tableType, CacheUpdater updateCache, CancellationToken token = default)
         {
             Dictionary<string, Dictionary<string, Header>> data = new Dictionary<string, Dictionary<string, Header>>();
-            var output = await ReadListAsync(token);
+            var output = await Address_ReadEnumAsync(token);
             if (output?.Messages != null)
                 output.Messages.AbortIfHasErrors();
             else if (output?.Result == null) return;
 
             foreach (var row in output.Result)
             {
-                string type = "product subcategory";
+                string type = "business entity address";
 
                 if (!data.TryGetValue(type, out Dictionary<string, Header> tbl))
                 {
                     data[type] = tbl = new Dictionary<string, Header>();
                 }
-                string id = "" + row.ProductSubcategoryId;
+                string id = "" + row.AddressId;
                 if (!tbl.TryGetValue(id, out Header h))
                 {
-                    tbl[id] = h = new Header(type, id, row.Name);
+                    tbl[id] = h = new Header(type, id, row.AddressType);
                 }
-                h.AddToAttribute("product category id", row.ProductCategoryId);
+                h.AddToAttribute("address line1", row.AddressLine1);
+                h.AddToAttribute("address line2", row.AddressLine2);
+                h.AddToAttribute("city", row.City);
+                h.AddToAttribute("state", row.State);
+                h.AddToAttribute("postal code", row.PostalCode);
+                h.AddToAttribute("country", row.Country);
             }
             // if no data is returned we still need to update cache to mark it as loaded
             if (data.Count == 0) updateCache(new LookupTable(tableType, new List<Header>(), true));

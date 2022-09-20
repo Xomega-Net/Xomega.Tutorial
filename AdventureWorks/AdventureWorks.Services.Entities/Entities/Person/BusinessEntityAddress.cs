@@ -19,9 +19,6 @@ namespace AdventureWorks.Services.Entities
 
         #region Properties
 
-        ///<summary>
-        /// Primary key. Foreign key to BusinessEntity.BusinessEntityID.
-        ///</summary>
         public int BusinessEntityId  { get; set; }
 
         ///<summary>
@@ -49,7 +46,7 @@ namespace AdventureWorks.Services.Entities
         #region Navigation Properties
 
         ///<summary>
-        /// BusinessEntity object referenced by the field BusinessEntityId.
+        /// Parent BusinessEntity object referenced by the field BusinessEntityId.
         ///</summary>
         public virtual BusinessEntity BusinessEntityObject { get; set; }
 

@@ -2,7 +2,7 @@
 <module xmlns="http://www.xomega.net/omodel"
         xmlns:edm="http://www.xomega.net/edm"
         name="framework">
-  <!-- Configuraiton of Entity Data Model types for logical types. -->
+  <!-- Configuration of Entity Data Model types for logical types. -->
   <types>
     <type-config type="boolean">
       <edm:type Type="Boolean"/>

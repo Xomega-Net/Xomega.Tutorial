@@ -13,14 +13,14 @@ namespace AdventureWorks.Services.Common
 
     public class CreditCardInfo
     {
-        
+
         public int CreditCardId { get; set; }
-        
+
         ///<summary>
         /// Credit card number.
         ///</summary>
         public string CardNumber { get; set; }
-        
+
         public string Expiration { get; set; }
     }
     #endregion
@@ -29,9 +29,9 @@ namespace AdventureWorks.Services.Common
 
     public class CustomerLookup
     {
-        
+
         public string StoreName { get; set; }
-        
+
         public string PersonName { get; set; }
     }
     #endregion
@@ -40,35 +40,35 @@ namespace AdventureWorks.Services.Common
 
     public class CustomerInfo
     {
-        
+
         public int CustomerId { get; set; }
-        
+
         ///<summary>
         /// Foreign key to Store.BusinessEntityID
         ///</summary>
         public int? StoreId { get; set; }
-        
+
         public string StoreName { get; set; }
-        
+
         ///<summary>
         /// Foreign key to Person.BusinessEntityID
         ///</summary>
         public int? PersonId { get; set; }
-        
+
         public string PersonName { get; set; }
-        
+
         ///<summary>
         /// Unique number identifying the customer assigned by the accounting system.
         ///</summary>
         public string AccountNumber { get; set; }
-        
+
         ///<summary>
         /// ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
         public int? TerritoryId { get; set; }
-        
+
         public AddressKey BillingAddress { get; set; }
-        
+
         public AddressKey ShippingAddress { get; set; }
     }
     #endregion
@@ -77,11 +77,11 @@ namespace AdventureWorks.Services.Common
 
     public class CustomerUpdate
     {
-        
+
         public int CustomerId { get; set; }
-        
+
         public AddressKey BillingAddress { get; set; }
-        
+
         public AddressKey ShippingAddress { get; set; }
     }
     #endregion
@@ -90,39 +90,39 @@ namespace AdventureWorks.Services.Common
 
     public class PaymentInfo
     {
-        
+
         ///<summary>
         /// Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
         ///</summary>
         public decimal SubTotal { get; set; }
-        
+
         ///<summary>
         /// Shipping method. Foreign key to ShipMethod.ShipMethodID.
         ///</summary>
         public int ShipMethodId { get; set; }
-        
+
         ///<summary>
         /// Tax amount.
         ///</summary>
         public decimal TaxAmt { get; set; }
-        
+
         ///<summary>
         /// Shipping cost.
         ///</summary>
         public decimal Freight { get; set; }
-        
+
         ///<summary>
         /// Total due from customer. Computed as Subtotal + TaxAmt + Freight.
         ///</summary>
         public decimal TotalDue { get; set; }
-        
+
         ///<summary>
         /// Date the order is due to the customer.
         ///</summary>
         public DateTime DueDate { get; set; }
-        
+
         public string CurrencyRate { get; set; }
-        
+
         public SalesOrderCreditCard CreditCard { get; set; }
     }
     #endregion
@@ -131,17 +131,17 @@ namespace AdventureWorks.Services.Common
 
     public class PaymentUpdate
     {
-        
+
         ///<summary>
         /// Shipping method. Foreign key to ShipMethod.ShipMethodID.
         ///</summary>
         public int ShipMethodId { get; set; }
-        
+
         ///<summary>
         /// Date the order is due to the customer.
         ///</summary>
         public DateTime DueDate { get; set; }
-        
+
         public SalesOrderCreditCard CreditCard { get; set; }
     }
     #endregion
@@ -150,17 +150,17 @@ namespace AdventureWorks.Services.Common
 
     public class SalesInfo
     {
-        
+
         ///<summary>
         /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
         public int? TerritoryId { get; set; }
-        
+
         ///<summary>
         /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
         ///</summary>
         public int? SalesPersonId { get; set; }
-        
+
         public ICollection<int> SalesReason { get; set; }
     }
     #endregion
@@ -169,12 +169,12 @@ namespace AdventureWorks.Services.Common
 
     public class SalesOrderCreditCard
     {
-        
+
         ///<summary>
         /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
         ///</summary>
         public int CreditCardId { get; set; }
-        
+
         ///<summary>
         /// Approval code provided by the credit card company.
         ///</summary>

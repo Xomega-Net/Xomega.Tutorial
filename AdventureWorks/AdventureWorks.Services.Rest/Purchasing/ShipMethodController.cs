@@ -29,18 +29,18 @@ namespace AdventureWorks.Services.Rest
         }
 
         ///<summary>
-        /// Reads a list of Ship Method objects based on the specified criteria.
+        /// Reads enumeration data for Ship Method.
         ///</summary>
-        [Route("ship-method")]
+        [Route("ship-method/enum")]
         [HttpGet]
-        public async Task<ActionResult> ReadListAsync(CancellationToken token = default)
+        public async Task<ActionResult> ReadEnumAsync(CancellationToken token = default)
         {
             ActionResult response;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Output<ICollection<ShipMethod_ReadListOutput>> output = await svc.ReadListAsync(token);
+                    Output<ICollection<ShipMethod_ReadEnumOutput>> output = await svc.ReadEnumAsync(token);
                     response = StatusCode((int)output.HttpStatus, output);
                     return response;
                 }

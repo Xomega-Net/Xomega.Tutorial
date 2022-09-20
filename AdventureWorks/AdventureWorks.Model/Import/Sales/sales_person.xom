@@ -97,28 +97,29 @@
         </field>
       </fields>
       <operations>
-        <operation name="read list" type="readlist">
+        <operation name="read enum">
           <output list="true">
             <param name="business entity id"/>
-            <param name="territory id"/>
-            <param name="name" type="string"/>
+            <param name="description" type="string"/>
             <param name="is-current" type="boolean" required="true"/>
+            <param name="territory id"/>
           </output>
           <config>
-            <rest:method verb="GET" uri-template="sales-person"/>
-            <xfk:enum-cache enum-name="sales person" id-param="business entity id"
-                            desc-param="name" is-active-param="is-current"/>
+            <rest:method verb="GET" uri-template="sales-person/enum"/>
+            <xfk:enum-cache enum-name="sales person" id-param="business entity id" desc-param="description"
+                            is-active-param="is-current"/>
           </config>
           <doc>
-            <summary>Reads a list of Sales Person objects based on the specified criteria.</summary>
+            <summary>Reads enumeration data for Sales Person.</summary>
           </doc>
         </operation>
         <doc>
-          <summary>A service for quering and managing Sales Person objects.</summary>
+          <summary>A service for querying and managing Sales Person objects.</summary>
         </doc>
       </operations>
       <config>
         <sql:table name="Sales.SalesPerson"/>
+        <svc:customize preserve-on-clean="true"/>
       </config>
       <doc>
         <summary>Sales representative current information.</summary>

@@ -141,28 +141,36 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         protected override async Task<ErrorList> DoReadAsync(object options, CancellationToken token = default)
         {
-            var output = await SalesOrder_ReadAsync(options, token);
-            return output.Messages;
+            var res = new ErrorList();
+            var output1 = await SalesOrder_ReadAsync(options, token);
+            res.MergeWith(output1.Messages);
+            return res;
         }
 
         protected override async Task<ErrorList> DoSaveAsync(object options, CancellationToken token = default)
         {
             if (IsNew)
             {
-                var output = await SalesOrder_CreateAsync(options, token);
-                return output.Messages;
+                var res = new ErrorList();
+                var output1 = await SalesOrder_CreateAsync(options, token);
+                res.MergeWith(output1.Messages);
+                return res;
             }
             else
             {
-                var output = await SalesOrder_UpdateAsync(options, token);
-                return output.Messages;
+                var res = new ErrorList();
+                var output1 = await SalesOrder_UpdateAsync(options, token);
+                res.MergeWith(output1.Messages);
+                return res;
             }
         }
 
         protected override async Task<ErrorList> DoDeleteAsync(object options, CancellationToken token = default)
         {
-            var output = await SalesOrder_DeleteAsync(options, token);
-            return output.Messages;
+            var res = new ErrorList();
+            var output1 = await SalesOrder_DeleteAsync(options, token);
+            res.MergeWith(output1.Messages);
+            return res;
         }
 
         #endregion

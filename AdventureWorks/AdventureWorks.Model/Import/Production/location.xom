@@ -9,7 +9,7 @@
         xmlns:edm="http://www.xomega.net/edm"
         name="production">
   <types>
-    <type name="location" base="small int"/>
+    <type name="location" base="small int key"/>
   </types>
   <objects>
     <object name="location">

@@ -1,3 +1,5 @@
+using System.Resources;
+using System.Threading.Tasks;
 using AdventureWorks.Client.Blazor.Common;
 using AdventureWorks.Client.Blazor.Common.Views;
 using AdventureWorks.Client.Common.DataObjects;
@@ -8,8 +10,6 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Resources;
-using System.Threading.Tasks;
 using Xomega.Framework;
 using Xomega.Framework.Blazor;
 using Xomega.Framework.Blazor.Components;

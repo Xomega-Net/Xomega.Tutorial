@@ -4,7 +4,6 @@
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated.
 //---------------------------------------------------------------------------------------------
 
-using AdventureWorks.Services.Common.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -81,58 +80,58 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrder_ReadOutput
     {
-        
+
         ///<summary>
         /// Unique sales order identification number.
         ///</summary>
         public string SalesOrderNumber { get; set; }
-        
+
         ///<summary>
         /// Dates the sales order was created.
         ///</summary>
         public DateTime OrderDate { get; set; }
-        
+
         ///<summary>
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
         public byte Status { get; set; }
-        
+
         ///<summary>
         /// 0 = Order placed by sales person. 1 = Order placed online by customer.
         ///</summary>
         public bool OnlineOrderFlag { get; set; }
-        
+
         ///<summary>
         /// Customer purchase order number reference. 
         ///</summary>
         public string PurchaseOrderNumber { get; set; }
-        
+
         ///<summary>
         /// Financial accounting number reference.
         ///</summary>
         public string AccountNumber { get; set; }
-        
+
         public CustomerInfo Customer { get; set; }
-        
+
         ///<summary>
         /// Date the order was shipped to the customer.
         ///</summary>
         public DateTime? ShipDate { get; set; }
-        
+
         public PaymentInfo Payment { get; set; }
-        
+
         public SalesInfo Sales { get; set; }
-        
+
         ///<summary>
         /// Sales representative comments.
         ///</summary>
         public string Comment { get; set; }
-        
+
         ///<summary>
         /// Incremental number to track changes to the sales order over time.
         ///</summary>
         public byte RevisionNumber { get; set; }
-        
+
         ///<summary>
         /// Date and time the record was last updated.
         ///</summary>
@@ -147,43 +146,43 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrder_CreateInput
     {
-        
+
         ///<summary>
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
         [XRequired]
-        [XLookupValue(SalesOrderStatus.EnumName)]
+        [XLookupValue("sales order status")]
         public byte Status { get; set; }
-        
+
         ///<summary>
         /// 0 = Order placed by sales person. 1 = Order placed online by customer.
         ///</summary>
         [XRequired]
         public bool OnlineOrderFlag { get; set; }
-        
+
         ///<summary>
         /// Customer purchase order number reference. 
         ///</summary>
         [XMaxLength(25)]
         public string PurchaseOrderNumber { get; set; }
-        
+
         ///<summary>
         /// Financial accounting number reference.
         ///</summary>
         [XMaxLength(15)]
         public string AccountNumber { get; set; }
-        
+
         public CustomerUpdate Customer { get; set; }
-        
+
         ///<summary>
         /// Date the order was shipped to the customer.
         ///</summary>
         public DateTime? ShipDate { get; set; }
-        
+
         public PaymentUpdate Payment { get; set; }
-        
+
         public SalesInfo Sales { get; set; }
-        
+
         ///<summary>
         /// Sales representative comments.
         ///</summary>
@@ -199,24 +198,24 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrder_CreateOutput
     {
-        
+
         public int SalesOrderId { get; set; }
-        
+
         ///<summary>
         /// Unique sales order identification number.
         ///</summary>
         public string SalesOrderNumber { get; set; }
-        
+
         ///<summary>
         /// Dates the sales order was created.
         ///</summary>
         public DateTime OrderDate { get; set; }
-        
+
         ///<summary>
         /// Incremental number to track changes to the sales order over time.
         ///</summary>
         public byte RevisionNumber { get; set; }
-        
+
         ///<summary>
         /// Date and time the record was last updated.
         ///</summary>
@@ -231,43 +230,43 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrder_UpdateInput_Data
     {
-        
+
         ///<summary>
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
         [XRequired]
-        [XLookupValue(SalesOrderStatus.EnumName)]
+        [XLookupValue("sales order status")]
         public byte Status { get; set; }
-        
+
         ///<summary>
         /// 0 = Order placed by sales person. 1 = Order placed online by customer.
         ///</summary>
         [XRequired]
         public bool OnlineOrderFlag { get; set; }
-        
+
         ///<summary>
         /// Customer purchase order number reference. 
         ///</summary>
         [XMaxLength(25)]
         public string PurchaseOrderNumber { get; set; }
-        
+
         ///<summary>
         /// Financial accounting number reference.
         ///</summary>
         [XMaxLength(15)]
         public string AccountNumber { get; set; }
-        
+
         public CustomerUpdate Customer { get; set; }
-        
+
         ///<summary>
         /// Date the order was shipped to the customer.
         ///</summary>
         public DateTime? ShipDate { get; set; }
-        
+
         public PaymentUpdate Payment { get; set; }
-        
+
         public SalesInfo Sales { get; set; }
-        
+
         ///<summary>
         /// Sales representative comments.
         ///</summary>
@@ -283,12 +282,12 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrder_UpdateOutput
     {
-        
+
         ///<summary>
         /// Incremental number to track changes to the sales order over time.
         ///</summary>
         public byte RevisionNumber { get; set; }
-        
+
         ///<summary>
         /// Date and time the record was last updated.
         ///</summary>
@@ -303,130 +302,130 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrder_ReadListInput_Criteria
     {
-        
+
         ///<summary>
         /// Comparison operator for the corresponding Sales Order Number criteria.
         ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string SalesOrderNumberOperator { get; set; }
-        
+
         ///<summary>
         /// Unique sales order identification number.
         ///</summary>
         [XMaxLength(25)]
         public string SalesOrderNumber { get; set; }
-        
+
         ///<summary>
         /// Comparison operator for the corresponding Status criteria.
         ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string StatusOperator { get; set; }
-        
+
         ///<summary>
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
-        [XLookupValue(SalesOrderStatus.EnumName)]
+        [XLookupValue("sales order status")]
         public ICollection<byte> Status { get; set; }
-        
+
         ///<summary>
         /// Comparison operator for the corresponding Order Date criteria.
         ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string OrderDateOperator { get; set; }
-        
+
         ///<summary>
         /// Dates the sales order was created.
         ///</summary>
         public DateTime? OrderDate { get; set; }
-        
+
         ///<summary>
         /// End of range for the corresponding Order Date criteria for the BETWEEN operator.
         ///</summary>
         public DateTime? OrderDate2 { get; set; }
-        
+
         ///<summary>
         /// Comparison operator for the corresponding Due Date criteria.
         ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string DueDateOperator { get; set; }
-        
+
         ///<summary>
         /// Date the order is due to the customer.
         ///</summary>
         public DateTime? DueDate { get; set; }
-        
+
         ///<summary>
         /// End of range for the corresponding Due Date criteria for the BETWEEN operator.
         ///</summary>
         public DateTime? DueDate2 { get; set; }
-        
+
         ///<summary>
         /// Comparison operator for the corresponding Total Due criteria.
         ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string TotalDueOperator { get; set; }
-        
+
         ///<summary>
         /// Total due from customer. Computed as Subtotal + TaxAmt + Freight.
         ///</summary>
         public decimal? TotalDue { get; set; }
-        
+
         ///<summary>
         /// End of range for the corresponding Total Due criteria for the BETWEEN operator.
         ///</summary>
         public decimal? TotalDue2 { get; set; }
-        
+
         ///<summary>
         /// Comparison operator for the corresponding Customer Store criteria.
         ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string CustomerStoreOperator { get; set; }
-        
+
         public string CustomerStore { get; set; }
-        
+
         ///<summary>
         /// Comparison operator for the corresponding Customer Name criteria.
         ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string CustomerNameOperator { get; set; }
-        
+
         public string CustomerName { get; set; }
-        
+
         [XMaxLength(50)]
-        [XLookupValue(SalesTerritoryGroup.EnumName)]
+        [XLookupValue("sales territory group")]
         public string GlobalRegion { get; set; }
-        
+
         ///<summary>
         /// Comparison operator for the corresponding Territory Id criteria.
         ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string TerritoryIdOperator { get; set; }
-        
+
         ///<summary>
         /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
-        [XLookupValue(SalesTerritory.EnumName)]
+        [XLookupValue("sales territory")]
         public int? TerritoryId { get; set; }
-        
+
         ///<summary>
         /// Comparison operator for the corresponding Sales Person Id criteria.
         ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string SalesPersonIdOperator { get; set; }
-        
+
         ///<summary>
         /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
         ///</summary>
-        [XLookupValue(SalesPerson.EnumName)]
+        [XLookupValue("sales person")]
         public ICollection<int> SalesPersonId { get; set; }
     }
     #endregion
@@ -438,53 +437,53 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrder_ReadListOutput
     {
-        
+
         public int SalesOrderId { get; set; }
-        
+
         ///<summary>
         /// Unique sales order identification number.
         ///</summary>
         public string SalesOrderNumber { get; set; }
-        
+
         ///<summary>
         /// Dates the sales order was created.
         ///</summary>
         public DateTime OrderDate { get; set; }
-        
+
         ///<summary>
         /// Date the order is due to the customer.
         ///</summary>
         public DateTime DueDate { get; set; }
-        
+
         ///<summary>
         /// Date the order was shipped to the customer.
         ///</summary>
         public DateTime? ShipDate { get; set; }
-        
+
         ///<summary>
         /// Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
         ///</summary>
         public byte Status { get; set; }
-        
+
         ///<summary>
         /// 0 = Order placed by sales person. 1 = Order placed online by customer.
         ///</summary>
         public bool OnlineOrderFlag { get; set; }
-        
+
         public string CustomerStore { get; set; }
-        
+
         public string CustomerName { get; set; }
-        
+
         ///<summary>
         /// Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
         ///</summary>
         public int? SalesPersonId { get; set; }
-        
+
         ///<summary>
         /// Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
         public int? TerritoryId { get; set; }
-        
+
         ///<summary>
         /// Total due from customer. Computed as Subtotal + TaxAmt + Freight.
         ///</summary>
@@ -499,37 +498,37 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrderDetail_ReadOutput
     {
-        
+
         public int SalesOrderId { get; set; }
-        
+
         public string SalesOrderNumber { get; set; }
-        
+
         public int? Subcategory { get; set; }
-        
+
         public int ProductId { get; set; }
-        
+
         ///<summary>
         /// Quantity ordered per product.
         ///</summary>
         public short OrderQty { get; set; }
-        
+
         ///<summary>
         /// Selling price of a single product.
         ///</summary>
         public decimal UnitPrice { get; set; }
-        
+
         public int SpecialOfferId { get; set; }
-        
+
         ///<summary>
         /// Discount amount.
         ///</summary>
         public decimal UnitPriceDiscount { get; set; }
-        
+
         ///<summary>
         /// Shipment tracking number supplied by the shipper.
         ///</summary>
         public string CarrierTrackingNumber { get; set; }
-        
+
         ///<summary>
         /// Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.
         ///</summary>
@@ -544,26 +543,26 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrderDetail_CreateInput_Data
     {
-        
-        [XRequired]
-        [XLookupValue(Product.EnumName)]
-        public int ProductId { get; set; }
-        
-        ///<summary>
-        /// Quantity ordered per product.
-        ///</summary>
-        [XRequired]
-        public short OrderQty { get; set; }
-        
-        [XRequired]
-        [XLookupValue(SpecialOffer.EnumName)]
-        public int SpecialOfferId { get; set; }
-        
+
         ///<summary>
         /// Shipment tracking number supplied by the shipper.
         ///</summary>
         [XMaxLength(25)]
         public string CarrierTrackingNumber { get; set; }
+
+        ///<summary>
+        /// Quantity ordered per product.
+        ///</summary>
+        [XRequired]
+        public short OrderQty { get; set; }
+
+        [XRequired]
+        [XLookupValue("special offer")]
+        public int SpecialOfferId { get; set; }
+
+        [XRequired]
+        [XLookupValue("product")]
+        public int ProductId { get; set; }
     }
     #endregion
 
@@ -574,7 +573,7 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrderDetail_CreateOutput
     {
-        
+
         public int SalesOrderDetailId { get; set; }
     }
     #endregion
@@ -586,26 +585,26 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrderDetail_UpdateInput_Data
     {
-        
-        [XRequired]
-        [XLookupValue(Product.EnumName)]
-        public int ProductId { get; set; }
-        
-        ///<summary>
-        /// Quantity ordered per product.
-        ///</summary>
-        [XRequired]
-        public short OrderQty { get; set; }
-        
-        [XRequired]
-        [XLookupValue(SpecialOffer.EnumName)]
-        public int SpecialOfferId { get; set; }
-        
+
         ///<summary>
         /// Shipment tracking number supplied by the shipper.
         ///</summary>
         [XMaxLength(25)]
         public string CarrierTrackingNumber { get; set; }
+
+        ///<summary>
+        /// Quantity ordered per product.
+        ///</summary>
+        [XRequired]
+        public short OrderQty { get; set; }
+
+        [XRequired]
+        [XLookupValue("special offer")]
+        public int SpecialOfferId { get; set; }
+
+        [XRequired]
+        [XLookupValue("product")]
+        public int ProductId { get; set; }
     }
     #endregion
 
@@ -616,33 +615,33 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class SalesOrderDetail_ReadListOutput
     {
-        
+
         public int SalesOrderDetailId { get; set; }
-        
+
         public int ProductId { get; set; }
-        
+
         ///<summary>
         /// Quantity ordered per product.
         ///</summary>
         public short OrderQty { get; set; }
-        
+
         ///<summary>
         /// Selling price of a single product.
         ///</summary>
         public decimal UnitPrice { get; set; }
-        
+
         ///<summary>
         /// Discount amount.
         ///</summary>
         public decimal UnitPriceDiscount { get; set; }
-        
+
         public int SpecialOfferId { get; set; }
-        
+
         ///<summary>
         /// Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.
         ///</summary>
         public decimal LineTotal { get; set; }
-        
+
         ///<summary>
         /// Shipment tracking number supplied by the shipper.
         ///</summary>

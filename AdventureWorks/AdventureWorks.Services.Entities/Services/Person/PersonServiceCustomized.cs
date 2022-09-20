@@ -1,9 +1,9 @@
-using AdventureWorks.Services.Common;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AdventureWorks.Services.Common;
+using Microsoft.EntityFrameworkCore;
 using Xomega.Framework;
 using Xomega.Framework.Services;
 
@@ -29,8 +29,8 @@ namespace AdventureWorks.Services.Entities
             if (pwd != null && _credentials.Password != null)
             {
                 valid = _credentials.Password.Equals("password"); // for testing only
-                // TODO: hash _credentials.Password using pwd.PasswordSalt,
-                //       and compare it with pwd.PasswordHash instead
+                                                                  // TODO: hash _credentials.Password using pwd.PasswordSalt,
+                                                                  //       and compare it with pwd.PasswordHash instead
             }
             if (!valid) currentErrors.CriticalError(ErrorType.Security, Messages.InvalidCredentials);
             return new Output(currentErrors);

@@ -19,7 +19,7 @@ namespace AdventureWorks.Services.Entities
             // configure relationships
 
             c.HasOne(e => e.BusinessEntityObject)
-             .WithMany()
+             .WithMany(p => p.AddressObjectList)
              .HasForeignKey(e => e.BusinessEntityId);
 
             c.HasOne(e => e.AddressObject)

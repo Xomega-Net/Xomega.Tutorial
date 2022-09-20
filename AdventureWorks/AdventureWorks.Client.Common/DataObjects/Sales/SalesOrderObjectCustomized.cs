@@ -1,6 +1,6 @@
+using System;
 using AdventureWorks.Services.Common;
 using AdventureWorks.Services.Common.Enumerations;
-using System;
 using Xomega.Framework;
 using Xomega.Framework.Properties;
 
@@ -28,8 +28,11 @@ namespace AdventureWorks.Client.Common.DataObjects
         {
             base.OnInitialized();
             var ccProp = PaymentObject.CreditCardObject.CreditCardIdProperty;
-            ccProp.LocalCacheLoader = new PersonCreditCardReadListCacheLoader(ServiceProvider);
-            ccProp.SetCacheLoaderParameters(PersonCreditCard.Parameters.BusinessEntityId, CustomerObject.PersonIdProperty);
+            ccProp.LocalCacheLoader = new PersonCreditCardReadEnumCacheLoader(ServiceProvider);
+            ccProp.SetCacheLoaderParameters(PersonCreditCard.Parameters.BusinessEntityId,
+                                            CustomerObject.PersonIdProperty);
         }
+
+        // add custom code here
     }
 }

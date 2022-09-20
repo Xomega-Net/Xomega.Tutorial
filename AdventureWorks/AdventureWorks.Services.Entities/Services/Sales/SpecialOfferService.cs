@@ -3,9 +3,6 @@
 //
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated
 // unless they are placed between corresponding CUSTOM_CODE_START/CUSTOM_CODE_END lines.
-//
-// This file can be DELETED DURING REGENERATION IF NO LONGER NEEDED, e.g. if it gets renamed.
-// To prevent this and preserve manual custom changes please remove the line above.
 //---------------------------------------------------------------------------------------------
 
 using AdventureWorks.Services.Common;
@@ -31,32 +28,32 @@ namespace AdventureWorks.Services.Entities
             ctx = serviceProvider.GetService<AdventureWorksEntities>();
         }
 
-        public virtual async Task<Output<ICollection<SpecialOffer_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        public virtual async Task<Output<ICollection<SpecialOffer_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
         {
-            ICollection<SpecialOffer_ReadListOutput> res = null;
+            ICollection<SpecialOffer_ReadEnumOutput> res = null;
             try
             {
                 currentErrors.AbortIfHasErrors();
 
-                // CUSTOM_CODE_START: add custom security checks for ReadList operation below
+                // CUSTOM_CODE_START: add custom security checks for ReadEnum operation below
                 // CUSTOM_CODE_END
                 var src = from obj in ctx.SpecialOffer select obj;
 
-                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadEnum operation below
                 // src = src.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
                 var qry = from obj in src
-                          select new SpecialOffer_ReadListOutput() {
+                          select new SpecialOffer_ReadEnumOutput() {
                               SpecialOfferId = obj.SpecialOfferId,
                               Description = obj.Description,
-                              // CUSTOM_CODE_START: set the IsActive output parameter of ReadList operation below
-                              IsActive = (obj.StartDate == null || obj.StartDate < DateTime.Today) &&
-                                         (obj.EndDate == null || obj.EndDate > DateTime.Today), // CUSTOM_CODE_END
+                              // CUSTOM_CODE_START: set the IsActive output parameter of ReadEnum operation below
+                              IsActive = obj.StartDate < DateTime.Today &&
+                                         obj.EndDate > DateTime.Today, // CUSTOM_CODE_END
                               Category = obj.Category,
                           };
 
-                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadEnum operation below
                 // qry = qry.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
@@ -67,7 +64,7 @@ namespace AdventureWorks.Services.Entities
             {
                 currentErrors.MergeWith(errorParser.FromException(ex));
             }
-            return await Task.FromResult(new Output<ICollection<SpecialOffer_ReadListOutput>>(currentErrors, res));
+            return await Task.FromResult(new Output<ICollection<SpecialOffer_ReadEnumOutput>>(currentErrors, res));
         }
     }
 }

@@ -3,15 +3,14 @@
 //
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated
 // unless they are placed between corresponding CUSTOM_CODE_START/CUSTOM_CODE_END lines.
-//
-// This file can be DELETED DURING REGENERATION IF NO LONGER NEEDED, e.g. if it gets renamed.
-// To prevent this and preserve manual custom changes please remove the line above.
 //---------------------------------------------------------------------------------------------
 
 using AdventureWorks.Services.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xomega.Framework.Services;
@@ -60,6 +59,57 @@ namespace AdventureWorks.Services.Entities
                 currentErrors.MergeWith(errorParser.FromException(ex));
             }
             return await Task.FromResult(new Output<PersonInfo>(currentErrors, res));
+        }
+
+        public virtual async Task<Output<ICollection<PersonCreditCard_ReadEnumOutput>>> CreditCard_ReadEnumAsync(int _businessEntityId, CancellationToken token = default)
+        {
+            ICollection<PersonCreditCard_ReadEnumOutput> res = null;
+            try
+            {
+                currentErrors.AbortIfHasErrors();
+
+                // CUSTOM_CODE_START: add custom security checks for CreditCard_ReadEnum operation below
+                // CUSTOM_CODE_END
+                var src = from obj in ctx.PersonCreditCard select obj;
+
+                // Source filter
+                src = AddClause(src, "BusinessEntityId", o => o.BusinessEntityId, _businessEntityId);
+
+                // CUSTOM_CODE_START: add custom filter criteria to the source query for CreditCard_ReadEnum operation below
+                // src = src.Where(o => o.FieldName == VALUE);
+                // CUSTOM_CODE_END
+
+                var qry = from obj in src
+                          select new PersonCreditCard_ReadEnumOutput() {
+                              CreditCardId = obj.CreditCardId,
+                              // CUSTOM_CODE_START: set the Description output parameter of CreditCard_ReadEnum operation below
+                              Description = obj.CreditCardObject.CardType + "-*" +
+                                            obj.CreditCardObject.CardNumber.Substring(
+                                                obj.CreditCardObject.CardNumber.Length - 4), // CUSTOM_CODE_END
+                              // CUSTOM_CODE_START: set the PersonName output parameter of CreditCard_ReadEnum operation below
+                              PersonName = obj.PersonObject.LastName + ", " + obj.PersonObject.FirstName, // CUSTOM_CODE_END
+                              // CUSTOM_CODE_START: set the CardType output parameter of CreditCard_ReadEnum operation below
+                              CardType = obj.CreditCardObject.CardType, // CUSTOM_CODE_END
+                              // CUSTOM_CODE_START: set the CardNumber output parameter of CreditCard_ReadEnum operation below
+                              CardNumber = obj.CreditCardObject.CardNumber, // CUSTOM_CODE_END
+                              // CUSTOM_CODE_START: set the ExpMonth output parameter of CreditCard_ReadEnum operation below
+                              ExpMonth = obj.CreditCardObject.ExpMonth, // CUSTOM_CODE_END
+                              // CUSTOM_CODE_START: set the ExpYear output parameter of CreditCard_ReadEnum operation below
+                              ExpYear = obj.CreditCardObject.ExpYear, // CUSTOM_CODE_END
+                          };
+
+                // CUSTOM_CODE_START: add custom filter criteria to the result query for CreditCard_ReadEnum operation below
+                // qry = qry.Where(o => o.FieldName == VALUE);
+                // CUSTOM_CODE_END
+
+                currentErrors.AbortIfHasErrors();
+                res = await qry.ToListAsync(token);
+            }
+            catch (Exception ex)
+            {
+                currentErrors.MergeWith(errorParser.FromException(ex));
+            }
+            return await Task.FromResult(new Output<ICollection<PersonCreditCard_ReadEnumOutput>>(currentErrors, res));
         }
     }
 }

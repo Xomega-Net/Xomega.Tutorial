@@ -1,7 +1,8 @@
 using System;
-using Xomega.Framework;
-using AdventureWorks.Services.Common.Enumerations;
 using AdventureWorks.Services.Common;
+using AdventureWorks.Services.Common.Enumerations;
+using Xomega.Framework;
+using Xomega.Framework.Properties;
 
 namespace AdventureWorks.Client.Common.DataObjects
 {

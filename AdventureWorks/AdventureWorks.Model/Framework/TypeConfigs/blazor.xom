@@ -2,7 +2,7 @@
 <module xmlns="http://www.xomega.net/omodel"
         xmlns:ui="http://www.xomega.net/ui"
         name="framework">
-  <!-- Configuraiton of Xomega Framework Blazor controls for logical types. -->
+  <!-- Configuration of Xomega Framework Blazor controls for logical types. -->
   <types>
     <type-config type="boolean">
       <ui:blazor-control>

@@ -29,18 +29,18 @@ namespace AdventureWorks.Services.Rest
         }
 
         ///<summary>
-        /// Reads a list of Sales Reason objects based on the specified criteria.
+        /// Reads enumeration data for Sales Reason.
         ///</summary>
-        [Route("sales-reason")]
+        [Route("sales-reason/enum")]
         [HttpGet]
-        public async Task<ActionResult> ReadListAsync(CancellationToken token = default)
+        public async Task<ActionResult> ReadEnumAsync(CancellationToken token = default)
         {
             ActionResult response;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Output<ICollection<SalesReason_ReadListOutput>> output = await svc.ReadListAsync(token);
+                    Output<ICollection<SalesReason_ReadEnumOutput>> output = await svc.ReadEnumAsync(token);
                     response = StatusCode((int)output.HttpStatus, output);
                     return response;
                 }

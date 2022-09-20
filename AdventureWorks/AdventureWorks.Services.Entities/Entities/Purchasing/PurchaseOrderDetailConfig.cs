@@ -19,8 +19,8 @@ namespace AdventureWorks.Services.Entities
             // configure relationships
 
             c.HasOne(e => e.PurchaseOrderObject)
-             .WithMany()
-             .HasForeignKey(e => e.PurchaseOrderId);
+             .WithOne()
+             .HasForeignKey<PurchaseOrderDetail>(e => e.PurchaseOrderId);
 
             c.HasOne(e => e.ProductObject)
              .WithMany()

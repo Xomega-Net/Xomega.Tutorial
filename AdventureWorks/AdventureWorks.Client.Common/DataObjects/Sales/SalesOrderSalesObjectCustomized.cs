@@ -1,5 +1,7 @@
-using AdventureWorks.Services.Common.Enumerations;
 using System;
+using Xomega.Framework;
+using Xomega.Framework.Properties;
+using AdventureWorks.Services.Common.Enumerations;
 
 namespace AdventureWorks.Client.Common.DataObjects
 {
@@ -26,5 +28,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             base.OnInitialized();
             SalesPersonIdProperty.SetCascadingProperty(SalesPerson.Attributes.TerritoryId, TerritoryIdProperty);
         }
+
+        // add custom code here
     }
 }

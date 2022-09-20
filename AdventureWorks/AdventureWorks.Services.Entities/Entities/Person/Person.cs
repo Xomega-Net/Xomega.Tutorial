@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace AdventureWorks.Services.Entities
 {
@@ -89,6 +90,11 @@ namespace AdventureWorks.Services.Entities
         /// BusinessEntity object referenced by the field BusinessEntityId.
         ///</summary>
         public virtual BusinessEntity BusinessEntityObject { get; set; }
+
+        ///<summary>
+        /// A list of CreditCard child objects.
+        ///</summary>
+        public virtual ICollection<PersonCreditCard> CreditCardObjectList { get; set; } = new HashSet<PersonCreditCard>();
 
         #endregion
     }

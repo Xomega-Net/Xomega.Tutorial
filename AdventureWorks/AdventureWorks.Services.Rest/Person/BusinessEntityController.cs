@@ -16,31 +16,31 @@ using Xomega.Framework.Services;
 namespace AdventureWorks.Services.Rest
 {
     ///<summary>
-    /// Cross-reference table mapping customers, vendors, and employees to their addresses.
+    /// Source of the ID that connects vendors, customers, and employees with address and contact information.
     ///</summary>
-    public partial class BusinessEntityAddressController : BaseController
+    public partial class BusinessEntityController : BaseController
     {
-        private readonly IBusinessEntityAddressService svc;
+        private readonly IBusinessEntityService svc;
 
-        public BusinessEntityAddressController(ErrorList errorList, ErrorParser errorParser, IBusinessEntityAddressService service)
+        public BusinessEntityController(ErrorList errorList, ErrorParser errorParser, IBusinessEntityService service)
             : base(errorList, errorParser)
         {
             svc = service;
         }
 
         ///<summary>
-        /// Reads a list of Business Entity Address objects based on the specified criteria.
+        /// Reads enumeration data for Business Entity Address.
         ///</summary>
-        [Route("business-entity/{_businessEntityId}/address")]
+        [Route("business-entity/{_businessEntityId}/address/enum")]
         [HttpGet]
-        public async Task<ActionResult> ReadListAsync([FromRoute] int _businessEntityId, CancellationToken token = default)
+        public async Task<ActionResult> Address_ReadEnumAsync([FromRoute] int _businessEntityId, CancellationToken token = default)
         {
             ActionResult response;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Output<ICollection<BusinessEntityAddress_ReadListOutput>> output = await svc.ReadListAsync(_businessEntityId, token);
+                    Output<ICollection<BusinessEntityAddress_ReadEnumOutput>> output = await svc.Address_ReadEnumAsync(_businessEntityId, token);
                     response = StatusCode((int)output.HttpStatus, output);
                     return response;
                 }

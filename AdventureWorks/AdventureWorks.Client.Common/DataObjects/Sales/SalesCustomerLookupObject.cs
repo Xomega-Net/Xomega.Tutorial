@@ -50,7 +50,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             PersonNameProperty = new TextProperty(this, PersonName)
             {
             };
-          LookUpAction = new ActionProperty(this, "LookUp");
+            LookUpAction = new ActionProperty(this, "LookUp");
         }
 
         #endregion

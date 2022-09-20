@@ -16,31 +16,31 @@ using Xomega.Framework.Services;
 namespace AdventureWorks.Services.Rest
 {
     ///<summary>
-    /// Cross-reference table mapping people to their credit card information in the CreditCard table. 
+    /// Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.
     ///</summary>
-    public partial class PersonCreditCardController : BaseController
+    public partial class PersonController : BaseController
     {
-        private readonly IPersonCreditCardService svc;
+        private readonly IPersonService svc;
 
-        public PersonCreditCardController(ErrorList errorList, ErrorParser errorParser, IPersonCreditCardService service)
+        public PersonController(ErrorList errorList, ErrorParser errorParser, IPersonService service)
             : base(errorList, errorParser)
         {
             svc = service;
         }
 
         ///<summary>
-        /// Reads a list of Person Credit Card objects based on the specified criteria.
+        /// Reads enumeration data for Person Credit Card.
         ///</summary>
-        [Route("person/{_businessEntityId}/credit-card")]
+        [Route("person/{_businessEntityId}/credit-card/enum")]
         [HttpGet]
-        public async Task<ActionResult> ReadListAsync([FromRoute] int _businessEntityId, CancellationToken token = default)
+        public async Task<ActionResult> CreditCard_ReadEnumAsync([FromRoute] int _businessEntityId, CancellationToken token = default)
         {
             ActionResult response;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Output<ICollection<PersonCreditCard_ReadListOutput>> output = await svc.ReadListAsync(_businessEntityId, token);
+                    Output<ICollection<PersonCreditCard_ReadEnumOutput>> output = await svc.CreditCard_ReadEnumAsync(_businessEntityId, token);
                     response = StatusCode((int)output.HttpStatus, output);
                     return response;
                 }

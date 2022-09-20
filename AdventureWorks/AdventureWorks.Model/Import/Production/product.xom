@@ -218,7 +218,7 @@
         </field>
       </fields>
       <operations>
-        <operation name="read list" type="readlist">
+        <operation name="read enum">
           <output list="true">
             <param name="product id"/>
             <param name="name"/>
@@ -228,20 +228,21 @@
             <param name="list price"/>
           </output>
           <config>
-            <rest:method verb="GET" uri-template="product"/>
+            <rest:method verb="GET" uri-template="product/enum"/>
             <xfk:enum-cache enum-name="product" id-param="product id" desc-param="name"
                             is-active-param="is active"/>
           </config>
           <doc>
-            <summary>Reads a list of Product objects based on the specified criteria.</summary>
+            <summary>Reads enumeration data for Product.</summary>
           </doc>
         </operation>
         <doc>
-          <summary>A service for quering and managing Product objects.</summary>
+          <summary>A service for querying and managing Product objects.</summary>
         </doc>
       </operations>
       <config>
         <sql:table name="Production.Product"/>
+        <svc:customize preserve-on-clean="true"/>
       </config>
       <doc>
         <summary>Products sold or used in the manfacturing of sold products.</summary>

@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace AdventureWorks.Services.Entities
 {
@@ -30,6 +31,15 @@ namespace AdventureWorks.Services.Entities
         /// Date and time the record was last updated.
         ///</summary>
         public DateTime ModifiedDate  { get; set; }
+
+        #endregion
+
+        #region Navigation Properties
+
+        ///<summary>
+        /// A list of Address child objects.
+        ///</summary>
+        public virtual ICollection<BusinessEntityAddress> AddressObjectList { get; set; } = new HashSet<BusinessEntityAddress>();
 
         #endregion
     }

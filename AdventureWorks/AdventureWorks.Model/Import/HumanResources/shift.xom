@@ -9,7 +9,7 @@
         xmlns:edm="http://www.xomega.net/edm"
         name="human resources">
   <types>
-    <type name="shift" base="tiny int"/>
+    <type name="shift" base="tiny int key"/>
   </types>
   <objects>
     <object name="shift">

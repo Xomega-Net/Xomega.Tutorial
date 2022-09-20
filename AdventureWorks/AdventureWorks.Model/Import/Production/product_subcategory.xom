@@ -56,23 +56,23 @@
         </field>
       </fields>
       <operations>
-        <operation name="read list" type="readlist">
+        <operation name="read enum">
           <output list="true">
             <param name="product subcategory id"/>
             <param name="product category id"/>
             <param name="name"/>
           </output>
           <config>
-            <rest:method verb="GET" uri-template="product-subcategory"/>
+            <rest:method verb="GET" uri-template="product-subcategory/enum"/>
             <xfk:enum-cache enum-name="product subcategory" id-param="product subcategory id"
                             desc-param="name"/>
           </config>
           <doc>
-            <summary>Reads a list of Product Subcategory objects based on the specified criteria.</summary>
+            <summary>Reads enumeration data for Product Subcategory.</summary>
           </doc>
         </operation>
         <doc>
-          <summary>A service for quering and managing Product Subcategory objects.</summary>
+          <summary>A service for querying and managing Product Subcategory objects.</summary>
         </doc>
       </operations>
       <config>

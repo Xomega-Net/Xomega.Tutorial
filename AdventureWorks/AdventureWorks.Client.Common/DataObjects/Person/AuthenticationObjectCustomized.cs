@@ -28,5 +28,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             TrackModifications = false;
             IsNew = false;
         }
+
+        // add custom code here
     }
 }

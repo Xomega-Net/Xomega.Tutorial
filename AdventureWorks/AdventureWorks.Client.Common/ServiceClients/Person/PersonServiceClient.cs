@@ -6,7 +6,9 @@
 
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Resources;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,8 +23,8 @@ namespace AdventureWorks.Services.Common
     {
         protected readonly JsonSerializerOptions SerializerOptions;
 
-        public PersonServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options)
-            : base(httpClient)
+        public PersonServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
+            : base(httpClient, resourceManager)
         {
             SerializerOptions = options.CurrentValue;
         }
@@ -39,6 +41,15 @@ namespace AdventureWorks.Services.Common
         {
             await Task.CompletedTask;
             throw new NotSupportedException("Operation IPersonService.ReadAsync is not exposed via REST.");
+        }
+
+        /// <inheritdoc/>
+        public virtual async Task<Output<ICollection<PersonCreditCard_ReadEnumOutput>>> CreditCard_ReadEnumAsync(int _businessEntityId, CancellationToken token = default)
+        {
+            HttpRequestMessage msg = new (HttpMethod.Get, $"person/{ _businessEntityId }/credit-card/enum");
+            using var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token);
+            var content = await ReadOutputContentAsync(resp);
+            return await JsonSerializer.DeserializeAsync<Output<ICollection<PersonCreditCard_ReadEnumOutput>>>(content, SerializerOptions, token);
         }
     }
 }

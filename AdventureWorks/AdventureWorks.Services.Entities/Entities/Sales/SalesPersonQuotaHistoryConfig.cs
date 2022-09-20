@@ -19,8 +19,8 @@ namespace AdventureWorks.Services.Entities
             // configure relationships
 
             c.HasOne(e => e.BusinessEntityObject)
-             .WithMany()
-             .HasForeignKey(e => e.BusinessEntityId);
+             .WithOne()
+             .HasForeignKey<SalesPersonQuotaHistory>(e => e.BusinessEntityId);
 
             // configure properties
           

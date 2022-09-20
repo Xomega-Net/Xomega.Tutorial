@@ -29,18 +29,18 @@ namespace AdventureWorks.Services.Rest
         }
 
         ///<summary>
-        /// Reads a list of Special Offer Product objects based on the specified criteria.
+        /// Reads enumeration data for Special Offer Product.
         ///</summary>
         [Route("product/{_productId}/special-offer")]
         [HttpGet]
-        public async Task<ActionResult> ReadListAsync([FromRoute] int _productId, CancellationToken token = default)
+        public async Task<ActionResult> ReadEnumAsync([FromRoute] int _productId, CancellationToken token = default)
         {
             ActionResult response;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Output<ICollection<SpecialOfferProduct_ReadListOutput>> output = await svc.ReadListAsync(_productId, token);
+                    Output<ICollection<SpecialOfferProduct_ReadEnumOutput>> output = await svc.ReadEnumAsync(_productId, token);
                     response = StatusCode((int)output.HttpStatus, output);
                     return response;
                 }

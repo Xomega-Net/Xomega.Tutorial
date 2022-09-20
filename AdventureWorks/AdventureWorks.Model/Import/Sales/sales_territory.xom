@@ -111,7 +111,7 @@
         </field>
       </fields>
       <operations>
-        <operation name="read list" type="readlist">
+        <operation name="read enum">
           <output list="true">
             <param name="territory id"/>
             <param name="name"/>
@@ -119,15 +119,15 @@
             <param name="group"/>
           </output>
           <config>
-            <rest:method verb="GET" uri-template="sales-territory"/>
+            <rest:method verb="GET" uri-template="sales-territory/enum"/>
             <xfk:enum-cache enum-name="sales territory" id-param="territory id" desc-param="name"/>
           </config>
           <doc>
-            <summary>Reads a list of Sales Territory objects based on the specified criteria.</summary>
+            <summary>Reads enumeration data for Sales Territory.</summary>
           </doc>
         </operation>
         <doc>
-          <summary>A service for quering and managing Sales Territory objects.</summary>
+          <summary>A service for querying and managing Sales Territory objects.</summary>
         </doc>
       </operations>
       <config>

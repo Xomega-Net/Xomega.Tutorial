@@ -73,7 +73,6 @@ namespace AdventureWorks.Services.Rest
                 .UseSqlServer(connStr));
 #endif
             services.AddServiceImplementations();
-            services.AddServiceControllers();
             services.AddLookupCacheLoaders();
             services.AddXmlResourceCacheLoader(typeof(Operators).Assembly, ".enumerations.xres", true);
 

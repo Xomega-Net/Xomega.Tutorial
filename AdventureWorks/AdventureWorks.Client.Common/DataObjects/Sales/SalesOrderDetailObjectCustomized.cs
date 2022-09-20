@@ -1,7 +1,8 @@
-using AdventureWorks.Services.Common;
-using AdventureWorks.Services.Common.Enumerations;
 using System;
 using System.Linq.Expressions;
+using AdventureWorks.Services.Common;
+using AdventureWorks.Services.Common.Enumerations;
+using Xomega.Framework;
 using Xomega.Framework.Properties;
 
 namespace AdventureWorks.Client.Common.DataObjects
@@ -32,8 +33,9 @@ namespace AdventureWorks.Client.Common.DataObjects
             // configure blank subcategory to display products with no categories
             ProductIdProperty.CascadingMatchNulls = true;
 
-            SpecialOfferIdProperty.LocalCacheLoader = new SpecialOfferProductReadListCacheLoader(ServiceProvider);
-            SpecialOfferIdProperty.SetCacheLoaderParameters(SpecialOfferProduct.Parameters.ProductId, ProductIdProperty);
+            SpecialOfferIdProperty.LocalCacheLoader = new SpecialOfferProductReadEnumCacheLoader(ServiceProvider);
+            SpecialOfferIdProperty.SetCacheLoaderParameters(
+                SpecialOfferProduct.Parameters.ProductId, ProductIdProperty);
 
             // computed property using the entire object
             Expression<Func<SalesOrderDetailObject, object>> xPrice = sod => sod.ProductIdProperty.IsNull(null) ?
@@ -51,7 +53,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             LineTotalProperty.SetComputedValue(xLineTotal, this);
         }
 
-        private decimal GetLineTotal(decimal? price, decimal? discount, int? qty) =>
+        private static decimal GetLineTotal(decimal? price, decimal? discount, long? qty) =>
             (price ?? 0) * (1 - (discount ?? 0)) * (qty ?? 0);
     }
 }

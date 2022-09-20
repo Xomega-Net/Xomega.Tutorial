@@ -16,25 +16,25 @@ using Xomega.Framework.Services;
 namespace AdventureWorks.Services.Common
 {
     ///<summary>
-    /// Products sold or used in the manfacturing of sold products.
+    /// Source of the ID that connects vendors, customers, and employees with address and contact information.
     ///</summary>
-    public class ProductServiceClient : HttpServiceClient, IProductService
+    public class BusinessEntityServiceClient : HttpServiceClient, IBusinessEntityService
     {
         protected readonly JsonSerializerOptions SerializerOptions;
 
-        public ProductServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
+        public BusinessEntityServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
             : base(httpClient, resourceManager)
         {
             SerializerOptions = options.CurrentValue;
         }
 
         /// <inheritdoc/>
-        public virtual async Task<Output<ICollection<Product_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
+        public virtual async Task<Output<ICollection<BusinessEntityAddress_ReadEnumOutput>>> Address_ReadEnumAsync(int _businessEntityId, CancellationToken token = default)
         {
-            HttpRequestMessage msg = new (HttpMethod.Get, $"product/enum");
+            HttpRequestMessage msg = new (HttpMethod.Get, $"business-entity/{ _businessEntityId }/address/enum");
             using var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token);
             var content = await ReadOutputContentAsync(resp);
-            return await JsonSerializer.DeserializeAsync<Output<ICollection<Product_ReadEnumOutput>>>(content, SerializerOptions, token);
+            return await JsonSerializer.DeserializeAsync<Output<ICollection<BusinessEntityAddress_ReadEnumOutput>>>(content, SerializerOptions, token);
         }
     }
 }

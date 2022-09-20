@@ -4,7 +4,7 @@
         xmlns:asp="clr-namespace:System.Web.UI.WebControls;assembly=System.Web"
         xmlns:ui="http://www.xomega.net/ui"
         name="framework">
-  <!-- Configuraiton of WPF controls for logical types. -->
+  <!-- Configuration of WPF controls for logical types. -->
   <types>
     <type-config type="boolean">
       <ui:control>

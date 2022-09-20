@@ -173,11 +173,68 @@
       <config>
         <sql:table name="Person.Person"/>
         <edm:customize extend="true"/>
-        <svc:customize subclass="true"/>
+        <svc:customize preserve-on-clean="true" subclass="true"/>
       </config>
       <doc>
         <summary>Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.</summary>
       </doc>
+      <subobjects>
+        <object name="credit card">
+          <fields>
+            <field name="credit card id" type="credit card" key="reference" required="true">
+              <config>
+                <sql:column name="CreditCardID"/>
+              </config>
+              <doc>
+                <summary>Credit card identification number. Foreign key to CreditCard.CreditCardID.</summary>
+              </doc>
+            </field>
+            <field name="modified date" type="date time" required="true">
+              <config>
+                <sql:column name="ModifiedDate" default="(getdate())"/>
+              </config>
+              <doc>
+                <summary>Date and time the record was last updated.</summary>
+              </doc>
+            </field>
+          </fields>
+          <operations>
+            <operation name="read enum">
+              <input>
+                <param name="business entity id" type="person" required="true"/>
+              </input>
+              <output list="true">
+                <param name="credit card id"/>
+                <param name="description" type="string"/>
+                <param name="person name" type="name" required="true"/>
+                <param name="card type" type="name" required="true"/>
+                <param name="card number" type="credit card number" required="true"/>
+                <param name="exp month" type="tiny int" required="true"/>
+                <param name="exp year" type="small int" required="true"/>
+              </output>
+              <config>
+                <rest:method verb="GET" uri-template="person/{business entity id}/credit-card/enum"/>
+                <xfk:enum-cache enum-name="person credit card" id-param="credit card id"
+                                desc-param="description"/>
+              </config>
+              <doc>
+                <summary>Reads enumeration data for Person Credit Card.</summary>
+              </doc>
+            </operation>
+            <doc>
+              <summary>A service for querying and managing Person Credit Card objects.</summary>
+            </doc>
+          </operations>
+          <config>
+            <sql:table name="Sales.PersonCreditCard">
+              <sql:parent-foreign-key delete="no action"/>
+            </sql:table>
+          </config>
+          <doc>
+            <summary>Cross-reference table mapping people to their credit card information in the CreditCard table. </summary>
+          </doc>
+        </object>
+      </subobjects>
     </object>
   </objects>
   <xfk:data-objects>

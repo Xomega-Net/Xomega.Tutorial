@@ -74,10 +74,30 @@
       <config>
         <sql:type name="bigint" db="sqlsrv"/>
         <clr:type name="long" valuetype="true"/>
+        <xfk:property class="BigIntegerProperty" namespace="Xomega.Framework.Properties"/>
       </config>
       <usage generic="true"/>
       <doc>
         <summary>Large signed 8-byte integer from -2^63 to 2^63-1.</summary>
+      </doc>
+    </type>
+    <type name="positive big int" base="big int">
+      <config>
+        <xfk:property class="PositiveBigIntProperty" namespace="Xomega.Framework.Properties"
+                      tsModule="xomega" tsClass="PositiveIntegerProperty"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>Positive large 8-byte integer from 0 to 2^63-1.</summary>
+      </doc>
+    </type>
+    <type name="big int key" base="big int">
+      <config>
+        <xfk:property class="BigIntegerKeyProperty" namespace="Xomega.Framework.Properties"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>A large integer-based key.</summary>
       </doc>
     </type>
     <type name="integer key" base="integer">
@@ -87,6 +107,24 @@
       <usage generic="true"/>
       <doc>
         <summary>An integer-based key.</summary>
+      </doc>
+    </type>
+    <type name="small int key" base="small int">
+      <config>
+        <xfk:property class="SmallIntegerKeyProperty" namespace="Xomega.Framework.Properties"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>A small integer-based key.</summary>
+      </doc>
+    </type>
+    <type name="tiny int key" base="tiny int">
+      <config>
+        <xfk:property class="TinyIntegerKeyProperty" namespace="Xomega.Framework.Properties"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>A tiny integer-based key.</summary>
       </doc>
     </type>
     <type name="date time">

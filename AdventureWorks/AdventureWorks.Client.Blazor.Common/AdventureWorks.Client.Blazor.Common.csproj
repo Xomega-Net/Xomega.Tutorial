@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <RazorLangVersion>3.0</RazorLangVersion>
     <RootNamespace>AdventureWorks.Client.Blazor.Common</RootNamespace>
     <AssemblyName>AdventureWorks.Client.Blazor.Common</AssemblyName>
@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xomega.Framework.Blazor" Version="4.0.0" />
+    <PackageReference Include="Xomega.Framework.Blazor" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>

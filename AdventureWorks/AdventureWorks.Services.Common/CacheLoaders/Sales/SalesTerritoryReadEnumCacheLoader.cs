@@ -15,53 +15,45 @@ using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
 {
-    public partial class PersonCreditCardReadListCacheLoader : LocalLookupCacheLoader 
+    public partial class SalesTerritoryReadEnumCacheLoader : LookupCacheLoader 
     {
-        public PersonCreditCardReadListCacheLoader(IServiceProvider serviceProvider)
-            : base(serviceProvider, true, "person credit card")
+        public SalesTerritoryReadEnumCacheLoader(IServiceProvider serviceProvider)
+            : base(serviceProvider, LookupCache.Global, true, "sales territory")
         {
         }
 
-        protected virtual async Task<Output<ICollection<PersonCreditCard_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        protected virtual async Task<Output<ICollection<SalesTerritory_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
         {
             using (var s = serviceProvider.CreateScope())
             {
-                object val;
-                int _businessEntityId;
-                if (Parameters.TryGetValue("business entity id", out val) && val != null)
-                    _businessEntityId = (int)val;
-                else return null;
-                var svc = s.ServiceProvider.GetService<IPersonCreditCardService>();
-                return await svc.ReadListAsync(_businessEntityId);
+                var svc = s.ServiceProvider.GetService<ISalesTerritoryService>();
+                return await svc.ReadEnumAsync();
             }
         }
 
         protected override async Task LoadCacheAsync(string tableType, CacheUpdater updateCache, CancellationToken token = default)
         {
             Dictionary<string, Dictionary<string, Header>> data = new Dictionary<string, Dictionary<string, Header>>();
-            var output = await ReadListAsync(token);
+            var output = await ReadEnumAsync(token);
             if (output?.Messages != null)
                 output.Messages.AbortIfHasErrors();
             else if (output?.Result == null) return;
 
             foreach (var row in output.Result)
             {
-                string type = "person credit card";
+                string type = "sales territory";
 
                 if (!data.TryGetValue(type, out Dictionary<string, Header> tbl))
                 {
                     data[type] = tbl = new Dictionary<string, Header>();
                 }
-                string id = "" + row.CreditCardId;
+                string id = "" + row.TerritoryId;
                 if (!tbl.TryGetValue(id, out Header h))
                 {
-                    tbl[id] = h = new Header(type, id, row.CreditCardName);
+                    tbl[id] = h = new Header(type, id, row.Name);
                 }
-                h.AddToAttribute("person name", row.PersonName);
-                h.AddToAttribute("card type", row.CardType);
-                h.AddToAttribute("card number", row.CardNumber);
-                h.AddToAttribute("exp month", row.ExpMonth);
-                h.AddToAttribute("exp year", row.ExpYear);
+                h.AddToAttribute("country region code", row.CountryRegionCode);
+                h.AddToAttribute("group", row.Group);
             }
             // if no data is returned we still need to update cache to mark it as loaded
             if (data.Count == 0) updateCache(new LookupTable(tableType, new List<Header>(), true));

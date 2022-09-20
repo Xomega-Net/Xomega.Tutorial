@@ -31,29 +31,29 @@ namespace AdventureWorks.Services.Entities
             ctx = serviceProvider.GetService<AdventureWorksEntities>();
         }
 
-        public virtual async Task<Output<ICollection<ProductSubcategory_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        public virtual async Task<Output<ICollection<ProductSubcategory_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
         {
-            ICollection<ProductSubcategory_ReadListOutput> res = null;
+            ICollection<ProductSubcategory_ReadEnumOutput> res = null;
             try
             {
                 currentErrors.AbortIfHasErrors();
 
-                // CUSTOM_CODE_START: add custom security checks for ReadList operation below
+                // CUSTOM_CODE_START: add custom security checks for ReadEnum operation below
                 // CUSTOM_CODE_END
                 var src = from obj in ctx.ProductSubcategory select obj;
 
-                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadEnum operation below
                 // src = src.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
                 var qry = from obj in src
-                          select new ProductSubcategory_ReadListOutput() {
+                          select new ProductSubcategory_ReadEnumOutput() {
                               ProductSubcategoryId = obj.ProductSubcategoryId,
                               ProductCategoryId = obj.ProductCategoryId,
                               Name = obj.Name,
                           };
 
-                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadEnum operation below
                 // qry = qry.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
@@ -64,7 +64,7 @@ namespace AdventureWorks.Services.Entities
             {
                 currentErrors.MergeWith(errorParser.FromException(ex));
             }
-            return await Task.FromResult(new Output<ICollection<ProductSubcategory_ReadListOutput>>(currentErrors, res));
+            return await Task.FromResult(new Output<ICollection<ProductSubcategory_ReadEnumOutput>>(currentErrors, res));
         }
     }
 }

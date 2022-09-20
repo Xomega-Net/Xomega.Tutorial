@@ -106,8 +106,8 @@ namespace AdventureWorks.Client.Common.DataObjects
                 Size = 25,
                 Editable = false,
             };
-          DetailsAction = new ActionProperty(this, "Details");
-          NewAction = new ActionProperty(this, "New");
+            DetailsAction = new ActionProperty(this, "Details");
+            NewAction = new ActionProperty(this, "New");
         }
 
         #endregion
@@ -116,9 +116,11 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         protected override async Task<ErrorList> DoReadAsync(object options, CancellationToken token = default)
         {
-            var output = await SalesOrder_Detail_ReadListAsync(options, 
+            var res = new ErrorList();
+            var output1 = await SalesOrder_Detail_ReadListAsync(options, 
                 Parent == null ? default : (int)(Parent as SalesOrderObject).SalesOrderIdProperty.TransportValue, token);
-            return output.Messages;
+            res.MergeWith(output1.Messages);
+            return res;
         }
 
         #endregion

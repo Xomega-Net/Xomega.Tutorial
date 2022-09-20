@@ -11,44 +11,44 @@ using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
 {
-    #region IBusinessEntityAddressService interface
+    #region IBusinessEntityService interface
 
     ///<summary>
-    /// Cross-reference table mapping customers, vendors, and employees to their addresses.
+    /// Source of the ID that connects vendors, customers, and employees with address and contact information.
     ///</summary>
-    public interface IBusinessEntityAddressService
+    public interface IBusinessEntityService
     {
 
         ///<summary>
-        /// Reads a list of Business Entity Address objects based on the specified criteria.
+        /// Reads enumeration data for Business Entity Address.
         ///</summary>
-        Task<Output<ICollection<BusinessEntityAddress_ReadListOutput>>> ReadListAsync(int _businessEntityId, CancellationToken token = default);
+        Task<Output<ICollection<BusinessEntityAddress_ReadEnumOutput>>> Address_ReadEnumAsync(int _businessEntityId, CancellationToken token = default);
 
     }
     #endregion
 
-    #region BusinessEntityAddress_ReadListOutput structure
+    #region BusinessEntityAddress_ReadEnumOutput structure
 
     ///<summary>
-    /// The output structure of operation IBusinessEntityAddressService.ReadListAsync.
+    /// The output structure of operation IAddressService.Address_ReadEnumAsync.
     ///</summary>
-    public class BusinessEntityAddress_ReadListOutput
+    public class BusinessEntityAddress_ReadEnumOutput
     {
-        
+
         public int AddressId { get; set; }
-        
+
         public string AddressType { get; set; }
-        
+
         public string AddressLine1 { get; set; }
-        
+
         public string AddressLine2 { get; set; }
-        
+
         public string City { get; set; }
-        
+
         public string State { get; set; }
-        
+
         public string PostalCode { get; set; }
-        
+
         public string Country { get; set; }
     }
     #endregion

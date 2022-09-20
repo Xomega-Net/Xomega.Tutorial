@@ -29,18 +29,18 @@ namespace AdventureWorks.Services.Rest
         }
 
         ///<summary>
-        /// Reads a list of Product Subcategory objects based on the specified criteria.
+        /// Reads enumeration data for Product Subcategory.
         ///</summary>
-        [Route("product-subcategory")]
+        [Route("product-subcategory/enum")]
         [HttpGet]
-        public async Task<ActionResult> ReadListAsync(CancellationToken token = default)
+        public async Task<ActionResult> ReadEnumAsync(CancellationToken token = default)
         {
             ActionResult response;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Output<ICollection<ProductSubcategory_ReadListOutput>> output = await svc.ReadListAsync(token);
+                    Output<ICollection<ProductSubcategory_ReadEnumOutput>> output = await svc.ReadEnumAsync(token);
                     response = StatusCode((int)output.HttpStatus, output);
                     return response;
                 }

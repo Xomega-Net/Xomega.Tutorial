@@ -60,8 +60,10 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         protected override async Task<ErrorList> DoSaveAsync(object options, CancellationToken token = default)
         {
-            var output = await Person_AuthenticateAsync(options, token);
-            return output.Messages;
+            var res = new ErrorList();
+            var output1 = await Person_AuthenticateAsync(options, token);
+            res.MergeWith(output1.Messages);
+            return res;
         }
 
         #endregion

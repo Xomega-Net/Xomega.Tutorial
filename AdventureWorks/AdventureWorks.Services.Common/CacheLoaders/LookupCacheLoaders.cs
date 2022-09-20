@@ -13,13 +13,13 @@ namespace AdventureWorks.Services.Common
     {
         public static void AddLookupCacheLoaders(this IServiceCollection container)
         {
-            container.AddSingleton<ILookupCacheLoader, ProductReadListCacheLoader>();
-            container.AddSingleton<ILookupCacheLoader, ProductSubcategoryReadListCacheLoader>();
-            container.AddSingleton<ILookupCacheLoader, ShipMethodReadListCacheLoader>();
-            container.AddSingleton<ILookupCacheLoader, SalesPersonReadListCacheLoader>();
-            container.AddSingleton<ILookupCacheLoader, SalesReasonReadListCacheLoader>();
-            container.AddSingleton<ILookupCacheLoader, SalesTerritoryReadListCacheLoader>();
-            container.AddSingleton<ILookupCacheLoader, SpecialOfferReadListCacheLoader>();
+            container.AddSingleton<ILookupCacheLoader, ProductReadEnumCacheLoader>();
+            container.AddSingleton<ILookupCacheLoader, ProductSubcategoryReadEnumCacheLoader>();
+            container.AddSingleton<ILookupCacheLoader, ShipMethodReadEnumCacheLoader>();
+            container.AddSingleton<ILookupCacheLoader, SalesPersonReadEnumCacheLoader>();
+            container.AddSingleton<ILookupCacheLoader, SalesReasonReadEnumCacheLoader>();
+            container.AddSingleton<ILookupCacheLoader, SalesTerritoryReadEnumCacheLoader>();
+            container.AddSingleton<ILookupCacheLoader, SpecialOfferReadEnumCacheLoader>();
         }
     }
 }

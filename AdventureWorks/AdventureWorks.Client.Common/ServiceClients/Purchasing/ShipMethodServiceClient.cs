@@ -7,6 +7,7 @@
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Resources;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,21 +22,19 @@ namespace AdventureWorks.Services.Common
     {
         protected readonly JsonSerializerOptions SerializerOptions;
 
-        public ShipMethodServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options)
-            : base(httpClient)
+        public ShipMethodServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
+            : base(httpClient, resourceManager)
         {
             SerializerOptions = options.CurrentValue;
         }
 
         /// <inheritdoc/>
-        public virtual async Task<Output<ICollection<ShipMethod_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        public virtual async Task<Output<ICollection<ShipMethod_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
         {
-            HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, $"ship-method");
-            using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
-            {
-                var content = await resp.Content.ReadAsStreamAsync();
-                return await JsonSerializer.DeserializeAsync<Output<ICollection<ShipMethod_ReadListOutput>>>(content, SerializerOptions);
-            }
+            HttpRequestMessage msg = new (HttpMethod.Get, $"ship-method/enum");
+            using var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token);
+            var content = await ReadOutputContentAsync(resp);
+            return await JsonSerializer.DeserializeAsync<Output<ICollection<ShipMethod_ReadEnumOutput>>>(content, SerializerOptions, token);
         }
     }
 }

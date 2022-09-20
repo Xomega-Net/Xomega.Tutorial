@@ -15,45 +15,44 @@ using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
 {
-    public partial class SpecialOfferReadListCacheLoader : LookupCacheLoader 
+    public partial class ProductSubcategoryReadEnumCacheLoader : LookupCacheLoader 
     {
-        public SpecialOfferReadListCacheLoader(IServiceProvider serviceProvider)
-            : base(serviceProvider, LookupCache.Global, true, "special offer")
+        public ProductSubcategoryReadEnumCacheLoader(IServiceProvider serviceProvider)
+            : base(serviceProvider, LookupCache.Global, true, "product subcategory")
         {
         }
 
-        protected virtual async Task<Output<ICollection<SpecialOffer_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        protected virtual async Task<Output<ICollection<ProductSubcategory_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
         {
             using (var s = serviceProvider.CreateScope())
             {
-                var svc = s.ServiceProvider.GetService<ISpecialOfferService>();
-                return await svc.ReadListAsync();
+                var svc = s.ServiceProvider.GetService<IProductSubcategoryService>();
+                return await svc.ReadEnumAsync();
             }
         }
 
         protected override async Task LoadCacheAsync(string tableType, CacheUpdater updateCache, CancellationToken token = default)
         {
             Dictionary<string, Dictionary<string, Header>> data = new Dictionary<string, Dictionary<string, Header>>();
-            var output = await ReadListAsync(token);
+            var output = await ReadEnumAsync(token);
             if (output?.Messages != null)
                 output.Messages.AbortIfHasErrors();
             else if (output?.Result == null) return;
 
             foreach (var row in output.Result)
             {
-                string type = "special offer";
+                string type = "product subcategory";
 
                 if (!data.TryGetValue(type, out Dictionary<string, Header> tbl))
                 {
                     data[type] = tbl = new Dictionary<string, Header>();
                 }
-                string id = "" + row.SpecialOfferId;
+                string id = "" + row.ProductSubcategoryId;
                 if (!tbl.TryGetValue(id, out Header h))
                 {
-                    tbl[id] = h = new Header(type, id, row.Description);
-                    h.IsActive = IsActive(row.IsActive);
+                    tbl[id] = h = new Header(type, id, row.Name);
                 }
-                h.AddToAttribute("category", row.Category);
+                h.AddToAttribute("product category id", row.ProductCategoryId);
             }
             // if no data is returned we still need to update cache to mark it as loaded
             if (data.Count == 0) updateCache(new LookupTable(tableType, new List<Header>(), true));

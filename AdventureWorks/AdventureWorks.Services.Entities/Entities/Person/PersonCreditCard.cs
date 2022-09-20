@@ -19,9 +19,6 @@ namespace AdventureWorks.Services.Entities
 
         #region Properties
 
-        ///<summary>
-        /// Business entity identification number. Foreign key to Person.BusinessEntityID.
-        ///</summary>
         public int BusinessEntityId  { get; set; }
 
         ///<summary>
@@ -39,9 +36,9 @@ namespace AdventureWorks.Services.Entities
         #region Navigation Properties
 
         ///<summary>
-        /// Person object referenced by the field BusinessEntityId.
+        /// Parent Person object referenced by the field BusinessEntityId.
         ///</summary>
-        public virtual Person BusinessEntityObject { get; set; }
+        public virtual Person PersonObject { get; set; }
 
         ///<summary>
         /// CreditCard object referenced by the field CreditCardId.

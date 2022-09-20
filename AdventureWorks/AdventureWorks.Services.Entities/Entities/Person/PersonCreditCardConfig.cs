@@ -18,8 +18,8 @@ namespace AdventureWorks.Services.Entities
 
             // configure relationships
 
-            c.HasOne(e => e.BusinessEntityObject)
-             .WithMany()
+            c.HasOne(e => e.PersonObject)
+             .WithMany(p => p.CreditCardObjectList)
              .HasForeignKey(e => e.BusinessEntityId);
 
             c.HasOne(e => e.CreditCardObject)
@@ -36,7 +36,8 @@ namespace AdventureWorks.Services.Entities
             c.Property(e => e.CreditCardId)
              .HasColumnName("CreditCardID")
              .HasColumnType("int")
-             .IsRequired();
+             .IsRequired()
+             .ValueGeneratedNever();
 
             c.Property(e => e.ModifiedDate)
              .HasColumnName("ModifiedDate")

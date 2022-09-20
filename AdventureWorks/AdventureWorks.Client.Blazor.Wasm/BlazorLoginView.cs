@@ -2,9 +2,9 @@
 using AdventureWorks.Client.Common.DataObjects;
 using AdventureWorks.Services.Common;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.WebUtilities;
 using System;
 using System.Linq;
@@ -27,8 +27,10 @@ namespace AdventureWorks.Client.Blazor.Wasm
                 AuthenticationObject authObj = dvm.DetailsObject as AuthenticationObject;
                 authObj.Validate(true);
                 authObj.GetValidationErrors().AbortIfHasErrors();
+
                 var user = await RestServices.Authenticate(dvm.ServiceProvider,
                     authObj.EmailProperty.Value, authObj.PasswordProperty.Value);
+
                 if (authStateProvider is AuthStateProvider asp)
                     asp.SetCurrentPrincipal(user);
 

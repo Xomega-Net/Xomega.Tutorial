@@ -199,7 +199,7 @@ namespace AdventureWorks.Services.Entities
                               // CUSTOM_CODE_START: set the CustomerStore output parameter of ReadList operation below
                               CustomerStore = obj.CustomerObject.StoreObject.Name, // CUSTOM_CODE_END
                               // CUSTOM_CODE_START: set the CustomerName output parameter of ReadList operation below
-                              CustomerName = obj.CustomerObject.PersonObject.LastName + ", " + 
+                              CustomerName = obj.CustomerObject.PersonObject.LastName + ", " +
                                              obj.CustomerObject.PersonObject.FirstName, // CUSTOM_CODE_END
                               SalesPersonId = obj.SalesPersonId,
                               TerritoryId = obj.TerritoryId,

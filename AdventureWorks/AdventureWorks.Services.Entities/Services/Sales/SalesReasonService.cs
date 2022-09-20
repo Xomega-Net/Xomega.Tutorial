@@ -31,28 +31,28 @@ namespace AdventureWorks.Services.Entities
             ctx = serviceProvider.GetService<AdventureWorksEntities>();
         }
 
-        public virtual async Task<Output<ICollection<SalesReason_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        public virtual async Task<Output<ICollection<SalesReason_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
         {
-            ICollection<SalesReason_ReadListOutput> res = null;
+            ICollection<SalesReason_ReadEnumOutput> res = null;
             try
             {
                 currentErrors.AbortIfHasErrors();
 
-                // CUSTOM_CODE_START: add custom security checks for ReadList operation below
+                // CUSTOM_CODE_START: add custom security checks for ReadEnum operation below
                 // CUSTOM_CODE_END
                 var src = from obj in ctx.SalesReason select obj;
 
-                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadEnum operation below
                 // src = src.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
                 var qry = from obj in src
-                          select new SalesReason_ReadListOutput() {
+                          select new SalesReason_ReadEnumOutput() {
                               SalesReasonId = obj.SalesReasonId,
                               Name = obj.Name,
                           };
 
-                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadEnum operation below
                 // qry = qry.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
@@ -63,7 +63,7 @@ namespace AdventureWorks.Services.Entities
             {
                 currentErrors.MergeWith(errorParser.FromException(ex));
             }
-            return await Task.FromResult(new Output<ICollection<SalesReason_ReadListOutput>>(currentErrors, res));
+            return await Task.FromResult(new Output<ICollection<SalesReason_ReadEnumOutput>>(currentErrors, res));
         }
     }
 }

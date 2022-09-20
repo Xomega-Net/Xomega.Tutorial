@@ -108,12 +108,12 @@
                    AllowSelection="true"
                    RowSelected="async (arg) => await LinkDetails_ClickAsync(arg)">
               <GridColumns>
-                <XGridColumn Property="@VM?.ListObj?.SalesOrderNumberProperty" Width="7%"></XGridColumn>
+                <XGridColumn Property="@VM?.ListObj?.SalesOrderNumberProperty" Width="10%"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.OrderDateProperty" Width="7%"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.DueDateProperty" Width="7%"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.ShipDateProperty" Width="7%"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.StatusProperty" Width="7%"></XGridColumn>
-                <XGridColumn Property="@VM?.ListObj?.OnlineOrderFlagProperty" Width="4%"
+                <XGridColumn Property="@VM?.ListObj?.OnlineOrderFlagProperty" Width="20px"
                              TextAlign="Alignment.Center"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.CustomerStoreProperty" Width="14%"></XGridColumn>
                 <XGridColumn Property="@VM?.ListObj?.CustomerNameProperty" Width="14%"></XGridColumn>

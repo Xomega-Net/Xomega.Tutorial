@@ -2,7 +2,7 @@
 <module xmlns="http://www.xomega.net/omodel"
         xmlns:ui="http://www.xomega.net/ui"
         name="framework">
-  <!-- Configuraiton of HTML controls for logical types. -->
+  <!-- Configuration of HTML controls for logical types. -->
   <types>
     <type-config type="boolean">
       <ui:html-control>

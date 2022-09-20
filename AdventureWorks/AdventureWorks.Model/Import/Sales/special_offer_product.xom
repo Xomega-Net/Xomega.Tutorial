@@ -50,7 +50,7 @@
         </field>
       </fields>
       <operations>
-        <operation name="read list" type="readlist">
+        <operation name="read enum">
           <input>
             <param name="product id" type="product" required="true"/>
           </input>
@@ -65,14 +65,14 @@
           <config>
             <rest:method verb="GET" uri-template="product/{product id}/special-offer"/>
             <xfk:enum-cache enum-name="special offer product" id-param="special offer id"
-                            desc-param="description" is-active-param="active"/>
+                      desc-param="description" is-active-param="active"/>
           </config>
           <doc>
-            <summary>Reads a list of Special Offer Product objects based on the specified criteria.</summary>
+            <summary>Reads enumeration data for Special Offer Product.</summary>
           </doc>
         </operation>
         <doc>
-          <summary>A service for quering and managing Special Offer Product objects.</summary>
+          <summary>A service for querying and managing Special Offer Product objects.</summary>
         </doc>
       </operations>
       <config>

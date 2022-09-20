@@ -78,7 +78,11 @@
               <param name="person name" type="string"/>
               <param name="store name operator" type="operator"/>
               <param name="store name" type="string"/>
-              <param name="account number operator" type="operator"/>
+              <param name="account number operator" type="operator">
+                <doc>
+                  <summary>Comparison operator for the corresponding Account Number criteria.</summary>
+                </doc>
+              </param>
               <param name="account number" required="false"/>
               <config>
                 <xfk:add-to-object class="CustomerCriteria"/>
@@ -105,11 +109,12 @@
           </doc>
         </operation>
         <doc>
-          <summary>A service for quering and managing Customer objects.</summary>
+          <summary>A service for querying and managing Customer objects.</summary>
         </doc>
       </operations>
       <config>
         <sql:table name="Sales.Customer"/>
+        <svc:customize preserve-on-clean="true"/>
       </config>
       <doc>
         <summary>Current customer information. Also see the Person and Store tables.</summary>

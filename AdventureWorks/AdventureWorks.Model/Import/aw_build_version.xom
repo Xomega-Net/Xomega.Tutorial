@@ -8,7 +8,7 @@
         xmlns:clr="http://www.xomega.net/clr"
         xmlns:edm="http://www.xomega.net/edm">
   <types>
-    <type name="aw build version" base="tiny int"/>
+    <type name="aw build version" base="tiny int key"/>
   </types>
   <objects>
     <object name="aw build version">

@@ -31,28 +31,28 @@ namespace AdventureWorks.Services.Entities
             ctx = serviceProvider.GetService<AdventureWorksEntities>();
         }
 
-        public virtual async Task<Output<ICollection<ShipMethod_ReadListOutput>>> ReadListAsync(CancellationToken token = default)
+        public virtual async Task<Output<ICollection<ShipMethod_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default)
         {
-            ICollection<ShipMethod_ReadListOutput> res = null;
+            ICollection<ShipMethod_ReadEnumOutput> res = null;
             try
             {
                 currentErrors.AbortIfHasErrors();
 
-                // CUSTOM_CODE_START: add custom security checks for ReadList operation below
+                // CUSTOM_CODE_START: add custom security checks for ReadEnum operation below
                 // CUSTOM_CODE_END
                 var src = from obj in ctx.ShipMethod select obj;
 
-                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadEnum operation below
                 // src = src.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
                 var qry = from obj in src
-                          select new ShipMethod_ReadListOutput() {
+                          select new ShipMethod_ReadEnumOutput() {
                               ShipMethodId = obj.ShipMethodId,
                               Name = obj.Name,
                           };
 
-                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadList operation below
+                // CUSTOM_CODE_START: add custom filter criteria to the result query for ReadEnum operation below
                 // qry = qry.Where(o => o.FieldName == VALUE);
                 // CUSTOM_CODE_END
 
@@ -63,7 +63,7 @@ namespace AdventureWorks.Services.Entities
             {
                 currentErrors.MergeWith(errorParser.FromException(ex));
             }
-            return await Task.FromResult(new Output<ICollection<ShipMethod_ReadListOutput>>(currentErrors, res));
+            return await Task.FromResult(new Output<ICollection<ShipMethod_ReadEnumOutput>>(currentErrors, res));
         }
     }
 }

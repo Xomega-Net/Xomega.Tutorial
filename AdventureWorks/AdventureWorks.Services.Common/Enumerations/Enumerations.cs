@@ -8,7 +8,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 {
     #region BusinessEntityAddress
     ///<summary>
-    /// Cached enumeration returned by the IBusinessEntityAddressService.ReadListAsync operation.
+    /// Cached enumeration returned by the IAddressService.Address_ReadEnumAsync operation.
     ///  
     ///</summary>
     public class BusinessEntityAddress
@@ -185,7 +185,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 
     #region PersonCreditCard
     ///<summary>
-    /// Cached enumeration returned by the IPersonCreditCardService.ReadListAsync operation.
+    /// Cached enumeration returned by the ICreditCardService.CreditCard_ReadEnumAsync operation.
     ///  
     ///</summary>
     public class PersonCreditCard
@@ -237,7 +237,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 
     #region Product
     ///<summary>
-    /// Cached enumeration returned by the IProductService.ReadListAsync operation.
+    /// Cached enumeration returned by the IProductService.ReadEnumAsync operation.
     ///  
     ///</summary>
     public class Product
@@ -262,7 +262,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 
     #region ProductSubcategory
     ///<summary>
-    /// Cached enumeration returned by the IProductSubcategoryService.ReadListAsync operation.
+    /// Cached enumeration returned by the IProductSubcategoryService.ReadEnumAsync operation.
     ///  
     ///</summary>
     public class ProductSubcategory
@@ -302,7 +302,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 
     #region SalesPerson
     ///<summary>
-    /// Cached enumeration returned by the ISalesPersonService.ReadListAsync operation.
+    /// Cached enumeration returned by the ISalesPersonService.ReadEnumAsync operation.
     ///  
     ///</summary>
     public class SalesPerson
@@ -325,7 +325,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 
     #region SalesReason
     ///<summary>
-    /// Cached enumeration returned by the ISalesReasonService.ReadListAsync operation.
+    /// Cached enumeration returned by the ISalesReasonService.ReadEnumAsync operation.
     ///  
     ///</summary>
     public class SalesReason
@@ -340,7 +340,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 
     #region SalesTerritory
     ///<summary>
-    /// Cached enumeration returned by the ISalesTerritoryService.ReadListAsync operation.
+    /// Cached enumeration returned by the ISalesTerritoryService.ReadEnumAsync operation.
     ///  
     ///</summary>
     public class SalesTerritory
@@ -378,7 +378,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 
     #region ShipMethod
     ///<summary>
-    /// Cached enumeration returned by the IShipMethodService.ReadListAsync operation.
+    /// Cached enumeration returned by the IShipMethodService.ReadEnumAsync operation.
     ///  
     ///</summary>
     public class ShipMethod
@@ -393,7 +393,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 
     #region SpecialOffer
     ///<summary>
-    /// Cached enumeration returned by the ISpecialOfferService.ReadListAsync operation.
+    /// Cached enumeration returned by the ISpecialOfferService.ReadEnumAsync operation.
     ///  
     ///</summary>
     public class SpecialOffer
@@ -416,7 +416,7 @@ namespace AdventureWorks.Services.Common.Enumerations
 
     #region SpecialOfferProduct
     ///<summary>
-    /// Cached enumeration returned by the ISpecialOfferProductService.ReadListAsync operation.
+    /// Cached enumeration returned by the ISpecialOfferProductService.ReadEnumAsync operation.
     ///  
     ///</summary>
     public class SpecialOfferProduct

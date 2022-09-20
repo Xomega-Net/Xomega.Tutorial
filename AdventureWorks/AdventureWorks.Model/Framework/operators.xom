@@ -110,9 +110,12 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         </doc>
         <prop ref="sort order" value="13"/>
         <prop ref="addl props" value="1"/>
-        <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="BigIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
+        <prop ref="exclude type" value="BigIntegerKeyProperty"/>
         <prop ref="exclude type" value="IntegerKeyProperty"/>
+        <prop ref="exclude type" value="SmallIntegerKeyProperty"/>
+        <prop ref="exclude type" value="TinyIntegerKeyProperty"/>
       </item>
       <item name="Is Less Than Or Equal To" value="LE">
         <doc>
@@ -120,9 +123,12 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         </doc>
         <prop ref="sort order" value="14"/>
         <prop ref="addl props" value="1"/>
-        <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="BigIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
+        <prop ref="exclude type" value="BigIntegerKeyProperty"/>
         <prop ref="exclude type" value="IntegerKeyProperty"/>
+        <prop ref="exclude type" value="SmallIntegerKeyProperty"/>
+        <prop ref="exclude type" value="TinyIntegerKeyProperty"/>
       </item>
       <item name="Is Greater Than" value="GT">
         <doc>
@@ -130,9 +136,12 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         </doc>
         <prop ref="sort order" value="15"/>
         <prop ref="addl props" value="1"/>
-        <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="BigIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
+        <prop ref="exclude type" value="BigIntegerKeyProperty"/>
         <prop ref="exclude type" value="IntegerKeyProperty"/>
+        <prop ref="exclude type" value="SmallIntegerKeyProperty"/>
+        <prop ref="exclude type" value="TinyIntegerKeyProperty"/>
       </item>
       <item name="Is Greater Than Or Equal To" value="GE">
         <doc>
@@ -140,9 +149,12 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         </doc>
         <prop ref="sort order" value="16"/>
         <prop ref="addl props" value="1"/>
-        <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="BigIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
+        <prop ref="exclude type" value="BigIntegerKeyProperty"/>
         <prop ref="exclude type" value="IntegerKeyProperty"/>
+        <prop ref="exclude type" value="SmallIntegerKeyProperty"/>
+        <prop ref="exclude type" value="TinyIntegerKeyProperty"/>
       </item>
       <item name="Today" value="[bod,eod)">
         <doc>
@@ -237,9 +249,14 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         </doc>
         <prop ref="sort order" value="20"/>
         <prop ref="addl props" value="2"/>
+        <prop ref="type" value="BigIntegerProperty"/>
         <prop ref="type" value="IntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
         <prop ref="type" value="DateTimeProperty"/>
+        <prop ref="exclude type" value="BigIntegerKeyProperty"/>
+        <prop ref="exclude type" value="IntegerKeyProperty"/>
+        <prop ref="exclude type" value="SmallIntegerKeyProperty"/>
+        <prop ref="exclude type" value="TinyIntegerKeyProperty"/>
       </item>
       <item name="Is Not Between" value="NBW">
         <doc>
@@ -247,9 +264,14 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         </doc>
         <prop ref="sort order" value="21"/>
         <prop ref="addl props" value="2"/>
+        <prop ref="type" value="BigIntegerProperty"/>
         <prop ref="type" value="IntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
         <prop ref="type" value="DateTimeProperty"/>
+        <prop ref="exclude type" value="BigIntegerKeyProperty"/>
+        <prop ref="exclude type" value="IntegerKeyProperty"/>
+        <prop ref="exclude type" value="SmallIntegerKeyProperty"/>
+        <prop ref="exclude type" value="TinyIntegerKeyProperty"/>
       </item>
       <doc>
         <summary>A list of operators to be used with filter criteria.</summary>

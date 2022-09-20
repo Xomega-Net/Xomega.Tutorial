@@ -1,14 +1,14 @@
-﻿using AdventureWorks.Services.Common;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using AdventureWorks.Services.Common;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Xomega.Framework;
 using Xomega.Framework.Services;
 
@@ -47,13 +47,16 @@ namespace AdventureWorks.Services.Rest
                     currentErrors.AddModelErrors(ModelState);
                 currentErrors.AbortIfHasErrors();
 
+                // TODO: validate credentials.UserName and credentials.Password here.
+                // Inject services in the controller for that as needed.
+
                 ClaimsIdentity identity = new ClaimsIdentity();
                 await personService.AuthenticateAsync(new Common.Credentials()
                 {
                     Email = credentials.Username,
                     Password = credentials.Password
-                });
-                var info = await personService.ReadAsync(credentials.Username);
+                }, token);
+                var info = await personService.ReadAsync(credentials.Username, token);
                 identity = SecurityManager.CreateIdentity(JwtBearerDefaults.AuthenticationScheme, info.Result);
 
                 // generate jwt token

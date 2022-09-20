@@ -22,12 +22,12 @@
     </type>
     <type name="sales order detail" base="integer key"/>
     <type name="sales order header" base="integer key"/>
-    <type name="sales order reason" base="sales reason"/>
     <type name="sales order number" base="string" size="25">
       <config>
         <ui:display-config typical-length="10"/>
       </config>
     </type>
+    <type name="sales order reason" base="sales reason"/>
     <type name="sales order status" base="tiny int enumeration">
       <config>
         <ui:blazor-control multi-value="true">
@@ -551,7 +551,7 @@
           </doc>
         </operation>
         <doc>
-          <summary>A service for quering and managing Sales Order objects.</summary>
+          <summary>A service for querying and managing Sales Order objects.</summary>
         </doc>
       </operations>
       <config>
@@ -663,10 +663,10 @@
               <input>
                 <param name="sales order id" type="sales order header" required="true"/>
                 <struct name="data">
-                  <param name="product id" type="product" required="true"/>
+                  <param name="carrier tracking number"/>
                   <param name="order qty"/>
                   <param name="special offer id" type="special offer" required="true"/>
-                  <param name="carrier tracking number"/>
+                  <param name="product id" type="product" required="true"/>
                   <config>
                     <xfk:add-to-object class="SalesOrderDetailObject"/>
                   </config>
@@ -692,10 +692,10 @@
               <input>
                 <param name="sales order detail id"/>
                 <struct name="data">
-                  <param name="product id" type="product" required="true"/>
+                  <param name="carrier tracking number"/>
                   <param name="order qty"/>
                   <param name="special offer id" type="special offer" required="true"/>
-                  <param name="carrier tracking number"/>
+                  <param name="product id" type="product" required="true"/>
                   <config>
                     <xfk:add-to-object class="SalesOrderDetailObject"/>
                   </config>
@@ -753,7 +753,7 @@
               </doc>
             </operation>
             <doc>
-              <summary>A service for quering and managing Sales Order Detail objects.</summary>
+              <summary>A service for querying and managing Sales Order Detail objects.</summary>
             </doc>
           </operations>
           <config>
@@ -823,8 +823,8 @@
       <ui:display>
         <ui:fields>
           <ui:field param="sales order id" hidden="true"/>
-          <ui:field param="online order flag" label="Online"/>
-          <ui:field param="sales order number" label="SO#"/>
+          <ui:field param="online order flag" label="Online" width="20px"/>
+          <ui:field param="sales order number" label="SO#" width="10%"/>
           <ui:field param="sales person id" label="Sales Person"/>
           <ui:field param="territory id" label="Sales Territory"/>
         </ui:fields>

@@ -4,7 +4,6 @@
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated.
 //---------------------------------------------------------------------------------------------
 
-using AdventureWorks.Services.Common.Enumerations;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,29 +34,32 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class Customer_ReadListInput_Criteria
     {
-        
+
         ///<summary>
         /// ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
-        [XLookupValue(SalesTerritory.EnumName)]
+        [XLookupValue("sales territory")]
         public int? TerritoryId { get; set; }
-        
+
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string PersonNameOperator { get; set; }
-        
+
         public string PersonName { get; set; }
-        
+
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string StoreNameOperator { get; set; }
-        
+
         public string StoreName { get; set; }
-        
+
+        ///<summary>
+        /// Comparison operator for the corresponding Account Number criteria.
+        ///</summary>
         [XMaxLength(25)]
-        [XLookupValue(Operators.EnumName)]
+        [XLookupValue("operators")]
         public string AccountNumberOperator { get; set; }
-        
+
         ///<summary>
         /// Unique number identifying the customer assigned by the accounting system.
         ///</summary>
@@ -73,28 +75,28 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class Customer_ReadListOutput
     {
-        
+
         public int CustomerId { get; set; }
-        
+
         ///<summary>
         /// Foreign key to Person.BusinessEntityID
         ///</summary>
         public int? PersonId { get; set; }
-        
+
         public string PersonName { get; set; }
-        
+
         ///<summary>
         /// Foreign key to Store.BusinessEntityID
         ///</summary>
         public int? StoreId { get; set; }
-        
+
         public string StoreName { get; set; }
-        
+
         ///<summary>
         /// ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
         public int? TerritoryId { get; set; }
-        
+
         ///<summary>
         /// Unique number identifying the customer assigned by the accounting system.
         ///</summary>

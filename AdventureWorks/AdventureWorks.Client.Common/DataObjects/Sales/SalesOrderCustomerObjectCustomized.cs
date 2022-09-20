@@ -1,11 +1,12 @@
-using AdventureWorks.Services.Common;
-using AdventureWorks.Services.Common.Enumerations;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Threading;
+using AdventureWorks.Services.Common;
 using Xomega.Framework;
 using Xomega.Framework.Lookup;
+using Xomega.Framework.Properties;
+using AdventureWorks.Services.Common.Enumerations;
 
 namespace AdventureWorks.Client.Common.DataObjects
 {
@@ -25,6 +26,7 @@ namespace AdventureWorks.Client.Common.DataObjects
         protected override void Initialize()
         {
             base.Initialize();
+            // add custom construction code here
         }
 
         // perform post initialization
@@ -32,7 +34,7 @@ namespace AdventureWorks.Client.Common.DataObjects
         {
             base.OnInitialized();
 
-            AddressLoader = new BusinessEntityAddressReadListCacheLoader(ServiceProvider);
+            AddressLoader = new BusinessEntityAddressReadEnumCacheLoader(ServiceProvider);
             BillingAddressObject.AddressIdProperty.LocalCacheLoader = AddressLoader;
             ShippingAddressObject.AddressIdProperty.LocalCacheLoader = AddressLoader;
 
@@ -45,8 +47,8 @@ namespace AdventureWorks.Client.Common.DataObjects
             if (!e.Change.IncludesValue() || Equals(e.OldValue, e.NewValue) ||
                 PersonIdProperty.Value == null && StoreIdProperty.Value == null) return;
 
-            int entityId = StoreIdProperty.Value == null ? // use store or person id
-                PersonIdProperty.Value.Value : StoreIdProperty.Value.Value;
+            var entityId = StoreIdProperty.IsNull() ? // use store or person id
+                PersonIdProperty.TransportValue : StoreIdProperty.TransportValue;
 
             await AddressLoader.SetParametersAsync(new Dictionary<string, object>() {
                 { BusinessEntityAddress.Parameters.BusinessEntityId, entityId }

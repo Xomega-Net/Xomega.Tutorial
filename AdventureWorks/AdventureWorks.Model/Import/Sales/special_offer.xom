@@ -106,7 +106,7 @@
         </field>
       </fields>
       <operations>
-        <operation name="read list" type="readlist">
+        <operation name="read enum">
           <output list="true">
             <param name="special offer id"/>
             <param name="description"/>
@@ -114,20 +114,21 @@
             <param name="category"/>
           </output>
           <config>
-            <rest:method verb="GET" uri-template="special-offer"/>
-            <xfk:enum-cache enum-name="special offer" id-param="special offer id"
-                            desc-param="description" is-active-param="is active"/>
+            <rest:method verb="GET" uri-template="special-offer/enum"/>
+            <xfk:enum-cache enum-name="special offer" id-param="special offer id" desc-param="description"
+                            is-active-param="is active"/>
           </config>
           <doc>
-            <summary>Reads a list of Special Offer objects based on the specified criteria.</summary>
+            <summary>Reads enumeration data for Special Offer.</summary>
           </doc>
         </operation>
         <doc>
-          <summary>A service for quering and managing Special Offer objects.</summary>
+          <summary>A service for querying and managing Special Offer objects.</summary>
         </doc>
       </operations>
       <config>
         <sql:table name="Sales.SpecialOffer"/>
+        <svc:customize preserve-on-clean="true"/>
       </config>
       <doc>
         <summary>Sale discounts lookup table.</summary>

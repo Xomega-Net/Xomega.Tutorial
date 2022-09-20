@@ -7,6 +7,7 @@
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Resources;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,8 +22,8 @@ namespace AdventureWorks.Services.Common
     {
         protected readonly JsonSerializerOptions SerializerOptions;
 
-        public CustomerServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options)
-            : base(httpClient)
+        public CustomerServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
+            : base(httpClient, resourceManager)
         {
             SerializerOptions = options.CurrentValue;
         }
@@ -30,12 +31,10 @@ namespace AdventureWorks.Services.Common
         /// <inheritdoc/>
         public virtual async Task<Output<ICollection<Customer_ReadListOutput>>> ReadListAsync(Customer_ReadListInput_Criteria _criteria, CancellationToken token = default)
         {
-            HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, $"customer?{ ToQueryString(_criteria) }");
-            using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
-            {
-                var content = await resp.Content.ReadAsStreamAsync();
-                return await JsonSerializer.DeserializeAsync<Output<ICollection<Customer_ReadListOutput>>>(content, SerializerOptions);
-            }
+            HttpRequestMessage msg = new (HttpMethod.Get, $"customer?{ ToQueryString(_criteria) }");
+            using var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token);
+            var content = await ReadOutputContentAsync(resp);
+            return await JsonSerializer.DeserializeAsync<Output<ICollection<Customer_ReadListOutput>>>(content, SerializerOptions, token);
         }
     }
 }

@@ -20,28 +20,28 @@ namespace AdventureWorks.Services.Common
     {
 
         ///<summary>
-        /// Reads a list of Product Subcategory objects based on the specified criteria.
+        /// Reads enumeration data for Product Subcategory.
         ///</summary>
-        Task<Output<ICollection<ProductSubcategory_ReadListOutput>>> ReadListAsync(CancellationToken token = default);
+        Task<Output<ICollection<ProductSubcategory_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default);
 
     }
     #endregion
 
-    #region ProductSubcategory_ReadListOutput structure
+    #region ProductSubcategory_ReadEnumOutput structure
 
     ///<summary>
-    /// The output structure of operation IProductSubcategoryService.ReadListAsync.
+    /// The output structure of operation IProductSubcategoryService.ReadEnumAsync.
     ///</summary>
-    public class ProductSubcategory_ReadListOutput
+    public class ProductSubcategory_ReadEnumOutput
     {
-        
+
         public int ProductSubcategoryId { get; set; }
-        
+
         ///<summary>
         /// Product category identification number. Foreign key to ProductCategory.ProductCategoryID.
         ///</summary>
         public int ProductCategoryId { get; set; }
-        
+
         ///<summary>
         /// Subcategory description.
         ///</summary>

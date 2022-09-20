@@ -1,5 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -8,6 +6,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
@@ -26,7 +26,11 @@ namespace AdventureWorks.Services.Common
         {
             services.Configure<JsonSerializerOptions>(o =>
             {
+#if NET6_0
+                o.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+#else
                 o.IgnoreNullValues = true;
+#endif
                 o.PropertyNameCaseInsensitive = true;
             });
             services.AddSingleton(new HttpClient

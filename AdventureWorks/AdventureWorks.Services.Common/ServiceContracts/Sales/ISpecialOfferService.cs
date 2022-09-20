@@ -20,30 +20,30 @@ namespace AdventureWorks.Services.Common
     {
 
         ///<summary>
-        /// Reads a list of Special Offer objects based on the specified criteria.
+        /// Reads enumeration data for Special Offer.
         ///</summary>
-        Task<Output<ICollection<SpecialOffer_ReadListOutput>>> ReadListAsync(CancellationToken token = default);
+        Task<Output<ICollection<SpecialOffer_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default);
 
     }
     #endregion
 
-    #region SpecialOffer_ReadListOutput structure
+    #region SpecialOffer_ReadEnumOutput structure
 
     ///<summary>
-    /// The output structure of operation ISpecialOfferService.ReadListAsync.
+    /// The output structure of operation ISpecialOfferService.ReadEnumAsync.
     ///</summary>
-    public class SpecialOffer_ReadListOutput
+    public class SpecialOffer_ReadEnumOutput
     {
-        
+
         public int SpecialOfferId { get; set; }
-        
+
         ///<summary>
         /// Discount description.
         ///</summary>
         public string Description { get; set; }
-        
+
         public bool IsActive { get; set; }
-        
+
         ///<summary>
         /// Group the discount applies to such as Reseller or Customer.
         ///</summary>

@@ -19,12 +19,12 @@ namespace AdventureWorks.Services.Entities
             // configure relationships
 
             c.HasOne(e => e.CountryRegionCodeObject)
-             .WithMany()
-             .HasForeignKey(e => e.CountryRegionCode);
+             .WithOne()
+             .HasForeignKey<CountryRegionCurrency>(e => e.CountryRegionCode);
 
             c.HasOne(e => e.CurrencyCodeObject)
-             .WithMany()
-             .HasForeignKey(e => e.CurrencyCode);
+             .WithOne()
+             .HasForeignKey<CountryRegionCurrency>(e => e.CurrencyCode);
 
             // configure properties
           

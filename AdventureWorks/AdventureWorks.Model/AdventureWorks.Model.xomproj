@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="2.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{6E762D16-565C-4E72-A716-D425C39AF25C}</ProjectGuid>
+    <ProjectGuid>{34B449FD-2998-4C26-9273-44F2A2044912}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Model</Configuration>
     <Database>sqlsrv</Database>
     <DbVersion>13.0</DbVersion>
@@ -21,7 +21,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
   </PropertyGroup>
   <ItemGroup>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\db_import.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\db_import.xsl">
       <Name>Import from Database</Name>
       <Folder>Model Enhancement</Folder>
       <IncludeInBuild>false</IncludeInBuild>
@@ -56,7 +56,7 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <NamingDelimiter-category>Naming Convention</NamingDelimiter-category>
       <NamingDelimiter-desc>The delimiter to use for logical names: space, underscore or dash. Leave empty to use DB names as is.</NamingDelimiter-desc>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\db_schema.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\db_schema.xsl">
       <Name>Database Schema</Name>
       <Folder>Data Layer</Folder>
       <OutputPath-param>db_schema.sql</OutputPath-param>
@@ -67,7 +67,7 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <DbCase>$(DbCase)</DbCase>
       <IncludeInBuild>false</IncludeInBuild>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\db_diff.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\db_diff.xsl">
       <Name>Database Change Script</Name>
       <Folder>Data Layer</Folder>
       <IncludeInBuild>false</IncludeInBuild>
@@ -82,14 +82,14 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <DbTimeout>$(DbTimeout)</DbTimeout>
       <DbExcludeTables>$(DbExcludeTables)</DbExcludeTables>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\doc_xomega.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\doc_xomega.xsl">
       <Name>Domain Model Design</Name>
       <Folder>Documentation</Folder>
       <OutputPath-param>../Docs/DomainModelDesign.docx</OutputPath-param>
       <OutputPath-desc>Path where to output generated document.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
       <IncludeInBuild>false</IncludeInBuild>
-      <DocumentTemplate-param>$(XomegaHome16)Templates\DomainModel.docx</DocumentTemplate-param>
+      <DocumentTemplate-param>$(XomegaHome17)Templates\DomainModel.docx</DocumentTemplate-param>
       <DocumentTemplate-category>Generator</DocumentTemplate-category>
       <DocumentTemplate-desc>Path to the MS Word document that will be used as a template for the generated document.</DocumentTemplate-desc>
       <Title-param>AdventureWorks Domain Model</Title-param>
@@ -101,14 +101,14 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <Company-param>[Company]</Company-param>
       <Company-desc>Company to use for the generated document.</Company-desc>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\doc_xomega.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\doc_xomega.xsl">
       <Name>Service Model Design</Name>
       <Folder>Documentation</Folder>
       <OutputPath-param>../Docs/ServiceModelDesign.docx</OutputPath-param>
       <OutputPath-desc>Path where to output generated document.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
       <IncludeInBuild>false</IncludeInBuild>
-      <DocumentTemplate-param>$(XomegaHome16)Templates\ServiceModel.docx</DocumentTemplate-param>
+      <DocumentTemplate-param>$(XomegaHome17)Templates\ServiceModel.docx</DocumentTemplate-param>
       <DocumentTemplate-category>Generator</DocumentTemplate-category>
       <DocumentTemplate-desc>Path to the MS Word document that will be used as a template for the generated document.</DocumentTemplate-desc>
       <Title-param>AdventureWorks Service Model</Title-param>
@@ -120,14 +120,14 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <Company-param>[Company]</Company-param>
       <Company-desc>Company to use for the generated document.</Company-desc>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\doc_xomega.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\doc_xomega.xsl">
       <Name>Static Data Design</Name>
       <Folder>Documentation</Folder>
       <OutputPath-param>../Docs/StaticDataDesign.docx</OutputPath-param>
       <OutputPath-desc>Path where to output generated document.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
       <IncludeInBuild>false</IncludeInBuild>
-      <DocumentTemplate-param>$(XomegaHome16)Templates\StaticData.docx</DocumentTemplate-param>
+      <DocumentTemplate-param>$(XomegaHome17)Templates\StaticData.docx</DocumentTemplate-param>
       <DocumentTemplate-category>Generator</DocumentTemplate-category>
       <DocumentTemplate-desc>Path to the MS Word document that will be used as a template for the generated document.</DocumentTemplate-desc>
       <Title-param>AdventureWorks Static Data Design</Title-param>
@@ -139,7 +139,7 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <Company-param>[Company]</Company-param>
       <Company-desc>Company to use for the generated document.</Company-desc>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\doc_sqlxml.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\doc_sqlxml.xsl">
       <Name>SQLXML Report</Name>
       <Folder>Documentation\Custom</Folder>
       <OutputPath-param>../Docs/SqlXmlReport.docx</OutputPath-param>
@@ -170,7 +170,7 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <Company-param>[Company]</Company-param>
       <Company-desc>Company to use for the generated document.</Company-desc>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\ef_entities.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\ef_entities.xsl">
       <Name>EF Domain Objects</Name>
       <Folder>Data Layer</Folder>
       <OutputPath-param>../AdventureWorks.Services.Entities/Entities/{Module/}{File}.cs</OutputPath-param>
@@ -188,7 +188,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <IndividualFiles>true</IndividualFiles>
       <GeneratorGroup>services</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\edm.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\edm.xsl">
       <Name>Entity Data Model</Name>
       <Folder>Data Layer</Folder>
       <OutputPath-param>../AdventureWorks.Services.Entities/Entities/EntityModel.edmx</OutputPath-param>
@@ -202,7 +202,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <IncludeInBuild>false</IncludeInBuild>
       <TargetFrameworkVersion>$(TargetFrameworkVersion)</TargetFrameworkVersion>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\model_ops.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\model_ops.xsl">
       <Name>Lookup View</Name>
       <Folder>Model Enhancement</Folder>
       <IncludeInBuild>false</IncludeInBuild>
@@ -211,35 +211,35 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <GenerateCRUD-param>False</GenerateCRUD-param>
       <GenerateCRUD-type>System.Boolean</GenerateCRUD-type>
       <GenerateCRUD-desc>Whether to generate Create, Read, Update and Delete operations.</GenerateCRUD-desc>
-      <GenerateCRUD-category>Operations</GenerateCRUD-category>
+      <GenerateCRUD-category>Operations CRUD</GenerateCRUD-category>
       <GenerateReadList-param>True</GenerateReadList-param>
       <GenerateReadList-type>System.Boolean</GenerateReadList-type>
       <GenerateReadList-desc>Whether to generate Read List operation.</GenerateReadList-desc>
-      <GenerateReadList-category>Operations</GenerateReadList-category>
+      <GenerateReadList-category>Operation Read List</GenerateReadList-category>
       <GenerateReadListCriteria-param>True</GenerateReadListCriteria-param>
       <GenerateReadListCriteria-type>System.Boolean</GenerateReadListCriteria-type>
       <GenerateReadListCriteria-desc>Whether to generate criteria for Read List operation.</GenerateReadListCriteria-desc>
-      <GenerateReadListCriteria-category>Operations</GenerateReadListCriteria-category>
+      <GenerateReadListCriteria-category>Operation Read List</GenerateReadListCriteria-category>
       <GenerateReadListOperators-param>True</GenerateReadListOperators-param>
       <GenerateReadListOperators-type>System.Boolean</GenerateReadListOperators-type>
       <GenerateReadListOperators-desc>Whether to generate operators for search criteria.</GenerateReadListOperators-desc>
-      <GenerateReadListOperators-category>Operations</GenerateReadListOperators-category>
-      <GenerateSubobjectCRUD-param>True</GenerateSubobjectCRUD-param>
+      <GenerateReadListOperators-category>Operation Read List</GenerateReadListOperators-category>
+      <GenerateSubobjectCRUD-param>False</GenerateSubobjectCRUD-param>
       <GenerateSubobjectCRUD-type>System.Boolean</GenerateSubobjectCRUD-type>
       <GenerateSubobjectCRUD-desc>Whether to generate Create, Read, Update and Delete operations on sub-objects.</GenerateSubobjectCRUD-desc>
-      <GenerateSubobjectCRUD-category>Operations</GenerateSubobjectCRUD-category>
+      <GenerateSubobjectCRUD-category>Operations CRUD</GenerateSubobjectCRUD-category>
       <GenerateSubobjectReadList-param>True</GenerateSubobjectReadList-param>
       <GenerateSubobjectReadList-type>System.Boolean</GenerateSubobjectReadList-type>
       <GenerateSubobjectReadList-desc>Whether to generate Read List operation on sub-objects.</GenerateSubobjectReadList-desc>
-      <GenerateSubobjectReadList-category>Operations</GenerateSubobjectReadList-category>
+      <GenerateSubobjectReadList-category>Operation Read List</GenerateSubobjectReadList-category>
       <GenerateRestMethods-param>True</GenerateRestMethods-param>
       <GenerateRestMethods-type>System.Boolean</GenerateRestMethods-type>
       <GenerateRestMethods-desc>Whether to generate REST API methods on operations.</GenerateRestMethods-desc>
-      <GenerateRestMethods-category>Operations</GenerateRestMethods-category>
+      <GenerateRestMethods-category>Rest API</GenerateRestMethods-category>
       <UseYesNoSubstitution-param>True</UseYesNoSubstitution-param>
       <UseYesNoSubstitution-type>System.Boolean</UseYesNoSubstitution-type>
       <UseYesNoSubstitution-desc>Whether to substitute boolean type with yesno for non-required parameters of CRUD operations.</UseYesNoSubstitution-desc>
-      <UseYesNoSubstitution-category>Operations</UseYesNoSubstitution-category>
+      <UseYesNoSubstitution-category>Operations CRUD</UseYesNoSubstitution-category>
       <GenerateDataObjects-param>True</GenerateDataObjects-param>
       <GenerateDataObjects-type>System.Boolean</GenerateDataObjects-type>
       <GenerateDataObjects-desc>Whether to generate Xomega.Framework Data Object definitions for operations.</GenerateDataObjects-desc>
@@ -260,31 +260,23 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <GenerateDetailsView-type>System.Boolean</GenerateDetailsView-type>
       <GenerateDetailsView-desc>Whether to generate a details view for CRUD objects.</GenerateDetailsView-desc>
       <GenerateDetailsView-category>Views</GenerateDetailsView-category>
-      <SearchViewLayout-param>
-      </SearchViewLayout-param>
-      <SearchViewLayout-desc>Named layout from the global config to use for the search view.</SearchViewLayout-desc>
-      <SearchViewLayout-category>Views</SearchViewLayout-category>
-      <DetailsViewLayout-param>
-      </DetailsViewLayout-param>
-      <DetailsViewLayout-desc>Named layout from the global config to use for the details view.</DetailsViewLayout-desc>
-      <DetailsViewLayout-category>Views</DetailsViewLayout-category>
       <ViewNamePostfix-param>View</ViewNamePostfix-param>
       <ViewNamePostfix-desc>Postfix to use for view names.</ViewNamePostfix-desc>
       <ViewNamePostfix-category>Views</ViewNamePostfix-category>
-      <AddReadListEnumeration-param>False</AddReadListEnumeration-param>
-      <AddReadListEnumeration-type>System.Boolean</AddReadListEnumeration-type>
-      <AddReadListEnumeration-desc>Whether to add enumeration definition to the Read List operation.</AddReadListEnumeration-desc>
-      <AddReadListEnumeration-category>Enumeration</AddReadListEnumeration-category>
+      <GenerateReadEnum-param>False</GenerateReadEnum-param>
+      <GenerateReadEnum-type>System.Boolean</GenerateReadEnum-type>
+      <GenerateReadEnum-desc>Whether to generate Read Enum operation.</GenerateReadEnum-desc>
+      <GenerateReadEnum-category>Operation Read Enum</GenerateReadEnum-category>
+      <GenerateSubobjectReadEnum-param>False</GenerateSubobjectReadEnum-param>
+      <GenerateSubobjectReadEnum-type>System.Boolean</GenerateSubobjectReadEnum-type>
+      <GenerateSubobjectReadEnum-desc>Whether to generate Read Enum operation on sub-objects.</GenerateSubobjectReadEnum-desc>
+      <GenerateSubobjectReadEnum-category>Operation Read Enum</GenerateSubobjectReadEnum-category>
       <MakeKeyTypeEnumerated-param>False</MakeKeyTypeEnumerated-param>
       <MakeKeyTypeEnumerated-type>System.Boolean</MakeKeyTypeEnumerated-type>
       <MakeKeyTypeEnumerated-desc>Whether to update the key type to reference generated enumeration.</MakeKeyTypeEnumerated-desc>
-      <MakeKeyTypeEnumerated-category>Enumeration</MakeKeyTypeEnumerated-category>
-      <AddSuggestType-param>False</AddSuggestType-param>
-      <AddSuggestType-type>System.Boolean</AddSuggestType-type>
-      <AddSuggestType-desc>Whether to add a separate type linked to the generated enumeration to suggest values, which also accepts other values.</AddSuggestType-desc>
-      <AddSuggestType-category>Enumeration</AddSuggestType-category>
+      <MakeKeyTypeEnumerated-category>Operation Read Enum</MakeKeyTypeEnumerated-category>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\svc_impl.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\svc_impl.xsl">
       <Name>Service Implementations</Name>
       <Folder>Service Layer</Folder>
       <OutputPath-param>../AdventureWorks.Services.Entities/Services/{Module/}{File}.cs</OutputPath-param>
@@ -292,7 +284,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
 The path may contain {Module/} and {File} placeholders to output files by module and service respectively.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
       <RegistryFile-param>../AdventureWorks.Services.Entities/Services/ServiceImplementations.cs</RegistryFile-param>
-      <RegistryFile-desc>A path to the file for service implementations resgistration.</RegistryFile-desc>
+      <RegistryFile-desc>A path to the file for service implementations registration.</RegistryFile-desc>
       <RegistryFile-category>Output</RegistryFile-category>
       <CustomPath-param>
       </CustomPath-param>
@@ -303,7 +295,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <IndividualFiles>true</IndividualFiles>
       <GeneratorGroup>services</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\model_ops.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\model_ops.xsl">
       <Name>Full CRUD with Views</Name>
       <Folder>Model Enhancement</Folder>
       <IncludeInBuild>false</IncludeInBuild>
@@ -312,35 +304,35 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <GenerateCRUD-param>True</GenerateCRUD-param>
       <GenerateCRUD-type>System.Boolean</GenerateCRUD-type>
       <GenerateCRUD-desc>Whether to generate Create, Read, Update and Delete operations.</GenerateCRUD-desc>
-      <GenerateCRUD-category>Operations</GenerateCRUD-category>
+      <GenerateCRUD-category>Operations CRUD</GenerateCRUD-category>
       <GenerateReadList-param>True</GenerateReadList-param>
       <GenerateReadList-type>System.Boolean</GenerateReadList-type>
       <GenerateReadList-desc>Whether to generate Read List operation.</GenerateReadList-desc>
-      <GenerateReadList-category>Operations</GenerateReadList-category>
+      <GenerateReadList-category>Operation Read List</GenerateReadList-category>
       <GenerateReadListCriteria-param>True</GenerateReadListCriteria-param>
       <GenerateReadListCriteria-type>System.Boolean</GenerateReadListCriteria-type>
       <GenerateReadListCriteria-desc>Whether to generate criteria for Read List operation.</GenerateReadListCriteria-desc>
-      <GenerateReadListCriteria-category>Operations</GenerateReadListCriteria-category>
+      <GenerateReadListCriteria-category>Operation Read List</GenerateReadListCriteria-category>
       <GenerateReadListOperators-param>True</GenerateReadListOperators-param>
       <GenerateReadListOperators-type>System.Boolean</GenerateReadListOperators-type>
       <GenerateReadListOperators-desc>Whether to generate operators for search criteria.</GenerateReadListOperators-desc>
-      <GenerateReadListOperators-category>Operations</GenerateReadListOperators-category>
+      <GenerateReadListOperators-category>Operation Read List</GenerateReadListOperators-category>
       <GenerateSubobjectCRUD-param>True</GenerateSubobjectCRUD-param>
       <GenerateSubobjectCRUD-type>System.Boolean</GenerateSubobjectCRUD-type>
       <GenerateSubobjectCRUD-desc>Whether to generate Create, Read, Update and Delete operations on sub-objects.</GenerateSubobjectCRUD-desc>
-      <GenerateSubobjectCRUD-category>Operations</GenerateSubobjectCRUD-category>
+      <GenerateSubobjectCRUD-category>Operations CRUD</GenerateSubobjectCRUD-category>
       <GenerateSubobjectReadList-param>True</GenerateSubobjectReadList-param>
       <GenerateSubobjectReadList-type>System.Boolean</GenerateSubobjectReadList-type>
       <GenerateSubobjectReadList-desc>Whether to generate Read List operation on sub-objects.</GenerateSubobjectReadList-desc>
-      <GenerateSubobjectReadList-category>Operations</GenerateSubobjectReadList-category>
+      <GenerateSubobjectReadList-category>Operation Read List</GenerateSubobjectReadList-category>
       <GenerateRestMethods-param>True</GenerateRestMethods-param>
       <GenerateRestMethods-type>System.Boolean</GenerateRestMethods-type>
       <GenerateRestMethods-desc>Whether to generate REST API methods on operations.</GenerateRestMethods-desc>
-      <GenerateRestMethods-category>Operations</GenerateRestMethods-category>
+      <GenerateRestMethods-category>Rest API</GenerateRestMethods-category>
       <UseYesNoSubstitution-param>True</UseYesNoSubstitution-param>
       <UseYesNoSubstitution-type>System.Boolean</UseYesNoSubstitution-type>
       <UseYesNoSubstitution-desc>Whether to substitute boolean type with yesno for non-required parameters of CRUD operations.</UseYesNoSubstitution-desc>
-      <UseYesNoSubstitution-category>Operations</UseYesNoSubstitution-category>
+      <UseYesNoSubstitution-category>Operations CRUD</UseYesNoSubstitution-category>
       <GenerateDataObjects-param>True</GenerateDataObjects-param>
       <GenerateDataObjects-type>System.Boolean</GenerateDataObjects-type>
       <GenerateDataObjects-desc>Whether to generate Xomega.Framework Data Object definitions for operations.</GenerateDataObjects-desc>
@@ -361,32 +353,24 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <GenerateDetailsView-type>System.Boolean</GenerateDetailsView-type>
       <GenerateDetailsView-desc>Whether to generate a details view for CRUD objects.</GenerateDetailsView-desc>
       <GenerateDetailsView-category>Views</GenerateDetailsView-category>
-      <SearchViewLayout-param>
-      </SearchViewLayout-param>
-      <SearchViewLayout-desc>Named layout from the global config to use for the search view.</SearchViewLayout-desc>
-      <SearchViewLayout-category>Views</SearchViewLayout-category>
-      <DetailsViewLayout-param>
-      </DetailsViewLayout-param>
-      <DetailsViewLayout-desc>Named layout from the global config to use for the details view.</DetailsViewLayout-desc>
-      <DetailsViewLayout-category>Views</DetailsViewLayout-category>
       <ViewNamePostfix-param>View</ViewNamePostfix-param>
       <ViewNamePostfix-desc>Postfix to use for view names.</ViewNamePostfix-desc>
       <ViewNamePostfix-category>Views</ViewNamePostfix-category>
-      <AddReadListEnumeration-param>False</AddReadListEnumeration-param>
-      <AddReadListEnumeration-type>System.Boolean</AddReadListEnumeration-type>
-      <AddReadListEnumeration-desc>Whether to add enumeration definition to the Read List operation.</AddReadListEnumeration-desc>
-      <AddReadListEnumeration-category>Enumeration</AddReadListEnumeration-category>
+      <GenerateReadEnum-param>False</GenerateReadEnum-param>
+      <GenerateReadEnum-type>System.Boolean</GenerateReadEnum-type>
+      <GenerateReadEnum-desc>Whether to generate Read Enum operation.</GenerateReadEnum-desc>
+      <GenerateReadEnum-category>Operation Read Enum</GenerateReadEnum-category>
+      <GenerateSubobjectReadEnum-param>False</GenerateSubobjectReadEnum-param>
+      <GenerateSubobjectReadEnum-type>System.Boolean</GenerateSubobjectReadEnum-type>
+      <GenerateSubobjectReadEnum-desc>Whether to generate Read Enum operation on sub-objects.</GenerateSubobjectReadEnum-desc>
+      <GenerateSubobjectReadEnum-category>Operation Read Enum</GenerateSubobjectReadEnum-category>
       <MakeKeyTypeEnumerated-param>False</MakeKeyTypeEnumerated-param>
       <MakeKeyTypeEnumerated-type>System.Boolean</MakeKeyTypeEnumerated-type>
       <MakeKeyTypeEnumerated-desc>Whether to update the key type to reference generated enumeration.</MakeKeyTypeEnumerated-desc>
-      <MakeKeyTypeEnumerated-category>Enumeration</MakeKeyTypeEnumerated-category>
-      <AddSuggestType-param>False</AddSuggestType-param>
-      <AddSuggestType-type>System.Boolean</AddSuggestType-type>
-      <AddSuggestType-desc>Whether to add a separate type linked to the generated enumeration to suggest values, which also accepts other values.</AddSuggestType-desc>
-      <AddSuggestType-category>Enumeration</AddSuggestType-category>
+      <MakeKeyTypeEnumerated-category>Operation Read Enum</MakeKeyTypeEnumerated-category>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\model_ops.xsl">
-      <Name>Enumeration Read List</Name>
+    <XomGenerator Include="$(XomegaHome17)Xsl\model_ops.xsl">
+      <Name>Read Enum Operation</Name>
       <Folder>Model Enhancement</Folder>
       <IncludeInBuild>false</IncludeInBuild>
       <IndividualFiles>true</IndividualFiles>
@@ -394,35 +378,35 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <GenerateCRUD-param>False</GenerateCRUD-param>
       <GenerateCRUD-type>System.Boolean</GenerateCRUD-type>
       <GenerateCRUD-desc>Whether to generate Create, Read, Update and Delete operations.</GenerateCRUD-desc>
-      <GenerateCRUD-category>Operations</GenerateCRUD-category>
-      <GenerateReadList-param>True</GenerateReadList-param>
+      <GenerateCRUD-category>Operations CRUD</GenerateCRUD-category>
+      <GenerateReadList-param>False</GenerateReadList-param>
       <GenerateReadList-type>System.Boolean</GenerateReadList-type>
       <GenerateReadList-desc>Whether to generate Read List operation.</GenerateReadList-desc>
-      <GenerateReadList-category>Operations</GenerateReadList-category>
+      <GenerateReadList-category>Operation Read List</GenerateReadList-category>
       <GenerateReadListCriteria-param>False</GenerateReadListCriteria-param>
       <GenerateReadListCriteria-type>System.Boolean</GenerateReadListCriteria-type>
       <GenerateReadListCriteria-desc>Whether to generate criteria for Read List operation.</GenerateReadListCriteria-desc>
-      <GenerateReadListCriteria-category>Operations</GenerateReadListCriteria-category>
+      <GenerateReadListCriteria-category>Operation Read List</GenerateReadListCriteria-category>
       <GenerateReadListOperators-param>False</GenerateReadListOperators-param>
       <GenerateReadListOperators-type>System.Boolean</GenerateReadListOperators-type>
       <GenerateReadListOperators-desc>Whether to generate operators for search criteria.</GenerateReadListOperators-desc>
-      <GenerateReadListOperators-category>Operations</GenerateReadListOperators-category>
+      <GenerateReadListOperators-category>Operation Read List</GenerateReadListOperators-category>
       <GenerateSubobjectCRUD-param>False</GenerateSubobjectCRUD-param>
       <GenerateSubobjectCRUD-type>System.Boolean</GenerateSubobjectCRUD-type>
       <GenerateSubobjectCRUD-desc>Whether to generate Create, Read, Update and Delete operations on sub-objects.</GenerateSubobjectCRUD-desc>
-      <GenerateSubobjectCRUD-category>Operations</GenerateSubobjectCRUD-category>
+      <GenerateSubobjectCRUD-category>Operations CRUD</GenerateSubobjectCRUD-category>
       <GenerateSubobjectReadList-param>False</GenerateSubobjectReadList-param>
       <GenerateSubobjectReadList-type>System.Boolean</GenerateSubobjectReadList-type>
       <GenerateSubobjectReadList-desc>Whether to generate Read List operation on sub-objects.</GenerateSubobjectReadList-desc>
-      <GenerateSubobjectReadList-category>Operations</GenerateSubobjectReadList-category>
+      <GenerateSubobjectReadList-category>Operation Read List</GenerateSubobjectReadList-category>
       <GenerateRestMethods-param>True</GenerateRestMethods-param>
       <GenerateRestMethods-type>System.Boolean</GenerateRestMethods-type>
       <GenerateRestMethods-desc>Whether to generate REST API methods on operations.</GenerateRestMethods-desc>
-      <GenerateRestMethods-category>Operations</GenerateRestMethods-category>
+      <GenerateRestMethods-category>Rest API</GenerateRestMethods-category>
       <UseYesNoSubstitution-param>False</UseYesNoSubstitution-param>
       <UseYesNoSubstitution-type>System.Boolean</UseYesNoSubstitution-type>
       <UseYesNoSubstitution-desc>Whether to substitute boolean type with yesno for non-required parameters of CRUD operations.</UseYesNoSubstitution-desc>
-      <UseYesNoSubstitution-category>Operations</UseYesNoSubstitution-category>
+      <UseYesNoSubstitution-category>Operations CRUD</UseYesNoSubstitution-category>
       <GenerateDataObjects-param>False</GenerateDataObjects-param>
       <GenerateDataObjects-type>System.Boolean</GenerateDataObjects-type>
       <GenerateDataObjects-desc>Whether to generate Xomega.Framework Data Object definitions for operations.</GenerateDataObjects-desc>
@@ -454,20 +438,20 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <ViewNamePostfix-param>View</ViewNamePostfix-param>
       <ViewNamePostfix-desc>Postfix to use for view names.</ViewNamePostfix-desc>
       <ViewNamePostfix-category>Views</ViewNamePostfix-category>
-      <AddReadListEnumeration-param>True</AddReadListEnumeration-param>
-      <AddReadListEnumeration-type>System.Boolean</AddReadListEnumeration-type>
-      <AddReadListEnumeration-desc>Whether to add enumeration definition to the Read List operation.</AddReadListEnumeration-desc>
-      <AddReadListEnumeration-category>Enumeration</AddReadListEnumeration-category>
+      <GenerateReadEnum-param>True</GenerateReadEnum-param>
+      <GenerateReadEnum-type>System.Boolean</GenerateReadEnum-type>
+      <GenerateReadEnum-desc>Whether to generate Read Enum operation.</GenerateReadEnum-desc>
+      <GenerateReadEnum-category>Operation Read Enum</GenerateReadEnum-category>
+      <GenerateSubobjectReadEnum-param>True</GenerateSubobjectReadEnum-param>
+      <GenerateSubobjectReadEnum-type>System.Boolean</GenerateSubobjectReadEnum-type>
+      <GenerateSubobjectReadEnum-desc>Whether to generate Read Enum operation on sub-objects.</GenerateSubobjectReadEnum-desc>
+      <GenerateSubobjectReadEnum-category>Operation Read Enum</GenerateSubobjectReadEnum-category>
       <MakeKeyTypeEnumerated-param>True</MakeKeyTypeEnumerated-param>
       <MakeKeyTypeEnumerated-type>System.Boolean</MakeKeyTypeEnumerated-type>
       <MakeKeyTypeEnumerated-desc>Whether to update the key type to reference generated enumeration.</MakeKeyTypeEnumerated-desc>
-      <MakeKeyTypeEnumerated-category>Enumeration</MakeKeyTypeEnumerated-category>
-      <AddSuggestType-param>False</AddSuggestType-param>
-      <AddSuggestType-type>System.Boolean</AddSuggestType-type>
-      <AddSuggestType-desc>Whether to add a separate type linked to the generated enumeration to suggest values, which also accepts other values.</AddSuggestType-desc>
-      <AddSuggestType-category>Enumeration</AddSuggestType-category>
+      <MakeKeyTypeEnumerated-category>Operation Read Enum</MakeKeyTypeEnumerated-category>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\model_enums_db.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\model_enums_db.xsl">
       <Name>Enumerations from Database</Name>
       <Folder>Model Enhancement</Folder>
       <OutputPath-param>ImportedEnums/_{Module}_enums.xom</OutputPath-param>
@@ -482,7 +466,7 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <DbConnection>$(DbConnection)</DbConnection>
       <DbTimeout>$(DbTimeout)</DbTimeout>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\ts_services.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\ts_services.xsl">
       <Name>TS Service Contracts</Name>
       <Folder>Presentation Layer\SPA</Folder>
       <AddToProject-param>../AdventureWorks.Client.Spa/AdventureWorks.Client.Spa.csproj</AddToProject-param>
@@ -492,7 +476,7 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <IndividualFiles>false</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\svc_client_rest.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\svc_client_rest.xsl">
       <Name>REST Service Clients</Name>
       <Folder>Presentation Layer\Common</Folder>
       <OutputPath-param>../AdventureWorks.Client.Common/ServiceClients/{Module/}{File}.cs</OutputPath-param>
@@ -505,13 +489,13 @@ The path may contain {Module/} and {File} placeholders to output files by module
 If not set then the OutputPath will be used. The path must contain {File} placeholder to output files by service.</CustomPath-desc>
       <CustomPath-category>Output</CustomPath-category>
       <RegistryFile-param>../AdventureWorks.Client.Common/ServiceClients/RestClients.cs</RegistryFile-param>
-      <RegistryFile-desc>A path to the file for service REST clients resgistration.</RegistryFile-desc>
+      <RegistryFile-desc>A path to the file for service REST clients registration.</RegistryFile-desc>
       <RegistryFile-category>Output</RegistryFile-category>
       <IncludeInBuild>true</IncludeInBuild>
       <IndividualFiles>true</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\svc_contracts.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\svc_contracts.xsl">
       <Name>Service Contracts</Name>
       <Folder>Service Layer</Folder>
       <OutputPath-param>../AdventureWorks.Services.Common/ServiceContracts/{Module/}{File}.cs</OutputPath-param>
@@ -522,7 +506,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <IndividualFiles>true</IndividualFiles>
       <GeneratorGroup>services</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\wcf_config.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\wcf_config.xsl">
       <Name>WCF Server Configuration</Name>
       <Folder>Service Layer</Folder>
       <OutputPath-param>../AdventureWorks.Services.Wcf/serviceModel.services.config</OutputPath-param>
@@ -539,7 +523,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <ServiceBehavior-desc>Service behavior to set for all services.</ServiceBehavior-desc>
       <IncludeInBuild>false</IncludeInBuild>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\wcf_iis_svchost.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\wcf_iis_svchost.xsl">
       <Name>WCF Service Host Files</Name>
       <Folder>Service Layer</Folder>
       <OutputPath-param>../AdventureWorks.Services.Wcf/{Module/}{File}.svc</OutputPath-param>
@@ -550,9 +534,9 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <AddToProject-category>Output</AddToProject-category>
       <IncludeInBuild>false</IncludeInBuild>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\wcf_config.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\wcf_config.xsl">
       <Name>WCF Client Configuration</Name>
-      <Folder>Presentation Layer\WPF</Folder>
+      <Folder>Presentation Layer\Common</Folder>
       <OutputPath-param>../AdventureWorks.Client.Wpf/serviceModel.client.config</OutputPath-param>
       <OutputPath-desc>Path to the .config file to update WCF client configuration for.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
@@ -561,28 +545,20 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <IsClient-type>System.Boolean</IsClient-type>
       <IncludeInBuild>false</IncludeInBuild>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\webapi_controllers.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\webapi_controllers.xsl">
       <Name>Web API Controllers</Name>
       <Folder>Service Layer</Folder>
       <OutputPath-param>../AdventureWorks.Services.Rest/{Module/}{File}.cs</OutputPath-param>
       <OutputPath-desc>Path where to output generated Web API controllers.
 The path may contain {Module/} and {File} placeholders to output files by module and object respectively.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
-      <CustomPath-param>
-      </CustomPath-param>
-      <CustomPath-desc>Path where to output override classes for the generated controllers. 
-If not set then the OutputPath will be used. The path must contain {File} placeholder to output files by controller.</CustomPath-desc>
-      <CustomPath-category>Output</CustomPath-category>
-      <RegistryFile-param>../AdventureWorks.Services.Rest/ServiceControllers.cs</RegistryFile-param>
-      <RegistryFile-desc>A path to the file for controllers resgistration.</RegistryFile-desc>
-      <RegistryFile-category>Output</RegistryFile-category>
       <Namespace-param>AdventureWorks.Services.Rest</Namespace-param>
       <Namespace-desc>Namespace for the generated controllers.</Namespace-desc>
       <IncludeInBuild>true</IncludeInBuild>
       <IndividualFiles>true</IndividualFiles>
       <GeneratorGroup>services</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\data_objects.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\data_objects.xsl">
       <Name>Xomega Data Objects</Name>
       <Folder>Presentation Layer\Common</Folder>
       <OutputPath-param>../AdventureWorks.Client.Common/DataObjects/{Module/}{File}.cs</OutputPath-param>
@@ -601,7 +577,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <IndividualFiles>true</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\view_models.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\view_models.xsl">
       <Name>View Models</Name>
       <Folder>Presentation Layer\Common</Folder>
       <OutputPath-param>../AdventureWorks.Client.Common/ViewModels/{Module/}{File}.cs</OutputPath-param>
@@ -613,13 +589,13 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
 If not set then the OutputPath will be used. The path must contain {File} placeholder to output files by view.</CustomPath-desc>
       <CustomPath-category>Output</CustomPath-category>
       <RegistryFile-param>../AdventureWorks.Client.Common/ViewModels/ViewModels.cs</RegistryFile-param>
-      <RegistryFile-desc>A path to the file for view model resgistration.</RegistryFile-desc>
+      <RegistryFile-desc>A path to the file for view model registration.</RegistryFile-desc>
       <RegistryFile-category>Output</RegistryFile-category>
       <IncludeInBuild>true</IncludeInBuild>
       <IndividualFiles>true</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\res_ui.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\res_ui.xsl">
       <Name>Label Resources</Name>
       <Folder>Presentation Layer\Common</Folder>
       <OutputPath-param>../AdventureWorks.Client.Common/Labels.resx</OutputPath-param>
@@ -632,7 +608,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <IndividualFiles>false</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\ts_data_objects.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\ts_data_objects.xsl">
       <Name>XomegaJS Data Objects</Name>
       <Folder>Presentation Layer\SPA</Folder>
       <AddToProject-param>../AdventureWorks.Client.Spa/AdventureWorks.Client.Spa.csproj</AddToProject-param>
@@ -646,7 +622,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <IndividualFiles>false</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\ts_enum_cache.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\ts_enum_cache.xsl">
       <Name>TS Lookup Cache Loaders</Name>
       <Folder>Presentation Layer\SPA</Folder>
       <OutputPath-param>../AdventureWorks.Client.Spa/CacheLoaders/{File}.ts</OutputPath-param>
@@ -655,7 +631,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <OutputPath-category>Output</OutputPath-category>
       <RegistryFile-param>
       </RegistryFile-param>
-      <RegistryFile-desc>A path to the file for cache loaders resgistration.</RegistryFile-desc>
+      <RegistryFile-desc>A path to the file for cache loaders registration.</RegistryFile-desc>
       <RegistryFile-category>Output</RegistryFile-category>
       <Namespace-param>
       </Namespace-param>
@@ -667,7 +643,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <IndividualFiles>false</IndividualFiles>
       <GeneratorGroup>services</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\ts_enum_const.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\ts_enum_const.xsl">
       <Name>TS Enumeration Constants</Name>
       <Folder>Presentation Layer\SPA</Folder>
       <OutputPath-param>../AdventureWorks.Client.Spa/Enumerations/Enumerations.ts</OutputPath-param>
@@ -678,7 +654,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <AddToProject-category>Output</AddToProject-category>
       <IncludeInBuild>false</IncludeInBuild>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\ts_views.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\ts_views.xsl">
       <Name>SPA Views</Name>
       <Folder>Presentation Layer\SPA</Folder>
       <AddToProject-param>../AdventureWorks.Client.Spa/AdventureWorks.Client.Spa.csproj</AddToProject-param>
@@ -697,10 +673,10 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <OutputPath-desc>Path where to output files with generated SPA views. Path must contain {File} placeholder.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
       <RegistryFile-param>../AdventureWorks.Client.Spa/Views/ViewsConfig.ts</RegistryFile-param>
-      <RegistryFile-desc>A path to the file for view paths resgistration.</RegistryFile-desc>
+      <RegistryFile-desc>A path to the file for view paths registration.</RegistryFile-desc>
       <RegistryFile-category>Output</RegistryFile-category>
       <MenuFile-param>../AdventureWorks.Client.Spa/Views/MainMenu.ts</MenuFile-param>
-      <MenuFile-desc>A path to the file for view routes resgistration.</MenuFile-desc>
+      <MenuFile-desc>A path to the file for view routes registration.</MenuFile-desc>
       <MenuFile-category>Output</MenuFile-category>
       <View-param>
       </View-param>
@@ -710,7 +686,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <IndividualFiles>false</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\wpf_views.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\wpf_views.xsl">
       <Name>WPF Views</Name>
       <Folder>Presentation Layer\WPF</Folder>
       <CustomPath-param>
@@ -722,7 +698,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <OutputPath-desc>Path where to output files with generated WPF views. Path must contain {File} placeholder.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
       <RegistryFile-param>../AdventureWorks.Client.Wpf/Views/Views.cs</RegistryFile-param>
-      <RegistryFile-desc>A path to the file for views resgistration.</RegistryFile-desc>
+      <RegistryFile-desc>A path to the file for views registration.</RegistryFile-desc>
       <RegistryFile-category>Output</RegistryFile-category>
       <MenuFile-param>../AdventureWorks.Client.Wpf/Controls/MainMenu</MenuFile-param>
       <MenuFile-desc>Path where to output generated menu resources without extension.</MenuFile-desc>
@@ -737,9 +713,9 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <IndividualFiles>false</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\asp_views.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\asp_views.xsl">
       <Name>ASP.NET Views</Name>
-      <Folder>Presentation Layer\ASP.NET</Folder>
+      <Folder>Presentation Layer\Web Forms</Folder>
       <AddToProject-param>../AdventureWorks.Client.Web/AdventureWorks.Client.Web.csproj</AddToProject-param>
       <AddToProject-desc>A project file to add the generated files to.</AddToProject-desc>
       <AddToProject-category>Output</AddToProject-category>
@@ -768,7 +744,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <IndividualFiles>false</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\blz_views.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\blz_views.xsl">
       <Name>Blazor Views</Name>
       <Folder>Presentation Layer\Blazor</Folder>
       <CustomPath-param>
@@ -794,7 +770,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <IndividualFiles>true</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\blz_sf_views.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\blz_sf_views.xsl">
       <Name>Syncfusion Blazor Views</Name>
       <Folder>Presentation Layer\Blazor</Folder>
       <CustomPath-param>
@@ -820,7 +796,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
       <IndividualFiles>false</IndividualFiles>
       <GeneratorGroup>presentation</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\enum_cache.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\enum_cache.xsl">
       <Name>Lookup Cache Loaders</Name>
       <Folder>Static Data</Folder>
       <OutputPath-param>../AdventureWorks.Services.Common/CacheLoaders/{Module/}{File}.cs</OutputPath-param>
@@ -828,7 +804,7 @@ If not set then the OutputPath will be used. The path must contain {File} placeh
 The path may contain {Module/} and {File} placeholders to output files by module and service respectively.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
       <RegistryFile-param>../AdventureWorks.Services.Common/CacheLoaders/LookupCacheLoaders.cs</RegistryFile-param>
-      <RegistryFile-desc>A path to the file for cache loaders resgistration.</RegistryFile-desc>
+      <RegistryFile-desc>A path to the file for cache loaders registration.</RegistryFile-desc>
       <RegistryFile-category>Output</RegistryFile-category>
       <Namespace-param>
       </Namespace-param>
@@ -837,7 +813,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <IndividualFiles>true</IndividualFiles>
       <GeneratorGroup>services</GeneratorGroup>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\enum_xml.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\enum_xml.xsl">
       <Name>Enumeration Data XML</Name>
       <Folder>Static Data</Folder>
       <OutputPath-param>../AdventureWorks.Services.Common/Enumerations/enumerations.xres</OutputPath-param>
@@ -845,7 +821,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <OutputPath-category>Output</OutputPath-category>
       <IncludeInBuild>true</IncludeInBuild>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\enum_sql.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\enum_sql.xsl">
       <Name>Enumeration Reload SQL</Name>
       <Folder>Static Data</Folder>
       <DbCase>$(DbCase)</DbCase>
@@ -854,7 +830,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <OutputPath-category>Output</OutputPath-category>
       <IncludeInBuild>false</IncludeInBuild>
     </XomGenerator>
-    <XomGenerator Include="C:\Program Files (x86)\Xomega.Net\8.11\Xsl\enum_const.xsl">
+    <XomGenerator Include="$(XomegaHome17)Xsl\enum_const.xsl">
       <Name>Enumeration Constants</Name>
       <Folder>Static Data</Folder>
       <OutputPath-param>../AdventureWorks.Services.Common/Enumerations/Enumerations.cs</OutputPath-param>
@@ -885,7 +861,6 @@ The path may contain {Module/} and {File} placeholders to output files by module
     <XomFile Include="Import\Person\address.xom" />
     <XomFile Include="Import\Person\address_type.xom" />
     <XomFile Include="Import\Person\business_entity.xom" />
-    <XomFile Include="Import\Person\business_entity_address.xom" />
     <XomFile Include="Import\Person\business_entity_contact.xom" />
     <XomFile Include="Import\Person\contact_type.xom" />
     <XomFile Include="Import\Person\country_region.xom" />
@@ -930,7 +905,6 @@ The path may contain {Module/} and {File} placeholders to output files by module
     <XomFile Include="Import\Sales\currency.xom" />
     <XomFile Include="Import\Sales\currency_rate.xom" />
     <XomFile Include="Import\Sales\customer.xom" />
-    <XomFile Include="Import\Sales\person_credit_card.xom" />
     <XomFile Include="Import\Sales\sales_order.xom" />
     <XomFile Include="Import\Sales\sales_person.xom" />
     <XomFile Include="Import\Sales\sales_person_quota_history.xom" />
@@ -944,5 +918,5 @@ The path may contain {Module/} and {File} placeholders to output files by module
     <XomFile Include="Import\Sales\store.xom" />
     <XomFile Include="Import\_types.xom" />
   </ItemGroup>
-  <Import Project="$(XomegaHome16)Xomega.targets" />
+  <Import Project="$(XomegaHome17)Xomega.targets" />
 </Project>

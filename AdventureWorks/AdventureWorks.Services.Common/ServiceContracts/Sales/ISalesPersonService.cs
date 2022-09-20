@@ -20,31 +20,31 @@ namespace AdventureWorks.Services.Common
     {
 
         ///<summary>
-        /// Reads a list of Sales Person objects based on the specified criteria.
+        /// Reads enumeration data for Sales Person.
         ///</summary>
-        Task<Output<ICollection<SalesPerson_ReadListOutput>>> ReadListAsync(CancellationToken token = default);
+        Task<Output<ICollection<SalesPerson_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default);
 
     }
     #endregion
 
-    #region SalesPerson_ReadListOutput structure
+    #region SalesPerson_ReadEnumOutput structure
 
     ///<summary>
-    /// The output structure of operation ISalesPersonService.ReadListAsync.
+    /// The output structure of operation ISalesPersonService.ReadEnumAsync.
     ///</summary>
-    public class SalesPerson_ReadListOutput
+    public class SalesPerson_ReadEnumOutput
     {
-        
+
         public int BusinessEntityId { get; set; }
-        
+
+        public string Description { get; set; }
+
+        public bool IsCurrent { get; set; }
+
         ///<summary>
         /// Territory currently assigned to. Foreign key to SalesTerritory.SalesTerritoryID.
         ///</summary>
         public int? TerritoryId { get; set; }
-        
-        public string Name { get; set; }
-        
-        public bool IsCurrent { get; set; }
     }
     #endregion
 

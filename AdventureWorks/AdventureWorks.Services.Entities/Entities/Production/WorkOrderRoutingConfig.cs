@@ -19,8 +19,8 @@ namespace AdventureWorks.Services.Entities
             // configure relationships
 
             c.HasOne(e => e.WorkOrderObject)
-             .WithMany()
-             .HasForeignKey(e => e.WorkOrderId);
+             .WithOne()
+             .HasForeignKey<WorkOrderRouting>(e => e.WorkOrderId);
 
             c.HasOne(e => e.LocationObject)
              .WithMany()

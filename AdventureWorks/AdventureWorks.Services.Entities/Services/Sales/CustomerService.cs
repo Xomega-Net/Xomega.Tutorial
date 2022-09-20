@@ -3,9 +3,6 @@
 //
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated
 // unless they are placed between corresponding CUSTOM_CODE_START/CUSTOM_CODE_END lines.
-//
-// This file can be DELETED DURING REGENERATION IF NO LONGER NEEDED, e.g. if it gets renamed.
-// To prevent this and preserve manual custom changes please remove the line above.
 //---------------------------------------------------------------------------------------------
 
 using AdventureWorks.Services.Common;

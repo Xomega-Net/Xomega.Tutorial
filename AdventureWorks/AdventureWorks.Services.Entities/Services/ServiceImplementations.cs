@@ -13,10 +13,9 @@ namespace AdventureWorks.Services.Entities
     {
         public static IServiceCollection AddServiceImplementations(this IServiceCollection services)
         {
-            services.AddScoped<IBusinessEntityAddressService, BusinessEntityAddressService>();
+            services.AddScoped<IBusinessEntityService, BusinessEntityService>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IPersonService, PersonServiceCustomized>();
-            services.AddScoped<IPersonCreditCardService, PersonCreditCardService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductSubcategoryService, ProductSubcategoryService>();
             services.AddScoped<ISalesOrderService, SalesOrderService>();

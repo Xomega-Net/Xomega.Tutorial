@@ -20,23 +20,23 @@ namespace AdventureWorks.Services.Common
     {
 
         ///<summary>
-        /// Reads a list of Sales Reason objects based on the specified criteria.
+        /// Reads enumeration data for Sales Reason.
         ///</summary>
-        Task<Output<ICollection<SalesReason_ReadListOutput>>> ReadListAsync(CancellationToken token = default);
+        Task<Output<ICollection<SalesReason_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default);
 
     }
     #endregion
 
-    #region SalesReason_ReadListOutput structure
+    #region SalesReason_ReadEnumOutput structure
 
     ///<summary>
-    /// The output structure of operation ISalesReasonService.ReadListAsync.
+    /// The output structure of operation ISalesReasonService.ReadEnumAsync.
     ///</summary>
-    public class SalesReason_ReadListOutput
+    public class SalesReason_ReadEnumOutput
     {
-        
+
         public int SalesReasonId { get; set; }
-        
+
         ///<summary>
         /// Sales reason description.
         ///</summary>

@@ -52,21 +52,21 @@
         </field>
       </fields>
       <operations>
-        <operation name="read list" type="readlist">
+        <operation name="read enum">
           <output list="true">
             <param name="sales reason id"/>
             <param name="name"/>
           </output>
           <config>
-            <rest:method verb="GET" uri-template="sales-reason"/>
+            <rest:method verb="GET" uri-template="sales-reason/enum"/>
             <xfk:enum-cache enum-name="sales reason" id-param="sales reason id" desc-param="name"/>
           </config>
           <doc>
-            <summary>Reads a list of Sales Reason objects based on the specified criteria.</summary>
+            <summary>Reads enumeration data for Sales Reason.</summary>
           </doc>
         </operation>
         <doc>
-          <summary>A service for quering and managing Sales Reason objects.</summary>
+          <summary>A service for querying and managing Sales Reason objects.</summary>
         </doc>
       </operations>
       <config>

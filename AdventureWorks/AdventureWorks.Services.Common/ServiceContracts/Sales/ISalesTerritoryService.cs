@@ -20,33 +20,33 @@ namespace AdventureWorks.Services.Common
     {
 
         ///<summary>
-        /// Reads a list of Sales Territory objects based on the specified criteria.
+        /// Reads enumeration data for Sales Territory.
         ///</summary>
-        Task<Output<ICollection<SalesTerritory_ReadListOutput>>> ReadListAsync(CancellationToken token = default);
+        Task<Output<ICollection<SalesTerritory_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default);
 
     }
     #endregion
 
-    #region SalesTerritory_ReadListOutput structure
+    #region SalesTerritory_ReadEnumOutput structure
 
     ///<summary>
-    /// The output structure of operation ISalesTerritoryService.ReadListAsync.
+    /// The output structure of operation ISalesTerritoryService.ReadEnumAsync.
     ///</summary>
-    public class SalesTerritory_ReadListOutput
+    public class SalesTerritory_ReadEnumOutput
     {
-        
+
         public int TerritoryId { get; set; }
-        
+
         ///<summary>
         /// Sales territory description
         ///</summary>
         public string Name { get; set; }
-        
+
         ///<summary>
         /// ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. 
         ///</summary>
         public string CountryRegionCode { get; set; }
-        
+
         ///<summary>
         /// Geographic area to which the sales territory belong.
         ///</summary>

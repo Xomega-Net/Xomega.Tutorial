@@ -1,7 +1,7 @@
-﻿using AdventureWorks.Services.Common.Enumerations;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
+using AdventureWorks.Services.Common.Enumerations;
 
 namespace AdventureWorks.Services.Common
 {
@@ -15,7 +15,8 @@ namespace AdventureWorks.Services.Common
             if (userInfo == null) return null; // not authenticated
 
             ClaimsIdentity ci = new ClaimsIdentity(authenticationType);
-            ci.AddClaim(new Claim(ClaimTypes.NameIdentifier, "" + userInfo.BusinessEntityId, ClaimValueTypes.Integer));
+            ci.AddClaim(new Claim(ClaimTypes.NameIdentifier, "" + userInfo.BusinessEntityId,
+                                  ClaimValueTypes.Integer));
             ci.AddClaim(new Claim(ClaimTypes.Name, userInfo.FirstName + " " + userInfo.LastName));
             ci.AddClaim(new Claim(ClaimTypes.GivenName, userInfo.FirstName));
             ci.AddClaim(new Claim(ClaimTypes.Surname, userInfo.LastName));

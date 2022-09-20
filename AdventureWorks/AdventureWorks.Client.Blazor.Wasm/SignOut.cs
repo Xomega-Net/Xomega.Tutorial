@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.WebUtilities;
-using System;
+﻿using System;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.WebUtilities;
 using Xomega.Framework.Blazor.Views;
 
 namespace AdventureWorks.Client.Blazor.Wasm

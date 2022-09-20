@@ -14,7 +14,7 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class AddressKey
     {
-        
+
         public int AddressId { get; set; }
     }
     #endregion
@@ -26,24 +26,24 @@ namespace AdventureWorks.Services.Common
     ///</summary>
     public class AddressInfo
     {
-        
+
         ///<summary>
         /// First street address line.
         ///</summary>
         public string AddressLine1 { get; set; }
-        
+
         ///<summary>
         /// Second street address line.
         ///</summary>
         public string AddressLine2 { get; set; }
-        
+
         public string CityState { get; set; }
-        
+
         ///<summary>
         /// Postal code for the street address.
         ///</summary>
         public string PostalCode { get; set; }
-        
+
         public string Country { get; set; }
     }
     #endregion
@@ -52,9 +52,9 @@ namespace AdventureWorks.Services.Common
 
     public class Credentials
     {
-        
+
         public string Email { get; set; }
-        
+
         public string Password { get; set; }
     }
     #endregion
@@ -63,28 +63,28 @@ namespace AdventureWorks.Services.Common
 
     public class PersonInfo
     {
-        
+
         public int BusinessEntityId { get; set; }
-        
+
         ///<summary>
         /// Primary type of person: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact
         ///</summary>
         public string PersonType { get; set; }
-        
+
         ///<summary>
         /// First name of the person.
         ///</summary>
         public string FirstName { get; set; }
-        
+
         ///<summary>
         /// Last name of the person.
         ///</summary>
         public string LastName { get; set; }
-        
+
         public string Email { get; set; }
-        
+
         public int? Store { get; set; }
-        
+
         public int? Vendor { get; set; }
     }
     #endregion

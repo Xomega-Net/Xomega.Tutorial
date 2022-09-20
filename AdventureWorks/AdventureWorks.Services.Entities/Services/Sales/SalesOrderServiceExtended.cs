@@ -1,15 +1,41 @@
 
-using AdventureWorks.Services.Common;
-using System;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Threading;
+using AdventureWorks.Services.Common;
+using Xomega.Framework;
+using System;
 
 namespace AdventureWorks.Services.Entities
 {
     public partial class SalesOrderService
     {
-        protected PaymentInfo GetPaymentInfo(SalesOrder obj) => new PaymentInfo()
+        protected static CustomerInfo GetCustomerInfo(SalesOrder obj) => new()
+        {
+            CustomerId = obj.CustomerId,
+            AccountNumber = obj.CustomerObject?.AccountNumber,
+            PersonId = obj.CustomerObject?.PersonObject?.BusinessEntityId,
+            PersonName = obj.CustomerObject?.PersonObject?.FullName,
+            StoreId = obj.CustomerObject?.StoreObject?.BusinessEntityId,
+            StoreName = obj.CustomerObject?.StoreObject?.Name,
+            TerritoryId = obj.CustomerObject?.TerritoryObject?.TerritoryId,
+            BillingAddress = new AddressKey { AddressId = obj.BillToAddressId },
+            ShippingAddress = new AddressKey { AddressId = obj.ShipToAddressId },
+        };
+        
+        protected async Task UpdateCustomer(SalesOrder obj, CustomerUpdate _data)
+        {
+            if (_data == null)
+            {
+                currentErrors.AddValidationError(Messages.CustomerRequired, obj.SalesOrderId);
+                return;
+            }
+            obj.CustomerObject = await ctx.FindEntityAsync<Customer>(currentErrors, _data.CustomerId);
+            obj.BillToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.BillingAddress.AddressId);
+            obj.ShipToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.ShippingAddress.AddressId);
+        }
+
+        protected static PaymentInfo GetPaymentInfo(SalesOrder obj) => new()
         {
             DueDate = obj.DueDate,
             SubTotal = obj.SubTotal,
@@ -17,7 +43,8 @@ namespace AdventureWorks.Services.Entities
             TaxAmt = obj.TaxAmt,
             TotalDue = obj.TotalDue,
             ShipMethodId = obj.ShipMethodObject?.ShipMethodId ?? 0,
-            CreditCard = new SalesOrderCreditCard {
+            CreditCard = new SalesOrderCreditCard
+            {
                 CreditCardId = obj.CreditCardObject?.CreditCardId ?? 0,
                 CreditCardApprovalCode = obj.CreditCardApprovalCode,
             },
@@ -34,17 +61,18 @@ namespace AdventureWorks.Services.Entities
             obj.DueDate = pmt.DueDate;
             obj.ShipMethodObject = await ctx.FindEntityAsync<ShipMethod>(currentErrors, token, pmt.ShipMethodId);
             obj.CreditCardApprovalCode = pmt.CreditCard.CreditCardApprovalCode;
-            obj.CreditCardObject = await ctx.FindEntityAsync<CreditCard>(currentErrors, token, pmt.CreditCard.CreditCardId);
+            obj.CreditCardObject = await ctx.FindEntityAsync<CreditCard>(currentErrors, token,
+                                                                         pmt.CreditCard.CreditCardId);
         }
 
-        protected SalesInfo GetSalesInfo(SalesOrder obj) => new SalesInfo()
+        protected static SalesInfo GetSalesInfo(SalesOrder obj) => new()
         {
             SalesPersonId = obj.SalesPersonId,
             TerritoryId = obj.TerritoryId,
             // select a list of sales reason IDs from the child list
             SalesReason = obj.ReasonObjectList?.Select(r => r.SalesReasonId).ToList()
         };
-
+        
         protected async Task UpdateSalesInfo(SalesOrder obj, SalesInfo _data)
         {
             if (_data == null)
@@ -75,39 +103,14 @@ namespace AdventureWorks.Services.Entities
             }
         }
 
-        protected CustomerInfo GetCustomerInfo(SalesOrder obj) => new CustomerInfo()
-        {
-            CustomerId = obj.CustomerId,
-            AccountNumber = obj.CustomerObject?.AccountNumber,
-            PersonId = obj.CustomerObject?.PersonObject?.BusinessEntityId,
-            PersonName = obj.CustomerObject?.PersonObject?.FullName,
-            StoreId = obj.CustomerObject?.StoreObject?.BusinessEntityId,
-            StoreName = obj.CustomerObject?.StoreObject?.Name,
-            TerritoryId = obj.CustomerObject?.TerritoryObject?.TerritoryId,
-            BillingAddress = new AddressKey { AddressId = obj.BillToAddressId },
-            ShippingAddress = new AddressKey { AddressId = obj.ShipToAddressId },
-        };
-
-        protected async Task UpdateCustomer(SalesOrder obj, CustomerUpdate _data)
-        {
-            if (_data == null)
-            {
-                currentErrors.AddValidationError(Messages.CustomerRequired, obj.SalesOrderId);
-                return;
-            }
-            obj.CustomerObject = await ctx.FindEntityAsync<Customer>(currentErrors, _data.CustomerId);
-            obj.BillToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.BillingAddress.AddressId);
-            obj.ShipToAddressObject = await ctx.FindEntityAsync<Address>(currentErrors, _data.ShippingAddress.AddressId);
-        }
-
         protected void UpdateOrderDetail(SalesOrderDetail obj)
         {
             currentErrors.AbortIfHasErrors(); // prevent invalid data
- 
+
             obj.UnitPrice = obj.SpecialOfferProductObject.ProductObject.ListPrice;
             obj.UnitPriceDiscount = obj.SpecialOfferProductObject.SpecialOfferObject.DiscountPct;
             obj.LineTotal = obj.OrderQty * obj.UnitPrice * (1 - obj.UnitPriceDiscount);
-            
+
             obj.ModifiedDate = DateTime.Now;
             if (obj.Rowguid == default)
                 obj.Rowguid = Guid.NewGuid();

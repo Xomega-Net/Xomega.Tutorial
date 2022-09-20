@@ -20,23 +20,23 @@ namespace AdventureWorks.Services.Common
     {
 
         ///<summary>
-        /// Reads a list of Ship Method objects based on the specified criteria.
+        /// Reads enumeration data for Ship Method.
         ///</summary>
-        Task<Output<ICollection<ShipMethod_ReadListOutput>>> ReadListAsync(CancellationToken token = default);
+        Task<Output<ICollection<ShipMethod_ReadEnumOutput>>> ReadEnumAsync(CancellationToken token = default);
 
     }
     #endregion
 
-    #region ShipMethod_ReadListOutput structure
+    #region ShipMethod_ReadEnumOutput structure
 
     ///<summary>
-    /// The output structure of operation IShipMethodService.ReadListAsync.
+    /// The output structure of operation IShipMethodService.ReadEnumAsync.
     ///</summary>
-    public class ShipMethod_ReadListOutput
+    public class ShipMethod_ReadEnumOutput
     {
-        
+
         public int ShipMethodId { get; set; }
-        
+
         ///<summary>
         /// Shipping company name.
         ///</summary>
