@@ -31,10 +31,12 @@ namespace AdventureWorks.Services.Common
         /// <inheritdoc/>
         public virtual async Task<Output<ICollection<SpecialOfferProduct_ReadEnumOutput>>> ReadEnumAsync(int _productId, CancellationToken token = default)
         {
-            HttpRequestMessage msg = new (HttpMethod.Get, $"product/{ _productId }/special-offer");
-            using var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token);
-            var content = await ReadOutputContentAsync(resp);
-            return await JsonSerializer.DeserializeAsync<Output<ICollection<SpecialOfferProduct_ReadEnumOutput>>>(content, SerializerOptions, token);
+            HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, $"product/{ _productId }/special-offer");
+            using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
+            {
+                var content = await ReadOutputContentAsync(resp);
+                return await JsonSerializer.DeserializeAsync<Output<ICollection<SpecialOfferProduct_ReadEnumOutput>>>(content, SerializerOptions);
+            }
         }
     }
 }

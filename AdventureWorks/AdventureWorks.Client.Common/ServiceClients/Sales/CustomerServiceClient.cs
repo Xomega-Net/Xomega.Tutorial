@@ -31,10 +31,12 @@ namespace AdventureWorks.Services.Common
         /// <inheritdoc/>
         public virtual async Task<Output<ICollection<Customer_ReadListOutput>>> ReadListAsync(Customer_ReadListInput_Criteria _criteria, CancellationToken token = default)
         {
-            HttpRequestMessage msg = new (HttpMethod.Get, $"customer?{ ToQueryString(_criteria) }");
-            using var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token);
-            var content = await ReadOutputContentAsync(resp);
-            return await JsonSerializer.DeserializeAsync<Output<ICollection<Customer_ReadListOutput>>>(content, SerializerOptions, token);
+            HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, $"customer?{ ToQueryString(_criteria) }");
+            using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
+            {
+                var content = await ReadOutputContentAsync(resp);
+                return await JsonSerializer.DeserializeAsync<Output<ICollection<Customer_ReadListOutput>>>(content, SerializerOptions);
+            }
         }
     }
 }

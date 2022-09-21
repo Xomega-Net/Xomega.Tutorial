@@ -31,10 +31,12 @@ namespace AdventureWorks.Services.Common
         /// <inheritdoc/>
         public virtual async Task<Output<ICollection<BusinessEntityAddress_ReadEnumOutput>>> Address_ReadEnumAsync(int _businessEntityId, CancellationToken token = default)
         {
-            HttpRequestMessage msg = new (HttpMethod.Get, $"business-entity/{ _businessEntityId }/address/enum");
-            using var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token);
-            var content = await ReadOutputContentAsync(resp);
-            return await JsonSerializer.DeserializeAsync<Output<ICollection<BusinessEntityAddress_ReadEnumOutput>>>(content, SerializerOptions, token);
+            HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, $"business-entity/{ _businessEntityId }/address/enum");
+            using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
+            {
+                var content = await ReadOutputContentAsync(resp);
+                return await JsonSerializer.DeserializeAsync<Output<ICollection<BusinessEntityAddress_ReadEnumOutput>>>(content, SerializerOptions);
+            }
         }
     }
 }
