@@ -53,7 +53,7 @@ namespace AdventureWorks.Client.Common.DataObjects
             LineTotalProperty.SetComputedValue(xLineTotal, this);
         }
 
-        private static decimal GetLineTotal(decimal? price, decimal? discount, long? qty) =>
+        private static decimal GetLineTotal(decimal? price, decimal? discount, short? qty) =>
             (price ?? 0) * (1 - (discount ?? 0)) * (qty ?? 0);
     }
 }
