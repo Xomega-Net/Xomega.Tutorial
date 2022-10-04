@@ -9,9 +9,9 @@ Most of the code, including views, view models, business service contracts and s
 
 ## Prerequisites
 To run these examples you need to have the following software installed:
-- Visual Studio 2019.
+- Visual Studio 2022.
 - [AdventureWorks2016 sample database](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2016.bak) running on your local or network SQL server.
-- [Xomega.Net for VS2019](https://xomega.net/System/Download.aspx) with a valid license for working with the model project, and regenerating the model.
+- [Xomega.Net for VS2022](https://xomega.net/System/Download.aspx) with a valid license for working with the model project, and regenerating the model.
 
 ## Setting up your projects
 You need to make the following updates to be able to run the examples.
