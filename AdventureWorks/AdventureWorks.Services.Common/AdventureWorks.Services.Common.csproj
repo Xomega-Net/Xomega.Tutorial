@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.9.0" />
-    <PackageReference Include="Xomega.Framework" Version="4.1.0" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3" />
+    <PackageReference Include="Xomega.Framework" Version="4.2.1" />
   </ItemGroup>
 
   <ItemGroup>
