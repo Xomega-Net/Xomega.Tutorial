@@ -26,7 +26,7 @@ namespace AdventureWorks.Services.Common
         {
             services.Configure<JsonSerializerOptions>(o =>
             {
-#if NET6_0
+#if NET8_0
                 o.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
 #else
                 o.IgnoreNullValues = true;
