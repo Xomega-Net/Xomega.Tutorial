@@ -11,6 +11,7 @@ using System.Resources;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Xomega.Framework.Client;
 using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
@@ -18,14 +19,12 @@ namespace AdventureWorks.Services.Common
     ///<summary>
     /// Source of the ID that connects vendors, customers, and employees with address and contact information.
     ///</summary>
-    public class BusinessEntityServiceClient : HttpServiceClient, IBusinessEntityService
+    public class BusinessEntityServiceClient : RestApiClient, IBusinessEntityService
     {
-        protected readonly JsonSerializerOptions SerializerOptions;
-
-        public BusinessEntityServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
-            : base(httpClient, resourceManager)
+        public BusinessEntityServiceClient(IHttpClientFactory httpClientFactory, RestApiConfig apiConfig,
+            IOptionsMonitor<JsonSerializerOptions> serializerOptions, ResourceManager resourceManager)
+            : base(httpClientFactory, apiConfig, serializerOptions, resourceManager)
         {
-            SerializerOptions = options.CurrentValue;
         }
 
         /// <inheritdoc/>
@@ -35,7 +34,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<ICollection<BusinessEntityAddress_ReadEnumOutput>>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<ICollection<BusinessEntityAddress_ReadEnumOutput>>>(content, SerializerOptions);
             }
         }
     }

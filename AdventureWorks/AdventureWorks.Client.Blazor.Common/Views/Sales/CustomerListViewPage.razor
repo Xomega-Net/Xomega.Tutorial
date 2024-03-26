@@ -7,8 +7,16 @@
 *@
 
 @page "/CustomerListView"
-@attribute [Authorize]
+@attribute [Authorize(Policy = "Sales")]
 
 @namespace AdventureWorks.Client.Blazor.Common.Views
+@inherits BlazorPage
 
-<CustomerListView ActivateFromQuery="true" Visible="true"></CustomerListView>
+<Fragment @ref="ModifyFragment">
+  <PageTitle>@MainView?.Model?.ViewTitle</PageTitle>
+
+  <NavigationLock ConfirmExternalNavigation="MainView?.IsModified() ?? false"
+                  OnBeforeInternalNavigation="ConfirmNavigation"/>
+</Fragment>
+
+<CustomerListView @ref="MainView" ActivateFromQuery="true" Visible="true"></CustomerListView>

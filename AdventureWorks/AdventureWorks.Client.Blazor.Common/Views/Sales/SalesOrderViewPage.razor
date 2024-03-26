@@ -7,8 +7,16 @@
 *@
 
 @page "/SalesOrderView"
-@attribute [Authorize]
+@attribute [Authorize(Policy = "Sales")]
 
 @namespace AdventureWorks.Client.Blazor.Common.Views
+@inherits BlazorPage
 
-<SalesOrderView ActivateFromQuery="true" Visible="true"></SalesOrderView>
+<Fragment @ref="ModifyFragment">
+  <PageTitle>@MainView?.Model?.ViewTitle</PageTitle>
+
+  <NavigationLock ConfirmExternalNavigation="MainView?.IsModified() ?? false"
+                  OnBeforeInternalNavigation="ConfirmNavigation"/>
+</Fragment>
+
+<SalesOrderView @ref="MainView" ActivateFromQuery="true" Visible="true"></SalesOrderView>

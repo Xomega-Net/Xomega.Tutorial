@@ -144,10 +144,10 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         protected override async Task<ErrorList> DoReadAsync(object options, CancellationToken token = default)
         {
-            var res = new ErrorList();
-            var output1 = await SalesOrder_ReadListAsync(options, 
-                CriteriaObject?.ToDataContract<SalesOrder_ReadListInput_Criteria>(options), token);
-            res.MergeWith(output1.Messages);
+            var res = NewErrorList();
+            SalesOrder_ReadListInput_Criteria _criteria = CriteriaObject?.ToDataContract<SalesOrder_ReadListInput_Criteria>(options);
+            var output = await SalesOrder_ReadListAsync(options, _criteria, token);
+            res.MergeWith(output.Messages);
             return res;
         }
 

@@ -116,10 +116,15 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         protected override async Task<ErrorList> DoReadAsync(object options, CancellationToken token = default)
         {
-            var res = new ErrorList();
-            var output1 = await SalesOrder_Detail_ReadListAsync(options, 
-                Parent == null ? default : (int)(Parent as SalesOrderObject).SalesOrderIdProperty.TransportValue, token);
-            res.MergeWith(output1.Messages);
+            var res = NewErrorList();
+            int _salesOrderId = default;
+            if ((Parent as SalesOrderObject)?.SalesOrderIdProperty?.TransportValue is int _tv1) _salesOrderId = _tv1;
+            else res.AddValidationError(Xomega.Framework.Messages.Validation_TransportType, "Parent.SalesOrderIdProperty", "int");
+            
+            if (res.HasErrors()) return res;
+
+            var output = await SalesOrder_Detail_ReadListAsync(options, _salesOrderId, token);
+            res.MergeWith(output.Messages);
             return res;
         }
 

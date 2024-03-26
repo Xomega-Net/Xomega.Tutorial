@@ -18,6 +18,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LoginObject.UserName">
+    <value xml:space="preserve">User Name</value>
+  </data>
+  <data name="LoginObject.UserName_AccessKey">
+    <value xml:space="preserve">U</value>
+  </data>
+  <data name="LoginObject.Password">
+    <value xml:space="preserve">Password</value>
+  </data>
+  <data name="LoginObject.Password_AccessKey">
+    <value xml:space="preserve">P</value>
+  </data>
   <data name="AddressObject.AddressId">
     <value xml:space="preserve">Address Type</value>
   </data>
@@ -35,18 +47,6 @@
   </data>
   <data name="AddressObject.Country">
     <value xml:space="preserve">Country</value>
-  </data>
-  <data name="AuthenticationObject.Email">
-    <value xml:space="preserve">Email</value>
-  </data>
-  <data name="AuthenticationObject.Email_AccessKey">
-    <value xml:space="preserve">m</value>
-  </data>
-  <data name="AuthenticationObject.Password">
-    <value xml:space="preserve">Password</value>
-  </data>
-  <data name="AuthenticationObject.Password_AccessKey">
-    <value xml:space="preserve">P</value>
   </data>
   <data name="CustomerCriteria.TerritoryId">
     <value xml:space="preserve">Territory</value>

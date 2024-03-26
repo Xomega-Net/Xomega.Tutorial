@@ -65,7 +65,7 @@
           <config>
             <rest:method verb="GET" uri-template="product/{product id}/special-offer"/>
             <xfk:enum-cache enum-name="special offer product" id-param="special offer id"
-                      desc-param="description" is-active-param="active"/>
+                            desc-param="description" is-active-param="active"/>
           </config>
           <doc>
             <summary>Reads enumeration data for Special Offer Product.</summary>

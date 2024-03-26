@@ -141,9 +141,9 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         protected override async Task<ErrorList> DoReadAsync(object options, CancellationToken token = default)
         {
-            var res = new ErrorList();
-            var output1 = await SalesOrder_ReadAsync(options, token);
-            res.MergeWith(output1.Messages);
+            var res = NewErrorList();
+            var output = await SalesOrder_ReadAsync(options, token);
+            res.MergeWith(output.Messages);
             return res;
         }
 
@@ -151,25 +151,25 @@ namespace AdventureWorks.Client.Common.DataObjects
         {
             if (IsNew)
             {
-                var res = new ErrorList();
-                var output1 = await SalesOrder_CreateAsync(options, token);
-                res.MergeWith(output1.Messages);
+                var res = NewErrorList();
+                var output = await SalesOrder_CreateAsync(options, token);
+                res.MergeWith(output.Messages);
                 return res;
             }
             else
             {
-                var res = new ErrorList();
-                var output1 = await SalesOrder_UpdateAsync(options, token);
-                res.MergeWith(output1.Messages);
+                var res = NewErrorList();
+                var output = await SalesOrder_UpdateAsync(options, token);
+                res.MergeWith(output.Messages);
                 return res;
             }
         }
 
         protected override async Task<ErrorList> DoDeleteAsync(object options, CancellationToken token = default)
         {
-            var res = new ErrorList();
-            var output1 = await SalesOrder_DeleteAsync(options, token);
-            res.MergeWith(output1.Messages);
+            var res = NewErrorList();
+            var output = await SalesOrder_DeleteAsync(options, token);
+            res.MergeWith(output.Messages);
             return res;
         }
 
@@ -179,7 +179,14 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         protected virtual async Task<Output<SalesOrder_ReadOutput>> SalesOrder_ReadAsync(object options, CancellationToken token = default)
         {
-            int _salesOrderId = (int)SalesOrderIdProperty.TransportValue;
+            ErrorList errors = NewErrorList();
+
+            int _salesOrderId = default;
+            if (SalesOrderIdProperty.TransportValue is int _tv1) _salesOrderId = _tv1;
+            else errors.AddValidationError(Xomega.Framework.Messages.Validation_TransportType, SalesOrderIdProperty, "int");
+
+            errors.AbortIfHasErrors();
+
             using (var s = ServiceProvider.CreateScope())
             {
                 var output = await s.ServiceProvider.GetService<ISalesOrderService>().ReadAsync(_salesOrderId, token);
@@ -203,8 +210,15 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         protected virtual async Task<Output<SalesOrder_UpdateOutput>> SalesOrder_UpdateAsync(object options, CancellationToken token = default)
         {
-            int _salesOrderId = (int)SalesOrderIdProperty.TransportValue;
+            ErrorList errors = NewErrorList();
+
+            int _salesOrderId = default;
+            if (SalesOrderIdProperty.TransportValue is int _tv1) _salesOrderId = _tv1;
+            else errors.AddValidationError(Xomega.Framework.Messages.Validation_TransportType, SalesOrderIdProperty, "int");
+
             SalesOrder_UpdateInput_Data _data = ToDataContract<SalesOrder_UpdateInput_Data>(options);
+            errors.AbortIfHasErrors();
+
             using (var s = ServiceProvider.CreateScope())
             {
                 var output = await s.ServiceProvider.GetService<ISalesOrderService>().UpdateAsync(_salesOrderId, _data, token);
@@ -216,7 +230,14 @@ namespace AdventureWorks.Client.Common.DataObjects
 
         protected virtual async Task<Output> SalesOrder_DeleteAsync(object options, CancellationToken token = default)
         {
-            int _salesOrderId = (int)SalesOrderIdProperty.TransportValue;
+            ErrorList errors = NewErrorList();
+
+            int _salesOrderId = default;
+            if (SalesOrderIdProperty.TransportValue is int _tv1) _salesOrderId = _tv1;
+            else errors.AddValidationError(Xomega.Framework.Messages.Validation_TransportType, SalesOrderIdProperty, "int");
+
+            errors.AbortIfHasErrors();
+
             using (var s = ServiceProvider.CreateScope())
             {
                 var output = await s.ServiceProvider.GetService<ISalesOrderService>().DeleteAsync(_salesOrderId, token);

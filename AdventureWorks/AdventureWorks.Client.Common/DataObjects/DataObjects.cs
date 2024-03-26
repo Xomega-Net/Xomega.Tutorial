@@ -13,10 +13,10 @@ namespace AdventureWorks.Client.Common.DataObjects
         public static IServiceCollection AddDataObjects(this IServiceCollection services)
         {
             services.AddTransient<AddressObject, AddressObjectCustomized>();
-            services.AddTransient<AuthenticationObject, AuthenticationObjectCustomized>();
             services.AddTransient<CreditCardPaymentObject, CreditCardPaymentObjectCustomized>();
             services.AddTransient<CustomerCriteria, CustomerCriteria>();
             services.AddTransient<CustomerList, CustomerList>();
+            services.AddTransient<LoginObject, LoginObjectCustomized>();
             services.AddTransient<SalesCustomerLookupObject, SalesCustomerLookupObjectCustomized>();
             services.AddTransient<SalesOrderCriteria, SalesOrderCriteriaCustomized>();
             services.AddTransient<SalesOrderCustomerObject, SalesOrderCustomerObjectCustomized>();

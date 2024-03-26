@@ -40,7 +40,7 @@ namespace AdventureWorks.Services.Entities
                 var src = from obj in ctx.BusinessEntityAddress select obj;
 
                 // Source filter
-                src = AddClause(src, "BusinessEntityId", o => o.BusinessEntityId, _businessEntityId);
+                src = AddClause(src, "BusinessEntityId", o => o.BusinessEntityId, new [] { _businessEntityId });
 
                 // CUSTOM_CODE_START: add custom filter criteria to the source query for Address_ReadEnum operation below
                 // src = src.Where(o => o.FieldName == VALUE);

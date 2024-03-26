@@ -93,7 +93,10 @@
         </field>
       </fields>
       <config>
-        <sql:table name="Production.WorkOrder"/>
+        <sql:table name="Production.WorkOrder">
+          <sql:trigger name="iWorkOrder"/>
+          <sql:trigger name="uWorkOrder"/>
+        </sql:table>
       </config>
       <doc>
         <summary>Manufacturing work orders.</summary>

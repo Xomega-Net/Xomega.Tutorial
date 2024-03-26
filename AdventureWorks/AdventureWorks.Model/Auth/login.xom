@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.xomega.net/omodel"
+        xmlns:clr="http://www.xomega.net/clr"
+        xmlns:svc="http://www.xomega.net/svc"
+        xmlns:xfk="http://www.xomega.net/framework"
+        xmlns:ui="http://www.xomega.net/ui"
+        xmlns:rest="http://www.xomega.net/rest"
+        name="auth">
+  <types>
+    <type name="user name" base="email"/>
+  </types>
+  <structs>
+    <struct name="password credentials">
+      <param name="user name" type="user name" required="true"/>
+      <param name="password" type="plain password" required="true"/>
+      <config>
+        <xfk:add-to-object class="LoginObject"/>
+      </config>
+    </struct>
+    <struct name="user info" object="person">
+      <param name="authentication type" type="string"/>
+      <param name="user name" type="user name"/>
+      <param name="business entity id"/>
+      <param name="person type"/>
+      <param name="first name"/>
+      <param name="last name"/>
+      <param name="store" type="store"/>
+      <param name="vendor" type="vendor"/>
+    </struct>
+  </structs>
+  <objects>
+    <object name="password login">
+      <operations>
+        <operation name="login" type="update">
+          <input struct="password credentials" arg="credentials"/>
+          <output struct="user info"/>
+          <config>
+            <rest:method not-supported="true"/>
+          </config>
+        </operation>
+        <doc>
+          <summary>Service for logging in with a user name and a password.</summary>
+        </doc>
+      </operations>
+      <config>
+        <svc:customize subclass="true"/>
+      </config>
+    </object>
+  </objects>
+  <xfk:data-objects>
+    <xfk:data-object class="LoginObject" customize="true">
+      <ui:display>
+        <ui:fields field-cols="1">
+          <ui:field param="user name" access-key="U"/>
+          <ui:field param="password" access-key="P"/>
+        </ui:fields>
+      </ui:display>
+    </xfk:data-object>
+  </xfk:data-objects>
+  <ui:views>
+    <ui:view name="LoginView" title="Login" customize="true" child="true">
+      <ui:view-model data-object="LoginObject" customize="true"/>
+      <ui:layout>
+        <ui:size width="320" height="250"/>
+      </ui:layout>
+    </ui:view>
+  </ui:views>
+</module>

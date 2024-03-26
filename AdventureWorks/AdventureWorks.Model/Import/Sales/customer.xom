@@ -141,7 +141,7 @@
     </xfk:data-object>
   </xfk:data-objects>
   <ui:views>
-    <ui:view name="CustomerListView" title="Customer List">
+    <ui:view name="CustomerListView" title="Customer List" policy="Sales">
       <ui:view-model data-object="CustomerList"/>
     </ui:view>
   </ui:views>

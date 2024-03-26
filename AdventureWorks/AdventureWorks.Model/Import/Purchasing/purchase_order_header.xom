@@ -118,7 +118,9 @@
         </field>
       </fields>
       <config>
-        <sql:table name="Purchasing.PurchaseOrderHeader"/>
+        <sql:table name="Purchasing.PurchaseOrderHeader">
+          <sql:trigger name="uPurchaseOrderHeader"/>
+        </sql:table>
       </config>
       <doc>
         <summary>General purchase order information. See PurchaseOrderDetail.</summary>

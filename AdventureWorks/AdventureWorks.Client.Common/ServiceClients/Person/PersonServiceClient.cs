@@ -5,13 +5,13 @@
 //---------------------------------------------------------------------------------------------
 
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Resources;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Xomega.Framework.Client;
 using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
@@ -19,28 +19,12 @@ namespace AdventureWorks.Services.Common
     ///<summary>
     /// Human beings involved with AdventureWorks: employees, customer contacts, and vendor contacts.
     ///</summary>
-    public class PersonServiceClient : HttpServiceClient, IPersonService
+    public class PersonServiceClient : RestApiClient, IPersonService
     {
-        protected readonly JsonSerializerOptions SerializerOptions;
-
-        public PersonServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
-            : base(httpClient, resourceManager)
+        public PersonServiceClient(IHttpClientFactory httpClientFactory, RestApiConfig apiConfig,
+            IOptionsMonitor<JsonSerializerOptions> serializerOptions, ResourceManager resourceManager)
+            : base(httpClientFactory, apiConfig, serializerOptions, resourceManager)
         {
-            SerializerOptions = options.CurrentValue;
-        }
-
-        /// <inheritdoc/>
-        public virtual async Task<Output> AuthenticateAsync(Credentials _credentials, CancellationToken token = default)
-        {
-            await Task.CompletedTask;
-            throw new NotSupportedException("Operation IPersonService.AuthenticateAsync is not exposed via REST.");
-        }
-
-        /// <inheritdoc/>
-        public virtual async Task<Output<PersonInfo>> ReadAsync(string _email, CancellationToken token = default)
-        {
-            await Task.CompletedTask;
-            throw new NotSupportedException("Operation IPersonService.ReadAsync is not exposed via REST.");
         }
 
         /// <inheritdoc/>
@@ -50,7 +34,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<ICollection<PersonCreditCard_ReadEnumOutput>>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<ICollection<PersonCreditCard_ReadEnumOutput>>>(content, SerializerOptions);
             }
         }
     }

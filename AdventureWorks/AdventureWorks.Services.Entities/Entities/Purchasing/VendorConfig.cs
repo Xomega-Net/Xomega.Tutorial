@@ -13,7 +13,7 @@ namespace AdventureWorks.Services.Entities
     {
         public void Configure(EntityTypeBuilder<Vendor> c)
         {
-            c.ToTable("Vendor", "Purchasing")
+            c.ToTable("Vendor", "Purchasing", tb => tb.UseSqlOutputClause(false))
              .HasKey(e => e.BusinessEntityId);
 
             // configure relationships

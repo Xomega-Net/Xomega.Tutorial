@@ -11,6 +11,7 @@ using System.Resources;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Xomega.Framework.Client;
 using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
@@ -18,14 +19,12 @@ namespace AdventureWorks.Services.Common
     ///<summary>
     /// Cross-reference table mapping products to special offer discounts.
     ///</summary>
-    public class SpecialOfferProductServiceClient : HttpServiceClient, ISpecialOfferProductService
+    public class SpecialOfferProductServiceClient : RestApiClient, ISpecialOfferProductService
     {
-        protected readonly JsonSerializerOptions SerializerOptions;
-
-        public SpecialOfferProductServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
-            : base(httpClient, resourceManager)
+        public SpecialOfferProductServiceClient(IHttpClientFactory httpClientFactory, RestApiConfig apiConfig,
+            IOptionsMonitor<JsonSerializerOptions> serializerOptions, ResourceManager resourceManager)
+            : base(httpClientFactory, apiConfig, serializerOptions, resourceManager)
         {
-            SerializerOptions = options.CurrentValue;
         }
 
         /// <inheritdoc/>
@@ -35,7 +34,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<ICollection<SpecialOfferProduct_ReadEnumOutput>>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<ICollection<SpecialOfferProduct_ReadEnumOutput>>>(content, SerializerOptions);
             }
         }
     }

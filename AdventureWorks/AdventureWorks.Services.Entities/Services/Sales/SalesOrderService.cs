@@ -157,7 +157,7 @@ namespace AdventureWorks.Services.Entities
                 currentErrors.AbortIfHasErrors();
 
                 // CUSTOM_CODE_START: add custom security checks for ReadList operation below
-                if (!CurrentPrincipal.IsEmployee() && !CurrentPrincipal.IsIndividualCustomer() &&
+                if (!CurrentPrincipal.IsEmployee() && !CurrentPrincipal.IsIndividualCustomer() && 
                     !CurrentPrincipal.IsStoreContact())
                 {
                     currentErrors.CriticalError(ErrorType.Security, Messages.OperationNotAllowed);
@@ -170,7 +170,7 @@ namespace AdventureWorks.Services.Entities
                 {
                     // CUSTOM_CODE_START: add code for GlobalRegion criteria of ReadList operation below
                     src = AddClause(src, "GlobalRegion", o => o.TerritoryObject.Group,
-                                    Operators.IsEqualTo, _criteria.GlobalRegion);
+                        Operators.IsEqualTo, _criteria.GlobalRegion);
                     // CUSTOM_CODE_END
                 }
 
@@ -351,7 +351,7 @@ namespace AdventureWorks.Services.Entities
                 var src = from obj in ctx.SalesOrderDetail select obj;
 
                 // Source filter
-                src = AddClause(src, "SalesOrderId", o => o.SalesOrderId, _salesOrderId);
+                src = AddClause(src, "SalesOrderId", o => o.SalesOrderId, new [] { _salesOrderId });
 
                 // CUSTOM_CODE_START: add custom filter criteria to the source query for Detail_ReadList operation below
                 // src = src.Where(o => o.FieldName == VALUE);

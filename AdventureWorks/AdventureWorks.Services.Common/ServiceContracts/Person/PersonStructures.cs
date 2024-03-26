@@ -48,45 +48,4 @@ namespace AdventureWorks.Services.Common
     }
     #endregion
 
-    #region Credentials structure
-
-    public class Credentials
-    {
-
-        public string Email { get; set; }
-
-        public string Password { get; set; }
-    }
-    #endregion
-
-    #region PersonInfo structure
-
-    public class PersonInfo
-    {
-
-        public int BusinessEntityId { get; set; }
-
-        ///<summary>
-        /// Primary type of person: SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact
-        ///</summary>
-        public string PersonType { get; set; }
-
-        ///<summary>
-        /// First name of the person.
-        ///</summary>
-        public string FirstName { get; set; }
-
-        ///<summary>
-        /// Last name of the person.
-        ///</summary>
-        public string LastName { get; set; }
-
-        public string Email { get; set; }
-
-        public int? Store { get; set; }
-
-        public int? Vendor { get; set; }
-    }
-    #endregion
-
 }

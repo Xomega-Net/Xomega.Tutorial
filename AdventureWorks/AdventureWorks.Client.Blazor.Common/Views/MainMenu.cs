@@ -4,41 +4,43 @@
 // Manual CHANGES to this file WILL BE LOST when the code is regenerated.
 //---------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Xomega.Framework.Blazor.Components;
 
 namespace AdventureWorks.Client.Blazor.Common.Views
 {
-    public class MainMenu
+    public partial class MainMenu
     {
-        public static List<MenuItem> Items = new List<MenuItem>()
-        {
+        private partial List<MenuItem> GeneratedItems() =>
+        [
             new MenuItem()
             {
                 ResourceKey = "Module_Sales_NavMenu",
                 IconClass = "bi bi-columns",
-                Items = new List<MenuItem>()
-                {
+                Items =
+                [
                     new MenuItem()
                     {
                         ResourceKey = "CustomerListView_NavMenu",
                         IconClass = "bi bi-card-list",
-                        Href = "CustomerListView"
+                        Href = "CustomerListView",
+                        Policy = "Sales"
                     },
                     new MenuItem()
                     {
                         ResourceKey = "SalesOrderView_NavMenu",
                         IconClass = "bi bi-pencil-square",
-                        Href = "SalesOrderView?_action=create"
+                        Href = "SalesOrderView?_action=create",
+                        Policy = "Sales"
                     },
                     new MenuItem()
                     {
                         ResourceKey = "SalesOrderListView_NavMenu",
                         IconClass = "bi bi-card-list",
-                        Href = "SalesOrderListView"
+                        Href = "SalesOrderListView",
+                        Policy = "Sales"
                     },
-                }
+                ]
             },
-        };
+        ];
     }
 }

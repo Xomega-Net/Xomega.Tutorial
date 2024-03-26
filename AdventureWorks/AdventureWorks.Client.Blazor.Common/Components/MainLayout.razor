@@ -1,13 +1,16 @@
 ﻿@inherits LayoutComponentBase
+@inject MainMenu menu
+
+<PageTitle>AdventureWorks</PageTitle>
 
 <div>
-    <div class="sidebar bg-dark navbar-dark"
-         style="width: @(sidebarWidth)px; margin-left: @(SidebarOpen ? 0 : -sidebarWidth)px; transition: margin 0.3s">
-        <NavMenu Class="navbar-nav" Items="MainMenu.Items"/>
+    <div class="sidebar-pane sidebar collapse bg-dark navbar-dark">
+        <NavMenu Class="navbar-nav" Items="menu.Items" />
     </div>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <button class="navbar-toggler shadow-none border-0" type="button" @onclick="ToggleSidebar">
+        <button class="navbar-toggler shadow-none border-0" type="button"
+                data-bs-toggle="collapse" data-bs-target=".sidebar-pane">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand me-auto" href="#">AdventureWorks</a>
@@ -16,7 +19,7 @@
         </nav>
     </header>
 
-    <div style="margin-left: @(SidebarOpen ? sidebarWidth : 0)px; transition: margin 0.3s">
+    <main class="sidebar-pane collapse">
         <div class="body">
             @Body
         </div>
@@ -24,17 +27,11 @@
             <div class="col-auto">Copyright © @DateTime.Now.Year MyCompany. All rights reserved.</div>
             <div class="col-auto">Powered by <a class="text-white-50" href="http://xomega.net">Xomega.Net</a></div>
         </footer>
-    </div>
+    </main>
 </div>
 
-@code
-{
-    public bool SidebarOpen = false;
-
-    private int sidebarWidth = 220;
-
-    public void ToggleSidebar()
-    {
-        SidebarOpen = !SidebarOpen;
-    }
-}
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

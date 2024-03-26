@@ -1,8 +1,4 @@
-#if EF6
-using System.Data.Entity;
-#else
 using Microsoft.EntityFrameworkCore;
-#endif
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -47,11 +43,7 @@ namespace AdventureWorks.Services.Entities
         public static async Task<T> FindEntityAsync<T>(this DbContext ctx, ErrorList errorList, CancellationToken token,
                                                        params object[] keys) where T : class
         {
-#if EF6
-            T entity = await ctx.Set<T>().FindAsync(token, keys);
-#else
             T entity = await ctx.Set<T>().FindAsync(keys, token);
-#endif
             if (entity == null)
             {
                 string error = keys.Length > 1 ? Messages.EntityNotFoundByKeys : Messages.EntityNotFoundByKey;
@@ -92,11 +84,7 @@ namespace AdventureWorks.Services.Entities
                                                            CancellationToken token, params object[] keys) where T : class
         {
             if (keys == null || keys.Length == 0 || keys.All(k => k == null)) return;
-#if EF6
-            T entity = await ctx.Set<T>().FindAsync(token, keys);
-#else
             T entity = await ctx.Set<T>().FindAsync(keys, token);
-#endif
             if (entity != null)
             {
                 string error = keys.Length > 1 ? Messages.EntityExistsWithKeys : Messages.EntityExistsWithKey;
@@ -138,11 +126,7 @@ namespace AdventureWorks.Services.Entities
                                                      string param, params object[] keys) where T : class
         {
             if (keys == null || keys.Length == 0 || keys.All(k => k == null)) return;
-#if EF6
-            T entity = await ctx.Set<T>().FindAsync(token, keys);
-#else
             T entity = await ctx.Set<T>().FindAsync(keys, token);
-#endif
             if (entity == null)
             {
                 string error = keys.Length > 1 ? Messages.InvalidForeignKeys : Messages.InvalidForeignKey;
@@ -153,20 +137,5 @@ namespace AdventureWorks.Services.Entities
         public static async Task ValidateKeyAsync<T>(this DbContext ctx, ErrorList errorList, string param, params object[] keys) where T : class
             => await ctx.ValidateKeyAsync<T>(errorList, default, param, keys);
 
-#if EF6
-        /// <summary>
-        /// Adds validation errors from the DbContext to the supplied error list.
-        /// </summary>
-        /// <param name="ctx">The DbContext to use.</param>
-        /// <param name="errorList">The error list to add the validation errors to.</param>
-        public static void AddValidationErrors(this DbContext ctx, ErrorList errorList)
-        {
-            foreach (var ever in ctx.GetValidationErrors())
-            {
-                foreach (var ver in ever.ValidationErrors)
-                    errorList.AddValidationError(ver.ErrorMessage);
-            }
-        }
-#endif
     }
 }

@@ -22,12 +22,12 @@
     </type>
     <type name="sales order detail" base="integer key"/>
     <type name="sales order header" base="integer key"/>
+    <type name="sales order reason" base="sales reason"/>
     <type name="sales order number" base="string" size="25">
       <config>
         <ui:display-config typical-length="10"/>
       </config>
     </type>
-    <type name="sales order reason" base="sales reason"/>
     <type name="sales order status" base="tiny int enumeration">
       <config>
         <ui:blazor-control multi-value="true">
@@ -108,6 +108,13 @@
         <xfk:add-to-object class="SalesOrderPaymentObject"/>
       </config>
     </struct>
+    <struct name="sales order credit card" object="sales order">
+      <param name="credit card id" required="true"/>
+      <param name="credit card approval code"/>
+      <config>
+        <xfk:add-to-object class="CreditCardPaymentObject"/>
+      </config>
+    </struct>
     <struct name="sales info" object="sales order">
       <param name="territory id"/>
       <param name="sales person id"/>
@@ -116,14 +123,7 @@
         <xfk:add-to-object class="SalesOrderSalesObject"/>
       </config>
     </struct>
-    <struct name="sales order credit card" object="sales order">
-      <param name="credit card id" required="true"/>
-      <param name="credit card approval code"/>
-      <config>
-        <xfk:add-to-object class="CreditCardPaymentObject"/>
-      </config>
-    </struct>
-  </structs>
+  </structs> 
   <objects>
     <object name="sales order">
       <fields>
@@ -555,7 +555,9 @@
         </doc>
       </operations>
       <config>
-        <sql:table name="Sales.SalesOrderHeader"/>
+        <sql:table name="Sales.SalesOrderHeader">
+          <sql:trigger name="uSalesOrderHeader"/>
+        </sql:table>
         <svc:customize extend="true" preserve-on-clean="true"/>
       </config>
       <doc>
@@ -757,7 +759,9 @@
             </doc>
           </operations>
           <config>
-            <sql:table name="Sales.SalesOrderDetail"/>
+            <sql:table name="Sales.SalesOrderDetail">
+              <sql:trigger name="iduSalesOrderDetail"/>
+            </sql:table>
           </config>
           <doc>
             <summary>Individual products associated with a specific sales order. See SalesOrderHeader.</summary>
@@ -823,7 +827,7 @@
       <ui:display>
         <ui:fields>
           <ui:field param="sales order id" hidden="true"/>
-          <ui:field param="online order flag" label="Online" width="20px"/>
+          <ui:field param="online order flag" label="Online" width="4%"/>
           <ui:field param="sales order number" label="SO#" width="10%"/>
           <ui:field param="sales person id" label="Sales Person"/>
           <ui:field param="territory id" label="Sales Territory"/>
@@ -890,6 +894,7 @@
           <ui:field param="product id" label="Product"/>
           <ui:field param="special offer id" label="Special Offer"/>
         </ui:fields>
+        <ui:tabs/>
       </ui:display>
     </xfk:data-object>
     <xfk:data-object class="SalesOrderDetailList" list="true">
@@ -938,10 +943,10 @@
     </xfk:data-object>
   </xfk:data-objects>
   <ui:views>
-    <ui:view name="SalesOrderView" title="Sales Order">
+    <ui:view name="SalesOrderView" title="Sales Order" policy="Sales">
       <ui:view-model data-object="SalesOrderObject" customize="true"/>
     </ui:view>
-    <ui:view name="SalesOrderListView" title="Sales Order List">
+    <ui:view name="SalesOrderListView" title="Sales Order List" policy="Sales">
       <ui:view-model data-object="SalesOrderList"/>
     </ui:view>
     <ui:view name="SalesOrderDetailView" title="Line Item for Sales Order {0}" child="true">
