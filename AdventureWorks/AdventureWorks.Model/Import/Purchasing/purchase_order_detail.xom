@@ -106,7 +106,10 @@
         </field>
       </fields>
       <config>
-        <sql:table name="Purchasing.PurchaseOrderDetail"/>
+        <sql:table name="Purchasing.PurchaseOrderDetail">
+          <sql:trigger name="iPurchaseOrderDetail"/>
+          <sql:trigger name="uPurchaseOrderDetail"/>
+        </sql:table>
       </config>
       <doc>
         <summary>Individual products associated with a specific purchase order. See PurchaseOrderHeader.</summary>

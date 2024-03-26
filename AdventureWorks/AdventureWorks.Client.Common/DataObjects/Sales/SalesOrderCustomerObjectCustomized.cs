@@ -1,12 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Threading;
 using AdventureWorks.Services.Common;
+using AdventureWorks.Services.Common.Enumerations;
+using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 using Xomega.Framework;
 using Xomega.Framework.Lookup;
 using Xomega.Framework.Properties;
-using AdventureWorks.Services.Common.Enumerations;
 
 namespace AdventureWorks.Client.Common.DataObjects
 {
@@ -37,7 +37,6 @@ namespace AdventureWorks.Client.Common.DataObjects
             AddressLoader = new BusinessEntityAddressReadEnumCacheLoader(ServiceProvider);
             BillingAddressObject.AddressIdProperty.LocalCacheLoader = AddressLoader;
             ShippingAddressObject.AddressIdProperty.LocalCacheLoader = AddressLoader;
-
             StoreIdProperty.AsyncChange += OnCustomerChanged;
             PersonIdProperty.AsyncChange += OnCustomerChanged;
         }

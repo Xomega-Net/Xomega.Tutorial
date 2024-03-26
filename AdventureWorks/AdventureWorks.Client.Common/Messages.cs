@@ -25,6 +25,21 @@ namespace AdventureWorks.Client.Common
         public const string HomeView_NavMenu = "HomeView_NavMenu";
 
         /// <summary>
+        /// Login
+        /// </summary>
+        public const string LoginObject_Action_Save = "LoginObject_Action_Save";
+
+        /// <summary>
+        /// L
+        /// </summary>
+        public const string LoginObject_Action_Save_AccessKey = "LoginObject_Action_Save_AccessKey";
+
+        /// <summary>
+        /// Please wait while the screen is loading...
+        /// </summary>
+        public const string LoginView_Warning_WasmLoading = "LoginView_Warning_WasmLoading";
+
+        /// <summary>
         /// From Order Date should be earlier than To Order Date.
         /// </summary>
         public const string OrderFromToDate = "OrderFromToDate";

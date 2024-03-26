@@ -43,7 +43,7 @@ namespace AdventureWorks.Services.Entities
                 var src = from obj in ctx.SpecialOfferProduct select obj;
 
                 // Source filter
-                src = AddClause(src, "ProductId", o => o.ProductId, _productId);
+                src = AddClause(src, "ProductId", o => o.ProductId, new [] { _productId });
 
                 // CUSTOM_CODE_START: add custom filter criteria to the source query for ReadEnum operation below
                 // src = src.Where(o => o.FieldName == VALUE);

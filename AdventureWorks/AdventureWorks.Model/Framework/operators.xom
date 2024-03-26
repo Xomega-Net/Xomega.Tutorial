@@ -111,6 +111,9 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         <prop ref="sort order" value="13"/>
         <prop ref="addl props" value="1"/>
         <prop ref="type" value="BigIntegerProperty"/>
+        <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="SmallIntegerProperty"/>
+        <prop ref="type" value="TinyIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
         <prop ref="exclude type" value="BigIntegerKeyProperty"/>
         <prop ref="exclude type" value="IntegerKeyProperty"/>
@@ -124,6 +127,9 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         <prop ref="sort order" value="14"/>
         <prop ref="addl props" value="1"/>
         <prop ref="type" value="BigIntegerProperty"/>
+        <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="SmallIntegerProperty"/>
+        <prop ref="type" value="TinyIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
         <prop ref="exclude type" value="BigIntegerKeyProperty"/>
         <prop ref="exclude type" value="IntegerKeyProperty"/>
@@ -137,6 +143,9 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         <prop ref="sort order" value="15"/>
         <prop ref="addl props" value="1"/>
         <prop ref="type" value="BigIntegerProperty"/>
+        <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="SmallIntegerProperty"/>
+        <prop ref="type" value="TinyIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
         <prop ref="exclude type" value="BigIntegerKeyProperty"/>
         <prop ref="exclude type" value="IntegerKeyProperty"/>
@@ -150,6 +159,9 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         <prop ref="sort order" value="16"/>
         <prop ref="addl props" value="1"/>
         <prop ref="type" value="BigIntegerProperty"/>
+        <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="SmallIntegerProperty"/>
+        <prop ref="type" value="TinyIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
         <prop ref="exclude type" value="BigIntegerKeyProperty"/>
         <prop ref="exclude type" value="IntegerKeyProperty"/>
@@ -251,6 +263,8 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         <prop ref="addl props" value="2"/>
         <prop ref="type" value="BigIntegerProperty"/>
         <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="SmallIntegerProperty"/>
+        <prop ref="type" value="TinyIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
         <prop ref="type" value="DateTimeProperty"/>
         <prop ref="exclude type" value="BigIntegerKeyProperty"/>
@@ -266,6 +280,8 @@ The name should be in synch with the constant AttributeNullCheck defined in the 
         <prop ref="addl props" value="2"/>
         <prop ref="type" value="BigIntegerProperty"/>
         <prop ref="type" value="IntegerProperty"/>
+        <prop ref="type" value="SmallIntegerProperty"/>
+        <prop ref="type" value="TinyIntegerProperty"/>
         <prop ref="type" value="DecimalProperty"/>
         <prop ref="type" value="DateTimeProperty"/>
         <prop ref="exclude type" value="BigIntegerKeyProperty"/>

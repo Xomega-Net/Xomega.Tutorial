@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Xomega.Framework.Client;
 using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
@@ -19,14 +20,12 @@ namespace AdventureWorks.Services.Common
     ///<summary>
     /// General sales order information.
     ///</summary>
-    public class SalesOrderServiceClient : HttpServiceClient, ISalesOrderService
+    public class SalesOrderServiceClient : RestApiClient, ISalesOrderService
     {
-        protected readonly JsonSerializerOptions SerializerOptions;
-
-        public SalesOrderServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
-            : base(httpClient, resourceManager)
+        public SalesOrderServiceClient(IHttpClientFactory httpClientFactory, RestApiConfig apiConfig,
+            IOptionsMonitor<JsonSerializerOptions> serializerOptions, ResourceManager resourceManager)
+            : base(httpClientFactory, apiConfig, serializerOptions, resourceManager)
         {
-            SerializerOptions = options.CurrentValue;
         }
 
         /// <inheritdoc/>
@@ -36,7 +35,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<SalesOrder_ReadOutput>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<SalesOrder_ReadOutput>>(content, SerializerOptions);
             }
         }
 
@@ -45,12 +44,12 @@ namespace AdventureWorks.Services.Common
         {
             HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Post, $"sales-order")
             {
-                Content = new StringContent(JsonSerializer.Serialize(_data), Encoding.UTF8, "application/json")
+                Content = new StringContent(JsonSerializer.Serialize(_data, SerializerOptions), Encoding.UTF8, "application/json")
             };
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<SalesOrder_CreateOutput>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<SalesOrder_CreateOutput>>(content, SerializerOptions);
             }
         }
 
@@ -59,12 +58,12 @@ namespace AdventureWorks.Services.Common
         {
             HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Put, $"sales-order/{ _salesOrderId }")
             {
-                Content = new StringContent(JsonSerializer.Serialize(_data), Encoding.UTF8, "application/json")
+                Content = new StringContent(JsonSerializer.Serialize(_data, SerializerOptions), Encoding.UTF8, "application/json")
             };
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<SalesOrder_UpdateOutput>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<SalesOrder_UpdateOutput>>(content, SerializerOptions);
             }
         }
 
@@ -75,7 +74,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output>(content, SerializerOptions);
             }
         }
 
@@ -86,7 +85,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<ICollection<SalesOrder_ReadListOutput>>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<ICollection<SalesOrder_ReadListOutput>>>(content, SerializerOptions);
             }
         }
 
@@ -97,7 +96,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<SalesOrderDetail_ReadOutput>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<SalesOrderDetail_ReadOutput>>(content, SerializerOptions);
             }
         }
 
@@ -106,12 +105,12 @@ namespace AdventureWorks.Services.Common
         {
             HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Post, $"sales-order/{ _salesOrderId }/detail")
             {
-                Content = new StringContent(JsonSerializer.Serialize(_data), Encoding.UTF8, "application/json")
+                Content = new StringContent(JsonSerializer.Serialize(_data, SerializerOptions), Encoding.UTF8, "application/json")
             };
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<SalesOrderDetail_CreateOutput>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<SalesOrderDetail_CreateOutput>>(content, SerializerOptions);
             }
         }
 
@@ -120,12 +119,12 @@ namespace AdventureWorks.Services.Common
         {
             HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Put, $"sales-order/detail/{ _salesOrderDetailId }")
             {
-                Content = new StringContent(JsonSerializer.Serialize(_data), Encoding.UTF8, "application/json")
+                Content = new StringContent(JsonSerializer.Serialize(_data, SerializerOptions), Encoding.UTF8, "application/json")
             };
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output>(content, SerializerOptions);
             }
         }
 
@@ -136,7 +135,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output>(content, SerializerOptions);
             }
         }
 
@@ -147,7 +146,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<ICollection<SalesOrderDetail_ReadListOutput>>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<ICollection<SalesOrderDetail_ReadListOutput>>>(content, SerializerOptions);
             }
         }
     }

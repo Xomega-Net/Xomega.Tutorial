@@ -49,8 +49,8 @@ namespace AdventureWorks.Services.Entities
                               PersonId = obj.PersonId,
                               // CUSTOM_CODE_START: set the PersonName output parameter of ReadList operation below
                               PersonName = obj.PersonObject == null ? null :
-                                           obj.PersonObject.LastName + ", " +
-                                           obj.PersonObject.FirstName, // CUSTOM_CODE_END
+                                   obj.PersonObject.LastName + ", " +
+                                   obj.PersonObject.FirstName, // CUSTOM_CODE_END
                               StoreId = obj.StoreId,
                               // CUSTOM_CODE_START: set the StoreName output parameter of ReadList operation below
                               StoreName = obj.StoreObject.Name, // CUSTOM_CODE_END
@@ -61,7 +61,7 @@ namespace AdventureWorks.Services.Entities
                 // Result filter
                 if (_criteria != null)
                 {
-                    qry = AddClause(qry, "TerritoryId", o => o.TerritoryId, _criteria.TerritoryId);
+                    qry = AddClause(qry, "TerritoryId", o => o.TerritoryId, new [] { _criteria.TerritoryId });
                     qry = AddClause(qry, "PersonName", o => o.PersonName, _criteria.PersonNameOperator, _criteria.PersonName);
                     qry = AddClause(qry, "StoreName", o => o.StoreName, _criteria.StoreNameOperator, _criteria.StoreName);
                     qry = AddClause(qry, "AccountNumber", o => o.AccountNumber, _criteria.AccountNumberOperator, _criteria.AccountNumber);

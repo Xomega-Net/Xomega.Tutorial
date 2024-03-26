@@ -1,5 +1,5 @@
-using System;
 using AdventureWorks.Services.Common.Enumerations;
+using System;
 using Xomega.Framework;
 using Xomega.Framework.Properties;
 

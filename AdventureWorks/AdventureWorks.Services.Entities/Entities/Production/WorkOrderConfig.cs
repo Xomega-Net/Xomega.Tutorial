@@ -13,7 +13,7 @@ namespace AdventureWorks.Services.Entities
     {
         public void Configure(EntityTypeBuilder<WorkOrder> c)
         {
-            c.ToTable("WorkOrder", "Production")
+            c.ToTable("WorkOrder", "Production", tb => tb.UseSqlOutputClause(false))
              .HasKey(e => e.WorkOrderId);
 
             // configure relationships

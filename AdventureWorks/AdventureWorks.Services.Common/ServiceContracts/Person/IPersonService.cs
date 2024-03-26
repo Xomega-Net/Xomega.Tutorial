@@ -20,16 +20,6 @@ namespace AdventureWorks.Services.Common
     {
 
         ///<summary>
-        /// Authenticates a Person using email and password.
-        ///</summary>
-        Task<Output> AuthenticateAsync(Credentials _credentials, CancellationToken token = default);
-
-        ///<summary>
-        /// Reads person info by email as the key.
-        ///</summary>
-        Task<Output<PersonInfo>> ReadAsync(string _email, CancellationToken token = default);
-
-        ///<summary>
         /// Reads enumeration data for Person Credit Card.
         ///</summary>
         Task<Output<ICollection<PersonCreditCard_ReadEnumOutput>>> CreditCard_ReadEnumAsync(int _businessEntityId, CancellationToken token = default);

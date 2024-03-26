@@ -146,6 +146,23 @@ namespace AdventureWorks.Services.Common
     }
     #endregion
 
+    #region SalesOrderCreditCard structure
+
+    public class SalesOrderCreditCard
+    {
+
+        ///<summary>
+        /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
+        ///</summary>
+        public int CreditCardId { get; set; }
+
+        ///<summary>
+        /// Approval code provided by the credit card company.
+        ///</summary>
+        public string CreditCardApprovalCode { get; set; }
+    }
+    #endregion
+
     #region SalesInfo structure
 
     public class SalesInfo
@@ -162,23 +179,6 @@ namespace AdventureWorks.Services.Common
         public int? SalesPersonId { get; set; }
 
         public ICollection<int> SalesReason { get; set; }
-    }
-    #endregion
-
-    #region SalesOrderCreditCard structure
-
-    public class SalesOrderCreditCard
-    {
-
-        ///<summary>
-        /// Credit card identification number. Foreign key to CreditCard.CreditCardID.
-        ///</summary>
-        public int CreditCardId { get; set; }
-
-        ///<summary>
-        /// Approval code provided by the credit card company.
-        ///</summary>
-        public string CreditCardApprovalCode { get; set; }
     }
     #endregion
 

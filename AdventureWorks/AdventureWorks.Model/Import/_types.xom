@@ -42,7 +42,7 @@
     <type name="string400" base="string" size="400"/>
     <type name="string4000" base="string" size="4000"/>
     <type name="string5" base="string" size="5"/>
-    <type name="name" base="string" size="50"/>
     <type name="string8" base="string" size="8"/>
+    <type name="name" base="string" size="50"/>
   </types>
 </module>

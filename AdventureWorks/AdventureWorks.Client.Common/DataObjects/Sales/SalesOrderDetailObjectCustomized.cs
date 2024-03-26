@@ -1,7 +1,7 @@
-using System;
-using System.Linq.Expressions;
 using AdventureWorks.Services.Common;
 using AdventureWorks.Services.Common.Enumerations;
+using System;
+using System.Linq.Expressions;
 using Xomega.Framework;
 using Xomega.Framework.Properties;
 

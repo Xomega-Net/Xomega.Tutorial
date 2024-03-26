@@ -523,11 +523,6 @@
     <type name="geometry">
       <config>
         <sql:type name="geometry" db="sqlsrv" minver="10"/>
-        <!--
-  Add the Spatial types package to your projects and uncomment the appropriate CLR type
-  below for your version of the EF6.x or EF Core respectively.
--->
-        <!--<clr:type name="DbGeometry" namespace="System.Data.Entity.Spatial"/>-->
         <!--<clr:type name="Geometry" namespace="NetTopologySuite.Geometries"/>-->
       </config>
       <usage generic="true"/>
@@ -538,11 +533,6 @@
     <type name="geography">
       <config>
         <sql:type name="geography" db="sqlsrv" minver="10"/>
-        <!--
-  Add the Spatial types package to your projects and uncomment the appropriate CLR type
-  below for your version of the EF6.x or EF Core respectively.
--->
-        <!--<clr:type name="DbGeography" namespace="System.Data.Entity.Spatial"/>-->
         <!--<clr:type name="Geometry" namespace="NetTopologySuite.Geometries"/>-->
       </config>
       <usage generic="true"/>

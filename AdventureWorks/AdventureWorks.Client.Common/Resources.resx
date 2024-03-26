@@ -117,14 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AuthenticationObject_Action_Save" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="AuthenticationObject_Action_Save_AccessKey" xml:space="preserve">
-    <value>L</value>
-  </data>
   <data name="HomeView_NavMenu" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="LoginObject_Action_Save" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginObject_Action_Save_AccessKey" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="LoginView_Warning_WasmLoading" xml:space="preserve">
+    <value>Please wait while the screen is loading...</value>
   </data>
   <data name="OrderFromToDate" xml:space="preserve">
     <value>From Order Date should be earlier than To Order Date.</value>

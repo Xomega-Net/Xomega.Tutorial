@@ -10,7 +10,7 @@
             ".razor"
           ],
           "Customized.cs": [
-            ".razor"
+            ".razor", ".cs"
           ]
         }
       }

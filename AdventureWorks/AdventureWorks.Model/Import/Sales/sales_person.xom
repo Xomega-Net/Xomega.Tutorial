@@ -101,13 +101,13 @@
           <output list="true">
             <param name="business entity id"/>
             <param name="description" type="string"/>
-            <param name="is-current" type="boolean" required="true"/>
+            <param name="is current" type="boolean" required="true"/>
             <param name="territory id"/>
           </output>
           <config>
             <rest:method verb="GET" uri-template="sales-person/enum"/>
             <xfk:enum-cache enum-name="sales person" id-param="business entity id" desc-param="description"
-                            is-active-param="is-current"/>
+                            is-active-param="is current"/>
           </config>
           <doc>
             <summary>Reads enumeration data for Sales Person.</summary>

@@ -141,7 +141,9 @@
         </field>
       </fields>
       <config>
-        <sql:table name="HumanResources.Employee"/>
+        <sql:table name="HumanResources.Employee">
+          <sql:trigger name="dEmployee"/>
+        </sql:table>
       </config>
       <doc>
         <summary>Employee information such as salary, department, and title.</summary>

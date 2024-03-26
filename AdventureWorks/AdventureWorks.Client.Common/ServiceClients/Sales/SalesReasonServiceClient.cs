@@ -11,6 +11,7 @@ using System.Resources;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Xomega.Framework.Client;
 using Xomega.Framework.Services;
 
 namespace AdventureWorks.Services.Common
@@ -18,14 +19,12 @@ namespace AdventureWorks.Services.Common
     ///<summary>
     /// Lookup table of customer purchase reasons.
     ///</summary>
-    public class SalesReasonServiceClient : HttpServiceClient, ISalesReasonService
+    public class SalesReasonServiceClient : RestApiClient, ISalesReasonService
     {
-        protected readonly JsonSerializerOptions SerializerOptions;
-
-        public SalesReasonServiceClient(HttpClient httpClient, IOptionsMonitor<JsonSerializerOptions> options, ResourceManager resourceManager)
-            : base(httpClient, resourceManager)
+        public SalesReasonServiceClient(IHttpClientFactory httpClientFactory, RestApiConfig apiConfig,
+            IOptionsMonitor<JsonSerializerOptions> serializerOptions, ResourceManager resourceManager)
+            : base(httpClientFactory, apiConfig, serializerOptions, resourceManager)
         {
-            SerializerOptions = options.CurrentValue;
         }
 
         /// <inheritdoc/>
@@ -35,7 +34,7 @@ namespace AdventureWorks.Services.Common
             using (var resp = await Http.SendAsync(msg, HttpCompletionOption.ResponseHeadersRead, token))
             {
                 var content = await ReadOutputContentAsync(resp);
-                return await JsonSerializer.DeserializeAsync<Output<ICollection<SalesReason_ReadEnumOutput>>>(content, SerializerOptions);
+                return JsonSerializer.Deserialize<Output<ICollection<SalesReason_ReadEnumOutput>>>(content, SerializerOptions);
             }
         }
     }

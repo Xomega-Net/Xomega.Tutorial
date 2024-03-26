@@ -28,39 +28,6 @@ namespace AdventureWorks.Services.Entities
             ctx = serviceProvider.GetService<AdventureWorksEntities>();
         }
 
-        public virtual async Task<Output> AuthenticateAsync(Credentials _credentials, CancellationToken token = default)
-        {
-            try
-            {
-                currentErrors.AbortIfHasErrors();
-
-                // CUSTOM_CODE_START: add custom security checks for Authenticate operation below
-                // CUSTOM_CODE_END
-            }
-            catch (Exception ex)
-            {
-                currentErrors.MergeWith(errorParser.FromException(ex));
-            }
-            return await Task.FromResult(new Output(currentErrors));
-        }
-
-        public virtual async Task<Output<PersonInfo>> ReadAsync(string _email, CancellationToken token = default)
-        {
-            PersonInfo res = new PersonInfo();
-            try
-            {
-                currentErrors.AbortIfHasErrors();
-
-                // CUSTOM_CODE_START: add custom security checks for Read operation below
-                // CUSTOM_CODE_END
-            }
-            catch (Exception ex)
-            {
-                currentErrors.MergeWith(errorParser.FromException(ex));
-            }
-            return await Task.FromResult(new Output<PersonInfo>(currentErrors, res));
-        }
-
         public virtual async Task<Output<ICollection<PersonCreditCard_ReadEnumOutput>>> CreditCard_ReadEnumAsync(int _businessEntityId, CancellationToken token = default)
         {
             ICollection<PersonCreditCard_ReadEnumOutput> res = null;
@@ -73,7 +40,7 @@ namespace AdventureWorks.Services.Entities
                 var src = from obj in ctx.PersonCreditCard select obj;
 
                 // Source filter
-                src = AddClause(src, "BusinessEntityId", o => o.BusinessEntityId, _businessEntityId);
+                src = AddClause(src, "BusinessEntityId", o => o.BusinessEntityId, new [] { _businessEntityId });
 
                 // CUSTOM_CODE_START: add custom filter criteria to the source query for CreditCard_ReadEnum operation below
                 // src = src.Where(o => o.FieldName == VALUE);

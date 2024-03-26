@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------------------------
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace AdventureWorks.Services.Common
 {
@@ -12,18 +13,19 @@ namespace AdventureWorks.Services.Common
     {
         public static IServiceCollection AddRestClients(this IServiceCollection services)
         {
-            services.AddScoped<IBusinessEntityService, BusinessEntityServiceClient>();
-            services.AddScoped<ICustomerService, CustomerServiceClient>();
-            services.AddScoped<IPersonService, PersonServiceClient>();
-            services.AddScoped<IProductService, ProductServiceClient>();
-            services.AddScoped<IProductSubcategoryService, ProductSubcategoryServiceClient>();
-            services.AddScoped<ISalesOrderService, SalesOrderServiceClient>();
-            services.AddScoped<ISalesPersonService, SalesPersonServiceClient>();
-            services.AddScoped<ISalesReasonService, SalesReasonServiceClient>();
-            services.AddScoped<ISalesTerritoryService, SalesTerritoryServiceClient>();
-            services.AddScoped<IShipMethodService, ShipMethodServiceClient>();
-            services.AddScoped<ISpecialOfferService, SpecialOfferServiceClient>();
-            services.AddScoped<ISpecialOfferProductService, SpecialOfferProductServiceClient>();
+            services.TryAddScoped<IBusinessEntityService, BusinessEntityServiceClient>();
+            services.TryAddScoped<ICustomerService, CustomerServiceClient>();
+            services.TryAddScoped<IPasswordLoginService, PasswordLoginServiceClient>();
+            services.TryAddScoped<IPersonService, PersonServiceClient>();
+            services.TryAddScoped<IProductService, ProductServiceClient>();
+            services.TryAddScoped<IProductSubcategoryService, ProductSubcategoryServiceClient>();
+            services.TryAddScoped<ISalesOrderService, SalesOrderServiceClient>();
+            services.TryAddScoped<ISalesPersonService, SalesPersonServiceClient>();
+            services.TryAddScoped<ISalesReasonService, SalesReasonServiceClient>();
+            services.TryAddScoped<ISalesTerritoryService, SalesTerritoryServiceClient>();
+            services.TryAddScoped<IShipMethodService, ShipMethodServiceClient>();
+            services.TryAddScoped<ISpecialOfferService, SpecialOfferServiceClient>();
+            services.TryAddScoped<ISpecialOfferProductService, SpecialOfferProductServiceClient>();
             return services;
         }
     }
