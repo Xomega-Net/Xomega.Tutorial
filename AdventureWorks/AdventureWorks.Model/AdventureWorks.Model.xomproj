@@ -1,18 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="2.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{1D3B6C6D-1109-4EF3-B479-4CCD6362E88A}</ProjectGuid>
+    <ProjectGuid>{BFD72CDA-1A79-4D03-BCB3-576017A3B2F6}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Model</Configuration>
     <Database>sqlsrv</Database>
     <DbVersion>16.0</DbVersion>
-    <DbConnection>Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=AdventureWorks2022;Data Source=(local);Trust Server Certificate=True</DbConnection>
-    <DbExcludeTables>
-    </DbExcludeTables>
-    <DbCase>camel</DbCase>
-    <DbTimeout>
-    </DbTimeout>
+    <DbProvider>{8800600a-add9-47e8-81d2-1d13b5a09c13}</DbProvider>
+    <DbConnection>01000000D08C9DDF0115D1118C7A00C04FC297EB0100000013CECD7BA7959848A0CDD5565722812800000000020000000000106600000001000020000000AD4600E1A81F83DDBF1E274DB38B9458E7B7FA789245D165622518B12F23568A000000000E8000000002000020000000BF9241FE6EE1D269026DB85D7BC0E8F030AA4C9A52B3A47316B855D7998793A9C0000000C5A96289DBE76FBD1CCE92D81853B334F525AC1B4DE571C8C6191850CE0E513CF3F470AFE148B7C60DF239518E2E55CACA772882EDFF115B0CE9C9AEEA73F675CDFF0C6C331D8E7F497FCC9972312284B941ADB80EB1C16EAAC5DE44E56B366C0963B4204BB7B927E200220DF7BEC72263D6AB904A1F684BE48727A9C337455B6ADC3E7B5A6208451E8F2CEC0AD5288EB164229EF3EB8EB09807AC157AC57B48A8A825393866300F8C5C1B52D487811C4E2FA0625F68A6A8FD4CFF1637182A2C40000000F833FA07DBF8BA72D7C409AFDC2C764372AC853053F6BC1F522A790F9ED0449F6901BA523DD3EC44A815988A8B87E47C7A2CB10A718A11B60A4B3C7AF781440B</DbConnection>
+    <DbCase>lower</DbCase>
     <Name>AdventureWorks.Model</Name>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <XomegaProjectType>Model</XomegaProjectType>
     <RootNamespace>AdventureWorks</RootNamespace>
   </PropertyGroup>
@@ -33,10 +30,9 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <Database>$(Database)</Database>
       <DbVersion>$(DbVersion)</DbVersion>
       <DbCase>$(DbCase)</DbCase>
-      <DbConnectionNeededFor>DbSchema</DbConnectionNeededFor>
+      <DbProvider>$(DbProvider)</DbProvider>
       <DbConnection>$(DbConnection)</DbConnection>
-      <DbTimeout>$(DbTimeout)</DbTimeout>
-      <DbExcludeTables>$(DbExcludeTables)</DbExcludeTables>
+      <DbConnectionNeededFor>DbSchema</DbConnectionNeededFor>
       <KeepTableNames-param>True</KeepTableNames-param>
       <KeepTableNames-type>System.Boolean</KeepTableNames-type>
       <KeepTableNames-category>Naming Convention</KeepTableNames-category>
@@ -51,7 +47,7 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <KeepConstraintNames-desc>Specify whether to preserve constraint names in generated objects.</KeepConstraintNames-desc>
       <NamingCase-param>lower</NamingCase-param>
       <NamingCase-category>Naming Convention</NamingCase-category>
-      <NamingCase-desc>The case to use for logical names: lower, upper or camel. Leave empty to use DB names as is.</NamingCase-desc>
+      <NamingCase-desc>The case to use for logical names: lower, upper or pascal. Leave empty to use DB names as is.</NamingCase-desc>
       <NamingDelimiter-param>space</NamingDelimiter-param>
       <NamingDelimiter-category>Naming Convention</NamingDelimiter-category>
       <NamingDelimiter-desc>The delimiter to use for logical names: space, underscore or dash. Leave empty to use DB names as is.</NamingDelimiter-desc>
@@ -77,10 +73,9 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <Database>$(Database)</Database>
       <DbVersion>$(DbVersion)</DbVersion>
       <DbCase>$(DbCase)</DbCase>
-      <DbConnectionNeededFor>DbSchema</DbConnectionNeededFor>
+      <DbProvider>$(DbProvider)</DbProvider>
       <DbConnection>$(DbConnection)</DbConnection>
-      <DbTimeout>$(DbTimeout)</DbTimeout>
-      <DbExcludeTables>$(DbExcludeTables)</DbExcludeTables>
+      <DbConnectionNeededFor>DbSchema</DbConnectionNeededFor>
     </XomGenerator>
     <XomGenerator Include="$(XomegaHome17)Xsl\doc_xomega.xsl">
       <Name>Domain Model Design</Name>
@@ -146,12 +141,11 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <OutputPath-desc>Path where to output generated document.</OutputPath-desc>
       <OutputPath-category>Output</OutputPath-category>
       <IncludeInBuild>false</IncludeInBuild>
+      <DbProvider>$(DbProvider)</DbProvider>
       <DbConnection>$(DbConnection)</DbConnection>
       <Database>$(Database)</Database>
       <DbVersion>$(DbVersion)</DbVersion>
       <DbCase>$(DbCase)</DbCase>
-      <DbExcludeTables>$(DbExcludeTables)</DbExcludeTables>
-      <DbTimeout>$(DbTimeout)</DbTimeout>
       <SqlQuery-param>
       </SqlQuery-param>
       <SqlQuery-desc>SQL query that returns rooted typed XML using FOR XML, TYPE and ROOT directives.</SqlQuery-desc>
@@ -183,6 +177,7 @@ The path may contain {Module/} and {File} placeholders to output files by module
       <Database>$(Database)</Database>
       <DbVersion>$(DbVersion)</DbVersion>
       <DbCase>$(DbCase)</DbCase>
+      <DbProvider>$(DbProvider)</DbProvider>
       <DbConnection>$(DbConnection)</DbConnection>
       <IncludeInBuild>true</IncludeInBuild>
       <IndividualFiles>true</IndividualFiles>
@@ -449,8 +444,8 @@ The path may contain {Module/} and {File} placeholders to output files by databa
       <Database>$(Database)</Database>
       <DbVersion>$(DbVersion)</DbVersion>
       <DbCase>$(DbCase)</DbCase>
+      <DbProvider>$(DbProvider)</DbProvider>
       <DbConnection>$(DbConnection)</DbConnection>
-      <DbTimeout>$(DbTimeout)</DbTimeout>
     </XomGenerator>
     <XomGenerator Include="$(XomegaHome17)Xsl\svc_client_rest.xsl">
       <Name>REST Service Clients</Name>
@@ -643,9 +638,12 @@ The path may contain {Module/} and {File} placeholders to output files by module
   <ItemGroup>
     <XomFile Include="Auth\login.xom" />
     <XomFile Include="Framework\base_types.xom" />
+    <XomFile Include="Framework\enum_types.xom" />
     <XomFile Include="Framework\operators.xom" />
     <XomFile Include="Framework\TypeConfigs\blazor.xom" />
     <XomFile Include="Framework\TypeConfigs\blazor_xsf.xom" />
+    <XomFile Include="Framework\sqlsrv_types.xom" />
+    <XomFile Include="Framework\TypeConfigs\sqlsrv_config.xom" />
     <XomFile Include="global_config.xom" />
     <XomFile Include="Import\aw_build_version.xom" />
     <XomFile Include="Import\database_log.xom" />

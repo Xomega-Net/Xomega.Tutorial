@@ -1,13 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>
+      net8.0
+    </TargetFrameworks>
     <RootNamespace>AdventureWorks.Services.Common</RootNamespace>
     <AssemblyName>AdventureWorks.Services.Common</AssemblyName>
     <XomegaProjectType>Services.Common</XomegaProjectType>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="Xomega.Framework" Version="4.3.0" />
   </ItemGroup>
 

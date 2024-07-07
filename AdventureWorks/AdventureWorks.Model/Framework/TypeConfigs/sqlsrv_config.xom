@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.xomega.net/omodel"
+        xmlns:sql="http://www.xomega.net/sql">
+  <types>
+    <type-config type="boolean">
+      <sql:type name="bit" db="sqlsrv"/>
+    </type-config>
+    <type-config type="integer">
+      <sql:type name="int" db="sqlsrv"/>
+    </type-config>
+    <type-config type="tiny int">
+      <sql:type name="tinyint" db="sqlsrv"/>
+    </type-config>
+    <type-config type="small int">
+      <sql:type name="smallint" db="sqlsrv"/>
+    </type-config>
+    <type-config type="big int">
+      <sql:type name="bigint" db="sqlsrv"/>
+    </type-config>
+    <type-config type="date time">
+      <sql:type name="datetime" db="sqlsrv"/>
+    </type-config>
+    <type-config type="date">
+      <sql:type name="date" db="sqlsrv" minver="10"/>
+    </type-config>
+    <type-config type="time">
+      <sql:type name="time" db="sqlsrv" minver="10"/>
+    </type-config>
+    <type-config type="date time offset">
+      <sql:type name="datetimeoffset" db="sqlsrv"/>
+    </type-config>
+    <type-config type="decimal">
+      <sql:type name="decimal" db="sqlsrv"/>
+    </type-config>
+    <type-config type="numeric">
+      <sql:type name="numeric" db="sqlsrv"/>
+    </type-config>
+    <type-config type="money">
+      <sql:type name="money" db="sqlsrv"/>
+    </type-config>
+    <type-config type="float">
+      <sql:type name="float" db="sqlsrv"/>
+    </type-config>
+    <type-config type="real">
+      <sql:type name="real" db="sqlsrv"/>
+    </type-config>
+    <type-config type="string">
+      <sql:type name="nvarchar" db="sqlsrv"/>
+    </type-config>
+    <type-config type="code">
+      <sql:type name="nchar" db="sqlsrv"/>
+    </type-config>
+    <type-config type="enumeration">
+      <sql:type name="nchar" db="sqlsrv"/>
+    </type-config>
+    <type-config type="integer enumeration">
+      <sql:type name="int" db="sqlsrv"/>
+    </type-config>
+    <type-config type="tiny int enumeration">
+      <sql:type name="tinyint" db="sqlsrv"/>
+    </type-config>
+    <type-config type="small int enumeration">
+      <sql:type name="smallint" db="sqlsrv"/>
+    </type-config>
+    <type-config type="big int enumeration">
+      <sql:type name="bigint" db="sqlsrv"/>
+    </type-config>
+    <type-config type="boolean enumeration">
+      <sql:type name="bit" db="sqlsrv"/>
+    </type-config>
+    <type-config type="memo">
+      <sql:type name="nvarchar(max)" db="sqlsrv"/>
+    </type-config>
+    <type-config type="guid">
+      <sql:type name="uniqueidentifier" db="sqlsrv"/>
+    </type-config>
+    <type-config type="guid enumeration">
+      <sql:type name="uniqueidentifier" db="sqlsrv"/>
+    </type-config>
+    <type-config type="binary">
+      <sql:type name="varbinary" db="sqlsrv"/>
+    </type-config>
+    <type-config type="geometry">
+      <sql:type name="geometry" db="sqlsrv" minver="10"/>
+    </type-config>
+    <type-config type="geography">
+      <sql:type name="geography" db="sqlsrv" minver="10"/>
+    </type-config>
+    <type-config type="xml">
+      <sql:type name="xml" db="sqlsrv"/>
+    </type-config>
+  </types>
+</module>

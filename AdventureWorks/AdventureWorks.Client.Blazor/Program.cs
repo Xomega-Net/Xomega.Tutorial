@@ -83,7 +83,9 @@ services.AddSingleton<ResourceManager>(sp => new CompositeResourceManager(
     AdventureWorks.Services.Entities.Messages.ResourceManager,
     Xomega.Framework.Messages.ResourceManager));
 string connStr = builder.Configuration.GetValue<string>("add:AdventureWorksEntities:connectionString");
-services.AddDbContext<AdventureWorksEntities>(opt => opt.UseLazyLoadingProxies().UseSqlServer(connStr));
+services.AddDbContext<AdventureWorksEntities>(opt => opt
+    .UseLazyLoadingProxies()
+    .UseSqlServer(connStr));
 services.AddServiceImplementations();
 services.AddDataObjects();
 services.AddViewModels();

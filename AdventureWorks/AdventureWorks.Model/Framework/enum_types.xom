@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.xomega.net/omodel"
+        xmlns:clr="http://www.xomega.net/clr"
+        xmlns:xfk="http://www.xomega.net/framework"
+        xmlns:ui="http://www.xomega.net/ui"
+        name="framework">
+  <types>
+    <type name="selection">
+      <usage generic="true"/>
+      <doc>
+        <summary>A base type associated with selection UI controls.</summary>
+      </doc>
+    </type>
+    <type name="enumeration" base="selection" size="25">
+      <config>
+        <clr:type name="string"/>
+        <xfk:property class="EnumProperty" namespace="Xomega.Framework.Properties" tsModule="xomega"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>An enumeration based on short code string values.</summary>
+      </doc>
+    </type>
+    <type name="integer enumeration" base="selection">
+      <config>
+        <xfk:property class="EnumIntProperty" namespace="Xomega.Framework.Properties" tsModule="xomega"/>
+        <clr:type name="int" valuetype="true"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>An enumeration based on integer values.</summary>
+      </doc>
+    </type>
+    <type name="tiny int enumeration" base="integer enumeration">
+      <config>
+        <xfk:property class="EnumByteProperty" namespace="Xomega.Framework.Properties"
+                      tsClass="EnumIntProperty" tsModule="xomega"/>
+        <clr:type name="byte" valuetype="true"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>An enumeration based on tiny integer values.</summary>
+      </doc>
+    </type>
+    <type name="small int enumeration" base="integer enumeration">
+      <config>
+        <xfk:property class="EnumShortProperty" namespace="Xomega.Framework.Properties"
+                      tsClass="EnumIntProperty" tsModule="xomega"/>
+        <clr:type name="short" valuetype="true"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>An enumeration based on small integer values.</summary>
+      </doc>
+    </type>
+    <type name="big int enumeration" base="integer enumeration">
+      <config>
+        <xfk:property class="EnumLongProperty" namespace="Xomega.Framework.Properties"
+                      tsClass="EnumIntProperty" tsModule="xomega"/>
+        <clr:type name="long" valuetype="true"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>An enumeration based on big integer values.</summary>
+      </doc>
+    </type>
+    <type name="boolean enumeration" base="selection">
+      <config>
+        <xfk:property class="EnumBoolProperty" namespace="Xomega.Framework.Properties" tsModule="xomega"/>
+        <clr:type name="bool" valuetype="true"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>An enumeration based on integer values.</summary>
+      </doc>
+    </type>
+    <type name="guid enumeration" base="selection">
+      <config>
+        <xfk:property class="EnumGuidProperty" namespace="Xomega.Framework.Properties"
+                      tsClass="EnumProperty" tsModule="xomega"/>
+        <clr:type name="Guid" valuetype="true"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>An enumeration based on Guid values.</summary>
+      </doc>
+    </type>
+    <type name="suggest string" base="enumeration">
+      <usage generic="true"/>
+      <doc>
+        <summary>Text data that can be entered manually or picked from a list of suggestions.</summary>
+      </doc>
+    </type>
+    <type name="yesno" base="boolean enumeration">
+      <config>
+        <ui:display-config typical-length="6" text-align="center"/>
+      </config>
+      <enum ref="yesno" validation="none"/>
+      <usage generic="true"/>
+    </type>
+  </types>
+  <enums>
+    <enum name="yesno">
+      <item name="Yes" value="true"/>
+      <item name="No" value="false"/>
+    </enum>
+  </enums>
+</module>

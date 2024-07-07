@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://www.xomega.net/omodel"
+        xmlns:clr="http://www.xomega.net/clr"
+        xmlns:sql="http://www.xomega.net/sql"
+        name="framework">
+  <types>
+    <type name="small date time" base="date time">
+      <config>
+        <sql:type name="smalldatetime" db="sqlsrv"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>A smaller-size date with time down to minutes. SQL Server 2008 only.</summary>
+      </doc>
+    </type>
+    <type name="extended date time" base="date time">
+      <config>
+        <sql:type name="datetime2" db="sqlsrv"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>A more precise date with time down to 100 nanoseconds. SQL Server 2008 only.</summary>
+      </doc>
+    </type>
+    <type name="small money" base="money">
+      <config>
+        <sql:type name="smallmoney" db="sqlsrv"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>Small number with 4 decimals for monetary values from -214,748.3648 to 214,748.3647.</summary>
+      </doc>
+    </type>
+    <type name="text" base="memo">
+      <config>
+        <sql:type name="text" db="sqlsrv"/>
+      </config>
+      <usage generic="true" replaced-by="memo"/>
+      <doc>
+        <summary>A large text that can be over 8000 characters long. (Deprecated)</summary>
+      </doc>
+    </type>
+    <type name="national text" base="memo">
+      <config>
+        <sql:type name="ntext" db="sqlsrv"/>
+      </config>
+      <usage generic="true" replaced-by="memo"/>
+      <doc>
+        <summary>A large text that can be over 8000 characters long. (Deprecated)</summary>
+      </doc>
+    </type>
+    <type name="char" base="code">
+      <config>
+        <sql:type name="char" db="sqlsrv"/>
+      </config>
+      <usage generic="true" replaced-by="code"/>
+      <doc>
+        <summary>Fixed-size set of characters.</summary>
+      </doc>
+    </type>
+    <type name="char string" base="string">
+      <config>
+        <sql:type name="varchar" db="sqlsrv"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>Variable size set of characters.</summary>
+      </doc>
+    </type>
+    <type name="large char string" base="string">
+      <config>
+        <sql:type name="varchar(max)" db="sqlsrv"/>
+      </config>
+      <usage generic="true" replaced-by="memo"/>
+      <doc>
+        <summary>Large set of characters that can be over 4000 characters long.</summary>
+      </doc>
+    </type>
+    <type name="fixed binary" base="binary">
+      <config>
+        <sql:type name="binary" db="sqlsrv"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>Fixed size binary data.</summary>
+      </doc>
+    </type>
+    <type name="large binary" base="binary">
+      <config>
+        <sql:type name="varbinary(max)" db="sqlsrv"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>Large binary data that can exceed 8000 bytes.</summary>
+      </doc>
+    </type>
+    <type name="image" base="binary">
+      <config>
+        <sql:type name="image" db="sqlsrv"/>
+      </config>
+      <usage generic="true" replaced-by="large binary"/>
+      <doc>
+        <summary>Large binary data that can exceed 8000 bytes.</summary>
+      </doc>
+    </type>
+    <type name="row version" base="binary">
+      <config>
+        <sql:type name="rowversion" db="sqlsrv"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>An incrementing number generally used as a mechanism for version-stamping table rows.</summary>
+      </doc>
+    </type>
+    <type name="hierarchy id">
+      <config>
+        <sql:type name="hierarchyid" db="sqlsrv" minver="10"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>Represents position in a hierarchy.</summary>
+      </doc>
+    </type>
+    <type name="variant">
+      <config>
+        <sql:type name="sql_variant" db="sqlsrv"/>
+      </config>
+      <usage generic="true"/>
+      <doc>
+        <summary>Stores values of various supported data types.</summary>
+      </doc>
+    </type>
+  </types>
+</module>

@@ -40,6 +40,11 @@ namespace AdventureWorks.Client.Common
         public const string LoginView_Warning_WasmLoading = "LoginView_Warning_WasmLoading";
 
         /// <summary>
+        /// Views
+        /// </summary>
+        public const string Module_Views_NavMenu = "Module_Views_NavMenu";
+
+        /// <summary>
         /// From Order Date should be earlier than To Order Date.
         /// </summary>
         public const string OrderFromToDate = "OrderFromToDate";

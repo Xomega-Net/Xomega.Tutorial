@@ -129,6 +129,9 @@
   <data name="LoginView_Warning_WasmLoading" xml:space="preserve">
     <value>Please wait while the screen is loading...</value>
   </data>
+  <data name="Module_Views_NavMenu" xml:space="preserve">
+    <value>Views</value>
+  </data>
   <data name="OrderFromToDate" xml:space="preserve">
     <value>From Order Date should be earlier than To Order Date.</value>
   </data>
